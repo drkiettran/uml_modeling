@@ -1,0 +1,57 @@
+
+' Visibility ...
+@startuml
+	class Dummy {
+		- privateField
+		# protectedField
+		~ packagePrivateField
+		+ publicField
+		
+		- privateMethod()
+		# protectedMethod()
+		~ packagePrivate()
+		+ public()
+	}
+@enduml
+
+' Turning off visibility
+@startuml
+	skinparam classAttributeIconSize 0
+	class Dummy {
+		-field1
+		#field2
+		~method1()
+		+method2()
+	}
+@enduml
+
+' Omit visibility altogether.
+@startuml
+	class Dummy {
+		field1
+		field2
+		method1()
+		method2()
+	}
+@enduml
+
+' Escape visibility indicator for other purposes ..
+@startuml
+	class Dummy {
+		field1
+		\~Dummy()
+		method1()
+	}
+@enduml
+
+' Visibility at class level ...
+@startuml
+	-class "private Class" {
+	}
+	#class "protected Class" {
+	}
+	~class "package private Class" {
+	}
+	+class "public Class" {
+	}
+@enduml

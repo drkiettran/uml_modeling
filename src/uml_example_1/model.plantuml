@@ -1,0 +1,12 @@
+@startuml
+Alice -> Bob: Hello!
+Bob -> Alice: Hello, Alice!
+@enduml
+
+@startuml
+skinparam actorStyle awesome
+:User: -> (Use)
+"Main Admin" as Admin
+"Use the Application" as (Use)
+Admin--> (Admin the Application)
+@endum

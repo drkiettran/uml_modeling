@@ -1,0 +1,25 @@
+@startuml
+	box "Internal Service" #LightBlue
+	participant Bob
+	participant Alice
+	end box
+	participant Other
+	Bob -> Alice : hello
+	Alice -> Other : hello
+@enduml
+
+
+@startuml
+	!pragma teoz true
+	box "Internal Service" #LightBlue
+		participant Bob
+		box "Subteam"
+			participant Alice
+			participant John
+		end box
+	end box
+	participant Other
+	Bob -> Alice : hello
+	Alice -> John : hello
+	John -> Other: Hello
+@enduml

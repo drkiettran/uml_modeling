@@ -1,0 +1,34 @@
+
+@startuml
+	note as N2
+		<b> bold
+		<u> underline
+		<i> italic
+		<s> s
+		<del> delete
+		<strike> strike
+		<font color="#ff0000"> font color
+		<font color="red"> font color name
+		<color:#00ff00> color green
+		<color:green> color green
+		<size: 20> Size:20
+		<img src="file"> image from file
+		<img: file> image from file
+	end note
+@enduml
+
+@startuml
+	class Foo
+	note left: On last defined class
+	note top of Foo
+		In java, <size:18>every</size> <u>class</u>
+		<b>extends</b>
+		<i>this</i> one.
+	end note
+	note as N1
+		This note is <u>also</u>
+		<b><color:royalBlue>on several</color>
+		<s>words</s> lines
+		And this is hosted by <img:sourceforge.jpg>
+	end note
+@enduml

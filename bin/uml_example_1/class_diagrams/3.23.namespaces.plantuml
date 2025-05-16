@@ -1,0 +1,13 @@
+@startuml
+	set separator ::
+	class X1::X2::foo {
+		some info
+	}
+@enduml
+
+@startuml
+	set separator none
+	class X1.X2.foo {
+		some info
+	}
+@enduml

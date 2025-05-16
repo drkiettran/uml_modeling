@@ -1,0 +1,132 @@
+3.43.1 Top to bottom (by default)
+' 3.43.2 With Graphviz (layout engine by default)
+' The main rule is: Nested element first, then simple element.
+
+@startuml
+	class a
+	class b
+	package A {
+		class a1
+		class a2
+		class a3
+		class a4
+		class a5
+		package sub_a {
+			class sa1
+			class sa2
+			class sa3
+		}
+	}
+	package B {
+		class b1
+		class b2
+		class b3
+		class b4
+		class b5
+		package sub_b {
+			class sb1
+			class sb2
+			class sb3
+		}
+	}
+@enduml
+
+
+' 3.43.3 With Smetana (internal layout engine)
+' The main rule is the opposite: Simple element first, then nested element.
+@startuml
+	!pragma layout smetana
+	class a
+	class b
+	package A {
+		class a1
+		class a2
+		class a3
+		class a4
+		class a5
+		package sub_a {
+			class sa1
+			class sa2
+			class sa3
+		}
+	}
+	package B {
+		class b1
+		class b2
+		class b3
+		class b4
+		class b5
+		package sub_b {
+			class sb1
+			class sb2
+			class sb3
+		}
+	}
+@enduml
+
+
+
+' 3.43.4 Left to right
+' 3.43.5 With Graphviz (layout engine by default)
+@startuml
+	left to right direction
+	class a
+	class b
+	package A {
+		class a1
+		class a2
+		class a3
+		class a4
+		class a5
+		package sub_a {
+			class sa1
+			class sa2
+			class sa3
+		}
+	}
+	package B {
+		class b1
+		class b2
+		class b3
+		class b4
+		class b5
+		package sub_b {
+			class sb1
+			class sb2
+			class sb3
+		}
+	}
+@enduml
+
+3.43.6 With Smetana (internal layout engine)
+@startuml
+	!pragma layout smetana
+	left to right direction
+	class a
+	class b
+	package A {
+		class a1
+		class a2
+		class a3
+		class a4
+		class a5
+		package sub_a {
+			class sa1
+			class sa2
+			class sa3
+		}
+	}
+	package B {
+		class b1
+		class b2
+		class b3
+		class b4
+		class b5
+		package sub_b {
+			class sb1
+			class sb2
+			class sb3
+		}
+	}
+@enduml
+

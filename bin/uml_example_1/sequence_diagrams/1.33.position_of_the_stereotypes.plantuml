@@ -1,0 +1,15 @@
+' 1.33.1 Top postion (by default)
+@startuml
+	skinparam stereotypePosition top
+	participant A<<st1>>
+	participant B<<st2>>
+	A --> B : stereo test
+@enduml
+
+' 1.33.2 Bottom postion
+@startuml
+	skinparam stereotypePosition bottom
+	participant A<<st1>>
+	participant B<<st2>>
+	A --> B : stereo test
+@enduml

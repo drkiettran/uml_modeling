@@ -1,0 +1,9 @@
+' {static} and {abstract}
+' {classifier} can also be used for {static}
+@startuml
+	class Dummy {
+		{static} String id
+		{classifier} String id2
+		{abstract} void methods()
+	}
+@enduml

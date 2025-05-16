@@ -1,0 +1,24 @@
+@startuml
+	alice -> bob ++ : hello
+	bob -> bob ++ : self call
+	bob -> bib ++ #005500 : hello
+	bob -> george ** : create
+	return done
+	return rc
+	bob -> george !! : delete
+	return success
+@enduml
+
+@startuml
+	alice -> bob ++ : hello1
+	bob -> charlie --++ : hello2
+	charlie --> alice -- : ok
+@enduml
+
+
+@startuml
+	alice -> bob --++ #gold: hello
+	bob -> alice --++ #gold: you too
+	alice -> bob --: step1
+	alice -> bob : step2
+@enduml

@@ -1,0 +1,59 @@
+' 3.39.1. GroupInheritance 1(no grouping)
+@startuml
+skinparam groupInheritance 1
+	A1 <|-- B1
+	A2 <|-- B2
+	A2 <|-- C2
+	A3 <|-- B3
+	A3 <|-- C3
+	A3 <|-- D3
+	A4 <|-- B4
+	A4 <|-- C4
+	A4 <|-- D4
+	A4 <|-- E4
+@enduml
+
+' 3.39.2 GroupInheritance 2 (grouping from 2)
+@startuml
+	skinparam groupInheritance 2
+	A1 <|-- B1
+	A2 <|-- B2
+	A2 <|-- C2
+	A3 <|-- B3
+	A3 <|-- C3
+	A3 <|-- D3
+	A4 <|-- B4
+	A4 <|-- C4
+	A4 <|-- D4
+	A4 <|-- E4
+@enduml
+
+' 3.39.3 GroupInheritance 3 (grouping only from 3)
+@startuml
+skinparam groupInheritance 3
+A1 <|-- B1
+A2 <|-- B2
+A2 <|-- C2
+A3 <|-- B3
+A3 <|-- C3
+A3 <|-- D3
+A4 <|-- B4
+A4 <|-- C4
+A4 <|-- D4
+A4 <|-- E4
+@enduml
+
+' 3.39.4 GroupInheritance 4 (grouping only from 4)
+@startuml
+skinparam groupInheritance 4
+	A1 <|-- B1
+	A2 <|-- B2
+	A2 <|-- C2
+	A3 <|-- B3
+	A3 <|-- C3
+	A3 <|-- D3
+	A4 <|-- B4
+	A4 <|-- C4
+	A4 <|-- D4
+	A4 <|-- E4
+@enduml

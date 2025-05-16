@@ -1,0 +1,160 @@
+' 1.39.1 Normal arrow
+@startuml
+participant Alice as a
+participant Bob as b
+	a -> b : ""-> ""
+	a ->> b : ""->> ""
+	a -\ b : ""-\ ""
+	a -\\ b : ""-\\\\""
+	a -/ b : ""-/ ""
+	a -// b : ""-// ""
+	a ->x b : ""->x ""
+	a x-> b : ""x-> ""
+	a o-> b : ""o-> ""
+	a ->o b : ""->o ""
+	a o->o b : ""o->o ""
+	a <-> b : ""<-> ""
+	a o<->o b : ""o<->o""
+	a x<->x b : ""x<->x""
+	a ->>o b : ""->>o ""
+	a -\o b : ""-\o ""
+	a -\\o b : ""-\\\\o""
+	a -/o b : ""-/o ""
+	a -//o b : ""-//o ""
+	a x->o b : ""x->o ""
+@enduml
+
+
+' 1.39.2 Itself arrow
+@startuml
+	participant Alice as a
+	participant Bob as b
+	a -> a : ""-> ""
+	a ->> a : ""->> ""
+	a -\ a : ""-\ ""
+	a -\\ a : ""-\\\\""
+	a -/ a : ""-/ ""
+	a -// a : ""-// ""
+	a ->x a : ""->x ""
+	a x-> a : ""x-> ""
+	a o-> a : ""o-> ""
+	a ->o a : ""->o ""
+	a o->o a : ""o->o ""
+	a <-> a : ""<-> ""
+	a o<->o a : ""o<->o""
+	a x<->x a : ""x<->x""
+	a ->>o a : ""->>o ""
+	a -\o a : ""-\o ""
+	a -\\o a : ""-\\\\o""
+	a -/o a : ""-/o ""
+	a -//o a : ""-//o ""
+	a x->o a : ""x->o ""
+@enduml
+
+' 1.39.4 Incoming messages (with ’[’)
+@startuml
+	participant Alice as a
+	participant Bob as b
+	[-> b : ""[-> ""
+	[->> b : ""[->> ""
+	[-\ b : ""[-\ ""
+	[-\\ b : ""[-\\\\""
+	[-/ b : ""[-/ ""
+	[-// b : ""[-// ""
+	[->x b : ""[->x ""
+	[x-> b : ""[x-> ""
+	[o-> b : ""[o-> ""
+	[->o b : ""[->o ""
+	[o->o b : ""[o->o ""
+	[<-> b : ""[<-> ""
+	[o<->o b : ""[o<->o""
+	[x<->x b : ""[x<->x""
+	[->>o b : ""[->>o ""
+	[-\o b : ""[-\o ""
+	[-\\o b : ""[-\\\\o""
+	[-/o b : ""[-/o ""
+	[-//o b : ""[-//o ""
+	[x->o b : ""[x->o ""
+@enduml
+
+
+' 1.39.5 Outgoing messages (with ’]’)
+@startuml
+	participant Alice as a
+	participant Bob as b
+	a ->] : ""->] ""
+	a ->>] : ""->>] ""
+	a -\] : ""-\] ""
+	a -\\] : ""-\\\\]""
+	a -/] : ""-/] ""
+	a -//] : ""-//] ""
+	a ->x] : ""->x] ""
+	a x->] : ""x->] ""
+	a o->] : ""o->] ""
+	a ->o] : ""->o] ""
+	a o->o] : ""o->o] ""
+	a <->] : ""<->] ""
+	a o<->o] : ""o<->o]""
+	a x<->x] : ""x<->x]""
+	a ->>o] : ""->>o] ""
+	a -\o] : ""-\o] ""
+	a -\\o] : ""-\\\\o]""
+	a -/o] : ""-/o] ""
+	a -//o] : ""-//o] ""
+	a x->o] : ""x->o] ""
+@enduml
+
+'1.39.7 Short incoming (with ’?’)
+@startuml
+	participant Alice as a
+	participant Bob as b
+	a -> b : //Long long label//
+	?-> b : ""?-> ""
+	?->> b : ""?->> ""
+	?-\ b : ""?-\ ""
+	?-\\ b : ""?-\\\\""
+	?-/ b : ""?-/ ""
+	?-// b : ""?-// ""
+	?->x b : ""?->x ""
+	?x-> b : ""?x-> ""
+	?o-> b : ""?o-> ""
+	?->o b : ""?->o ""
+	?o->o b : ""?o->o ""
+	?<-> b : ""?<-> ""
+	?o<->o b : ""?o<->o""
+	?x<->x b : ""?x<->x""
+	?->>o b : ""?->>o ""
+	?-\o b : ""?-\o ""
+	?-\\o b : ""?-\\\\o ""
+	?-/o b : ""?-/o ""
+	?-//o b : ""?-//o ""
+	?x->o b : ""?x->o ""
+@enduml
+
+' 1.39.8 Short outgoing (with ’?’)
+@startuml
+	participant Alice as a
+	participant Bob as b
+	a -> b : //Long long label//
+	a ->? : ""->? ""
+	a ->>? : ""->>? ""
+	a -\? : ""-\? ""
+	a -\\? : ""-\\\\?""
+	a -/? : ""-/? ""
+	a -//? : ""-//? ""
+	a ->x? : ""->x? ""
+	a x->? : ""x->? ""
+	a o->? : ""o->? ""
+	a ->o? : ""->o? ""
+	a o->o? : ""o->o? ""
+	a <->? : ""<->? ""
+	a o<->o? : ""o<->o?""
+	a x<->x? : ""x<->x?""
+	a ->>o? : ""->>o? ""
+	a -\o? : ""-\o? ""
+	a -\\o? : ""-\\\\o?""
+	a -/o? : ""-/o? ""
+	a -//o? : ""-//o? ""
+	a x->o? : ""x->o? ""
+@enduml
+

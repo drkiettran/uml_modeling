@@ -1,0 +1,17 @@
+' 3.42.1 Minimal example
+@startuml
+	class class1
+	class class2
+
+	class1 [Qualifier] - class2
+@enduml
+
+
+' 3.42.2 Another example
+@startuml
+	interface Map<K,V>
+	class HashMap<Long,Customer>
+	Map <|.. HashMap
+	Shop [customerId: long] ---> "customer\n1" Customer
+	HashMap [id: Long] -r-> "value" Customer
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+	class A.B.C.D.Z {
+	}
+@enduml
+
+@startuml
+	set separator none
+	class A.B.C.D.Z {
+	}
+@enduml
+
+@startuml
+	!pragma useIntermediatePackages false
+	class A.B.C.D.Z {
+	}
+@enduml
+
+@startuml
+	set separator none
+	package A.B.C.D {
+		class Z {
+		}
+	}
+@enduml

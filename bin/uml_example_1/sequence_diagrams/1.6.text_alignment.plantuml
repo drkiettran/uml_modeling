@@ -1,0 +1,13 @@
+@startuml
+	skinparam sequenceMessageAlign right
+	Bob -> Alice : Request
+	'Alice -> Bob : Response
+	Bob <- Alice : Response
+@enduml
+
+' 1.6.1 Text of response message below the arrow
+@startuml
+	skinparam responseMessageBelowArrow true
+	Bob -> Alice : hello
+	Bob <- Alice : ok
+@enduml

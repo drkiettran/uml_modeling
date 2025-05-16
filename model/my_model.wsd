@@ -1,0 +1,104 @@
+ @startuml
+ left to right direction
+ actor Guest as g
+ package Professional {
+ actor Chef as c
+ actor "Food Critic" as fc
+ }
+ package Restaurant {
+ usecase "Eat Food" as UC1
+ usecase "Pay for Food" as UC2
+ usecase "Drink" as UC3
+ usecase "Review" as UC4
+ }
+ fc--> UC4
+ g--> UC1
+ g--> UC2
+ g--> UC3
+ @enduml
+ 
+ 
+ @startuml
+ Alice -> Bob: Hello
+ Bob -> Alice: Hello too
+ 
+
+skinparam actorStyle awesome
+:User: -> (Use)
+"Main Admin" as Admin
+"Use the Application" as (Use)
+Admin--> (Admin the Application)
+@enduml
+ 
+  @startuml
+ User-> (Start)
+ User--> (Use the application) : A small label
+ :Main Admin:---> (Use the application) : This is\nyet another\nlabel
+ @enduml
+ 
+  @startuml
+ :Main Admin: as Admin
+ (Use the application) as (Use)
+ User-> (Start)
+ User--> (Use)
+ Admin---> (Use)
+ note right of Admin : This is an example.
+ note right of (Use)
+ A note can also
+ be on several lines
+ end note
+ note "This note is connected\nto several objects." as N2
+ (Start) .. N2
+ N2 .. (Use)
+ @enduml
+ 
+ 
+ @startuml
+participant Participant as Foo
+actor Actor as Foo1
+boundary Boundary as Foo2
+control Control as Foo3
+entity Entity as Foo4
+database Database as Foo5
+collections Collections as Foo6
+queue Queue as Foo7
+Foo -> Foo1 : To actor
+Foo -> Foo2 : To boundary
+Foo -> Foo3 : To control
+Foo -> Foo4 : To entity
+Foo -> Foo5 : To database
+Foo -> Foo6 : To collections
+Foo -> Foo7: To queue
+@enduml
+
+@startuml
+actor Bob #red
+' The only difference between actor
+'and participant is the drawing
+participant Alice
+participant "I have a really\nlong name" as L #99FF99
+/' You can also declare:
+participant L as "I have a really\nlong name" #99FF99
+'/
+Alice->Bob: Authentication Request
+Bob->Alice: Authentication Response
+Bob->L: Log transaction
+@enduml
+
+@startuml
+Alice -> Bob: Authentication Request
+alt successful case
+Bob -> Alice: Authentication Accepted
+else some kind of failure
+Bob -> Alice: Authentication Failure
+group My own label
+Alice -> Log : Log attack start
+loop 1000 times
+Alice -> Bob: DNS Attack
+end
+Alice -> Log : Log attack end
+end
+else Another type of failure
+Bob -> Alice: Please repeat
+end
+@enduml

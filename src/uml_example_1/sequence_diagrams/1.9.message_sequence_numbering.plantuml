@@ -1,0 +1,75 @@
+@startuml
+	autonumber
+	Bob -> Alice : Authentication Request
+	Bob <- Alice : Authentication Response
+@enduml
+
+@startuml
+	autonumber
+	Bob -> Alice : Authentication Request
+	Bob <- Alice : Authentication Response
+	autonumber 15
+	Bob -> Alice : Another authentication Request
+	Bob <- Alice : Another authentication Response
+	autonumber 40 10
+	Bob -> Alice : Yet another authentication Request
+	Bob <- Alice : Yet another authentication Response
+@enduml
+
+@startuml
+	autonumber "<b>[000]"
+	Bob -> Alice : Authentication Request
+	Bob <- Alice : Authentication Response
+	autonumber 15 "<b>(<u>##</u>)"
+	Bob -> Alice : Another authentication Request
+	Bob <- Alice : Another authentication Response
+	autonumber 40 10 "<font color=red><b>Message 0 "
+	Bob -> Alice : Yet another authentication Request
+	Bob <- Alice : Yet another authentication Response
+@enduml
+
+@startuml
+	autonumber 10 10 "<b>[000]"
+	Bob -> Alice : Authentication Request
+	Bob <- Alice : Authentication Response
+	autonumber stop
+	Bob -> Alice : dummy
+	autonumber resume "<font color=red><b>Message 0 "
+	Bob -> Alice : Yet another authentication Request
+	Bob <- Alice : Yet another authentication Response
+	autonumber stop
+	Bob -> Alice : dummy
+	autonumber resume 1 "<font color=blue><b>Message 0 "
+	Bob -> Alice : Yet another authentication Request
+	Bob <- Alice : Yet another authentication Response
+@enduml
+
+@startuml
+	autonumber 1.1.1
+	Alice -> Bob: Authentication request
+	Bob --> Alice: Response
+	autonumber inc A
+	'Now we have 2.1.1
+	Alice -> Bob: Another authentication request
+	Bob --> Alice: Response
+	autonumber inc B
+	'Now we have 2.2.1
+	Alice -> Bob: Another authentication request
+	Bob --> Alice: Response
+	autonumber inc A
+	'Now we have 3.1.1
+	Alice -> Bob: Another authentication request
+	autonumber inc B
+	'Now we have 3.2.1
+	Bob --> Alice: Response
+@enduml
+
+@startuml
+	autonumber 10
+	Alice -> Bob
+	note right
+		the <U+0025>autonumber<U+0025> works everywhere.
+		Here, its value is ** %autonumber% **
+	end note
+	Bob --> Alice: //This is the response %autonumber%//
+@enduml

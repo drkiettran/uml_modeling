@@ -1,0 +1,16 @@
+' label on the relation via colon(:)
+' label on cardinality using double-quote (").
+@startuml
+	Class01 "1" *-- "many" Class02 : contains
+	Class03 o-- Class04 : aggregation
+	Class05 --> "1" Class06
+@enduml
+
+' Use arrow as an `act on` another object.
+@startuml
+	class Car
+	Driver - Car : drives >
+	Car *- Wheel : have 4 >
+	Car -- Person : < owns
+@enduml
+

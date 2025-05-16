@@ -1,0 +1,27 @@
+' define fields and methods ...
+@startuml
+	Object <|-- ArrayList
+	Object : equals()
+	ArrayList : Object[] elementData
+	ArrayList : size()
+@enduml
+
+' Use brackets {}
+@startuml
+	class Dummy {
+		String data
+		void methods()
+	}
+	class Flight {
+		flightNumber : Integer
+		departureTime : Date
+	}
+@enduml
+
+' Use {field} and {method} ...
+@startuml
+	class Dummy {
+		{field} A field (despite parentheses)
+		{method} Some method
+	}
+@enduml

@@ -1,0 +1,27 @@
+' 1.40.1 By default
+@startuml
+	Bob -> Alice : hello
+	Alice -> Bob : ok
+@enduml
+
+' 1.40.2 LifelineStrategy
+' • nosolid (by default)
+@startuml
+	skinparam lifelineStrategy nosolid
+	Bob -> Alice : hello
+	Alice -> Bob : ok
+@enduml
+
+
+@startuml
+	skinparam lifelineStrategy solid
+	Bob -> Alice : hello
+	Alice -> Bob : ok
+@enduml
+
+' 1.40.3 strictuml
+@startuml
+	skinparam style strictuml
+	Bob -> Alice : hello
+	Alice -> Bob : ok
+@enduml
