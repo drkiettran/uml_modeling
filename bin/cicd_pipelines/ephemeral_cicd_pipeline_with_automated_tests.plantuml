@@ -1,0 +1,43 @@
+@startuml
+title Ephemeral CI/CD Pipeline with Dev & Integration Test Stages
+
+start
+
+:Developer Pushes Code to Repo;
+
+partition "Ephemeral CI Container" {
+  :Checkout Source;
+  :Build App (e.g., mvn, npm);
+  :Run Unit Tests;
+  :Static Code Scan (e.g., SonarQube, Snyk);
+}
+
+partition "Dev Test Env (ephemeral)" {
+  :Deploy Build to Dev Namespace;
+  :Run Development Automated Tests;
+  :Clean Dev Test Environment;
+}
+
+partition "Image Build & Security" {
+  :Build Docker Image;
+  :Scan Image (e.g., Trivy, Clair);
+  :Push to Secure Registry;
+}
+
+partition "Integration Test Env (ephemeral)" {
+  :Deploy to Staging Namespace;
+  :Run Integration Automated Tests;
+  :Dynamic App Security Test (e.g., OWASP ZAP);
+  :Clean Integration Test Environment;
+}
+
+if (Tests & Scans Passed?) then (yes)
+  :Deploy to Production (K8s, VM, Cloud);
+else (fail)
+  stop
+endif
+
+:Remove Ephemeral Containers/Pods;
+
+stop
+@enduml

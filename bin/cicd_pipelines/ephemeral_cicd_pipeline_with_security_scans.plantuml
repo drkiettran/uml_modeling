@@ -1,0 +1,59 @@
+@startuml
+title Ephemeral CI/CD Pipeline with Security Scanning
+
+start
+
+:Trigger from Git push or PR;
+:Spin up ephemeral runner;
+
+partition Source_Code_Scan {
+    :Checkout source code;
+    :Run static code analysis (e.g., SonarQube, CodeQL);
+    if (Code issues found?) then (Yes)
+        :Fail pipeline and notify developers;
+        stop
+    else (No)
+        :Proceed to build;
+    endif
+}
+
+partition Build_and_Test {
+    :Compile application (Maven/Gradle);
+    :Run unit and integration tests;
+    if (Tests passed?) then (Yes)
+        :Package application (e.g., JAR/WAR);
+    else (No)
+        :Fail pipeline and notify developers;
+        stop
+    endif
+}
+
+partition Docker_Image {
+    :Build Docker image;
+    :Tag image with commit ID or version;
+    :Run vulnerability scan on image (e.g., Trivy, Clair);
+
+    if (Vulnerabilities found?) then (Yes)
+        :Fail pipeline and alert security team;
+        stop
+    else (No)
+        :Push image to registry (e.g., Nexus, ECR);
+    endif
+}
+
+partition Deployment {
+    :Generate or update Helm/K8s manifest;
+    :Deploy to staging namespace (Kubernetes);
+    :Run smoke tests;
+
+    if (Smoke tests passed?) then (Yes)
+        :Promote to production namespace;
+    else (No)
+        :Rollback and notify team;
+        stop
+    endif
+}
+
+:Teardown ephemeral runner;
+stop
+@enduml

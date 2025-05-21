@@ -1,0 +1,29 @@
+@startuml
+title Ephemeral CI/CD Pipeline - Activity Diagram
+
+start
+
+:Developer pushes code to repository;
+:CI/CD System detects push event;
+
+partition CI_CD_System {
+    :Trigger pipeline;
+    :Spin up ephemeral agent (container/pod);
+    
+    partition Ephemeral_Agent {
+        :Checkout source code;
+        :Build code (e.g., mvn build);
+        :Run unit/integration tests;
+        :Package artifact (e.g., JAR/Docker image);
+        :Upload to registry (e.g., Nexus/Artifactory);
+    }
+
+    :Trigger deployment stage;
+    :Deploy to staging/prod (e.g., via K8s or SCP);
+    :Send notification (Slack/Email);
+}
+
+:Destroy ephemeral agent;
+stop
+
+@enduml
