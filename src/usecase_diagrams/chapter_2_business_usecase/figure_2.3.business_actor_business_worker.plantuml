@@ -1,0 +1,4 @@
+@startuml
+	Actor/ Customer 
+	actor/ Clerk <<worker>>
+@enduml

@@ -1,0 +1,46 @@
+' 6.9.1 Simple while loop
+' You can use while and endwhile keywords to have while loop.
+
+@startuml
+	start
+	while (data available?)
+		:read data;
+		:generate diagrams;
+	endwhile
+	stop
+@enduml
+
+@startuml
+	while (check filesize ?) is (not empty)
+		:read file;
+	endwhile (empty)
+	:close file;
+@enduml
+
+' 6.9.2 While loop with backward action
+' It is also possible to insert an action in the return path using the backward keyword.
+@startuml
+	while (check filesize ?) is (not empty)
+		:read file;
+		backward:log;
+	endwhile (empty)
+	:close file;
+@enduml
+
+
+' 6.9.3 Infinite while loop
+' If you are using detach to form an infinite while loop, then you will want to also hide the partial arrow
+' that results using -[hidden]->
+@startuml
+	:Step 1;
+	if (condition1) then
+		while (loop forever)
+			:Step 2;
+		endwhile
+		-[hidden]->
+		detach
+	else
+		:end normally;
+		stop
+	endif
+@enduml

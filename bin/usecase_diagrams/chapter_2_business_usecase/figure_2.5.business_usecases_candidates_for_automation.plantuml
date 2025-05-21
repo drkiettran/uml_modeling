@@ -1,0 +1,25 @@
+@startuml
+
+	' top to bottom direction
+	left to right direction
+	skinparam packageStyle rectangle
+	package Bookstore {
+		(Buy books)/ as bb
+		(Sell books)/ as sb
+		(Advertise)/ as ad
+		(Gain client loyalty)/ as gl
+	}
+	
+	actor Customer as c
+	actor Clerk <<worker>> as w
+	:Marketing Department: as m <<worker>>
+	
+	package Bookstore {
+
+	}
+	w -- (bb)
+	w -- (sb)
+	c -- (sb)
+	(ad) -- m
+	(gl) -- m
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+
+	' top to bottom direction
+	left to right direction
+	skinparam packageStyle rectangle
+				
+	
+	rectangle Bookstore {
+		actor Customer as c
+		:Marketing Department: as m <<worker>>
+		:Acquisition manager: as am <<worker>>
+		rectangle "Automation scope" {
+			actor Clerk <<worker>> as w
+			rectangle  {
+				(Buy books)/ as bb
+				(Sell books)/ as sb
+			}
+		}
+		
+		w -- (sb)
+		c -- (sb)
+		rectangle {
+			(Advertise)/ as ad
+			(Gain client loyalty)/ as gl
+		}
+		
+		m -- (ad)
+		m -- (gl)
+		am -- (bb)
+	}
+@enduml

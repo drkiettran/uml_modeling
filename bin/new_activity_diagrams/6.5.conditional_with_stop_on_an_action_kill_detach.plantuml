@@ -1,0 +1,23 @@
+@startuml
+	if (condition?) then
+		:error;
+		stop
+	endif
+	#palegreen:action;
+@enduml
+
+@startuml
+	if (condition?) then
+		#pink:error;
+		kill
+	endif
+	#palegreen:action;
+@enduml
+
+@startuml
+	if (condition?) then
+		#pink:error;
+		detach
+	endif
+	#palegreen:action;
+@enduml

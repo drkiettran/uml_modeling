@@ -1,0 +1,15 @@
+@startuml
+	|Customer|
+		start
+		:"Order books";  
+	|Clerk|
+		:"Register order";
+		:"Inform availability and total";
+	|Customer|
+		:"Pay";
+	|Credit card operator|
+		:"Confirm payment";
+	|Clerk|
+		:"Send books";
+		stop
+@enduml

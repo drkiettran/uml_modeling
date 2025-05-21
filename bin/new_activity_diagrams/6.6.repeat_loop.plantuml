@@ -1,0 +1,20 @@
+@startuml
+	start
+	repeat
+		:read data;
+		:generate diagrams;
+	repeat while (more data?) is (yes) not (no)
+	stop
+@enduml
+
+' 6.6.2 Repeat loop with repeat action and backward action
+@startuml
+	start
+	repeat :foo as starting label;
+		:read data;
+		:generate diagrams;
+		backward:This is backward;
+	repeat while (more data?) is (yes)
+	->no;
+	stop
+@enduml

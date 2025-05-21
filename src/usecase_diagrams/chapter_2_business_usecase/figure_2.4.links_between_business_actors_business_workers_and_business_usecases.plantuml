@@ -1,0 +1,9 @@
+@startuml
+	skinparam stereotypePosition bottom
+	left to right direction
+	(Sell books)/ as sb
+	Clerk <<worker>> as w
+	actor Customer as c
+	c -- (sb)
+	w -- (sb)
+@enduml
