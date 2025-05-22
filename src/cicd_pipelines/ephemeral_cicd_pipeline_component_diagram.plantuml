@@ -1,0 +1,56 @@
+@startuml
+!define RECTANGLE class
+
+title Ephemeral CI/CD Pipeline with Security Scanning
+
+RECTANGLE Dev <<Developer>> {
+    :Push Code;
+}
+
+RECTANGLE GitRepo <<Git Repository>> {
+    :Codebase;
+    :Webhook;
+}
+
+RECTANGLE CI_CD <<CI/CD Orchestrator>> {
+    :Pipeline Trigger;
+    :Ephemeral Runner Provision;
+    :Job Orchestration;
+}
+
+RECTANGLE Runner <<Ephemeral Runner>> {
+    :Checkout Code;
+    :Maven/Gradle Build;
+    :Run Unit Tests;
+    :Run Static Code Analysis;
+    :Run SCA (Snyk, OWASP);
+    :Build Docker Image;
+    :Run Trivy/Grype Scan;
+}
+
+RECTANGLE ImageRegistry <<Docker/Nexus>> {
+    :Store Image;
+    :Tag/Version;
+}
+
+RECTANGLE Kubernetes <<Kubernetes Cluster>> {
+    :Namespace Isolation;
+    :Deploy Container;
+    :Ingress Routing;
+}
+
+RECTANGLE Reports <<Security Reports>> {
+    :SAST Results;
+    :SCA Results;
+    :Container Scan Results;
+}
+
+Dev -down-> GitRepo : Push Code
+GitRepo -down-> CI_CD : Webhook Trigger
+CI_CD --> Runner : Spawn Ephemeral Runner
+Runner --> ImageRegistry : Push Docker Image
+Runner --> Reports : Upload Scan Results
+Runner --> Kubernetes : Deploy to Staging Namespace
+Reports --> Dev : Notify on Results
+
+@enduml

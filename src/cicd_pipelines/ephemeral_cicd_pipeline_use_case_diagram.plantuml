@@ -1,0 +1,46 @@
+@startuml
+	left to right direction
+	skinparam packageStyle rectangle
+	skinparam usecase {
+	  BackgroundColor #EEF2F3
+	  BorderColor #666
+	}
+	
+	actor Developer
+	actor "CI/CD System" as CICD
+	actor "Security Scanner" as Scanner
+	actor "Artifact Registry" as Registry
+	actor "Kubernetes Cluster" as K8s
+	
+	Developer --> (Push Code to Git Repo)
+	(Push Code to Git Repo) --> (Trigger Ephemeral Pipeline) : webhook
+	
+	CICD --> (Trigger Ephemeral Pipeline)
+	(Trigger Ephemeral Pipeline) --> (Create Ephemeral Runner)
+	(Create Ephemeral Runner) --> (Checkout & Build Code)
+	(Checkout & Build Code) --> (Run Unit Tests)
+	
+	(Checkout & Build Code) --> (Static Code Scan)
+	Scanner --> (Static Code Scan)
+	
+	(Checkout & Build Code) --> (Build Docker Image)
+	(Build Docker Image) --> (Image Scan)
+	Scanner --> (Image Scan)
+	
+	(Image Scan) --> (Push Image to Registry)
+	CICD --> Registry : push
+	(Push Image to Registry) --> (Deploy to Kubernetes)
+	(Deploy to Kubernetes) --> K8s
+	
+	note right of (Static Code Scan)
+		e.g., SonarQube, Checkmarx
+	end note
+	
+	note right of (Image Scan)
+		e.g., Trivy, Clair, Aqua
+	end note
+	
+	note right of (Deploy to Kubernetes)
+		Can use Helm, kubectl, or ArgoCD
+	end note
+@enduml

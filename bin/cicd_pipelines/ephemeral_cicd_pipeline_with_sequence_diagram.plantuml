@@ -1,0 +1,39 @@
+@startuml
+actor Developer
+participant "Git Repository" as Git
+participant "CI/CD Orchestrator\n(GitHub Actions / Jenkins / GitLab)" as CI
+participant "Ephemeral Runner\n(Docker Container / K8s Pod)" as Runner
+participant "Static Analysis Tool\n(e.g., SonarQube, CodeQL)" as SAST
+participant "Build & Test Tools\n(Maven, Gradle, JUnit)" as Build
+participant "Binary/Image Scanner\n(e.g., Trivy, Grype)" as Scanner
+participant "Container Registry\n(Nexus, Harbor, ECR)" as Registry
+participant "Deployment Target\n(Kubernetes / Server)" as Deploy
+
+Developer -> Git : Push code
+Git -> CI : Trigger pipeline (webhook)
+CI -> Runner : Spin up ephemeral runner
+Runner -> Git : Checkout code
+
+== Source Code Analysis ==
+Runner -> SAST : Run static code analysis
+SAST -> Runner : Return scan report
+
+== Build & Test ==
+Runner -> Build : Build application (e.g., mvn package)
+Build -> Runner : Artifacts + Test results
+
+== Binary/Image Scan ==
+Runner -> Scanner : Scan JAR/Docker image
+Scanner -> Runner : Security findings
+
+== Push Image ==
+Runner -> Registry : Push Docker image
+
+== Deploy ==
+Runner -> Deploy : Apply Kubernetes manifest / restart container
+Deploy -> Runner : Status confirmation
+
+== Tear Down ==
+CI -> Runner : Destroy ephemeral runner
+Runner -> CI : Confirm cleanup
+@enduml

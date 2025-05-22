@@ -1,0 +1,35 @@
+@startuml
+'!define DEVOPS https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master
+'!define DEVOPS https://raw.githubusercontent.com/RicardoNiepel/plantuml-stdlib/refs/heads/master/C4
+!define DEVOPS https://raw.githubusercontent.com/drkiettran/plantuml-stdlib/refs/heads/master/C4
+'!define DEVOPS https://github.com/plantuml/plantuml-stdlib/blob/master/stdlib/C4
+!includeurl DEVOPS/C4_Context.puml
+!includeurl DEVOPS/C4_Container.puml
+
+'LAYOUT_WITH_LEGEND()
+
+'Actors
+Person(dev, "Developer", "Pushes code and triggers pipeline")
+
+'External systems
+System(git, "GitHub / GitLab", "Source Code Repository")
+System(nexus, "Nexus / Artifactory", "Stores build artifacts and Docker images")
+System(k8s, "Kubernetes Cluster", "Target deployment environment")
+
+'Pipeline Core
+Container(ci, "Ephemeral CI/CD Pipeline", "Jenkins / GitHub Actions / GitLab CI", "Build, test, scan, deploy")
+Container(scan, "Static Code Scanner", "SonarQube / Checkmarx", "Scans source code for vulnerabilities")
+Container(imageScan, "Image Scanner", "Trivy / Snyk", "Scans container image for CVEs")
+
+'Build Agent
+Container(ephemeralRunner, "Ephemeral Runner", "Docker container or Kubernetes pod", "Runs each job in a fresh environment")
+
+'Relations
+Rel(dev, git, "Pushes code to")
+Rel(git, ci, "Triggers")
+Rel(ci, ephemeralRunner, "Creates ephemeral runner for job execution")
+Rel(ephemeralRunner, scan, "Runs static code scan")
+Rel(ephemeralRunner, imageScan, "Runs image scan")
+Rel(ephemeralRunner, nexus, "Pushes artifacts and Docker images")
+Rel(ephemeralRunner, k8s, "Deploys application to")
+@enduml

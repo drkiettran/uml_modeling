@@ -1,0 +1,74 @@
+' 6.10.1 Simple fork
+@startuml
+	start
+	fork
+	:action 1;
+	fork again
+	:action 2;
+	end fork
+	stop
+@enduml
+
+' 6.10.2 fork with end merge
+@startuml
+	start
+	fork
+	:action 1;
+	fork again
+	:action 2;
+	end merge
+	stop
+@enduml
+
+
+@startuml
+	start
+	fork
+	:action 1;
+	fork again
+	:action 2;
+	fork again
+	:action 3;
+	fork again
+	:action 4;
+	end merge
+	stop
+@enduml
+
+' 6.10.3 Label on end fork (or UML joinspec):
+@startuml
+	start
+	fork
+	:action A;
+	fork again
+	:action B;
+	end fork {or}
+	stop
+@enduml
+
+@startuml
+	start
+	fork
+	:action A;
+	fork again
+	:action B;
+	end fork {and}
+	stop
+@enduml
+
+
+' 6.10.4 Other example
+@startuml
+	start
+	if (multiprocessor?) then (yes)
+		fork
+		:Treatment 1;
+		fork again
+		:Treatment 2;
+		end fork
+	else (monoproc)
+		:Treatment 1;
+		:Treatment 2;
+	endif
+@enduml
+
