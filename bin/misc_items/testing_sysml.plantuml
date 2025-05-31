@@ -1,0 +1,27 @@
+@startuml
+top to bottom direction
+!define RECTANGLE class
+
+package "SP800_53_Rev5" as sp80053Rev5 {
+	
+	package "Groups" as groups{
+	}
+	package "Catalog" as catalog {
+		package "Metadata" as metadata {
+		}
+	}
+	package "Backmatter" as backmatter {
+	}
+	
+	package "CommonAttributes" as commonAttributes {
+		RECTANGLE "Class" <<variation>> {
+		sp800_53A#
+		} 
+		
+	}
+}
+
+metadata ..>> commonAttributes
+
+
+@enduml

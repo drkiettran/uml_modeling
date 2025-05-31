@@ -1,43 +1,61 @@
-@startuml
-title Ephemeral CI/CD Pipeline with Dev & Integration Test Stages
+@startuml	
+	title Ephemeral CI/CD Pipeline with Dev & Integration Test Stages
 
-start
-
-:Developer Pushes Code to Repo;
-
-partition "Ephemeral CI Container" {
-  :Checkout Source;
-  :Build App (e.g., mvn, npm);
-  :Run Unit Tests;
-  :Static Code Scan (e.g., SonarQube, Snyk);
-}
-
-partition "Dev Test Env (ephemeral)" {
-  :Deploy Build to Dev Namespace;
-  :Run Development Automated Tests;
-  :Clean Dev Test Environment;
-}
-
-partition "Image Build & Security" {
-  :Build Docker Image;
-  :Scan Image (e.g., Trivy, Clair);
-  :Push to Secure Registry;
-}
-
-partition "Integration Test Env (ephemeral)" {
-  :Deploy to Staging Namespace;
-  :Run Integration Automated Tests;
-  :Dynamic App Security Test (e.g., OWASP ZAP);
-  :Clean Integration Test Environment;
-}
-
-if (Tests & Scans Passed?) then (yes)
-  :Deploy to Production (K8s, VM, Cloud);
-else (fail)
-  stop
-endif
-
-:Remove Ephemeral Containers/Pods;
-
-stop
+	start
+	
+	:Developer Pushes Code to Repo;
+	
+	partition "Ephemeral CI Container" {
+	  :Checkout Source;
+	  :Build App (e.g., mvn, npm);
+	  :Run Unit Tests;
+	  :Static Code Scan \n(e.g., **SonarQube**, **Snyk**, **Checkmarx**); 
+	  note right
+	  	**SonarQube**: 
+	  	Unit test coverage (<color:green>develop the product __the right way__)
+	  	
+	  	* **Java**: <color:green>**JUnit**
+	  	* **Python**: <color:green>**PyTest**
+	  end note
+	}
+	
+	partition "Dev Test Env (ephemeral)" {
+	  :Deploy Build to Dev Namespace;
+	  :Run Development Automated Tests;
+	  :Clean Dev Test Environment;
+	}
+	
+	partition "Image Build & Security" {
+	  :Build Docker Image;
+	  :Scan Image (e.g., **Trivy**, **Clair**);
+	  :Push to Secure Registry;
+	}
+	
+	partition "Integration Test Env (ephemeral)" {
+	  :Deploy to Staging Namespace;
+	  :Run Integration Automated Tests;
+	  note right
+	    Functional test coverage (<color:green>develop the __right__ product)
+	    
+	  	* **Java**: i.e., <color:green> Cucumber-JVM via JUnit Tests
+	  	* **Python**: i.e., <color:green> Behave via PyTest
+	  end note
+	  :Dynamic App Security Test (e.g., **OWASP ZAP**);
+	  :Clean Integration Test Environment;
+	}
+	
+	if (Tests & Scans Passed?) then (**<color:green>YES**)
+	  #palegreen:Deploy to Production (**K8s**, **VM**, **Cloud**);
+	else (<color:red>**NO**)	
+	  stop
+	  note right
+	  	A simplified version of stopping the pipeline.
+	  	Typically, any failure within the pipeline 
+	  	should __<color:red>**halt**__ <color:black> the pipeline immediately.
+	  end note
+	endif
+	
+	:Remove Ephemeral Containers/Pods;
+	
+	stop
 @enduml
