@@ -1,0 +1,40 @@
+' It’s possible to remove an arrow using the detach or kill keyword:
+' • detach
+@startuml
+	:start;
+	fork
+	:foo1;
+	:foo2;
+	fork again
+	:foo3;
+	detach
+	endfork
+	if (foo4) then
+	:foo5;
+	detach
+	endif
+	:foo6;
+	detach
+	:foo7;
+	stop
+@enduml
+
+' • kill
+@startuml
+	:start;
+	fork
+	:foo1;
+	:foo2;
+	fork again
+	:foo3;
+	kill
+	endfork
+	if (foo4) then
+		:foo5;
+		kill
+	endif
+	:foo6;
+	kill
+	:foo7;
+	stop
+@enduml

@@ -1,0 +1,47 @@
+' 6.24.1 Diamond style (by default)
+' • With one branch
+@startuml
+	skinparam ConditionEndStyle diamond
+	:A;
+	if (decision) then (yes)
+		:B1;
+	else (no)
+	endif
+	:C;
+@enduml
+
+@startuml
+	skinparam ConditionEndStyle diamond
+	:A;
+	if (decision) then (yes)
+		:B1;
+	else (no)
+		:B2;
+	endif
+	:C;
+@enduml
+
+' 6.24.2 Horizontal line (hline) style
+' • With one branch
+@startuml
+	skinparam ConditionEndStyle hline
+	:A;
+	if (decision) then (yes)
+		:B1;
+	else (no)
+	endif
+	:C;
+@enduml
+
+' • With two branches (B1, B2)
+@startuml
+skinparam ConditionEndStyle hline
+:A;
+if (decision) then (yes)
+:B1;
+else (no)
+:B2;
+endif
+:C;
+@enduml
+

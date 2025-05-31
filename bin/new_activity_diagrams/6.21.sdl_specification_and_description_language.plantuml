@@ -1,0 +1,42 @@
+' 6.21.2 SDL using final separator (Deprecated form)
+@startuml
+	:Ready;
+	:next(o)|
+	:Receiving;
+	split
+	:nak(i)<
+	:ack(o)>
+	split again
+	:ack(i)<
+	:next(o)
+	on several lines|
+	:i := i + 1]
+	:ack(o)>
+	split again
+	:err(i)<
+	:nak(o)>
+	split again
+	:foo/
+	split again
+	:bar\\
+	split again
+	:i > 5}
+	stop
+	end split
+	:finish;
+@enduml
+
+' 6.21.3 SDL using Normal separator and Stereotype (Current offial form)
+@startuml
+	start
+	:SDL Shape;
+	:input; <<input>>
+	:output; <<output>>
+	:procedure; <<procedure>>
+	:load; <<load>>
+	:save; <<save>>
+	:continuous; <<continuous>>
+	:task; <<task>>
+	end
+@enduml
+

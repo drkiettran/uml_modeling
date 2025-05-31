@@ -1,0 +1,85 @@
+@startuml
+	start
+	group Initialization
+		:read config file;
+		:init internal variable;
+	end group
+	group Running group
+		:wait for user interaction;
+		:print information;
+	end group
+	stop
+@enduml
+
+' 6.18.2 Partition
+' You can group activity together by defining partition:
+	@startuml
+	start
+	partition Initialization {
+		:read config file;
+		:init internal variable;
+	}
+	partition Running {
+		:wait for user interaction;
+		:print information;
+	}
+	stop
+@enduml
+
+@startuml
+	start
+	partition #lightGreen "Input Interface" {
+		:read config file;
+		:init internal variable;
+	}
+	partition Running {
+		:wait for user interaction;
+		:print information;
+	}
+	stop
+@enduml
+
+' It’s also possible to add link to partition:
+@startuml
+	start
+	partition "[[http://plantuml.com partition_name]]" {
+		:read doc. on [[http://plantuml.com plantuml_website]];
+		:test diagram;
+	}
+	end
+@enduml
+
+
+' 6.18.3 Group, Partition, Package, Rectangle or Card
+' You can group activity together by defining:
+' • group;
+' • partition;
+' • package;
+' • rectangle;
+' • card.
+
+@startuml
+	'left to right direction
+	start
+	group Group
+ 		:Activity;
+	end group
+	floating note: Note on Group
+	partition Partition {
+ 		:Activity;
+	}
+	floating note: Note on Partition
+	package Package {
+		:Activity;
+	}
+	floating note: Note on Package
+	rectangle Rectangle {
+		:Activity;
+	}
+	floating note: Note on Rectangle
+	card Card {
+		:Activity;
+	}
+	floating note: Note on Card
+	end
+@enduml

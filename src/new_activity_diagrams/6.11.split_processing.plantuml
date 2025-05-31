@@ -1,0 +1,71 @@
+' 6.11.1 Split
+' You can use split, split again and end split keywords to denote split processing.
+
+@startuml
+	start
+	split
+	:A;
+	split again
+	:B;
+	split again
+	:C;
+	split again
+	:a;
+	:b;
+	end split
+	:D;
+	end
+@enduml
+
+' 6.11.2 Input split (multi-start)
+' You can use hidden arrows to make an input split (multi-start):
+
+@startuml
+	split
+	-[hidden]->
+	:A;
+	split again
+	-[hidden]->
+	:B;
+	split again
+	-[hidden]->
+	:C;
+	end split
+	:D;
+@enduml
+
+' 6.11.3 Output split (multi-end)
+' You can use kill or detach to make an output split (multi-end):
+@startuml
+	start
+	split
+	:A;
+	kill
+	split again
+	:B;
+	detach
+	split again
+	:C;
+	kill
+	end split
+@enduml
+
+
+@startuml
+	start
+	split
+	:A;
+	kill
+	split again
+	:b;
+	:c;
+	detach
+	split again
+	(Z)
+	detach
+	split again
+	end
+	split again
+	stop
+	end split
+@enduml

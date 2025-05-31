@@ -1,0 +1,52 @@
+' 6.23.1 Inside style (by default)
+@startuml
+	skinparam conditionStyle inside
+	start
+		repeat
+		:act1;
+		:act2;
+		repeatwhile (<b>end)
+		:act3;
+@enduml
+
+@startuml
+	start
+		repeat
+		:act1;
+		:act2;
+		repeatwhile (<b>end)
+		:act3;
+@enduml
+
+' 6.23.2 Diamond style
+@startuml
+	skinparam conditionStyle diamond
+	start
+	repeat
+	:act1;
+	:act2;
+	repeatwhile (<b>end)
+	:act3;
+@enduml
+
+' 6.23.3 InsideDiamond (or Foo1) style
+@startuml
+	skinparam conditionStyle InsideDiamond
+	start
+	repeat
+	:act1;
+	:act2;
+	repeatwhile (<b>end)
+	:act3;
+@enduml
+
+
+@startuml
+	skinparam conditionStyle foo1
+	start
+	repeat
+	:act1;
+	:act2;
+	repeatwhile (<b>end)
+	:act3;
+@enduml

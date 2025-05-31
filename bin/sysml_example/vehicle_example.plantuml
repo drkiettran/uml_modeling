@@ -1,3 +1,5 @@
-part vehicle {
-  attribute mass = engine.mass+transmission.mass;
-}
+@startuml
+	class vehicle {
+  		attribute mass = engine.mass+transmission.mass;
+	}
+@enduml
