@@ -1,0 +1,78 @@
+@startuml
+	title SoS Communication Package
+	skinparam componentStyle rectangle
+	
+	' Metaclasses
+	class "Lifeline" as Lifeline <<Metaclass>>
+	class "Message" as Message <<Metaclass>>
+	class "CS" as CS <<Stereotype>>
+	class "environment" as environment <<Stereotype>>
+  	class "connection_strategy" as connection <<Stereotype>>
+  	class "external_interface" as external <<Stereotype>>
+
+	class "instant" as instant <<Stereotype>> 
+	class "security" as security <<Stereotype>> 
+	class "dependability guarantee" as dependability <<Stereotype>>
+	 	
+	' Core profile
+	rectangle "SoSCommunication" <<Profile>>{
+		' Enumerations
+		enum transport_service <<Enumeration>> {
+	  		datagram
+	  		PAR_message
+	  		TT_message
+		}
+	
+	
+	  ' Stereotypes
+	  class "RUI" as RUI <<Stereotype>>
+	  class "RUMI" as RUMI <<Stereotype>>
+	  class "RUPI" as RUPI <<Stereotype>>
+
+	  class "probe" as probe <<Stereotype>>{
+	    + type: String [1]
+	  }
+	  class "message" as message <<Stereotype>>{
+	    + data_field: String [*]
+	    + header: String [*]
+	    + trans_type: transport_service [*]
+	  }
+	  class "message_classification" as MC <<Stereotype>>{
+	    + valid: Boolean [*]
+	    + checked: Boolean [*]
+	    + permitted: Boolean [*]
+	    + timely: Boolean [*]
+	    + correctness: Boolean [*]
+	    + insidious: Boolean [*]
+	  }
+	  class "trailer" as trailer <<Stereotype>>{
+	    + send_instant: instant [*]
+	    + arrival_instant: instant [*]
+	    + receive_instant: instant [*]
+	    + transport_duration: interval [*]
+	  }
+	}
+	
+	' Relationships
+	RUI "1" -up-> "1" connection : has a
+	RUI "1" -up-> "1" CS : exchanges information among
+	RUI -up-|> external: <<true>>
+	RUI "1" -up-> "0..*" environment : affects
+	RUI "1" -down-> "*" probe : is monitored through
+	RUMI -up-|> RUI : <<true>>
+	RUPI -up-|> RUI : <<true>>
+	RUI "1" -right-> "*" security : satisfies condition of (security)
+	RUI "1" -down-> "*" dependability : satisfies condition of (dependability)
+	
+	RUMI "1" --> "*" message : exchanges messages
+	message "1" --> "0..1" trailer : has trailer
+	message "1" -left-> "*" MC : has a classification
+	trailer "1" -left-> "*" instant : is composed by
+	
+	CS -right- Lifeline: owns > 
+	message -up-> Message
+	
+	hide <<Stereotype>> circle
+	hide <<Metaclass>> circle
+	hide <<Enumeration>> circle
+@enduml

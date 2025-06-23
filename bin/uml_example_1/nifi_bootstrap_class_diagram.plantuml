@@ -1,0 +1,604 @@
+@startuml
+class BootstrapProcess [[java:org.apache.nifi.bootstrap.BootstrapProcess]] {
+	+{static} main(arguments: String[]): void
+	-{static} run(bootstrapCommand: BootstrapCommand): void
+}
+interface BootstrapCommandProvider [[java:org.apache.nifi.bootstrap.command.BootstrapCommandProvider]] {
+	getBootstrapCommand(arguments: String[]): BootstrapCommand
+}
+class StandardBootstrapCommandProvider [[java:org.apache.nifi.bootstrap.command.StandardBootstrapCommandProvider]] {
+	-{static} SHUTDOWN_REQUESTED: String
+	-{static} VERBOSE_REQUESTED: String
+	-{static} VERBOSE_QUERY: String
+	-{static} DAYS_QUERY: String
+	-{static} EMPTY_QUERY: String
+	-{static} FIRST_ARGUMENT: int
+	-{static} SECOND_ARGUMENT: int
+	-{static} PATH_ARGUMENTS: int
+	-{static} DAYS_PATH_ARGUMENTS: int
+	-{static} DAYS_REQUESTED_DEFAULT: int
+	-{static} START_WATCH_DELAY: Duration
+	-{static} bootstrapArgumentParser: BootstrapArgumentParser
+	-{static} commandLogger: Logger
+	+getBootstrapCommand(arguments: String[]): BootstrapCommand
+	-getBootstrapCommand(bootstrapArgument: BootstrapArgument, arguments: String[]): BootstrapCommand
+	-getDecommissionCommand(processHandleProvider: ProcessHandleProvider, stopBootstrapCommand: BootstrapCommand, arguments: String[]): BootstrapCommand
+	-getDiagnosticsCommand(processHandleProvider: ProcessHandleProvider, arguments: String[]): BootstrapCommand
+	-getDiagnosticsResponseStreamHandler(arguments: String[]): ResponseStreamHandler
+	-getStatusHistoryCommand(processHandleProvider: ProcessHandleProvider, arguments: String[]): BootstrapCommand
+	-isShutdownRequested(arguments: String[]): boolean
+	-getVerboseQuery(arguments: String[]): String
+	-getStatusHistoryDaysQuery(arguments: String[]): String
+	-getStatusHistoryDaysRequested(daysRequestArgument: String): int
+	-getStatusHistoryResponseStreamHandler(arguments: String[]): ResponseStreamHandler
+	-getProcessHandleProvider(configurationProvider: ConfigurationProvider): ProcessHandleProvider
+}
+interface BootstrapCommandProvider {
+}
+BootstrapCommandProvider <|.. StandardBootstrapCommandProvider
+class StartBootstrapCommand [[java:org.apache.nifi.bootstrap.command.StartBootstrapCommand]] {
+	-{static} MONITOR_INTERVAL: long
+	-{static} logger: Logger
+	-startWatchDelay: Duration
+	-scheduledExecutorService: ScheduledExecutorService
+	~StartBootstrapCommand(runCommand: BootstrapCommand, statusCommand: BootstrapCommand, startWatchDelay: Duration)
+	+run(): void
+}
+class BootstrapCommand {
+}
+StartBootstrapCommand --> "1" BootstrapCommand : runCommand
+class BootstrapCommand {
+}
+StartBootstrapCommand --> "1" BootstrapCommand : statusCommand
+class CommandStatus {
+}
+StartBootstrapCommand --> "1" CommandStatus : commandStatus
+class CommandStatus {
+}
+StartBootstrapCommand --> "1" CommandStatus : getCommandStatus()
+interface BootstrapCommand {
+}
+BootstrapCommand <|.. StartBootstrapCommand
+class SequenceBootstrapCommand [[java:org.apache.nifi.bootstrap.command.SequenceBootstrapCommand]] {
+	~SequenceBootstrapCommand(bootstrapCommands: List<BootstrapCommand>)
+	+run(): void
+}
+class BootstrapCommand {
+}
+SequenceBootstrapCommand --> "*" BootstrapCommand : bootstrapCommands
+class CommandStatus {
+}
+SequenceBootstrapCommand --> "1" CommandStatus : commandStatus
+class CommandStatus {
+}
+SequenceBootstrapCommand --> "1" CommandStatus : getCommandStatus()
+interface BootstrapCommand {
+}
+BootstrapCommand <|.. SequenceBootstrapCommand
+class UnknownBootstrapCommand [[java:org.apache.nifi.bootstrap.command.UnknownBootstrapCommand]] {
+	+run(): void
+}
+class CommandStatus {
+}
+UnknownBootstrapCommand --> "1" CommandStatus : getCommandStatus()
+interface BootstrapCommand {
+}
+BootstrapCommand <|.. UnknownBootstrapCommand
+class GetRunCommandBootstrapCommand [[java:org.apache.nifi.bootstrap.command.GetRunCommandBootstrapCommand]] {
+	-{static} SPACE_SEPARATOR: String
+	-{static} logger: Logger
+	-outputStream: PrintStream
+	+GetRunCommandBootstrapCommand(configurationProvider: ConfigurationProvider, processHandleProvider: ProcessHandleProvider, outputStream: PrintStream)
+	+run(): void
+}
+class ConfigurationProvider {
+}
+GetRunCommandBootstrapCommand --> "1" ConfigurationProvider : configurationProvider
+class ProcessHandleProvider {
+}
+GetRunCommandBootstrapCommand --> "1" ProcessHandleProvider : processHandleProvider
+class ManagementServerAddressProvider {
+}
+GetRunCommandBootstrapCommand --> "1" ManagementServerAddressProvider : managementServerAddressProvider
+class CommandStatus {
+}
+GetRunCommandBootstrapCommand --> "1" CommandStatus : commandStatus
+class CommandStatus {
+}
+GetRunCommandBootstrapCommand --> "1" CommandStatus : getCommandStatus()
+interface BootstrapCommand {
+}
+BootstrapCommand <|.. GetRunCommandBootstrapCommand
+interface BootstrapCommand [[java:org.apache.nifi.bootstrap.command.BootstrapCommand]] {
+}
+class CommandStatus {
+}
+BootstrapCommand --> "1" CommandStatus : getCommandStatus()
+interface Runnable {
+}
+Runnable <|-- BootstrapCommand
+enum CommandStatus [[java:org.apache.nifi.bootstrap.command.CommandStatus]] {
+	RUNNING
+	SUCCESS
+	ERROR
+	STOPPED
+	COMMUNICATION_FAILED
+	FAILED
+	status
+	~CommandStatus(status: int)
+	+getStatus(): int
+}
+class ManagementServerBootstrapCommand [[java:org.apache.nifi.bootstrap.command.ManagementServerBootstrapCommand]] {
+	-{static} commandLogger: Logger
+	-{static} CONNECT_TIMEOUT: Duration
+	-{static} READ_TIMEOUT: Duration
+	-{static} SERVER_URI: String
+	-{static} QUERY_SEPARATOR: char
+	-managementServerQuery: String
+	-successStatusCode: int
+	~ManagementServerBootstrapCommand(processHandleProvider: ProcessHandleProvider, managementServerPath: ManagementServerPath, responseStreamHandler: ResponseStreamHandler)
+	~ManagementServerBootstrapCommand(processHandleProvider: ProcessHandleProvider, httpRequestMethod: HttpRequestMethod, managementServerPath: ManagementServerPath, managementServerQuery: String, successStatusCode: int, responseStreamHandler: ResponseStreamHandler)
+	+run(): void
+	#run(applicationProcessHandle: ProcessHandle): void
+	#onResponseStatus(applicationProcessHandle: ProcessHandle, statusCode: int, responseStream: InputStream): void
+	#getCommandLogger(): Logger
+	#getHttpRequest(managementServerUri: URI): HttpRequest
+	#getManagementServerUri(managementServerAddress: String): URI
+	#getHttpClient(): HttpClient
+	-getManagementServerAddressProvider(applicationProcessHandle: ProcessHandle): ManagementServerAddressProvider
+}
+class ProcessHandleProvider {
+}
+ManagementServerBootstrapCommand --> "1" ProcessHandleProvider : processHandleProvider
+class HttpRequestMethod {
+}
+ManagementServerBootstrapCommand --> "1" HttpRequestMethod : httpRequestMethod
+class ManagementServerPath {
+}
+ManagementServerBootstrapCommand --> "1" ManagementServerPath : managementServerPath
+class ResponseStreamHandler {
+}
+ManagementServerBootstrapCommand --> "1" ResponseStreamHandler : responseStreamHandler
+class CommandStatus {
+}
+ManagementServerBootstrapCommand --> "1" CommandStatus : commandStatus
+class CommandStatus {
+}
+ManagementServerBootstrapCommand --> "1" CommandStatus : getCommandStatus()
+interface BootstrapCommand {
+}
+BootstrapCommand <|.. ManagementServerBootstrapCommand
+class ApplicationProcessStatusBootstrapCommand [[java:org.apache.nifi.bootstrap.command.ApplicationProcessStatusBootstrapCommand]] {
+	-{static} logger: Logger
+	-processHandle: ProcessHandle
+	~ApplicationProcessStatusBootstrapCommand(processHandle: ProcessHandle)
+	+run(): void
+}
+class CommandStatus {
+}
+ApplicationProcessStatusBootstrapCommand --> "1" CommandStatus : commandStatus
+class CommandStatus {
+}
+ApplicationProcessStatusBootstrapCommand --> "1" CommandStatus : getCommandStatus()
+interface BootstrapCommand {
+}
+BootstrapCommand <|.. ApplicationProcessStatusBootstrapCommand
+class RunBootstrapCommand [[java:org.apache.nifi.bootstrap.command.RunBootstrapCommand]] {
+	-{static} SPACE_SEPARATOR: String
+	-{static} commandLogger: Logger
+	-{static} logger: Logger
+	-{static} runtimeValidatorExecutor: RuntimeValidatorExecutor
+	+RunBootstrapCommand(configurationProvider: ConfigurationProvider, processHandleProvider: ProcessHandleProvider)
+	+run(): void
+	-writePlatformProperties(): void
+}
+class ConfigurationProvider {
+}
+RunBootstrapCommand --> "1" ConfigurationProvider : configurationProvider
+class ProcessHandleProvider {
+}
+RunBootstrapCommand --> "1" ProcessHandleProvider : processHandleProvider
+class ManagementServerAddressProvider {
+}
+RunBootstrapCommand --> "1" ManagementServerAddressProvider : managementServerAddressProvider
+class CommandStatus {
+}
+RunBootstrapCommand --> "1" CommandStatus : commandStatus
+class CommandStatus {
+}
+RunBootstrapCommand --> "1" CommandStatus : getCommandStatus()
+interface BootstrapCommand {
+}
+BootstrapCommand <|.. RunBootstrapCommand
+class StopBootstrapCommand [[java:org.apache.nifi.bootstrap.command.StopBootstrapCommand]] {
+	-{static} FORCE_TERMINATION_TIMEOUT: Duration
+	-{static} logger: Logger
+	~StopBootstrapCommand(processHandleProvider: ProcessHandleProvider, configurationProvider: ConfigurationProvider)
+	+run(): void
+	-stopBootstrapProcess(): void
+	-onBootstrapDestroyCompleted(bootstrapProcessHandle: ProcessHandle): void
+	-destroy(applicationProcessHandle: ProcessHandle): void
+	-destroyForcibly(applicationProcessHandle: ProcessHandle): void
+	-onDestroyCompleted(applicationProcessHandle: ProcessHandle): void
+	-onDestroyForciblyCompleted(applicationProcessHandle: ProcessHandle): void
+}
+class ProcessHandleProvider {
+}
+StopBootstrapCommand --> "1" ProcessHandleProvider : processHandleProvider
+class ConfigurationProvider {
+}
+StopBootstrapCommand --> "1" ConfigurationProvider : configurationProvider
+class CommandStatus {
+}
+StopBootstrapCommand --> "1" CommandStatus : commandStatus
+class CommandStatus {
+}
+StopBootstrapCommand --> "1" CommandStatus : getCommandStatus()
+interface BootstrapCommand {
+}
+BootstrapCommand <|.. StopBootstrapCommand
+interface ResponseStreamHandler [[java:org.apache.nifi.bootstrap.command.io.ResponseStreamHandler]] {
+	onResponseStream(responseStream: InputStream): void
+}
+enum HttpRequestMethod [[java:org.apache.nifi.bootstrap.command.io.HttpRequestMethod]] {
+	DELETE
+	GET
+}
+interface BootstrapArgumentParser [[java:org.apache.nifi.bootstrap.command.io.BootstrapArgumentParser]] {
+	getBootstrapArgument(arguments: String[]): Optional<BootstrapArgument>
+}
+class LoggerResponseStreamHandler [[java:org.apache.nifi.bootstrap.command.io.LoggerResponseStreamHandler]] {
+	-logger: Logger
+	+LoggerResponseStreamHandler(logger: Logger)
+	+onResponseStream(responseStream: InputStream): void
+}
+interface ResponseStreamHandler {
+}
+ResponseStreamHandler <|.. LoggerResponseStreamHandler
+class StandardBootstrapArgumentParser [[java:org.apache.nifi.bootstrap.command.io.StandardBootstrapArgumentParser]] {
+	-{static} HYPHEN: char
+	-{static} UNDERSCORE: char
+	+getBootstrapArgument(arguments: String[]): Optional<BootstrapArgument>
+	-getFormattedArgument(argument: String): String
+}
+interface BootstrapArgumentParser {
+}
+BootstrapArgumentParser <|.. StandardBootstrapArgumentParser
+class FileResponseStreamHandler [[java:org.apache.nifi.bootstrap.command.io.FileResponseStreamHandler]] {
+	-{static} logger: Logger
+	-outputPath: Path
+	+FileResponseStreamHandler(outputPath: Path)
+	+onResponseStream(responseStream: InputStream): void
+}
+interface ResponseStreamHandler {
+}
+ResponseStreamHandler <|.. FileResponseStreamHandler
+enum BootstrapArgument [[java:org.apache.nifi.bootstrap.command.io.BootstrapArgument]] {
+	CLUSTER_STATUS
+	DECOMMISSION
+	DIAGNOSTICS
+	GET_RUN_COMMAND
+	STATUS
+	STATUS_HISTORY
+	START
+	STOP
+}
+class StandardManagementServerAddressProvider [[java:org.apache.nifi.bootstrap.command.process.StandardManagementServerAddressProvider]] {
+	-{static} STANDARD_PORT: int
+	-{static} MAXIMUM_PORT: int
+	-{static} NOT_AVAILABLE_MESSAGE: String
+	-{static} LOCALHOST_ADDRESS: String
+	-{static} HOST_ADDRESS: String
+	+StandardManagementServerAddressProvider(configurationProvider: ConfigurationProvider)
+	+getAddress(): Optional<String>
+	-getServerPort(): int
+	-{static} isPortFree(port: int): boolean
+}
+class ConfigurationProvider {
+}
+StandardManagementServerAddressProvider --> "1" ConfigurationProvider : configurationProvider
+interface ManagementServerAddressProvider {
+}
+ManagementServerAddressProvider <|.. StandardManagementServerAddressProvider
+interface ManagementServerAddressProvider [[java:org.apache.nifi.bootstrap.command.process.ManagementServerAddressProvider]] {
+	getAddress(): Optional<String>
+}
+class StandardProcessBuilderProvider [[java:org.apache.nifi.bootstrap.command.process.StandardProcessBuilderProvider]] {
+	-{static} JAR_FILE_EXTENSION: String
+	-{static} JAR_FILE_MATCHER: BiPredicate<Path,BasicFileAttributes>
+	-{static} LIBRARY_JAR_DEPTH: int
+	-{static} SYSTEM_PROPERTY: String
+	-{static} CLASS_PATH_ARGUMENT: String
+	+StandardProcessBuilderProvider(configurationProvider: ConfigurationProvider, managementServerAddressProvider: ManagementServerAddressProvider)
+	+getApplicationProcessBuilder(): ProcessBuilder
+	-getCommand(): List<String>
+	-getCurrentProcessCommand(currentProcessHandleInfo: ProcessHandle.Info): String
+	-getClassPath(): String
+}
+class ConfigurationProvider {
+}
+StandardProcessBuilderProvider --> "1" ConfigurationProvider : configurationProvider
+class ManagementServerAddressProvider {
+}
+StandardProcessBuilderProvider --> "1" ManagementServerAddressProvider : managementServerAddressProvider
+interface ProcessBuilderProvider {
+}
+ProcessBuilderProvider <|.. StandardProcessBuilderProvider
+class VirtualMachineManagementServerAddressProvider [[java:org.apache.nifi.bootstrap.command.process.VirtualMachineManagementServerAddressProvider]] {
+	-processHandle: ProcessHandle
+	+VirtualMachineManagementServerAddressProvider(processHandle: ProcessHandle)
+	+getAddress(): Optional<String>
+	-getAddress(virtualMachine: VirtualMachine): String
+}
+interface ManagementServerAddressProvider {
+}
+ManagementServerAddressProvider <|.. VirtualMachineManagementServerAddressProvider
+class VirtualMachineProcessHandleProvider [[java:org.apache.nifi.bootstrap.command.process.VirtualMachineProcessHandleProvider]] {
+	-{static} logger: Logger
+	+VirtualMachineProcessHandleProvider(configurationProvider: ConfigurationProvider)
+	+findApplicationProcessHandle(): Optional<ProcessHandle>
+	+findBootstrapProcessHandle(): Optional<ProcessHandle>
+	-findProcessHandle(systemProperty: SystemProperty, configuration: Path): Optional<ProcessHandle>
+	-findProcessHandle(descriptor: VirtualMachineDescriptor, systemProperty: SystemProperty, configuration: Path): Optional<ProcessHandle>
+	-findProcessHandle(virtualMachine: VirtualMachine, systemProperty: SystemProperty, configuration: Path): Optional<ProcessHandle>
+}
+class ConfigurationProvider {
+}
+VirtualMachineProcessHandleProvider --> "1" ConfigurationProvider : configurationProvider
+interface ProcessHandleProvider {
+}
+ProcessHandleProvider <|.. VirtualMachineProcessHandleProvider
+interface ProcessBuilderProvider [[java:org.apache.nifi.bootstrap.command.process.ProcessBuilderProvider]] {
+	getApplicationProcessBuilder(): ProcessBuilder
+}
+interface ProcessHandleProvider [[java:org.apache.nifi.bootstrap.command.process.ProcessHandleProvider]] {
+	findApplicationProcessHandle(): Optional<ProcessHandle>
+	findBootstrapProcessHandle(): Optional<ProcessHandle>
+}
+class StandardProcessHandleProvider [[java:org.apache.nifi.bootstrap.command.process.StandardProcessHandleProvider]] {
+	-{static} PROPERTIES_ARGUMENT: String
+	+StandardProcessHandleProvider(configurationProvider: ConfigurationProvider)
+	+findApplicationProcessHandle(): Optional<ProcessHandle>
+	+findBootstrapProcessHandle(): Optional<ProcessHandle>
+	-findProcessHandle(systemProperty: SystemProperty, configuration: Path): Optional<ProcessHandle>
+}
+class ConfigurationProvider {
+}
+StandardProcessHandleProvider --> "1" ConfigurationProvider : configurationProvider
+interface ProcessHandleProvider {
+}
+ProcessHandleProvider <|.. StandardProcessHandleProvider
+class ProcessHandleManagementServerAddressProvider [[java:org.apache.nifi.bootstrap.command.process.ProcessHandleManagementServerAddressProvider]] {
+	-{static} ADDRESS_ARGUMENT_PATTERN: Pattern
+	-{static} ADDRESS_GROUP: int
+	-processHandle: ProcessHandle
+	+ProcessHandleManagementServerAddressProvider(processHandle: ProcessHandle)
+	+getAddress(): Optional<String>
+	-findManagementServerAddress(arguments: String[]): String
+}
+interface ManagementServerAddressProvider {
+}
+ManagementServerAddressProvider <|.. ProcessHandleManagementServerAddressProvider
+enum ApplicationClassName [[java:org.apache.nifi.bootstrap.configuration.ApplicationClassName]] {
+	APPLICATION
+	BOOTSTRAP_COMMAND
+	name
+	~ApplicationClassName(name: String)
+	+getName(): String
+}
+interface ConfigurationProvider [[java:org.apache.nifi.bootstrap.configuration.ConfigurationProvider]] {
+	getAdditionalArguments(): List<String>
+	getApplicationProperties(): Path
+	getBootstrapConfiguration(): Path
+	getConfigurationDirectory(): Path
+	getLibraryDirectory(): Path
+	getLogDirectory(): Path
+	getGracefulShutdownTimeout(): Duration
+	getManagementServerAddress(): Optional<URI>
+	getWorkingDirectory(): Path
+}
+enum ManagementServerPath [[java:org.apache.nifi.bootstrap.configuration.ManagementServerPath]] {
+	HEALTH
+	HEALTH_CLUSTER
+	HEALTH_DIAGNOSTICS
+	HEALTH_STATUS_HISTORY
+	path
+	~ManagementServerPath(path: String)
+	+getPath(): String
+}
+class StandardConfigurationProvider [[java:org.apache.nifi.bootstrap.configuration.StandardConfigurationProvider]] {
+	-{static} CONFIGURATION_DIRECTORY: String
+	-{static} LIBRARY_DIRECTORY: String
+	-{static} LOG_DIRECTORY: String
+	-{static} APPLICATION_PROPERTIES: String
+	-{static} BOOTSTRAP_CONFIGURATION: String
+	-{static} CURRENT_DIRECTORY: String
+	-{static} GRACEFUL_SHUTDOWN_TIMEOUT: Duration
+	-environmentVariables: Map<String,String>
+	-systemProperties: Properties
+	-bootstrapProperties: Properties
+	+StandardConfigurationProvider(environmentVariables: Map<String,String>, systemProperties: Properties)
+	+getAdditionalArguments(): List<String>
+	+getApplicationProperties(): Path
+	+getBootstrapConfiguration(): Path
+	+getLibraryDirectory(): Path
+	+getLogDirectory(): Path
+	+getGracefulShutdownTimeout(): Duration
+	+getManagementServerAddress(): Optional<URI>
+	+getConfigurationDirectory(): Path
+	+getWorkingDirectory(): Path
+	-getResolvedDirectory(bootstrapProperty: BootstrapProperty, relativeDirectory: String): Path
+	-getApplicationHome(): Path
+	-isEmpty(property: String): boolean
+	-setBootstrapProperties(): void
+}
+interface ConfigurationProvider {
+}
+ConfigurationProvider <|.. StandardConfigurationProvider
+enum BootstrapProperty [[java:org.apache.nifi.bootstrap.configuration.BootstrapProperty]] {
+	CONFIGURATION_DIRECTORY
+	GRACEFUL_SHUTDOWN_SECONDS
+	JAVA_ARGUMENT
+	LIBRARY_DIRECTORY
+	MANAGEMENT_SERVER_ADDRESS
+	WORKING_DIRECTORY
+	property
+	~BootstrapProperty(property: String)
+	+getProperty(): String
+}
+enum SystemProperty [[java:org.apache.nifi.bootstrap.configuration.SystemProperty]] {
+	APPLICATION_PROPERTIES
+	BOOTSTRAP_CONFIGURATION
+	LOG_DIRECTORY
+	MANAGEMENT_SERVER_ADDRESS
+	property
+	~SystemProperty(property: String)
+	+getProperty(): String
+}
+enum EnvironmentVariable [[java:org.apache.nifi.bootstrap.configuration.EnvironmentVariable]] {
+	NIFI_HOME
+}
+class AvailableLocalPorts [[java:org.apache.nifi.bootstrap.process.AvailableLocalPorts]] {
+	-{static} FILE_PATH: String
+	-{static} PATTERN: Pattern
+	-{static} RECOMMENDED_AVAILABLE_PORTS: int
+	+AvailableLocalPorts()
+	~AvailableLocalPorts(configurationFile: File)
+	#getPattern(): Pattern
+	#performChecks(matcher: Matcher, results: List<RuntimeValidatorResult>): void
+}
+class AbstractFileBasedRuntimeValidator {
+}
+AbstractFileBasedRuntimeValidator <|-- AvailableLocalPorts
+class SocketTimedWaitDuration [[java:org.apache.nifi.bootstrap.process.SocketTimedWaitDuration]] {
+	-{static} POSSIBLE_FILE_PATHS: String[]
+	-{static} PATTERN: Pattern
+	-{static} DESIRED_TIMED_WAIT_DURATION: int
+	+SocketTimedWaitDuration()
+	~SocketTimedWaitDuration(configurationFile: File)
+	#getPattern(): Pattern
+	#performChecks(matcher: Matcher, results: List<RuntimeValidatorResult>): void
+	-{static} determineConfigurationFile(): File
+}
+class AbstractFileBasedRuntimeValidator {
+}
+AbstractFileBasedRuntimeValidator <|-- SocketTimedWaitDuration
+class Swappiness [[java:org.apache.nifi.bootstrap.process.Swappiness]] {
+	-{static} FILE_PATH: String
+	-{static} PATTERN: Pattern
+	-{static} RECOMMENDED_SWAPPINESS: int
+	+Swappiness()
+	~Swappiness(configurationFile: File)
+	#getPattern(): Pattern
+	#performChecks(matcher: Matcher, results: List<RuntimeValidatorResult>): void
+}
+class AbstractFileBasedRuntimeValidator {
+}
+AbstractFileBasedRuntimeValidator <|-- Swappiness
+class RuntimeValidatorExecutor [[java:org.apache.nifi.bootstrap.process.RuntimeValidatorExecutor]] {
+	-{static} logger: Logger
+	+RuntimeValidatorExecutor()
+	~RuntimeValidatorExecutor(configurationClasses: List<RuntimeValidator>)
+	-logWarnings(results: List<RuntimeValidatorResult>): void
+}
+class RuntimeValidator {
+}
+RuntimeValidatorExecutor --> "*" RuntimeValidator : configurationClasses
+class RuntimeValidatorResult {
+}
+RuntimeValidatorExecutor --> "*" RuntimeValidatorResult : execute()
+abstract class AbstractFileBasedRuntimeValidator [[java:org.apache.nifi.bootstrap.process.AbstractFileBasedRuntimeValidator]] {
+	-configurationFile: File
+	~AbstractFileBasedRuntimeValidator(configurationFile: File)
+	#getResultBuilder(outcome: RuntimeValidatorResult.Outcome): RuntimeValidatorResult.Builder
+	#getConfigurationFile(): File
+	#getContents(): String
+	#{abstract} getPattern(): Pattern
+	#{abstract} performChecks(matcher: Matcher, results: List<RuntimeValidatorResult>): void
+	-canReadConfigurationFile(results: List<RuntimeValidatorResult>): boolean
+	-processResults(results: List<RuntimeValidatorResult>): void
+}
+class RuntimeValidatorResult {
+}
+AbstractFileBasedRuntimeValidator --> "*" RuntimeValidatorResult : validate()
+interface RuntimeValidator {
+}
+RuntimeValidator <|.. AbstractFileBasedRuntimeValidator
+class ForkedProcesses [[java:org.apache.nifi.bootstrap.process.ForkedProcesses]] {
+	-{static} FILE_PATH: String
+	-{static} PATTERN: Pattern
+	-{static} RECOMMENDED_SOFT_LIMIT: int
+	-{static} RECOMMENDED_HARD_LIMIT: int
+	+ForkedProcesses()
+	~ForkedProcesses(configurationFile: File)
+	#getPattern(): Pattern
+	#performChecks(matcher: Matcher, results: List<RuntimeValidatorResult>): void
+}
+class AbstractFileBasedRuntimeValidator {
+}
+AbstractFileBasedRuntimeValidator <|-- ForkedProcesses
+class RuntimeValidatorResult [[java:org.apache.nifi.bootstrap.process.RuntimeValidatorResult]] {
+	-subject: String
+	-explanation: String
+	-outcome: Outcome
+	#RuntimeValidatorResult(builder: Builder)
+	+getSubject(): String
+	+getExplanation(): String
+	+getOutcome(): Outcome
+}
+class FileHandles [[java:org.apache.nifi.bootstrap.process.FileHandles]] {
+	-{static} FILE_PATH: String
+	-{static} PATTERN: Pattern
+	-{static} RECOMMENDED_SOFT_LIMIT: int
+	-{static} RECOMMENDED_HARD_LIMIT: int
+	+FileHandles()
+	~FileHandles(configurationFile: File)
+	#getPattern(): Pattern
+	#performChecks(matcher: Matcher, results: List<RuntimeValidatorResult>): void
+}
+class AbstractFileBasedRuntimeValidator {
+}
+AbstractFileBasedRuntimeValidator <|-- FileHandles
+interface RuntimeValidator [[java:org.apache.nifi.bootstrap.process.RuntimeValidator]] {
+}
+class RuntimeValidatorResult {
+}
+RuntimeValidator --> "*" RuntimeValidatorResult : validate()
+interface ApplicationPropertyHandler [[java:org.apache.nifi.bootstrap.property.ApplicationPropertyHandler]] {
+	handleProperties(applicationPropertiesLocation: Path): void
+}
+class SecurityApplicationPropertyHandler [[java:org.apache.nifi.bootstrap.property.SecurityApplicationPropertyHandler]] {
+	#{static} ENTRY_ALIAS: String
+	#{static} CERTIFICATE_ISSUER: X500Principal
+	-{static} DIGEST_ALGORITHM: String
+	-{static} KEY_ALGORITHM: String
+	-{static} KEY_SIZE: int
+	-{static} LOCALHOST: String
+	-{static} CERTIFICATE_VALIDITY_PERIOD: Duration
+	-{static} RANDOM_BYTE_LENGTH: int
+	-{static} PROPERTY_SEPARATOR: String
+	-{static} HOST_PORT_PATTERN: Pattern
+	-{static} HOST_GROUP: int
+	-{static} HOST_PORT_GROUP_SEPARATOR: Pattern
+	-logger: Logger
+	+SecurityApplicationPropertyHandler(logger: Logger)
+	+handleProperties(applicationPropertiesLocation: Path): void
+	-processApplicationProperties(applicationProperties: Properties): void
+	-writeTrustStore(applicationProperties: Properties, certificate: X509Certificate): void
+	-writeKeyStore(applicationProperties: Properties, certificate: X509Certificate, privateKey: PrivateKey): void
+	-writePasswordProperties(applicationProperties: Properties, applicationPropertiesLocation: Path): void
+	-writeProperty(writer: PrintWriter, securityProperty: SecurityProperty, applicationProperties: Properties): void
+	-newKeyStore(storeType: String): KeyStore
+	-isCertificateGenerationRequired(applicationProperties: Properties): boolean
+	-getSubjectAlternativeNames(applicationProperties: Properties): Collection<String>
+	-generateKeyPair(): KeyPair
+	#generatePassword(): String
+	-{static} getDigest(certificate: X509Certificate): String
+	-loadProperties(applicationPropertiesLocation: Path): Properties
+	-getHosts(property: String): Set<String>
+	-isBlank(propertyValue: String): boolean
+}
+interface ApplicationPropertyHandler {
+}
+ApplicationPropertyHandler <|.. SecurityApplicationPropertyHandler
+@enduml

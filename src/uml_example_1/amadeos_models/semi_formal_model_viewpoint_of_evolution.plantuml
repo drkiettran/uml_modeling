@@ -1,0 +1,82 @@
+@startuml
+	title Semi-formal Model – Viewpoint of Evolution
+	hide stereotype
+	<style>
+	.center {
+	  HorizontalAlignment center
+	}
+	.green {
+	  FontColor green
+	}
+	.red {
+	  FontColor red
+	}
+	</style>
+	
+	' Top-level evolution flow
+	rectangle "Environmental\nchanges" as EnvChanges <<center>>
+	rectangle "<b>Evolution</b>" as Evolution <<center>>
+	rectangle "Emergent\nbehavior" as EmergentBehavior <<center>>
+	rectangle "<b>Managed\n<b>evolution" as ManagedEvolution <<center>>
+	rectangle "<b>Unmanaged\n<b>evolution" as UnmanagedEvolution <<center>>
+	
+	' SoS and structure
+	rectangle "<b>System-of-systems (SoS)" as SoS <<center>>
+	rectangle "Constituent\nsystems (CS)" as CS <<center>>
+	
+	' Dynamicity-related
+	rectangle "Dynamicity" as Dynamicity <<center>>
+	rectangle "Reconfigurability" as Reconfig <<center>>
+	rectangle "Business value" as BusinessValue <<center>>
+	
+	' Performance trade-offs
+	rectangle "System\nperformance" as Perf <<center>>
+	rectangle "System\neffectiveness" as Eff <<center>>
+	rectangle "System\nefficiency" as Effic <<center>>
+	
+	' Arrows: evolution flow
+	EnvChanges --> ManagedEvolution : cause
+	Evolution -right-> EmergentBehavior : might lead to
+	Evolution --> UnmanagedEvolution : can be
+	Evolution --> ManagedEvolution : can be
+	ManagedEvolution --> SoS : maintains and optimizes
+	
+	UnmanagedEvolution --> SoS
+	
+	' Arrows: SoS dynamics
+	ManagedEvolution --> Dynamicity : produces
+	ManagedEvolution --> BusinessValue: maximizes
+	' Dynamicity --> SoS
+	SoS --> CS : integrates
+	CS --> Dynamicity : exhibits
+	
+	Reconfig <-- Dynamicity: needs
+	'Reconfig --> BusinessValue : maximizes
+	
+	' Trade-offs
+	BusinessValue --> Perf : trade-off
+	BusinessValue --> Eff : trade-off
+	BusinessValue --> Effic : trade-off
+
+@enduml
+
+@startuml
+hide stereotype
+<style>
+.left {
+  HorizontalAlignment left
+}
+.green {
+  FontColor green
+}
+.red {
+  FontColor red
+}
+</style>
+
+rectangle "a\na a" as rect1 <<left>> <<green>>
+rectangle "b\nb b" as rect2 <<left>> <<red>>{
+  rectangle rec
+}
+@enduml
+

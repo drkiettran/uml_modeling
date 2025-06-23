@@ -1,0 +1,38 @@
+@startuml
+	title SoS Evolution Package
+	skinparam componentStyle square
+	
+	' Top-level stereotypes
+	class "CS" <<Stereotype>>
+	class "SoS" <<Stereotype>>
+	class "Block" <<Stereotype>>
+	class "environment" <<Stereotype>>
+	
+	rectangle SosEvolution <<Profile>> {
+		' Central class
+		class "evolution"  <<Stereotype>>{
+		}
+		
+		' Supporting stereotypes
+		class "business_value" <<Stereotype>>
+		class "goal" <<Stereotype>>
+		class "system_resource" <<Stereotype>>
+		class "managed_evolution" <<Stereotype>>
+		class "unmanaged_evolution" <<Stereotype>>
+	}
+	' Relationships to evolution
+	CS "1" -down-> "1" evolution : is modified by (CS)
+	SoS "1" -down-> "*" evolution : is modified by (SoS)
+	evolution -up-|> Block: <<true>>
+	environment "1" --> "*" evolution : affects
+	
+	evolution "1" -left-> "1" business_value : improves a by
+	evolution "1" -right-> "1" goal : complies with 1
+	evolution "1" --> "1" system_resource : acts on
+	
+	' Inheritance
+	managed_evolution -up-|> evolution: <<true>>
+	unmanaged_evolution -up-|> evolution: <<true>>
+	
+	hide <<Stereotype>> circle
+@enduml

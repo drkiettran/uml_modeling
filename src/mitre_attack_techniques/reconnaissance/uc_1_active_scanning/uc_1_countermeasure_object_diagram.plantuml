@@ -1,0 +1,86 @@
+@startuml
+	title Object Diagram: Countermeasure Execution Runtime Snapshot
+	
+	object sensor1 <<Network Sensor>>
+	object fw1 <<Firewall>>
+	object siem1 <<SIEM>>
+	object tip1 <<ThreadIntelPlatform>>
+	object hp1<<Honeypot>>
+	object soc1 <<SOCAnalyst>>
+	
+	object alert001 <<ScanAlert>>
+	alert001 : sourceIP = "203.0.113.45"
+	alert001 : scanType = "Port Sweep"
+	
+	object ip001 <<IP Address>> {
+	 	IP = "203.0.113.45"
+	}
+	
+	object intel001 <<ThreadIntel>>
+	intel001 : threatGroup = "APT29"
+	intel001 : confidence = "High"
+	
+	object log001 <<InteractionLog>>
+	log001 : ip = "203.0.113.45"
+	log001 : action = "SSH probe"
+	
+	
+	sensor1 --> alert001: detects, \ncreates
+	siem1 --> alert001: logs
+	siem1 --> tip1: queries
+	tip1 <-- intel001: receives
+	soc1 --> alert001: investigates
+	soc1 --> log001: logs
+	fw1 --> ip001: blocks
+	hp1 --> log001: diverts, \nlogs
+
+@enduml
+
+@startuml
+	title Class Diagram: Countermeasure System
+	
+	class NetworkSensor {
+	  +detectScan(ipRange: String): ScanAlert
+	}
+	
+	class Firewall {
+	  +blockIP(ip: String)
+	}
+	
+	class SIEM {
+	  +generateAlert(scanAlert: ScanAlert)
+	  +correlateWithTIP(scanAlert: ScanAlert): ThreatIntel
+	}
+	
+	class ThreatIntelPlatform {
+	  +lookupIP(ip: String): ThreatIntel
+	}
+	
+	class Honeypot {
+	  +divertTraffic(ip: String)
+	  +logInteraction(ip: String): InteractionLog
+	}
+	
+	class SOCAnalyst {
+	  +investigate(scanAlert: ScanAlert)
+	  +updateDetectionRules(rules: RuleSet)
+	}
+	
+	class ScanAlert
+	class ThreatIntel
+	class InteractionLog
+	class RuleSet
+	
+	' Associations
+	NetworkSensor --> ScanAlert: detects, \n creates
+	ThreatIntelPlatform <-- ThreatIntel: receives
+	SIEM --> ScanAlert: logs
+	SIEM --> ThreatIntelPlatform : queries
+	SOCAnalyst --> ScanAlert: investigates
+	SOCAnalyst --> RuleSet: updates
+	Honeypot --> InteractionLog: diverts, \nlogs
+	Firewall --> "IP Address"
+
+@enduml
+
+

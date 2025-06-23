@@ -1,0 +1,142 @@
+@startuml
+skinparam componentStyle rectangle
+
+package heading {
+}
+
+left to right direction
+
+package "package P" {
+	class C1
+	class C2
+	C1 -- C2
+}
+
+package "Package CP" {
+	package P {
+		class C3
+		class C4
+		C3 -- C4
+	}
+}
+
+
+
+package Cars {
+	component A {
+	}
+	class Car {
+	}
+}
+
+@enduml
+
+@startuml
+	!pragma layout semtana
+	left to right direction
+	package "package Cars" as package_car {
+		card "rear: \nWheel[2]" as r
+		card "e: Engine" as e {
+			portin p1
+		}
+		r -down-> p1
+	}
+	
+	package "class Car" as class_car{
+		card "rear:\nWheel[2]" as rr
+		card "e: Engine" as ee {
+			portin p2
+		}
+		rr -down-> p2
+		
+	}
+@enduml
+
+
+@startwbs
+'left to right direction
+
+* Diagram
+** Structure Diagram
+*** Profile Diagram
+*** Class Diagram
+*** Composite Structure Diagram
+*** Component Diagram
+*** Deployment Diagram
+*** Object Diagram
+*** Package Diagram
+** Behavior Diagram
+*** Activity Diagram 
+*** Interaction Diagram
+**** Sequence Diagram
+**** Communication Diagram
+**** Interaction Overview Diagram
+**** Timing Diagram
+*** Use Case Diagram
+*** State Machine Diagram
+@endwbs
+
+@startuml
+	skinparam rectangle<<behavior>> {
+		' roundCorner 25
+	}
+	rectangle "Diagram" as diagram
+	
+	rectangle "Structure \nDiagram" as structure
+	rectangle "Behavior \nDiagram" as behavior
+	rectangle "Profile \nDiagram" as profile
+	rectangle "Class \nDiagram" as _class
+	rectangle "Composite \nStructure \nDiagram" as composite
+	rectangle "Component \nDiagram" as _component
+	rectangle "Deployment \nDiagram" as deployment
+	rectangle "Object \nDiagram" as _object
+	rectangle "Package \nDiagram" as _package
+	rectangle "Activity \nDiagram" as activity
+	rectangle "Interaction \nDiagram" as interaction
+	rectangle "Use Case \nDiagram" as use_case
+	rectangle "State \nMachine \nDiagram" as state_machine
+	rectangle "Sequence \nDiagram" as sequence
+	rectangle "Communication \nDiagram" as communication
+	rectangle "Interaction \nOverview \nDiagram" as interaction_overview
+	rectangle "Timing \nDiagram" as timing
+	
+	behavior -up-|> diagram
+	structure -up-|> diagram
+
+	
+	profile -up-|> structure
+	_class -up-|> structure
+	composite -up-|> structure
+	_component -up-|> structure
+	deployment -up-|> structure
+	_object -up-|> structure
+	_package -up-|> structure
+	
+	activity -up-|> behavior
+	interaction -up-|> behavior
+	use_case -up-|> behavior
+	state_machine -up-|> behavior
+	
+	sequence -up-|> interaction
+	communication -up-|> interaction
+	interaction_overview -up-|> interaction
+	timing -up-|> interaction
+		
+@enduml
+
+
+@startwbs
+mainframe This is a **mainframe**
+* r
+** d1
+*** d11
+** d2
+@endwbs
+
+
+@startuml
+	'!pragma layout semtana
+	rectangle "DI::DiagramElement" as di
+	rectangle "UMLDiagramElement" as de
+	
+@enduml

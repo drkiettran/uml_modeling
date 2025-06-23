@@ -1,0 +1,10 @@
+@startuml
+object firstObject
+object "My Second Object" as o2
+
+object user {
+name = "Dummy"
+id = 123
+}
+
+@enduml

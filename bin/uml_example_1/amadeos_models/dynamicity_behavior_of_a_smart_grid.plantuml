@@ -1,0 +1,40 @@
+@startuml
+	title Figure 22: Dynamicity behavior of a Smart Grid
+	skinparam sequenceMessageAlign center
+	
+	participant "Clothes dryer" as CD
+	participant "Microwave" as MW
+	participant "WashingMachine" as WM
+	participant "SmartMeter" as SM
+	participant "EMG" as EMG
+	participant "Coordinator" as Coord
+	
+	== t1 ==
+	WM -> EMG : <<message>>\nWM energy request
+	EMG -> Coord : <<message>>\naggregated values
+	== t2 ==
+	Coord --> EMG: <<message>>\nOK
+	EMG -> WM : <<message>>\nok
+	SM -> EMG: <<message>>\naggregated values
+	
+	== t3 ==
+	MW -> EMG : <<message>>\nMW energy request
+	EMG -> Coord : <<message>>\naggregated values
+	
+	== t4 ==
+	Coord -> EMG: <<message>>\nOK
+	EMG -> MW: <<message>>\nOK
+	SM -> EMG: <<message>>\naggregated values
+	
+	== t5 ==
+	CD -> EMG : <<message>>\nCD energy request
+	EMG -> Coord : <<message>>\naggregated values
+	
+	== t6 ==
+	Coord -> EMG : <<message>>\nOK
+	
+	== t7 ==
+	EMG -> CD: <<message>>\nOK - Switch off CD
+	' return interaction complete
+
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+	title Semantic Relationships – Viewpoint of Emergence
+	hide stereotype
+	<style>
+	.center {
+	  HorizontalAlignment center
+	}
+	.green {
+	  FontColor green
+	}
+	.red {
+	  FontColor red
+	}
+	</style>	
+	' Core concept
+	rectangle "<b>Emergence" as Emergence 
+	
+	' Emergence types
+	rectangle "Expected" as Expected
+	rectangle "Unexpected" as Unexpected
+	rectangle "Explained" as Explained
+	rectangle "Unexplained" as Unexplained
+	rectangle "Beneficial" as Beneficial
+	rectangle "Detrimental" as Detrimental
+	
+	' Phenomenon and levels
+	rectangle "Resultant\nPhenomenon" as Resultant <<center>>
+	rectangle "Macro level" as Macro
+	rectangle "Micro level" as Micro
+	rectangle "System of\nSystems(SoS)" as System
+	rectangle "Constituent\nsystem (CS)" as Constituent <<center>>
+	
+	' Relationships
+	Expected <-- Emergence : can be
+	Unexpected <-- Emergence : can be
+	Emergence --> Explained : can be
+	Emergence --> Unexplained : can be
+	Emergence --> Resultant : produces
+	
+	Beneficial <-- Emergence : can be
+	Detrimental <-- Emergence : can be
+	
+	Resultant --> Macro : can appear in
+	Resultant --> Micro : can appear in
+	
+	Macro --> System : is
+	Micro --> Constituent : is
+
+@enduml

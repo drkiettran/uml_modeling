@@ -1,0 +1,173 @@
+@startuml
+	title SoS Interface Package
+	skinparam componentStyle rectangle
+	
+	' Main Stereotypes
+	
+	
+	class "CS" as CS <<Stereotype>>
+	class interface<<Stereotype>>
+
+	class subsystem<<Stereotype>>
+	class environment <<Stereotype>>
+	class message <<Stereotype>>
+	class RUI <<Stereotype>>
+	
+	rectangle SoS_Interface <<Profile>> {
+		enum direction_type <<Enumeration>> {
+			in
+			out
+		}
+		enum interface_state <<Enumeration>> {
+			db_state
+			ei_state
+			eo_state
+			cr_state
+		}
+		
+		enum stop_condition_type <<Enumeration>> {
+			undesirable
+			unavailable
+			incompatible
+		}
+		class external_interface <<Stereotype>> {
+			+connection Boolean[1]
+		}
+		class internal_interface <<Stereotype>>
+		class interface_specification<<Stereotype>>
+		class c_interface <<Stereotype>> {
+			+ validity_instant: instant[1]
+		}
+		class d_interface <<Stereotype>>
+		class channel<<Stereotype>>
+		class interaction <<Stereotype>> {
+			+ transferred_info: String[*]
+			+ temporal_property: String[*]
+			+ dependability_req: String[*]
+		}
+		class channel_mode <<Stereotype>>
+		class information <<Stereotype>>
+		class message_variable <<Stereotype>>
+		class transport_specification <<Stereotype>>
+		class physical_interface <<Stereotype>>
+		class local_io_interface <<Stereotype>>
+		class utility_interface <<Stereotype>>
+		'class u_interface <<Stereotype>>
+		class SLA <<Stereotype>>
+		class SLO <<Stereotype>>
+		class sla_zone <<Stereotype>>
+		class receiver <<Stereotype>>
+		class provider <<Stereotype>>
+		class message_based_interface <<Stereotype>>
+		class service_based_interface <<Stereotype>>
+		class registry <<Stereotype>>
+		class repository <<Stereotype>>
+		class interface_port <<Stereotype>>
+
+		class logical_channel <<Stereotype>>
+		class physical_channel <<Stereotype>>
+		class sensor <<Stereotype>>
+		class actuator <<Stereotype>>
+		class transducer <<Stereotype>>
+		class afferent_environment <<Stereotype>>
+		class efferent_environment <<Stereotype>>
+		class service_composition <<Stereotype>>
+		class interface_mode <<Stereotype>>
+		class i_spec <<Stereotype>>
+		class s_spec <<Stereotype>>
+		class p_spec <<Stereotype>>
+		class m_spec <<Stereotype>>
+		class cp_spec <<Stereotype>>
+		class reservation <<Stereotype>> {
+			+ request_instant: instant [*]
+			+ allocation_instant: instant [*]
+			+ end_instant: instant [*]
+		}
+		class connection_strategy <<Stereotype>> {
+			+ Attribute1: <Undefined> [1]
+		}
+	}
+	' Associations
+	external_interface "1" -left-> "*" CS: connect cs (ext)
+	d_interface "1" --> "1" CS: exposes internals
+	c_interface "1" --> "1" CS: strategies
+	
+	information "1" -left-> "1" message: transmitted by
+	message_variable "1" --> "1" message: has message
+	connection_strategy "1" -up-> "1" RUI: looks for
+	
+	
+	internal_interface "1" -up-> "1" subsystem: connects subsystems\n(interfaces)
+	
+	channel "1" -up-> "*" interface: onnects interface
+	internal_interface -up-|> interface
+	external_interface -up-|> interface: <<true>>
+	physical_interface -up-|> interface: <<true>>
+	message_based_interface -up-|> interface: <<true>>
+	interface "1" --> "1" interface_specification: has interface_specification
+	interface "1" --> "1" interface_mode: has interface_mode
+	interface "1" --> "0..1" afferent_environment: has_afferent_environment
+	interface "1" --> "0..1" efferent_environment: has_efferent_environment
+	interface -right-> interface_port
+	
+	afferent_environment -up-|> environment: <<true>>
+	efferent_environment -up-|> environment: <<true>>
+	
+	logical_channel -up-|> channel: <<true>>
+	physical_channel -up-|> channel: <<true>>
+	
+	channel "1" --> "1" interaction
+	interaction "1" --> "1" information: exchanges
+	
+	channel_mode "1" --> "*" channel
+	
+	utility_interface -up-|> external_interface: <<true>>
+	c_interface -up-|> utility_interface: <<true>>
+	local_io_interface -up-|> utility_interface: <<true>>
+		
+	local_io_interface "1" --> "1" sensor: uses sensor
+	sensor -up-|> physical_interface: <<true>>
+	
+	message_based_interface "1" --> "1" message_variable 
+	
+	d_interface -up-|> utility_interface: <<true>>
+	
+	local_io_interface "1" --> "1" actuator: use actuator
+	local_io_interface "1" --> "1" transducer: use transducer
+	
+	actuator -up-|> physical_interface: <<true>>
+	
+	transducer -up-|> physical_interface: <<true>>
+	
+	message_based_interface --|> interface: <<true>>
+	
+	interface_specification "1" o--> "1" cp_spec: has cp_spec
+	interface_specification "1" o--> "1" i_spec: has cp_spec
+	interface_specification "1" o--> "1" s_spec: has cp_spec
+	
+	p_spec -up-|> cp_spec: <<true>>
+	m_spec -up-|> cp_spec: <<true>>
+	
+	transport_specification -up-|> m_spec: <<true>>
+	
+	s_spec "(" --> "1" SLA: described through
+	registry "1" o-up- "1" s_spec
+	
+	SLA "1" o--> "1..*" SLO: has SLO
+	SLA "1" o--> "1..*" sla_zone: applies to
+	service_based_interface "1" --> "1" SLA
+	
+	sla_zone "1" --> "1" receiver: has a receiver
+	sla_zone "1" --> "1" provider: has a provider
+	
+	reservation "1" -up-> "1" receiver: referes to 
+	provider "1" --> "1" reservation: commits
+	
+	service_composition "*" --o "1" service_based_interface
+	
+	service_based_interface "1" --> "1" registry
+	registry -up-|> repository: <<true>>
+	
+	hide <<Stereotype>> circle
+	hide <<Enumeration>> circle
+@enduml

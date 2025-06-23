@@ -1,0 +1,36 @@
+@startuml
+	title Class Diagram: Message Exchange with RUMI
+	
+	' Define the Enumeration
+	enum transport_service <<Enumeration>> {
+	  datagram
+	  PAR_message
+	  TT_message
+	}
+	
+	' Define classes with stereotypes
+	class "RUMI" as RUMI <<stereotype>>
+	
+	class "message" as message  <<stereotype>> {
+	  data_field : string
+	  header : string
+	  trans_type : transport_service
+	}
+	
+	class "trailer" as trailer  <<stereotype>>
+	
+	class "message_classification" as message_classification  <<stereotype>> {
+	  valid : boolean
+	  checked : boolean
+	  permitted : boolean
+	  timely : boolean
+	  correctness : boolean
+	  insidious : boolean
+	}
+	
+	' Associations
+	RUMI "1" --> "*" message : exchanges
+	message "1" --> "1" trailer : has
+	message "1" --> "1" message_classification : has
+
+@enduml

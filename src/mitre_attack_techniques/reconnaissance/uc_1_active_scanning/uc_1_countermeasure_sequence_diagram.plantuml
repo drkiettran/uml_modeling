@@ -1,0 +1,31 @@
+@startuml
+	title Sequence Diagram: Countermeasure – Detect and Respond to IP Block Scanning
+	
+	actor "Adversary" as Adversary
+	participant "IDS/IPS Sensor" as IDS
+	participant "Firewall" as FW
+	participant "SIEM / Dashboard" as SIEM
+	participant "SOC Analyst" as SOC
+	participant "Threat Intelligence Platform" as TIP
+	participant "Honeypot System" as HP
+	
+	Adversary -> IDS : Scanning traffic hits IP block
+	IDS -> IDS : Detect suspicious scan patterns
+	IDS -> FW : Block scanning IP (dynamic rule)
+	IDS -> SIEM : Send alert with scan metadata
+	
+	SIEM -> SOC : Display alert in dashboard
+	SOC -> TIP : Correlate with known threat intel
+	TIP --> SOC : IOC/TTP match confirmed
+	
+	alt Deception Strategy
+	  IDS -> HP : Divert scan to honeypot
+	  HP -> SIEM : Log and forward interaction data
+	end
+	
+	SOC -> SOC : Investigate alert and behavior
+	SOC -> SIEM : Tag confirmed TTP
+	SOC -> IDS : Update detection rule
+	SOC -> TIP : Add IOC to watchlist
+
+@enduml

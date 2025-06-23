@@ -1,0 +1,128 @@
+@startuml
+	title SoS Architecture Package (Simplified Semantic View)
+	skinparam componentStyle rectangle
+		 
+	rectangle "Blocks" <<Profile>> <<EPackage>> {
+		class "Block" <<Stereotype>>
+	}
+	' Metaclass reference
+	class  "Actor" <<Metaclass>>
+	
+	' Communication elements
+	class "RUMI" <<Stereotype>>
+	class "RUPI" <<Stereotype>>		
+	
+	rectangle SoSArchitecture <<Profile>> {
+		' Enumerations
+		enum sys_type <<Enumeration>> {
+		  autonomous
+		  monolithic
+		  open
+		  closed
+		  homogeneous
+		  reducible
+		  legacy
+		  evolutionary
+		  periodic
+		  stateful
+		  stateless
+		}
+		
+		enum sos_type <<Enumeration>> {
+		  directed
+		  acknowledged
+		  collaborative
+		  virtual
+		}
+		
+		class "entity" <<Stereotype>>
+		' Core system stereotypes
+		class "system" <<Stereotype>>{
+		  +systemType: sys_type[*]
+		}
+		
+		class "subsystem" <<Stereotype>>
+		class "SOS" <<Stereotype>>{
+		  +sos_type: sos_type
+		}
+		
+		class "CS" <<Stereotype>>
+		class "CPS" <<Stereotype>>
+		class "physical_system" <<Stereotype>>
+		class "cyber_system" <<Stereotype>>
+		class "computer_system" <<Stereotype>>
+		class "HMI" <<Stereotype>>
+		class "wrapper" <<Stereotype>>
+		class "controlled_object" <<Stereotype>>
+		class "legacy_system" <<Stereotype>>
+		
+		' Interface, service, and boundary
+		class "interface" <<Stereotype>>
+		class "boundary" <<Stereotype>>
+		class "construct" <<Stereotype>>
+		class "architectural_style" <<Stereotype>>
+		class "service" <<Stereotype>>
+		class "prime_mover" <<Stereotype>>
+		class "role_player" <<Stereotype>>
+		class thing <<Stereotype>>
+		
+		' State elements
+		class "state" <<Stereotype>>
+		class "state_variable" <<Stereotype>>{
+		  +value: Real
+		}
+		class "state_space" <<Stereotype>>
+		class "action" <<Stereotype>>
+		class "environment" <<Stereotype>>
+	}
+
+	
+	' Relations
+	Block <-- entity: <<true>>
+	SOS --> system : is composed by
+	system "1" o--> "*" subsystem : composed by subsystems
+	system <|-- CS : <<true>>
+	system "1" o-left-> "*" interface: provides
+	architectural_style "1" --> "*" system
+	system "1" --> "1" state_space: has a
+	system "1" --> "*" state_variable: has variables
+	state_space "1" --> "*" state: has states
+	state_variable "*" -up-> "1" state: describes
+	service "*" -up-> "*" state_variable: can access
+	
+	CS "1" o-down-> "*" CPS: interacts with cps
+	CS <|-left- subsystem: +cs
+	CS "1" o-- "*" physical_system
+	CS "1" o-left- "*" HMI
+	CS "1" --> "*" service
+	CS <|-- prime_mover: <<true>>
+	CS "1" --> "*" role_player: interacts with role player (cs)
+	CS <|-- wrapper: <<true>>
+	
+	Actor <-up- role_player
+	Actor <-up- prime_mover
+	
+	CPS "1" o--> cyber_system : composed by cyber systems
+	cyber_system <|-- computer_system: <<true>>
+	cyber_system o-- "*" physical_system: composed by physical systems
+	physical_system <|-- controlled_object: <<true>>
+	
+	environment "1" --> "*" action: has actions
+	environment "1" --> "*" system : affects environment
+	environment "1" --> "*" entity: has entities
+	
+	construct --|> entity: <<true>>
+	
+	thing --|> entity: <<true>>
+	thing "*" <-- "1" RUPI: transports
+	system "1" --> "1" boundary : has boundary
+
+	wrapper "1" --> "1" legacy_system : has legacy system
+	legacy_system --|> Block
+	
+	RUMI "1" --> "*" service: provides services exchange 
+
+	hide <<Stereotype>> circle
+	hide <<Metaclass>> circle
+	hide <<Enumeration>> circle
+@enduml

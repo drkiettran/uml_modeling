@@ -1,0 +1,44 @@
+@startuml
+	title Figure 23: SoS Scenario-Based Reasoning (SBR) package
+	skinparam componentStyle rectangle 
+	
+    class "«Stereotype»\nbusiness_value" as BusinessValue
+   	class "«Stereotype»\nenvironment" as Environment
+    
+
+	rectangle SBR <<Profile>> {
+	    
+	    class "mcda" as MCDA <<Stereotype>>
+	    class "scenario" as Scenario <<Stereotype>>
+	    class "scenario_state" as ScenarioState <<Stereotype>>
+	    class "event" as Event <<Stereotype>>
+	    class "decision_making" as DecisionMaking <<Stereotype>>
+	    class "situation_assessment" as SituationAssessment <<Stereotype>>
+	    class "domain_model" as DomainModel <<Stereotype>>
+	    class "variables" as Variables <<Stereotype>>
+	    class "inference_process" as InferenceProcess <<Stereotype>>
+	    class "causal_model" as CausalModel <<Stereotype>>
+	    class "causal_graph" as CausalGraph <<Stereotype>>
+	
+	    ' Relationships
+	    MCDA "1" -up-> "1" BusinessValue : improves a by
+	    MCDA "*" -right-> "1" Scenario : evaluates
+	    DecisionMaking "0..1" -up-> "1" MCDA : has_mcda
+	    DecisionMaking "*" -up-> "1" Scenario : selects a
+	    SituationAssessment "1" -up-> "1" Scenario : results to
+	    
+	    Scenario "1" o-right-> "1..*" ScenarioState : composed by
+	    Scenario "*" -down-> "1..*" Variables: defined on
+	    Event "1" -left-> "*" ScenarioState : applies to
+	    
+	    DomainModel "1" --> "1" Variables : has var
+	    InferenceProcess "1" -up-> "1..*" Variables : generates
+	    DomainModel --> CausalModel : has model
+	    DomainModel --> CausalGraph : has graph
+	    
+	    Environment -up-> SituationAssessment: affects
+	
+	}
+	hide <<Stereotype>> circle
+
+@enduml

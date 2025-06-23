@@ -1,0 +1,32 @@
+@startuml
+title Use Case: Develop Adversary Behavior Models
+left to right direction
+
+actor "Tier 3 Analyst" as Analyst
+actor "Threat Intelligence Platform" as TIP
+actor "Security Data Lake" as DataLake
+
+rectangle "Adversary Behavior Modeling System" {
+    usecase "Ingest Threat Intelligence (MITRE ATT&CK)" as UC1
+    usecase "Collect and Analyze Telemetry" as UC2
+    usecase "Identify Tactics, Techniques, and Procedures (TTPs)" as UC3
+    usecase "Construct Behavioral Profiles" as UC4
+    usecase "Validate Models with Historical Data" as UC5
+    usecase "Publish Adversary Models for Detection Use" as UC6
+}
+
+Analyst --> UC1
+Analyst --> UC2
+Analyst --> UC3
+Analyst --> UC4
+Analyst --> UC5
+Analyst --> UC6
+
+TIP --> UC1
+DataLake --> UC2
+DataLake --> UC5
+
+UC3 --> UC4
+UC4 --> UC6
+
+@enduml

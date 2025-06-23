@@ -1,0 +1,43 @@
+@startuml
+	title Class Diagram: Master-Slave Control Pattern
+	
+	' Top-level planning CS
+	class "Managing_P_CS_B" as Managing_P_CS_B <<CS, planning>>
+	class "Managing_P_CS_A" as Managing_P_CS_A <<CS, planning>>
+	class "Int_Managing_P_CS_B" as Int_Managing_P_CS_B <<RUMI>>
+	class "Int_Managing_P_CS_A" as Int_Managing_P_CS_A <<RUMI>>
+	
+	Managing_P_CS_B -- Int_Managing_P_CS_B
+	Managing_P_CS_A -- Int_Managing_P_CS_A
+	Int_Managing_P_CS_B <-- Int_Managing_P_CS_A: regional_info
+	
+	' Left monitoring-execution chain
+	class "Managing_MAE_CS_1" as Managing_MAE_CS_1 <<CS, monitoring, analysis, execution>>
+	class "Int_Managing_MAE_CS_1" as Int_Managing_MAE_CS_1 <<RUMI>>
+	class "Int_Managed_CS_1" as Int_Managed_CS_1 <<RUMI>>
+	class "Managed_CS_1" as Managed_CS_1 <<CS>>
+	
+	Managing_MAE_CS_1 -- Int_Managing_MAE_CS_1
+	Int_Managing_MAE_CS_1 --> Int_Managed_CS_1 : enacting_actions
+	Int_Managed_CS_1 --> Int_Managing_MAE_CS_1 : monitoring_info
+	Int_Managed_CS_1 -- Managed_CS_1
+	
+	' Right monitoring-execution chain
+	class "Managing_MAE_CS_2" as Managing_MAE_CS_2 <<CS, monitoring, analysis, execution>>
+	class "Int_Managing_MAE_CS_2" as Int_Managing_MAE_CS_2 <<RUMI>>
+	class "Int_Managed_CS_2" as Int_Managed_CS_2 <<RUMI>>
+	class "Managed_CS_2" as Managed_CS_2 <<CS>>
+	
+	Managing_MAE_CS_2 -- Int_Managing_MAE_CS_2
+	Int_Managing_MAE_CS_2 --> Int_Managed_CS_2 : enacting_actions
+	Int_Managed_CS_2 --> Int_Managing_MAE_CS_2 : monitoring_info
+	Int_Managed_CS_2 -- Managed_CS_2
+	
+	' Planning interface connects to both monitoring/execution chains
+	Int_Managing_P_CS_A --> Int_Managing_MAE_CS_1 : enacting_action
+	Int_Managing_MAE_CS_1 --> Int_Managing_P_CS_A : analyzed_info
+	
+	Int_Managing_P_CS_A --> Int_Managing_MAE_CS_2 : enacting_action
+	Int_Managing_MAE_CS_2 --> Int_Managing_P_CS_A : analyzed_info
+
+@enduml

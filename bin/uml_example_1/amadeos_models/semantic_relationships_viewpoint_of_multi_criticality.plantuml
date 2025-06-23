@@ -1,0 +1,30 @@
+@startuml
+	title Semantic Relationships – Viewpoint of Multi-Criticality
+	left to right direction
+	hide stereotype
+	<style>
+	.center {
+	  HorizontalAlignment center
+	}
+	.green {
+	  FontColor green
+	}
+	.red {
+	  FontColor red
+	}
+	</style>
+		
+	' Define elements
+	rectangle "Constituent\nSystem (CS)" as CS
+	rectangle "Service" as Service
+	rectangle "<b>Critical" as Critical
+	rectangle "Criticality\npolicy" as Policy
+	rectangle "Security /\nDependability" as SecDep
+	
+	' Define relationships
+	CS --> Service : offers
+	Service --> Critical : can be
+	Critical --> Policy : with
+	Critical --> SecDep : impacts
+
+@enduml

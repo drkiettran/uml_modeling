@@ -1,0 +1,30 @@
+@startuml
+	title Message exchange between constituent systems of a Smart Grid
+	
+	' Participants
+	participant "Microwave" as Microwave <<CS>>
+	participant "WashingMachine" as WashingMachine <<CS>>
+	participant "SmartMeter" as SmartMeter <<CS>>
+	participant "EMG" as EMG <<CS>>
+	
+	' Header note describing message payload
+	note over WashingMachine
+	  data_field=2kW, 
+	  header=wm to EMG,
+	  trailer=t1,
+	  rans_type=PAR_message
+	end note
+	
+	' Washing machine interaction
+	WashingMachine -> SmartMeter : <<message>>\nWM energy measure
+	SmartMeter -> EMG : <<message>> \nconsumption values
+	EMG -> SmartMeter : <<message>> \nok
+	SmartMeter -> WashingMachine : <<message>> \nok
+	
+	' Microwave interaction
+	Microwave -> SmartMeter : <<message>> \nMacrWave energy measure
+	SmartMeter -> EMG : <<message>> \nconsumption values
+	EMG -> SmartMeter : <<message>> \nok
+	SmartMeter -> Microwave : <<message>> \nok
+
+@enduml

@@ -1,0 +1,132 @@
+@startuml
+	title Use Case: Cybersecurity Incident Response for APP Nodes
+	
+	actor "Application Team Member" as AppTeam
+	actor "IRT Analyst" as IRT
+	
+	rectangle "Cybersecurity Incident Response System" {
+	
+	  usecase "Notify IRT via Email/Portal" as UC1
+	  usecase "Notify APP Team via Call Tree" as UC2
+	  usecase "Invite Team via MS Teams" as UC3
+	  usecase "Troubleshoot APP Node" as UC4
+	  usecase "Isolate APP Node (as directed)" as UC5
+	  usecase "Provide Node Snapshot to IRT" as UC6
+	  usecase "Restore/Reimage APP Node" as UC7
+	  usecase "Other Support Duties (APP)" as UC8
+	
+	  usecase "Notify APP POCs if Incident Detected" as UC9
+	  usecase "Assist with Node Isolation" as UC10
+	  usecase "Assist with Troubleshooting" as UC11
+	  usecase "Deliver Snapshot for Forensics" as UC12
+	  usecase "Assist with Restoration (as needed)" as UC13
+	  usecase "Other Support Duties (IRT)" as UC14
+	}
+	
+	' Application Team interactions
+	AppTeam --> UC1
+	AppTeam --> UC2
+	AppTeam --> UC3
+	AppTeam --> UC4
+	AppTeam --> UC5
+	AppTeam --> UC6
+	AppTeam --> UC7
+	AppTeam --> UC8
+	
+	' IRT interactions
+	IRT --> UC9
+	IRT --> UC10
+	IRT --> UC11
+	IRT --> UC12
+	IRT --> UC13
+	IRT --> UC14
+
+@enduml
+
+/'
+  Activity diagram ...
+'/
+@startuml
+	title Activity Diagram: Cybersecurity Incident Response for APP Nodes
+	
+	start
+	
+	:Application Team detects or is alerted to a potential incident;
+	:Notify IRT via Email/Portal;
+	:Notify APP Team and Leadership via Call Tree;
+	:Invite Responders via MS Teams;
+	
+	fork
+	  :IRT notifies APP POCs if incident detected independently;
+	fork again
+	  :IRT collaborates with APP to isolate node;
+	end fork
+	
+	:APP Team begins troubleshooting node;
+	:IRT assists with troubleshooting (as needed);
+	
+	:IRT and APP isolate the affected APP node;
+	:APP provides snapshot to IRT;
+	:IRT delivers snapshot for forensics;
+	
+	if (Is restoration approved?) then (yes)
+	  :APP restores or reimages node;
+	  :IRT assists if needed;
+	else (no)
+	  :Await further analysis;
+	endif
+	
+	:APP and IRT perform other duties as required;
+	
+	stop
+@enduml
+
+' Class diagram ...
+@startuml
+	title Class Diagram: Cybersecurity Incident Response for APP Nodes
+	
+	' Application Team Member
+	class ApplicationTeamMember {
+	  +notifyIRT()
+	  +notifyAPPTeam()
+	  +inviteTeamToMS()
+	  +troubleshootNode()
+	  +isolateNode()
+	  +provideSnapshot()
+	  +restoreNode()
+	  +performOtherDuties()
+	}
+	
+	' IRT Analyst
+	class IRTAnalyst {
+	  +notifyAPPPOCs()
+	  +assistIsolation()
+	  +assistTroubleshooting()
+	  +deliverSnapshot()
+	  +assistRestoration()
+	  +performOtherDuties()
+	}
+	
+	' APP Node (optional utility class)
+	class APPNode {
+	  -status: String
+	  +isolate()
+	  +reimage()
+	  +snapshot()
+	}
+	
+	' Snapshot Artifact
+	class Snapshot {
+	  -timestamp: Date
+	  -location: String
+	  +transferToIRT()
+	}
+	
+	' Relationships
+	ApplicationTeamMember --> APPNode : interacts with
+	ApplicationTeamMember --> Snapshot : provides
+	IRTAnalyst --> Snapshot : analyzes
+	IRTAnalyst --> APPNode : assists with
+
+@enduml
+

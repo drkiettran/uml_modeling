@@ -1,0 +1,59 @@
+@startuml
+	title Semantic Relationships – Viewpoint of Security
+	hide stereotype
+	<style>
+	.center {
+	  HorizontalAlignment center
+	}
+	.green {
+	  FontColor green
+	}
+	.red {
+	  FontColor red
+	}
+	</style>
+	' Core components
+	rectangle "Reference\nMonitor" as reference_monitor <<center>>
+	rectangle "Authorization" as authorization
+	rectangle "Permission" as permission
+	rectangle "<b>Security" as security <<center>>
+	rectangle "Trustworthiness" as trustworthiness
+	rectangle "Confidentiality" as confidentiality
+	rectangle "Encryption" as encryption
+	rectangle "Public Key\nor\nPrivate Key" as public_key <<center>>
+	
+	rectangle "Vulnerability" as vulnerability
+	rectangle "Threat" as threat
+	rectangle "Risk" as risk
+	
+	rectangle "Security Policy" as security_policy
+	rectangle "Trusted Computing\nBase" as trusted_computing <<center>>
+	rectangle "Components" as components {
+		rectangle "Hardware" as hardware
+		rectangle "Software" as software
+		rectangle "Human" as human
+	}
+	
+	' Relationships
+	reference_monitor --> authorization : provides
+	authorization --> permission : assigns
+	permission --> security_policy : defined by
+	security_policy --> trusted_computing : ensures
+	trusted_computing --> components : can be
+	'trusted_computing --> hardware : can be
+	'trusted_computing --> software : can be
+	'trusted_computing --> human : can be
+	
+	threat --> vulnerability : exploits
+	threat --> security : impacts
+	threat --> risk : imposes
+	security --> authorization : needs
+	
+	security --> vulnerability : might present
+	security --> trustworthiness : warrants
+	security --> confidentiality : integrates
+	
+	confidentiality <-- encryption : provides
+	encryption --> public_key : uses
+
+@enduml

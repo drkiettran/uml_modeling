@@ -1,0 +1,26 @@
+@startuml
+	title Activity Diagram: Detect and Respond to IP Block Scanning
+	
+	start
+	
+	:IDS/IPS detects suspicious IP scan patterns;
+	
+	if (Scan pattern matches rule?) then (yes)
+	  :Generate alert to SIEM/dashboard;
+	  :Block scanning IPs at firewall;
+	  :Divert scanner to honeypot;
+	else (no)
+	  :Log activity for baselining;
+	endif
+	
+	:Correlate with threat intelligence;
+	:Alert received by SOC analyst;
+	
+	if (IOC match or behavior suspicious?) then (yes)
+	  :Investigate and confirm adversary TTP;
+	  :Update detection rules and watchlists;
+	endif
+	
+	stop
+
+@enduml

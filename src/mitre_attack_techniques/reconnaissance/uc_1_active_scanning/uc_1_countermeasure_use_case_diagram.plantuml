@@ -1,0 +1,32 @@
+@startuml
+	title Use Case: Countermeasure – Detect and Respond to IP Block Scanning
+	'left to right direction
+	
+	actor "Security Operations Center (SOC) Analyst" as SOC
+	actor "Network Sensor (IDS/IPS)" as IDS
+	actor "Firewall" as FW
+	actor "Threat Intelligence Platform" as TIP
+	actor "Honeypot System" as HP
+	
+	rectangle "Defensive Systems" {
+	    usecase "1. Detect Suspicious IP Scan Patterns" as UC1
+	    usecase "2. Block Scanning IPs at Firewall" as UC2
+	    usecase "3. Generate Alert to SIEM/Dashboard" as UC3
+	    usecase "4. Correlate With Threat Intelligence" as UC4
+	    usecase "5. Divert Scanner to Honeypot" as UC5
+	    usecase "6. Investigate and Confirm Adversary TTP" as UC6
+	    usecase "7. Update Detection Rules and Watchlists" as UC7
+	}
+	
+	IDS -- UC1
+	UC1 --> UC2
+	UC1 --> UC3
+	UC3 -- SOC
+	SOC -- UC6
+	TIP -- UC4
+	UC3 --> UC4
+	UC1 --> UC5
+	HP -- UC5
+	SOC -- UC7
+
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+	title Class Diagram: Detect and Respond to IP Block Scanning
+	
+	class NetworkSensor {
+	  +detectScanPatterns(): Alert
+	}
+	
+	class Firewall {
+	  +blockIP(ip: String): void
+	}
+	
+	class SIEM {
+	  +generateAlert(data: Alert): void
+	  +correlateWithThreatIntel(): ThreatMatch
+	}
+	
+	class ThreatIntelligencePlatform {
+	  +getKnownIndicators(): List<Indicator>
+	  +matchIndicators(data: Alert): ThreatMatch
+	}
+	
+	class HoneypotSystem {
+	  +divertTraffic(ip: String): Log
+	  +logInteraction(): Log
+	}
+	
+	class SOCAnalyst {
+	  +investigateAlert(alert: Alert): TTP
+	  +updateDetectionRules(): void
+	}
+	
+	class Alert {
+	  +sourceIP: String
+	  +scanType: String
+	  +timestamp: DateTime
+	}
+	
+	class ThreatMatch {
+	  +indicator: Indicator
+	  +confidence: Float
+	}
+	
+	class Indicator {
+	  +id: String
+	  +description: String
+	}
+	
+	' Relationships
+	NetworkSensor --> Alert
+	NetworkSensor --> SIEM : send alert
+	SIEM --> Firewall : forward malicious IP
+	SIEM --> ThreatIntelligencePlatform : correlate indicators
+	SIEM --> SOCAnalyst : alert notification
+	HoneypotSystem --> SOCAnalyst : send logs
+	SOCAnalyst --> ThreatMatch
+	SOCAnalyst --> SIEM : update rules
+
+@enduml

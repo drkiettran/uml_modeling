@@ -1,27 +1,427 @@
 @startuml
-top to bottom direction
-!define RECTANGLE class
-
-package "SP800_53_Rev5" as sp80053Rev5 {
-	
-	package "Groups" as groups{
+	class AMQPBridgeQueuePolicyElement [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPBridgeQueuePolicyElement]] {
+		-{static} serialVersionUID: long
+		-includes: Set<QueueMatch>
+		-excludes: Set<QueueMatch>
+		-properties: Map<String,Object>
+		-name: String
+		-remoteAddress: String
+		-remoteAddressPrefix: String
+		-remoteAddressSuffix: String
+		-remoteTerminusCapabilities: String[]
+		-priority: Integer
+		-priorityAdjustment: Integer
+		-filter: String
+		-transformerConfig: TransformerConfiguration
+		+getName(): String
+		+setName(name: String): AMQPBridgeQueuePolicyElement
+		+getIncludes(): Set<QueueMatch>
+		+addToIncludes(addressMatch: String, queueMatch: String): AMQPBridgeQueuePolicyElement
+		+addInclude(match: QueueMatch): AMQPBridgeQueuePolicyElement
+		+setIncludes(includes: Set<QueueMatch>): AMQPBridgeQueuePolicyElement
+		+getExcludes(): Set<QueueMatch>
+		+addExclude(match: QueueMatch): AMQPBridgeQueuePolicyElement
+		+addToExcludes(addressMatch: String, queueMatch: String): AMQPBridgeQueuePolicyElement
+		+setExcludes(excludes: Set<QueueMatch>): AMQPBridgeQueuePolicyElement
+		+addProperty(key: String, value: String): AMQPBridgeQueuePolicyElement
+		+addProperty(key: String, value: Number): AMQPBridgeQueuePolicyElement
+		+getProperties(): Map<String,Object>
+		+setProperties(properties: Map<String,Object>): AMQPBridgeQueuePolicyElement
+		+setTransformerConfiguration(transformerConfig: TransformerConfiguration): AMQPBridgeQueuePolicyElement
+		+getTransformerConfiguration(): TransformerConfiguration
+		+getRemoteAddress(): String
+		+setRemoteAddress(remoteAddress: String): AMQPBridgeQueuePolicyElement
+		+getRemoteAddressPrefix(): String
+		+setRemoteAddressPrefix(remoteAddressPrefix: String): AMQPBridgeQueuePolicyElement
+		+getRemoteAddressSuffix(): String
+		+setRemoteAddressSuffix(remoteAddressSuffix: String): AMQPBridgeQueuePolicyElement
+		+getRemoteTerminusCapabilities(): String[]
+		+setRemoteTerminusCapabilities(remoteTerminusCapabilities: String[]): AMQPBridgeQueuePolicyElement
+		+getPriority(): Integer
+		+setPriority(priority: Integer): AMQPBridgeQueuePolicyElement
+		+getPriorityAdjustment(): Integer
+		+setPriorityAdjustment(priorityAdjustment: Integer): AMQPBridgeQueuePolicyElement
+		+getFilter(): String
+		+setFilter(filter: String): AMQPBridgeQueuePolicyElement
+		+equals(o: Object): boolean
+		+hashCode(): int
 	}
-	package "Catalog" as catalog {
-		package "Metadata" as metadata {
-		}
+	interface Serializable {
 	}
-	package "Backmatter" as backmatter {
+	Serializable <|.. AMQPBridgeQueuePolicyElement
+	class AMQPFederationAddressPolicyElement [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPFederationAddressPolicyElement]] {
+		-{static} serialVersionUID: long
+		-includes: Set<AddressMatch>
+		-excludes: Set<AddressMatch>
+		-properties: Map<String,Object>
+		-name: String
+		-autoDelete: Boolean
+		-autoDeleteDelay: Long
+		-autoDeleteMessageCount: Long
+		-maxHops: int
+		-enableDivertBindings: Boolean
+		-transformerConfig: TransformerConfiguration
+		+getName(): String
+		+setName(name: String): AMQPFederationAddressPolicyElement
+		+getIncludes(): Set<AddressMatch>
+		+addToIncludes(include: String): AMQPFederationAddressPolicyElement
+		+addInclude(include: AddressMatch): AMQPFederationAddressPolicyElement
+		+setIncludes(includes: Set<AddressMatch>): AMQPFederationAddressPolicyElement
+		+getExcludes(): Set<AddressMatch>
+		+addToExcludes(exclude: String): AMQPFederationAddressPolicyElement
+		+addExclude(exclude: AddressMatch): AMQPFederationAddressPolicyElement
+		+setExcludes(excludes: Set<AddressMatch>): AMQPFederationAddressPolicyElement
+		+getProperties(): Map<String,Object>
+		+addProperty(key: String, value: String): AMQPFederationAddressPolicyElement
+		+addProperty(key: String, value: Number): AMQPFederationAddressPolicyElement
+		+setProperties(properties: Map<String,Object>): AMQPFederationAddressPolicyElement
+		+getMaxHops(): int
+		+setMaxHops(maxHops: int): AMQPFederationAddressPolicyElement
+		+getAutoDeleteMessageCount(): Long
+		+setAutoDeleteMessageCount(autoDeleteMessageCount: Long): AMQPFederationAddressPolicyElement
+		+getAutoDeleteDelay(): Long
+		+setAutoDeleteDelay(autoDeleteDelay: Long): AMQPFederationAddressPolicyElement
+		+getAutoDelete(): Boolean
+		+setAutoDelete(autoDelete: Boolean): AMQPFederationAddressPolicyElement
+		+isEnableDivertBindings(): Boolean
+		+setEnableDivertBindings(enableDivertBindings: Boolean): AMQPFederationAddressPolicyElement
+		+setTransformerConfiguration(transformerConfig: TransformerConfiguration): AMQPFederationAddressPolicyElement
+		+getTransformerConfiguration(): TransformerConfiguration
+		+equals(o: Object): boolean
+		+hashCode(): int
 	}
-	
-	package "CommonAttributes" as commonAttributes {
-		RECTANGLE "Class" <<variation>> {
-		sp800_53A#
-		} 
-		
+	interface Serializable {
 	}
-}
-
-metadata ..>> commonAttributes
-
-
+	Serializable <|.. AMQPFederationAddressPolicyElement
+	class AMQPBrokerConnectionElement [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPBrokerConnectionElement]] {
+		-{static} serialVersionUID: long
+		~name: String
+		~matchAddress: SimpleString
+		~queueName: SimpleString
+		+AMQPBrokerConnectionElement()
+		+setParent(parent: AMQPBrokerConnectConfiguration): AMQPBrokerConnectionElement
+		+getQueueName(): SimpleString
+		+setQueueName(queueName: String): AMQPBrokerConnectionElement
+		+setQueueName(queueName: SimpleString): AMQPBrokerConnectionElement
+		+getMatchAddress(): SimpleString
+		+match(checkAddress: SimpleString, wildcardConfig: WildcardConfiguration): boolean
+		+{static} match(matchAddressString: SimpleString, checkAddressString: SimpleString, wildcardConfig: WildcardConfiguration): boolean
+		+setMatchAddress(matchAddress: String): AMQPBrokerConnectionElement
+		+setMatchAddress(matchAddress: SimpleString): AMQPBrokerConnectionElement
+		+setType(type: AMQPBrokerConnectionAddressType): AMQPBrokerConnectionElement
+		+getName(): String
+		+setName(name: String): void
+		+hashCode(): int
+		+equals(obj: Object): boolean
+	}
+	class AMQPBrokerConnectionAddressType {
+	}
+	AMQPBrokerConnectionElement --> "1" AMQPBrokerConnectionAddressType : type
+	class AMQPBrokerConnectConfiguration {
+	}
+	AMQPBrokerConnectionElement --> "1" AMQPBrokerConnectConfiguration : parent
+	class AMQPBrokerConnectConfiguration {
+	}
+	AMQPBrokerConnectionElement --> "1" AMQPBrokerConnectConfiguration : getParent()
+	class AMQPBrokerConnectionAddressType {
+	}
+	AMQPBrokerConnectionElement --> "1" AMQPBrokerConnectionAddressType : getType()
+	interface Serializable {
+	}
+	Serializable <|.. AMQPBrokerConnectionElement
+	class AMQPFederatedBrokerConnectionElement [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPFederatedBrokerConnectionElement]] {
+		-{static} serialVersionUID: long
+		-properties: Map<String,Object>
+		+AMQPFederatedBrokerConnectionElement()
+		+AMQPFederatedBrokerConnectionElement(name: String)
+		+setType(type: AMQPBrokerConnectionAddressType): AMQPFederatedBrokerConnectionElement
+		+addRemoteAddressPolicy(remoteAddressPolicy: AMQPFederationAddressPolicyElement): AMQPFederatedBrokerConnectionElement
+		+addRemoteQueuePolicy(remoteQueuePolicy: AMQPFederationQueuePolicyElement): AMQPFederatedBrokerConnectionElement
+		+addLocalAddressPolicy(localAddressPolicy: AMQPFederationAddressPolicyElement): AMQPFederatedBrokerConnectionElement
+		+addLocalQueuePolicy(localQueuePolicy: AMQPFederationQueuePolicyElement): AMQPFederatedBrokerConnectionElement
+		+addProperty(key: String, value: String): AMQPFederatedBrokerConnectionElement
+		+addProperty(key: String, value: Number): AMQPFederatedBrokerConnectionElement
+		+getProperties(): Map<String,Object>
+		+hashCode(): int
+		+equals(obj: Object): boolean
+	}
+	class AMQPFederationAddressPolicyElement {
+	}
+	AMQPFederatedBrokerConnectionElement --> "*" AMQPFederationAddressPolicyElement : remoteAddressPolicies
+	class AMQPFederationQueuePolicyElement {
+	}
+	AMQPFederatedBrokerConnectionElement --> "*" AMQPFederationQueuePolicyElement : remoteQueuePolicies
+	class AMQPFederationAddressPolicyElement {
+	}
+	AMQPFederatedBrokerConnectionElement --> "*" AMQPFederationAddressPolicyElement : localAddressPolicies
+	class AMQPFederationQueuePolicyElement {
+	}
+	AMQPFederatedBrokerConnectionElement --> "*" AMQPFederationQueuePolicyElement : localQueuePolicies
+	class AMQPFederationAddressPolicyElement {
+	}
+	AMQPFederatedBrokerConnectionElement --> "*" AMQPFederationAddressPolicyElement : getRemoteAddressPolicies()
+	class AMQPFederationQueuePolicyElement {
+	}
+	AMQPFederatedBrokerConnectionElement --> "*" AMQPFederationQueuePolicyElement : getRemoteQueuePolicies()
+	class AMQPFederationAddressPolicyElement {
+	}
+	AMQPFederatedBrokerConnectionElement --> "*" AMQPFederationAddressPolicyElement : getLocalAddressPolicies()
+	class AMQPFederationQueuePolicyElement {
+	}
+	AMQPFederatedBrokerConnectionElement --> "*" AMQPFederationQueuePolicyElement : getLocalQueuePolicies()
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectionElement <|-- AMQPFederatedBrokerConnectionElement
+	class AMQPBridgeAddressPolicyElement [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPBridgeAddressPolicyElement]] {
+		-{static} serialVersionUID: long
+		-includes: Set<AddressMatch>
+		-excludes: Set<AddressMatch>
+		-properties: Map<String,Object>
+		-name: String
+		-remoteAddress: String
+		-remoteAddressPrefix: String
+		-remoteAddressSuffix: String
+		-remoteTerminusCapabilities: String[]
+		-includeDivertBindings: boolean
+		-useDurableSubscriptions: boolean
+		-priority: Integer
+		-filter: String
+		-transformerConfig: TransformerConfiguration
+		+getName(): String
+		+setName(name: String): AMQPBridgeAddressPolicyElement
+		+getIncludes(): Set<AddressMatch>
+		+addToIncludes(include: String): AMQPBridgeAddressPolicyElement
+		+addInclude(include: AddressMatch): AMQPBridgeAddressPolicyElement
+		+setIncludes(includes: Set<AddressMatch>): AMQPBridgeAddressPolicyElement
+		+getExcludes(): Set<AddressMatch>
+		+addToExcludes(exclude: String): AMQPBridgeAddressPolicyElement
+		+addExclude(exclude: AddressMatch): AMQPBridgeAddressPolicyElement
+		+setExcludes(excludes: Set<AddressMatch>): AMQPBridgeAddressPolicyElement
+		+getProperties(): Map<String,Object>
+		+addProperty(key: String, value: String): AMQPBridgeAddressPolicyElement
+		+addProperty(key: String, value: Number): AMQPBridgeAddressPolicyElement
+		+setProperties(properties: Map<String,Object>): AMQPBridgeAddressPolicyElement
+		+isIncludeDivertBindings(): boolean
+		+setIncludeDivertBindings(includeDivertBindings: boolean): AMQPBridgeAddressPolicyElement
+		+isUseDurableSubscriptions(): boolean
+		+setUseDurableSubscriptions(useDurableSubscriptions: boolean): AMQPBridgeAddressPolicyElement
+		+setTransformerConfiguration(transformerConfig: TransformerConfiguration): AMQPBridgeAddressPolicyElement
+		+getTransformerConfiguration(): TransformerConfiguration
+		+getRemoteAddress(): String
+		+setRemoteAddress(remoteAddress: String): AMQPBridgeAddressPolicyElement
+		+getRemoteAddressPrefix(): String
+		+setRemoteAddressPrefix(remoteAddressPrefix: String): AMQPBridgeAddressPolicyElement
+		+getRemoteAddressSuffix(): String
+		+setRemoteAddressSuffix(remoteAddressSuffix: String): AMQPBridgeAddressPolicyElement
+		+getRemoteTerminusCapabilities(): String[]
+		+setRemoteTerminusCapabilities(remoteTerminusCapabilities: String[]): AMQPBridgeAddressPolicyElement
+		+getPriority(): Integer
+		+setPriority(priority: Integer): AMQPBridgeAddressPolicyElement
+		+getFilter(): String
+		+setFilter(filter: String): AMQPBridgeAddressPolicyElement
+		+equals(o: Object): boolean
+		+hashCode(): int
+	}
+	interface Serializable {
+	}
+	Serializable <|.. AMQPBridgeAddressPolicyElement
+	interface AMQPFederationBrokerPlugin [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPFederationBrokerPlugin]] {
+	}
+	interface ActiveMQServerBasePlugin {
+	}
+	ActiveMQServerBasePlugin <|-- AMQPFederationBrokerPlugin
+	class AMQPBridgeBrokerConnectionElement [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPBridgeBrokerConnectionElement]] {
+		-{static} serialVersionUID: long
+		-properties: Map<String,Object>
+		+AMQPBridgeBrokerConnectionElement()
+		+AMQPBridgeBrokerConnectionElement(name: String)
+		+setType(type: AMQPBrokerConnectionAddressType): AMQPBridgeBrokerConnectionElement
+		+addBridgeFromAddressPolicy(fromAddressPolicy: AMQPBridgeAddressPolicyElement): AMQPBridgeBrokerConnectionElement
+		+addBridgeToAddressPolicy(toAddressPolicy: AMQPBridgeAddressPolicyElement): AMQPBridgeBrokerConnectionElement
+		+addBridgeFromQueuePolicy(fromQueuePolicy: AMQPBridgeQueuePolicyElement): AMQPBridgeBrokerConnectionElement
+		+addBridgeToQueuePolicy(toQueuePolicy: AMQPBridgeQueuePolicyElement): AMQPBridgeBrokerConnectionElement
+		+addProperty(key: String, value: String): AMQPBridgeBrokerConnectionElement
+		+addProperty(key: String, value: Number): AMQPBridgeBrokerConnectionElement
+		+getProperties(): Map<String,Object>
+		+hashCode(): int
+		+equals(obj: Object): boolean
+	}
+	class AMQPBridgeAddressPolicyElement {
+	}
+	AMQPBridgeBrokerConnectionElement --> "*" AMQPBridgeAddressPolicyElement : bridgeFromAddressPolicies
+	class AMQPBridgeQueuePolicyElement {
+	}
+	AMQPBridgeBrokerConnectionElement --> "*" AMQPBridgeQueuePolicyElement : bridgeFromQueuePolicies
+	class AMQPBridgeAddressPolicyElement {
+	}
+	AMQPBridgeBrokerConnectionElement --> "*" AMQPBridgeAddressPolicyElement : bridgeToAddressPolicies
+	class AMQPBridgeQueuePolicyElement {
+	}
+	AMQPBridgeBrokerConnectionElement --> "*" AMQPBridgeQueuePolicyElement : bridgeToQueuePolicies
+	class AMQPBridgeAddressPolicyElement {
+	}
+	AMQPBridgeBrokerConnectionElement --> "*" AMQPBridgeAddressPolicyElement : getBridgeFromAddressPolicies()
+	class AMQPBridgeAddressPolicyElement {
+	}
+	AMQPBridgeBrokerConnectionElement --> "*" AMQPBridgeAddressPolicyElement : getBridgeToAddressPolicies()
+	class AMQPBridgeQueuePolicyElement {
+	}
+	AMQPBridgeBrokerConnectionElement --> "*" AMQPBridgeQueuePolicyElement : getBridgeFromQueuePolicies()
+	class AMQPBridgeQueuePolicyElement {
+	}
+	AMQPBridgeBrokerConnectionElement --> "*" AMQPBridgeQueuePolicyElement : getBridgeToQueuePolicies()
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectionElement <|-- AMQPBridgeBrokerConnectionElement
+	class AMQPFederationQueuePolicyElement [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPFederationQueuePolicyElement]] {
+		-{static} serialVersionUID: long
+		-includes: Set<QueueMatch>
+		-excludes: Set<QueueMatch>
+		-properties: Map<String,Object>
+		-name: String
+		-includeFederated: boolean
+		-priorityAdjustment: Integer
+		-transformerConfig: TransformerConfiguration
+		+getName(): String
+		+setName(name: String): AMQPFederationQueuePolicyElement
+		+getIncludes(): Set<QueueMatch>
+		+addToIncludes(addressMatch: String, queueMatch: String): AMQPFederationQueuePolicyElement
+		+addInclude(match: QueueMatch): AMQPFederationQueuePolicyElement
+		+setIncludes(includes: Set<QueueMatch>): AMQPFederationQueuePolicyElement
+		+getExcludes(): Set<QueueMatch>
+		+addExclude(match: QueueMatch): AMQPFederationQueuePolicyElement
+		+addToExcludes(addressMatch: String, queueMatch: String): AMQPFederationQueuePolicyElement
+		+setExcludes(excludes: Set<QueueMatch>): AMQPFederationQueuePolicyElement
+		+addProperty(key: String, value: String): AMQPFederationQueuePolicyElement
+		+addProperty(key: String, value: Number): AMQPFederationQueuePolicyElement
+		+getProperties(): Map<String,Object>
+		+setProperties(properties: Map<String,Object>): AMQPFederationQueuePolicyElement
+		+isIncludeFederated(): boolean
+		+setIncludeFederated(includeFederated: boolean): AMQPFederationQueuePolicyElement
+		+getPriorityAdjustment(): Integer
+		+setPriorityAdjustment(priorityAdjustment: Integer): AMQPFederationQueuePolicyElement
+		+setTransformerConfiguration(transformerConfig: TransformerConfiguration): AMQPFederationQueuePolicyElement
+		+getTransformerConfiguration(): TransformerConfiguration
+		+equals(o: Object): boolean
+		+hashCode(): int
+	}
+	interface Serializable {
+	}
+	Serializable <|.. AMQPFederationQueuePolicyElement
+	class AMQPBrokerConnectConfiguration [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPBrokerConnectConfiguration]] {
+		-{static} serialVersionUID: long
+		~transportConfigurations: List<TransportConfiguration>
+		+AMQPBrokerConnectConfiguration()
+		+AMQPBrokerConnectConfiguration(name: String, uri: String)
+		+addElement(amqpBrokerConnectionElement: AMQPBrokerConnectionElement): AMQPBrokerConnectConfiguration
+		+addConnectionElement(amqpBrokerConnectionElement: AMQPMirrorBrokerConnectionElement): AMQPBrokerConnectConfiguration
+		+addFederation(amqpFederationElement: AMQPFederatedBrokerConnectionElement): AMQPBrokerConnectConfiguration
+		+addBridge(amqpBridgeElement: AMQPBridgeBrokerConnectionElement): AMQPBrokerConnectConfiguration
+		+addMirror(amqpMirrorBrokerConnectionElement: AMQPMirrorBrokerConnectionElement): AMQPBrokerConnectConfiguration
+		+addPeer(element: AMQPPeerBrokerConnectionElement): AMQPBrokerConnectConfiguration
+		+addSender(element: AMQPSenderBrokerConnectionElement): AMQPBrokerConnectConfiguration
+		+addReceiver(element: AMQPReceiverBrokerConnectionElement): AMQPBrokerConnectConfiguration
+		+parseURI(): void
+		+getTransportConfigurations(): List<TransportConfiguration>
+		+setReconnectAttempts(reconnectAttempts: int): AMQPBrokerConnectConfiguration
+		+setUser(user: String): AMQPBrokerConnectConfiguration
+		+setRetryInterval(retryInterval: int): AMQPBrokerConnectConfiguration
+		+setPassword(password: String): AMQPBrokerConnectConfiguration
+		+setUri(uri: String): AMQPBrokerConnectConfiguration
+		+setName(name: String): AMQPBrokerConnectConfiguration
+		+setAutostart(autostart: boolean): AMQPBrokerConnectConfiguration
+		+hashCode(): int
+		+equals(obj: Object): boolean
+	}
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectConfiguration --> "*" AMQPBrokerConnectionElement : connectionElements
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectConfiguration --> "*" AMQPBrokerConnectionElement : getConnectionElements()
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectConfiguration --> "*" AMQPBrokerConnectionElement : getFederations()
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectConfiguration --> "*" AMQPBrokerConnectionElement : getBridges()
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectConfiguration --> "*" AMQPBrokerConnectionElement : getMirrors()
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectConfiguration --> "*" AMQPBrokerConnectionElement : getPeers()
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectConfiguration --> "*" AMQPBrokerConnectionElement : getSenders()
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectConfiguration --> "*" AMQPBrokerConnectionElement : getReceivers()
+	class BrokerConnectConfiguration {
+	}
+	BrokerConnectConfiguration <|-- AMQPBrokerConnectConfiguration
+	class AMQPPeerBrokerConnectionElement [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPPeerBrokerConnectionElement]] {
+		-{static} serialVersionUID: long
+		+AMQPPeerBrokerConnectionElement()
+	}
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectionElement <|-- AMQPPeerBrokerConnectionElement
+	class AMQPMirrorBrokerConnectionElement [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPMirrorBrokerConnectionElement]] {
+		-{static} serialVersionUID: long
+		~durable: boolean
+		~queueCreation: boolean
+		~queueRemoval: boolean
+		~messageAcknowledgements: boolean
+		~sync: boolean
+		~mirrorSNF: SimpleString
+		~addressFilter: String
+		-properties: Map<String,Object>
+		+getMirrorSNF(): SimpleString
+		+setMirrorSNF(mirrorSNF: SimpleString): AMQPMirrorBrokerConnectionElement
+		+AMQPMirrorBrokerConnectionElement()
+		+isDurable(): boolean
+		+setDurable(durable: boolean): AMQPMirrorBrokerConnectionElement
+		+isQueueCreation(): boolean
+		+setQueueCreation(queueCreation: boolean): AMQPMirrorBrokerConnectionElement
+		+isQueueRemoval(): boolean
+		+setQueueRemoval(queueRemoval: boolean): AMQPMirrorBrokerConnectionElement
+		+setType(type: AMQPBrokerConnectionAddressType): AMQPMirrorBrokerConnectionElement
+		+isMessageAcknowledgements(): boolean
+		+setMessageAcknowledgements(messageAcknowledgements: boolean): AMQPMirrorBrokerConnectionElement
+		+getAddressFilter(): String
+		+setAddressFilter(addressFilter: String): AMQPMirrorBrokerConnectionElement
+		+isSync(): boolean
+		+setSync(sync: boolean): AMQPMirrorBrokerConnectionElement
+		+addProperty(key: String, value: String): AMQPMirrorBrokerConnectionElement
+		+addProperty(key: String, value: Number): AMQPMirrorBrokerConnectionElement
+		+getProperties(): Map<String,Object>
+		+hashCode(): int
+		+equals(obj: Object): boolean
+	}
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectionElement <|-- AMQPMirrorBrokerConnectionElement
+	class AMQPReceiverBrokerConnectionElement [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPReceiverBrokerConnectionElement]] {
+		-{static} serialVersionUID: long
+		+AMQPReceiverBrokerConnectionElement()
+	}
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectionElement <|-- AMQPReceiverBrokerConnectionElement
+	class AMQPSenderBrokerConnectionElement [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPSenderBrokerConnectionElement]] {
+		-{static} serialVersionUID: long
+		+AMQPSenderBrokerConnectionElement()
+	}
+	class AMQPBrokerConnectionElement {
+	}
+	AMQPBrokerConnectionElement <|-- AMQPSenderBrokerConnectionElement
+	enum AMQPBrokerConnectionAddressType [[java:org.apache.activemq.artemis.core.config.amqpBrokerConnectivity.AMQPBrokerConnectionAddressType]] {
+		SENDER
+		RECEIVER
+		PEER
+		MIRROR
+		FEDERATION
+		BRIDGE
+	}
 @enduml

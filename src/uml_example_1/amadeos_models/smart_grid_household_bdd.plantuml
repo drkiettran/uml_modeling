@@ -1,0 +1,126 @@
+@startuml
+	title Smart Grid Household Block Definition Diagram
+	'left to right direction
+	
+	' Define main block
+	class "SG_Households" as SG <<block>> <<sos>> {
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	' Define constituent systems
+	class "Coordinator" as CD <<block>> <<cs>>{
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	class "EMG" as EMG <<block>> <<cs>>{
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	class "DSO" as DSO <<block>> <<cs>>{
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	class "SM" as SM <<block>> <<cs>>{
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	class "CommandDisplay" as CMD <<block>> <<cs>>{
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	class "DER" as DER <<block>> <<cs>>{
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	class "Flexible Load" as FL <<block>> <<cs>>{
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	class "Microwave" as MW <<block>> <<cs>>{
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	class "Washing Machine" as WM <<block>> <<cs>>{
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	class "Clothes Dryer" as CDryer <<block>> <<cs>>{
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	' Relationships (compositions and interactions)
+	SG "[1]" o-down-> "[1]" CD : composed by Coordinator
+	SG "[1]" o-down-> "[1]" EMG : composed by EMG
+	SG "[1]" o-down-> "[1]" DSO : composed by DSO
+	SG "[1]" o-down-> "[1]" SM : composed by SM
+	SG "[1]" o-down-> "[1]" CMD : composed by CD
+	SG "[1]" o-down-> "[1]" FL : composed by FLs
+	DSO "[1]" -left-> "[0..*]" CD: status update
+	CD "[0..*]" -right- "[0..*]" EMG: exchange info
+	CMD "[1]" -left-> "[1]" EMG: sends info
+	EMG "[1]" -down-> "[1]" FL: controls the loads
+	EMG "[1]" -down-> "[1]" DER: controls the production
+	EMG "[1]" -down- "[1]" SM: exchange info
+	DER "[1]" -up-> "[1]" DSO: provides energy
+	DER "[1]" -left-> "[0..*]" FL: provides energy
+	SM "[1]" --> "[0..*]" DSO: provides values
+	SM "[1]" -down- "[1]" CMD: exchange info
+	SM "[1]" -right-> "[1]" DER: receives values from
+	SM "[1]" --> "[0..*]" FL: receives value from
+	
+	FL "[1]" o--> "[0.*]" MW
+	FL "[1]" o--> "[0.*]" WM
+	FL "[1]" o--> "[0.*]" CDryer
+	
+	hide <<block>> circle
+	
+/'	
+	CD --> EMG : exchange info [0..*]
+	CD --> FL : controls the loads [1]
+	EMG --> DSO : status update [1]
+	EMG --> FL : controls the production [1]
+	DSO --> FL : provides values [0..*]
+	DSO --> CMD : exchange info [1]
+	SM --> CMD : sends info [1]
+	CMD --> DER : receives values from [1]
+	DER --> FL : provides energy [1]
+	FL --> MW : [0..*]
+	FL --> WM : [0..*]
+	FL --> CDryer : [0..*]
+'/
+@enduml

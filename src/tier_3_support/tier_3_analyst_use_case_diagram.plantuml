@@ -1,0 +1,23 @@
+@startuml
+title Tier 3 Analyst - Use Case Diagram
+left to right direction
+
+actor "Tier 3 Analyst" as Analyst
+
+rectangle "Advanced Analytics System" {
+    usecase "Develop Adversary Behavior Models" as UC1
+    usecase "Perform Specialized Threat Analysis" as UC2
+    usecase "Design Advanced Detection Algorithms" as UC3
+    usecase "Integrate Machine Learning Models" as UC4
+    usecase "Collaborate on Incident Response" as UC5
+    usecase "Refine Detection Signatures & Rules" as UC6
+}
+
+Analyst --> UC1
+Analyst --> UC2
+Analyst --> UC3
+Analyst --> UC4
+Analyst --> UC5
+Analyst --> UC6
+
+@enduml

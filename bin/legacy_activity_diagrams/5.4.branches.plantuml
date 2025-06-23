@@ -20,3 +20,40 @@
 	Endif
 	-->(*)
 @enduml
+
+@startuml
+	'left to right direction
+	'start
+		(*) --> "Draft Access Control Policy"
+		--> "Define access rules, \nprinciples and scope"
+		--> "Submit policy for review"
+		if (Policy Approved?) then
+			--> [Yes] "Publish Access Control Policy"
+					--> "Develop Access Control Procedures"
+			--> "Define technical and operational steps"
+			--> "Assign roles & responsibilities (e.g., ISSO, System Owner)"
+	
+			--> "Distribute Policy and Procedures"
+			--> "Upload to GRC, wiki, LMS"
+			--> "Notify stakeholders"
+				
+			--> "Train Users and Admins"
+			--> "Ensure understanding of access requirements"
+				
+			--> "Monitor Access Control Implementation"
+			--> "Collect logs, conduct audits"
+			if (Annual Review Due?) then
+  				--> [Yes] "Initiate Policy Review"
+  				--> "Update policy/procedures if needed"
+  				-right-> "Submit policy for review"
+			else
+  				--> [No] "Continue Monitoring"
+  				--> (*)
+			endif
+		else
+			--> [No] "Revise Policy Draft"
+			-right-> "Submit policy for review"
+		endif
+
+	
+@enduml

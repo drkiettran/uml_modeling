@@ -1,0 +1,29 @@
+@startuml
+	title Semantic Relationships - Viewpoint of Dynamicity
+	
+	' Core structural elements
+	rectangle "<b>System-of-systems (SoS)</b>" as SoS
+	rectangle "Constituent systems (CS)" as CS
+	rectangle "<b>Dynamicity</b>" as Dynamicity
+	rectangle "Services\nor\nStructure\nor\nInteractions" as SSI
+	
+	' Analytical reasoning flow
+	rectangle "Multi-criteria Decision\nAnalysis (MCDA)\n&\nScenario-Based\nReasoning (SBR)" as MCDA_SBR
+	rectangle "OODA loop" as OODA
+	rectangle "Scenario" as Scenario
+	rectangle "Decision making\n&\nSituation assessment\nand awareness" as Decision
+	rectangle "SoS inference\n&\nDomain model\nsuch as Causal model" as Inference
+	
+	' Relationships
+	SoS --> CS : integrates
+	CS --> Dynamicity : exhibits
+	Dynamicity --> SSI : in terms of
+	
+	MCDA_SBR <-- OODA : applies
+	OODA <-- Dynamicity : managed by
+	
+	MCDA_SBR --> Inference : makes use of
+	MCDA_SBR --> Scenario : uses
+	Scenario --> Decision : deals with
+
+@enduml

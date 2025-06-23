@@ -26,17 +26,4 @@
 	:finish;
 @enduml
 
-' 6.21.3 SDL using Normal separator and Stereotype (Current offial form)
-@startuml
-	start
-	:SDL Shape;
-	:input; <<input>>
-	:output; <<output>>
-	:procedure; <<procedure>>
-	:load; <<load>>
-	:save; <<save>>
-	:continuous; <<continuous>>
-	:task; <<task>>
-	end
-@enduml
 

@@ -1,0 +1,26 @@
+@startuml
+	title Semantic Relationships - Viewpoint of Structure
+	skinparam defaultTextAlign center
+	
+	' Define core elements
+	rectangle "<b>System-of-Systems (SoS)</b>" as SoS
+	rectangle "Directed SoS\nor\nAcknowledged SoS\nor\nCollaborative SoS\nor\nVirtual SoS" as SoS_Type 
+	rectangle "Constituent System (CS)" as CS
+	rectangle "Computer system\nand\n(possibly Human or possibly Controlled object)" as Component
+	rectangle "Relied Upon Interface (RUI)" as RUI
+	rectangle "Relied Upon Message Interface\n(RUMI)" as RUMI
+	rectangle "Relied Upon Physical Interface\n(RUPI)" as RUPI
+	rectangle "message" as Message
+	rectangle "properties of things\nor\nproperties of force fields" as Properties
+	
+	' Define relationships
+	SoS_Type --> SoS : is a
+	SoS --> CS : integrates
+	CS --> Component : consists of
+	CS --> RUI : has a
+	RUI --> RUMI : composed of
+	RUI --> RUPI : composed of
+	RUMI --> Message : exchanges
+	RUPI --> Properties : Influences\nand\nobserves
+
+@enduml

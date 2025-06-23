@@ -1,0 +1,19 @@
+@startuml
+	title Smart Grid Evolution Modeling
+	skinparam componentStyle rectangle
+
+	' Block definitions
+	class "SG_Household" as SG_Household <<block>> <<sos>>
+	class "Household evolution" as Household_Evolution <<block>> <<managed_evolution>>
+	class "NewAvailableTechnology" as NewTechnology <<block>> <<goal>>
+	class "Usefulness" as Usefulness <<block>> <<business_value>>
+	class "Smartphone" as Smartphone <<block>> <<system_resource>>
+	
+	' Relationships
+	Household_Evolution -left-> SG_Household: modifies [1]
+	Household_Evolution -right-> NewTechnology : compliant with [1]
+	Household_Evolution --> Usefulness : maximize [1]
+	Household_Evolution --> Smartphone : acts on [1]
+	hide <<block>> circle
+
+@enduml

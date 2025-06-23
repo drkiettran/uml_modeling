@@ -1,0 +1,52 @@
+@startuml
+	title SoS Dynamicity Package
+	skinparam componentStyle rectangle
+	
+	' Define base stereotypes
+	class "entity" as Entity <<Stereotype>>
+	class "service" as Service <<Stereotype>>
+	class "interaction" as Interaction <<Stereotype>>
+
+	
+	component "SoSDynamicity" <<Profile>> {
+		
+		class "dynamicity" as Dynamicity <<Stereotype>>
+		class "dynamic_service" as DynamicService <<Stereotype>>
+		class "reconfigurability" as Reconfigurability <<Stereotype>>
+		class "dynamic_interaction" as DynamicInteraction <<Stereotype>>
+	
+	}
+	
+	hide <<Stereotype>> circle
+	component "Blocks" <<Profile>> <<EPackage>> {
+	  	class "Block" as Block <<Stereotype>>
+	}
+	
+	' Relationships
+	Entity --> Dynamicity : has *
+	
+	Dynamicity <|-- DynamicService : <<true>>
+	Dynamicity <|-- Reconfigurability : <<true>>
+	Dynamicity <|-- DynamicInteraction : <<true>>
+	Dynamicity -left-|> Block: <<true>>
+	
+	DynamicService "1..*" -down-> "1" Service : variation to service
+	DynamicInteraction "1..*" -down-> "1"Interaction : variation to interaction
+
+@enduml
+
+@startuml
+class Dummy1 {
++myMethods()
+}
+class Dummy2 {
++hiddenMethod()
+}
+class Dummy3 <<Serializable>> {
+String name
+}
+hide members
+hide <<Serializable>> circle
+show Dummy1 methods
+show <<Serializable>> fields
+@enduml

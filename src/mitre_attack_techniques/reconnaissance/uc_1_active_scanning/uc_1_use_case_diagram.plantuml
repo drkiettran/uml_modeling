@@ -1,0 +1,23 @@
+@startuml
+	title Use Case: Active Scanning – Scanning IP Blocks
+	
+	actor "Adversary" as A
+	
+	rectangle "Reconnaissance System" {
+	    usecase "1. Select Target Organization" as UC1
+	    usecase "2. Identify IP Address Range" as UC2
+	    usecase "3. Execute IP Block Scan" as UC3
+	    usecase "4. Analyze Open Ports and Services" as UC4
+	    usecase "5. Log Discovered Hosts" as UC5
+	    usecase "6. Plan Next Attack Phase" as UC6
+	}
+	
+	A -- UC1
+	UC1 -- UC2
+	A -- UC2
+	A -- UC3
+	UC3 -- UC4
+	UC4 -- UC5
+	UC5 -- UC6
+
+@enduml

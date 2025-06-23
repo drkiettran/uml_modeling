@@ -1,0 +1,65 @@
+@startuml
+	title Semantic Relationships – Viewpoint of Dependability
+	left to right direction
+	hide stereotype
+		<style>
+	.center {
+	  HorizontalAlignment center
+	}
+	.green {
+	  FontColor green
+	}
+	.red {
+	  FontColor red
+	}
+	</style>
+	
+	' Top-left causal chain
+	rectangle "Fault" as fault <<center>>
+	rectangle "Error" as error <<center>>
+	rectangle "Failure" as failure <<center>>
+	rectangle "System Outage" as system_outage <<center>>
+	rectangle "System\nRestoration" as system_restoration <<center>>
+	
+	fault --> error : causes
+	error --> failure : might\nlead to
+	failure --> system_outage : causes
+	system_outage --> system_restoration : needs
+	
+	' Central concept
+	rectangle "<b>Dependability</b>" as dependability <<center>>
+	
+	failure <-- dependability : avoids
+	
+	' Attributes of Dependability
+	rectangle "Attributes" as attributes {
+		rectangle "Availability"
+		rectangle "Reliability"
+		rectangle "Maintainability"
+		rectangle "Safety"
+		rectangle "Integrity"
+		rectangle "Robustness"
+	}
+	dependability --> attributes: integrates
+	'dependability --> Availability : integrates
+	'dependability --> Reliability : integrates
+	'dependability --> Maintainability : integrates
+	'dependability --> Safety : integrates
+	'dependability --> Integrity : integrates
+	'dependability --> Robustness : integrates
+	
+	' Means to attain Dependability
+		rectangle "Means" as means {
+		rectangle "Fault Forecast" as fault_forecast
+		rectangle "Fault Removal" as fault_removal
+		rectangle "Fault Tolerance" as fault_tolerance
+		rectangle "Fault Prevention" as fault_prevention
+	}
+	
+	dependability --> means: attainted by
+	'dependability --> fault_forecast : attained by
+	'dependability --> fault_removal : attained by
+	'dependability --> fault_tolerance : attained by
+	'dependability --> fault_prevention : attained by
+
+@enduml

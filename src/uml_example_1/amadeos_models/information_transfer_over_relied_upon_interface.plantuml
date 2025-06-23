@@ -1,0 +1,60 @@
+@startuml
+	title Information Transfer over Relied Upon Interfaces in Systems-of-Systems
+	
+	skinparam rectangle {
+	  BackgroundColor White
+	  BorderColor Black
+	}
+	
+	' External sync GPS
+	cloud "GPS\n(Externally synchronized)" as GPS
+	
+	' Main systems
+	rectangle "Constituent\nSystem A" as CSA {
+	  rectangle "RUMI" as RUMI_A
+	  rectangle "RUPI" as RUPI_A
+	}
+	
+	rectangle "Constituent\nSystem B" as CSB {
+	  rectangle "RUMI" as RUMI_B
+	  rectangle "RUPI" as RUPI_B
+	}
+	
+	' Cyber Space section
+	rectangle "Cyber Space" as Cyber {
+	  rectangle "Direct Cyber Channels" as DCC
+	  rectangle "Indirect Cyber Channels" as ICC
+	  note bottom of ICC
+	    Cyber Dynamics\nShared Memory
+	  end note
+	}
+	
+	' Environment section
+	rectangle "Physical Environment\n(Overlapping Entourage of CS A and B)" as ENV {
+	  rectangle "Stigmergic Channels" as STIG
+	  note bottom of STIG
+	    Environmental Dynamics\nPhysical State
+	  end note
+	}
+	
+	' Clock
+	rectangle "Clock" as ClockA
+	rectangle "Clock" as ClockB
+	
+	' SoS Global Arrows
+	GPS ..> ClockA : synchronizes
+	GPS ..> ClockB
+	
+	CSA --> DCC : RUMI
+	CSB --> DCC : RUMI
+	
+	CSA --> ICC
+	CSB --> ICC
+	
+	CSA --> STIG : RUPI
+	CSB --> STIG : RUPI
+	
+	CSA --> ClockA
+	CSB --> ClockB
+
+@enduml

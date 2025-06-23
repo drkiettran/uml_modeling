@@ -1,0 +1,20 @@
+@startuml
+	title Hierarchical Control Pattern
+	
+	' Define the CS systems with stereotypes
+	class "Managing_CS" as Managing_CS <<CS, monitoring, analysis, planning, execution>>
+	
+	class "Int_Managing_CS" as Int_Managing_CS <<RUMI>>
+	class "Int_ManagedCS" as Int_ManagedCS <<RUMI>>
+	
+	class "Managed_CS" as Managed_CS <<CS>>
+	
+	' Associations and flows
+	Managing_CS --> Int_Managing_CS
+	
+	Int_Managing_CS --> Int_ManagedCS : enacting_actions
+	Int_ManagedCS --> Int_Managing_CS : monitoring_info
+	
+	Int_ManagedCS --> Managed_CS
+
+@enduml

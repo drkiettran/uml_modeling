@@ -1,0 +1,68 @@
+@startuml
+	title SoS Design Flow – Amadeos Supporting Facility
+	' left to right direction
+
+	rectangle "Flow" {
+		actor "SoS designer" as sosdesigner
+		actor "SoS profile expert" as sosprofileexpert
+
+  		rectangle "Amadeos supporting facility" {
+    		usecase "Modelling" as modelling
+    		usecase "Validation" as validation
+    		usecase "Code generation" as codegeneration
+    		usecase "Simulation" as simulation
+    		usecase "Collect results" as collectresults
+    		usecase "Analyze results" as analyzeresults
+  		}
+
+	  	rectangle "Export" {
+	    	usecase "Python" as python
+	    	usecase "PlantUML" as plantuml
+	    	usecase "XML" as xml
+	    	usecase "XM" as xm
+	    	usecase "Code" as code
+	    	usecase "Other_formats" as otherformats
+	  	}
+
+  		usecase "Automatic\nmodel\ntransformation" as automatic
+
+  		' Flow arrows
+  		sosdesigner --> modelling: 1
+  		sosprofileexpert --> automatic:Provides\nSoS profile
+  		automatic --> modelling: Blockly
+  		' "SoS designer" --> "Modelling" : 1
+  		' "SoS profile expert" --> ":Automatic\nmodel\ntransformation" : Provides\nSoS profile
+  		' ":Automatic\nmodel\ntransformation" --> "Modelling" : Blockly
+
+		modelling --> validation: 2
+		validation --> codegeneration: 3
+		codegeneration --> simulation: 4
+		simulation --> collectresults: 5
+		collectresults --> analyzeresults: 6
+		analyzeresults --> modelling: 7
+		codegeneration --> python
+  		' "Modelling" --> "Validation" : 2
+  		' "Validation" --> "Code generation" : 3
+  		' "Code generation" --> "Simulation" : 4
+  		' "Simulation" --> "Collect results" : 5
+  		' "Collect results" --> "Analyze results" : 6
+  		' "Analyze results" --> "Modelling" : 7
+
+  		' Export relationships
+  		modelling --> python
+		modelling --> plantuml
+  		modelling --> xml
+  
+  		' "Modelling" --> "Python"
+  		' "Modelling" --> "PlantUML"
+  		' "Modelling" --> "XML"
+
+		plantuml --> xm
+		plantuml --> code
+		plantuml --> otherformats
+  		' "Python" --> "XM"
+  		' "PlantUML" --> "Code"
+  		' "XML" --> "Other_formats"
+	}
+
+@enduml
