@@ -1,0 +1,48 @@
+@startuml
+	title Figure 31: Internal representation of dynamicity viewpoint in CS agent model
+	skinparam nodesep 5
+<style>
+interface {
+shadowing 0
+backgroundcolor transparent
+linecolor transparent
+FontColor transparent
+}
+</style>
+	!include <archimate/Archimate>
+	skinparam linetype ortho
+	
+	' Main CS Agent System Boundary
+	rectangle " " as CS_Agent {
+	  
+	  rectangle "Communication" as Comm
+	  
+	  rectangle "Decision\nmaking" as Decision
+	  
+	  usecase "knowledge" as Knowledge
+	  
+	  database "Other\nCS state\nmodels" as StateModels
+	  
+	}
+	
+	' External block: SoS dynamicity models
+	folder "SoS\ndynamicity\nmodels" as SoSModels
+	
+	' External communication arrows
+	left to right direction
+	() i6
+	() j6
+	Rel_Assignment(CS_Agent, j6, Assignment)
+	'arrow_left "communication" as InComm
+	'arrow_right "actions" as OutAction
+	
+	InComm --> Comm
+	Decision --> OutAction
+	
+	' Connections inside the CS agent boundary
+	Comm ..> StateModels : Detected\nCommunication\nbehavior
+	SoSModels --> Knowledge
+	StateModels --> Knowledge
+	Knowledge ..> Decision : Decision\nto\nreconfigure
+
+@enduml

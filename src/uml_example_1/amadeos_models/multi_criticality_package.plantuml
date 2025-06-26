@@ -1,0 +1,32 @@
+@startuml
+	title Figure 27: Multi-criticality Package
+	
+	skinparam classAttributeIconSize 0
+	skinparam componentStyle rectangle
+	hide circle
+	
+	' ==== Profiles ====
+	component MultiCriticality <<Profile>> {
+	  class critical_service <<Stereotype>>
+	  class criticality_level <<Stereotype>>
+	}
+	
+	component Blocks <<Profile>> <<EPackage>>{
+	  class Block <<Stereotype>>
+	}
+	
+	' ==== External Stereotypes ====
+	class service <<Stereotype>>
+	class dependability_guarantee <<Stereotype>>
+	class security <<Stereotype>>
+	
+	' ==== Generalizations ====
+	critical_service -left-|> service : <<true>>
+	criticality_level -right-|> Block : <<true>>
+	
+	' ==== Relationships ====
+	critical_service "*" --> "1" criticality_level : has
+	criticality_level "1" -down-> "0..1" dependability_guarantee : may have (dep)
+	criticality_level "1" -down-> "0..1" security : may have (sec)
+
+@enduml

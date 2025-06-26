@@ -1,0 +1,145 @@
+@startuml
+	title Figure 26: SoS Time Package
+	
+	'hide circle
+	skinparam classAttributeIconSize 0
+	skinparam componentStyle rectangle
+	
+	' === Profiles and Contexts ===
+	component SoSTime <<Profile>> {
+	  class time_scale <<Stereotype>>
+	  class time_code <<Stereotype>>
+	  class instant <<Stereotype>>
+	  class clock  <<Stereotype>>{
+	    + tick: TimeUnitKind [*]
+	    + offset: TimeUnitKind [*]
+	    + freq_offset: Real [*]
+	    + stability: Real [*]
+	    + wander: Real [*]
+	    + jitter: Real [*]
+	    + granularity: Real [*]
+	  }
+	  class physical_clock <<Stereotype>>
+	  class drift  <<Stereotype>>{
+	    + rate: Real [*]
+	  }
+	  class oscillate  <<Stereotype>>{
+	    + nominalFrequency: Real [1]
+	    + frequencyDiff: Real [*]
+	  }
+	  class clock_ensemble <<Stereotype>>
+	  class external_sync <<Stereotype>>
+	  class primary_clock <<Stereotype>>
+	  class coordinated_clock <<Stereotype>>
+	  class gpsdo  <<Stereotype>>{
+	    + holdover: Integer [*]
+	  }
+	  class global_time <<Stereotype>>
+	  class internal_sync <<Stereotype>>
+	  class reference_clock <<Stereotype>>
+	  class accuracy <<Stereotype>>
+	  class absolute_timestamp <<Stereotype>>
+	  class relative_timestamp <<Stereotype>>
+	  class timestamp <<Stereotype>>
+	  class event  <<Stereotype>>{
+	    + timestamp: timestamp [*]
+	  }
+	  class epoch <<Stereotype>>
+	  class signal <<Stereotype>>
+	  class offset <<Stereotype>>
+	  class cycle <<Stereotype>>
+	  class period  <<Stereotype>>{
+	    + phase: Integer [*]
+	  }
+	  class interval <<Stereotype>>
+	  class timeline <<Stereotype>>
+	}
+	
+	' === External Profiles and MetaClasses ===
+	component "Time \nMARTE::MARTE_Foundations"<<Profile>> <<EPackage>> {
+	  class Clock <<Stereotype>>
+	}
+	component SysML::Package::Blocks <<Profile>> <<EPackage>>{
+	  class Block <<Stereotype>>
+	}
+	class Lifeline <<Stereotype>>
+	class TimeConstraint <<Stereotype>>
+	class IntervalConstraint <<Stereotype>>
+	
+	' === Relationships ===
+	clock -up-|> Block: <<true>>
+	clock -up-|> Clock: <<true>>
+	
+	epoch -right-|> instant: <<true>>
+	event -left-> TimeConstraint
+	interval --> IntervalConstraint: is composed by events
+	period -up-|> cycle: <<true>>
+	cycle *-up-> event: is composed by events
+	
+	signal -up-|> event: <<true>>
+	offset "1" *-up-> "2" event: related to
+	event "1" -up-> "*" instant: happens at
+	interval "1" *-up-> "2" instant: is composed by
+	clock "1" --> "1" instant: measures
+	time_code "1" --> "*" instant: used for measure
+	timeline "1" *-down-> "*" instant: is composed by
+	timeline -up-> Lifeline
+	
+	time_scale --|> time_code: <<true>>
+	
+	reference_clock -up-|> clock: <<true>>
+	accuracy "1" --> "1" reference_clock: depends on
+	absolute_timestamp "1" -up-> "1" reference_clock: depends on
+	
+	absolute_timestamp --|> timestamp
+	relative_timestamp --|> timestamp
+	
+	clock "1" --> "1" accuracy: has
+	clock "1" --> "*" internal_sync: based on
+	internal_sync "*" --> "*" global_time: established
+	
+	gpsdo -up-|> clock: <<true>>
+	coordinated_clock -up-|> clock: <<true>>
+	primary_clock -up-|> clock: <<true>>
+	clock "1" --> "*" external_sync: based on
+	clock_ensemble "1" -left-> "*" clock: is composed by 
+	clock "1" *--> "*" oscillate: is composed by
+	physical_clock --|> clock: <<true>>
+	
+	physical_clock "1" -right-> "1" drift: has a drift
+/'
+	instant --> epoch : <<true>>
+	instant --> time_code
+	time_code --> time_scale : <<true>>
+	instant --> clock : measures
+	instant --> event : happens in 1
+	event --> timestamp : +timestamp
+	interval --> event : is composed by
+	interval --> instant : is composed by 1
+	event --> TimeConstraint
+	interval --> IntervalConstraint
+	cycle --> period : <<true>>
+	offset --> signal : related to 1
+	
+	clock --> reference_clock : depends or
+	clock --> internal_sync : based on
+	clock --> accuracy : has
+	clock --> timestamp : based on
+	clock --> physical_clock : is composed by
+	physical_clock --> drift : has a drift
+	clock --> oscillate : is composed by
+	clock --> clock_ensemble : is composed by
+	clock --> external_sync : based on
+	clock --> primary_clock : <<true>>
+	clock --> coordinated_clock : <<true>>
+	coordinated_clock --> gpsdo : establishes
+	clock --> global_time : establishes
+	interval --> timeline : is composed by
+	clock --> absolute_timestamp
+	clock --> relative_timestamp
+'/
+
+	hide <<Stereotype>> circle
+	hide <<Profile>> circle
+	hide <<Metaclass>> circle
+@enduml

@@ -1,0 +1,68 @@
+@startuml
+	title Figure 24: SoS Dependability Conceptual Model
+	
+	skinparam classAttributeIconSize 0
+	skinparam componentStyle rectangle
+	
+	
+	' Profiles and Blocks
+	component SoSDependability <<Profile>> {
+	  	class technique <<Stereotype>>
+	  	class dependability_guarantee <<Stereotype>>
+	  	class measure <<Stereotype>>{
+	    	+ target_value : String [1]
+	  	}
+	
+		class fault_forecast <<Stereotype>>
+		class fault_tolerance <<Stereotype>>
+		class fault_removal <<Stereotype>>
+		class fault_prevention <<Stereotype>>
+
+		class fault_containment_region <<Stereotype>>
+ 		class error_containment_region <<Stereotype>>
+ 		class error_containment <<Stereotype>>
+	
+		class robustness <<Stereotype>>
+		class integrity <<Stereotype>>
+		class safety <<Stereotype>>
+		class maintainability <<Stereotype>>
+		class availability <<Stereotype>>
+		class reliability <<Stereotype>>
+	}
+	
+	' Base Elements
+	class CS <<Stereotype>>
+	class SOS <<Stereotype>>
+	
+	
+	component Blocks <<Profile>> <<EPackage>> {
+	  	class Block <<Stereotype>>
+	}
+	
+	' Relationships
+	CS "1" --> "*" dependability_guarantee : may require (cs)
+	SOS "1" --> "*" dependability_guarantee : may require (sos)
+	dependability_guarantee "1" --> "*" technique : requires
+	dependability_guarantee "1" --> "*" measure : through
+	dependability_guarantee -up-|> Block: <<true>>
+	
+	fault_forecast -up-|> technique: <<true>>
+	fault_tolerance -up-|> technique: <<true>>
+	fault_removal -up-|> technique: <<true>>
+	fault_prevention -up-|> technique: <<true>>
+	technique -up-|> Block: <<true>>
+	
+	robustness -up-|> measure: <<true>>
+	integrity  -up-|> measure: <<true>>
+	safety -up-|> measure: <<true>>
+	maintainability -up-|> measure: <<true>>
+	availability -up-|> measure: <<true>>
+	reliability -up-|> measure: <<true>>
+	
+	fault_containment_region "1" o-right- "*" error_containment_region
+	error_containment_region "1" -right-> "*" error_containment
+	
+	hide <<Stereotype>> circle
+	hide <<Profile>> circle
+
+@enduml

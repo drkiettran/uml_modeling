@@ -1,0 +1,87 @@
+@startuml
+	title Figure 25: SoS Security Package
+	
+	skinparam classAttributeIconSize 0
+	'hide circle
+	
+	' === Package and Profile Context ===
+	component SoSSecurity <<Profile>> {
+		class security <<Stereotype>>
+	  	class cryptography <<Stereotype>>
+	  	class encryption <<Stereotype>>
+	  	class decryption <<Stereotype>>
+	    class data <<Stereotype>>
+	    class plaintext <<Stereotype>>
+	    class ciphertext <<Stereotype>>
+	    class permission <<Stereotype>>
+	    class subject <<Stereotype>>
+	    class object <<Stereotype>>
+	    class authentication <<Stereotype>>
+	    class authorization <<Stereotype>>
+	    class access_process <<Stereotype>>
+	    class access_control <<Stereotype>>
+	    class access_control_model <<Stereotype>>
+	    class security_policy <<Stereotype>>
+	    class reference_monitor <<Stereotype>>
+	    
+		' === Cryptography Detail Stereotypes ===
+		class symmetric_cryptography <<Stereotype>>
+		class public_key_cryptography <<Stereotype>>
+		class symmetric_key<<Stereotype>>
+		class private_key<<Stereotype>>
+		class public_key<<Stereotype>>
+	}
+	
+	' === Contextual Entities ===
+	class CS <<Stereotype>>
+	class SOS <<Stereotype>>
+	class "Block" as block_1 <<Stereotype>> 
+	component Blocks as blocks <<Profile>> <<EPackage>> {
+	  class "Block" as block_2 <<Stereotype>>
+	}
+	
+	' === Relationships ===
+	CS "1" -down-> "1" security : satisfy\nthe condition\nof (cs)
+	SOS "1" -down-> "*" security : satisfy\nthe condition\nof (sos)
+	
+	security "*" --> "*" cryptography : guaranteed\nthrough 
+	security -up-|> block_1
+	cryptography "1" --> "1..*" encryption: uses\nencryption
+	cryptography "1" --> "1..*" decryption: uses\ndecryption
+	
+	encryption "1" --> "*" data : encrypts
+	decryption "1" --> "*" data : decrypts
+	encryption --|> block_1
+	
+	
+	symmetric_cryptography -up-|> cryptography
+	public_key_cryptography -up-|> cryptography
+	
+	symmetric_cryptography "1" --> "1" symmetric_key : uses\nkey\n(symmetric)
+	symmetric_key -up-|> block_2: <<true>>
+	private_key -up-|> block_2: <<true>>
+	public_key -up-|> block_2: <<true>>
+	
+	public_key_cryptography "1" -up-> "1" private_key : uses\nkey\n(private)
+	public_key_cryptography "1" -up-> "1" public_key : uses\nkey\n(public)
+	
+	cryptography -up-|> block_1
+	access_control "1" -up->  "1"cryptography
+	
+	ciphertext -up-|> data: <<true>>
+	plaintext -up-|> data: <<true>>	
+	
+	reference_monitor "1" -up-> "1" access_control: implements
+	access_control --> authorization
+	access_control "1" -down-> "1" access_control_model: is\nmanaged\nby
+	access_control "1" -down-> "1" security_policy: follows
+	
+	access_process "1" -down-> "*" authorization: authorization\nphase
+	access_process "1" --> "1" authentication: authentication\nphase
+	access_process "1" --> "1" object: access
+	
+	subject "1" --> "1" access_process: uses\nprocesses
+	subject "1" --> "1" permission: has\npermission
+
+	hide <<Stereotype>> circle
+@enduml

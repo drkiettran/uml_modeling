@@ -1,0 +1,46 @@
+@startuml
+	title Figure 30: Smart Grid Household – Emergent Behavior (Sequence Diagram)
+	
+	participant "Clothes dryer" as CD <<cs>>
+	participant Microwave as MW <<cs>>
+	participant "Washing Machine" as WM <<cs>>
+	participant "Smart Meter" as SM <<cs>>
+	participant EMG as EMG <<cs>>
+	participant Coordinator as Coord <<cs>>
+	participant "EMG PEL" as PEL <<cs>>
+	
+	== t1 ==
+	WM -> EMG : <<message>>\nWM energy request
+	'SM -> EMG : <<message>>\naggregated values
+	EMG -> Coord : <<message>>\naggregated values
+	Coord -> EMG : <<message>>\nOK
+	== t2 ==
+	EMG -> WM : <<message>>\nok
+	== t3 ==
+	PEL -> Coord : <<message>>\nPEL energy \nrequest
+	== t4 ==
+	Coord -> PEL : <<message>>\nok
+	
+	== t5 ==
+	MW -> EMG : <<message>>\naggregated values
+	EMG -> Coord : <<message>>\naggregated values
+	
+	== t6 ==
+	Coord -> EMG : <<message>>\nKO - Switch off MW
+	
+	== t7 ==
+	EMG -> SM : <<message>>\nKO - Switch off MW
+	
+	
+	== t8 ==
+	CD -> EMG : <<message>>\nCD energy \nrequest	
+	EMG -> Coord : <<message>>\naggregated values
+	
+	== t9 ==
+	Coord -> EMG : <<message>>\nKO - Switch off CD
+	
+	== t10 ==
+	EMG -> CD : <<message>>\nKO - Switch off CD
+	
+
+@enduml

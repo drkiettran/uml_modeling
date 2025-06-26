@@ -1,0 +1,151 @@
+@startuml
+	title Figure 29: Smart Grid Household – Emergent Behavior
+	
+	skinparam classAttributeIconSize 0
+	skinparam componentStyle rectangle
+	
+	hide circle
+	
+	' ========= Core System of Systems Block =========
+	class "SG_Household" as SG <<SOS, Block>> {
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	' ========= Component Subsystems (CS) =========
+	class Coordinator <<CS>> {
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	class EMG  <<CS>>{
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	class SM <<CS>> {
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	class "Flexible Load" as FL <<CS>> {
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	class "Microwave" as MW <<CS>> {
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	class "Clothes Dryer" as CD <<CS>> {
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	class "Washing Machine" as WM <<CS>> {
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	class "EMG Public \nEvent Lighting" as EPEL <<CS>> {
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	' ========= Emergence and Phenomena =========
+	class "Public Event \nLighting" as PEL <<explained_emergence_phenomenon>> {
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	class "Reduced Energy" as RE <<unexpected_and_detrimental>> {
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	class "Coordinator \nBalancing \nBehavior" as CBB <<CS>> {
+	  properties
+	  --
+	  operations
+	  --
+	  constraints
+	}
+	
+	' ========= Composition and Communication Relationships =========
+	
+	EPEL "[1]" -up- "[1]" Coordinator: exchanges\n info
+	SG "[1]" o-up-> "[1]" EPEL: composed by \nEMG PEL
+	SG "[1]" o-up-> "[1]" Coordinator: composed \nby \nCoordinator
+	SG "[1]" o-up-> "[1]" EMG: composed \nby EMG
+	SG "[1]" o-up-> "[1]" SM: composed \nby SM
+	SG "[1]" o-up-> "[1]" FL: composed \nby FLs
+	SG o--> PEL: produces
+	CBB "[1]" --> "[1]" PEL: explains
+	
+	PEL "[1]" --> "[1]" RE: causes
+	
+	EMG "[1]" --> "[1]" FL: controls \nthe load
+	EMG "[1]" -left- "[1]" Coordinator: exchanges \ninfo
+	SM "[1]" -left-> "[1]" EMG: sends \ninfo
+	SM "[1]" -down-> "[1]" FL: receives \nvalues \nfrom
+	
+	FL "[1]" o--> "[0..*]" MW
+	FL "[1]" o--> "[0..*]" CD
+	FL "[1]" o--> "[0..*]" WM
+/'	
+	SG_Household --> Public Event Lighting : produces
+	Public Event Lighting --> Reduced Energy : causes
+	Public Event Lighting --> Coordinator Balancing Behavior : explains
+	
+	SG_Household --> Coordinator : composed by Coordinator [1]
+	SG_Household --> EMG : composed by EMG [1]
+	SG_Household --> SM : composed by SM [1]
+	SG_Household --> Flexible Load : composed by FLs [1]
+	SG_Household --> EMG Public Event Lighting : composed by EMG PEL [1]
+	
+	Coordinator --> EMG Public Event Lighting : exchanges infc [1]
+	Coordinator --> EMG : exchanges infc [1]
+	EMG --> SM : sends infc [1]
+	SM --> Flexible Load : receives values from [1]
+	EMG --> Flexible Load : controls the load [1]
+	
+	Flexible Load --> Microwave : [0..*]
+	Flexible Load --> Clothes Dryer : [0..*]
+	Flexible Load --> Washing Machine : [0..*]
+'/
+
+@enduml

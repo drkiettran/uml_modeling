@@ -1,0 +1,70 @@
+@startuml
+	title Figure 28: SoS Emergence Package
+	
+	skinparam classAttributeIconSize 0
+	skinparam componentStyle rectangle
+	hide circle
+	
+	' ========== Profiles ==========
+	component SoSEmergence <<Profile>> {
+	  class behavior <<Stereotype>>
+	  class emergent_phenomenon <<Stereotype>>
+	  class unexplained_emergence_phenomenon <<Stereotype>>
+	  class explained_emergence_phenomenon <<Stereotype>>
+	  class resultant_phenomenon <<Stereotype>>
+	  class law <<Stereotype>>
+	  class transOrdinal_law <<Stereotype>>
+	  class intraOrdinal_law <<Stereotype>>
+	  class unexpected_and_detrimental <<Stereotype>>
+	  class unexpected_and_beneficial <<Stereotype>>
+	  class expected_and_beneficial <<Stereotype>>
+	  class expected_and_detrimental <<Stereotype>>
+	  class phenomenon <<Stereotype>>
+	}
+	
+	' ========== External Stereotypes ==========
+	class SOS <<Stereotype>>
+	class Block <<Stereotype>>
+	
+	' ========== Generalizations ==========
+	law -up-|> Block: <<true>>
+	transOrdinal_law --|> law: <<true>>
+	intraOrdinal_law --|> law: <<true>>
+	transOrdinal_law "1" -up-|> "1" explained_emergence_phenomenon: explains
+	explained_emergence_phenomenon -up-|> emergent_phenomenon: <<true>>
+	unexplained_emergence_phenomenon -up-|> emergent_phenomenon: <<true>>
+	behavior "1" --> "1" emergent_phenomenon: is caused by
+	resultant_phenomenon -left-|> emergent_phenomenon: <<true>>
+	emergent_phenomenon -up-|> phenomenon: <<true>>
+	phenomenon -up-|> Block: <<true>>
+	
+	behavior -up-|> Block: <<true>>
+	SOS "1" --> "*" behavior: has a behavior
+	unexpected_and_detrimental -up-|> behavior: <<true>>
+	unexpected_and_beneficial -up-|> behavior: <<true>>
+	expected_and_detrimental -up-|> behavior: <<true>>
+	expected_and_beneficial -up-|> behavior: <<true>>
+	
+	
+/'	
+	Block -|> law : <<true>>
+	phenomenon -|> resultant_phenomenon : <<true>>
+	phenomenon -|> emergent_phenomenon : <<true>>
+	emergent_phenomenon -|> unexplained_emergence_phenomenon : <<true>>
+	emergent_phenomenon -|> explained_emergence_phenomenon : <<true>>
+	law -|> transOrdinal_law : <<true>>
+	law -|> intraOrdinal_law : <<true>>
+	behavior -|> unexpected_and_detrimental : <<true>>
+	behavior -|> unexpected_and_beneficial : <<true>>
+	behavior -|> expected_and_beneficial : <<true>>
+	behavior -|> expected_and_detrimental : <<true>>
+	
+	' ========== Relationships ==========
+	SOS --> behavior : has a behavior\n*
+	resultant_phenomenon --> behavior : is caused by\n1
+	behavior --> resultant_phenomenon : <<true>>
+	explained_emergence_phenomenon --> transOrdinal_law : explains\n1
+	transOrdinal_law --> explained_emergence_phenomenon : 1
+'/
+
+@enduml
