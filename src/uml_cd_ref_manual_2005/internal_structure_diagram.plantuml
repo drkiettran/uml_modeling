@@ -1,0 +1,46 @@
+@startuml
+	title Internal Structure Diagram - BoxOffice
+	skinparam componentStyle rectangle
+	
+	' Define the main component
+	component BoxOffice {
+		portin " " as p0
+		component "seller:TicketSeller" {
+			portin " " as p1
+			portout " " as p2
+		}
+		component "guide:PerformanceGuide" {
+			portin " " as p3
+			portout " " as p4
+		}
+		component "db:PerformanceDB[*]" {
+			portin " " as p5
+		}
+	}
+	circle sellTicket
+	sellTicket -- p0
+	p0 -- p1
+	p2 -- "1" p3
+	p4 -- "*" p5
+	
+/'
+	component BoxOffice {
+	    object seller : TicketSeller
+	    object guide : PerformanceGuide
+	    object db : PerformanceDB
+	
+	    ' Note: db is a collection, represented as [*]
+	    note right of db
+	        Multiplicity: [*]
+	    end note
+	
+	    seller --> guide : 1
+	    guide --> db : *
+	}
+	
+	' Represent the provided port (external interface)
+	BoxOffice -[hidden]-> seller : 
+	interface sellTickets
+	sellTickets -o BoxOffice : 
+'/
+@enduml

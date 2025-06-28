@@ -1,0 +1,96 @@
+@startuml
+	title Component Definition - CreditCardAgency
+	
+	' Define external interfaces
+	interface applyCharges
+	interface manage
+	interface customerAccess
+	interface clerkAccess
+	
+	'skinparam componentStyle rectangle
+	' Component Definition Boundary
+	component CreditCardAgency {
+		portin "port" as port
+		portin " " as p1
+		portout " " as p2
+		portout " " as p3
+		
+		component "<b>:CreditCardCharges" as ccc
+		component "<b>:Tickets" as tickets
+		component "<b>:TicketSeller" as ticketseller
+		component "<b>:ManagerInterface" as managerinterface
+		component "<b>:KioskInterface" as kioskinterface
+		component "<b>:ClerkInterface" as clerkinterface
+		interface charge
+		interface subscriptionSales 
+		interface individualSales
+		interface purchase
+		interface status
+		interface groupSales
+	}
+	
+	' relationships
+	applyCharges )-- port
+	manage -- p1
+	ccc -> port
+	ccc -- charge
+	charge )-- ticketseller
+	
+	ticketseller -- subscriptionSales
+	subscriptionSales )-- kioskinterface
+	subscriptionSales )-- clerkinterface
+	
+	ticketseller -- individualSales
+	individualSales )-- kioskinterface
+	individualSales )-- clerkinterface
+	
+	ticketseller -- groupSales
+	groupSales )-- clerkinterface
+	
+	tickets -- purchase
+	purchase )-- ticketseller
+	
+	tickets -- status
+	status )-- managerinterface
+	
+	p1 --> managerinterface
+	customerAccess -up- p2
+	clerkAccess -up- p3
+	
+	p2 -up-> kioskinterface
+	p3 -up-> clerkinterface
+	
+
+	/'
+	package "CreditCardAgency" {
+	
+	    [CreditCardCharges] as CCC
+	    [Tickets] as T
+	    [TicketSeller] as TS
+	    [ManagerInterface] as MI
+	    [KioskInterface] as KI
+	    [ClerkInterface] as CI
+	
+	    ' Use dependencies (component usage)
+	    CCC ..> TS : <<use>>
+	    T ..> TS : <<use>>
+	
+	    ' Interface connections (provided / required)
+	    CCC -[#0000FF,dashed]-> TS : charge
+	    TS -[#0000FF,dashed]-> T : purchase
+	    T -[#0000FF,dashed]-> MI : status
+	
+	    ' Internal connectors (usage inside system)
+	    TS --> KI : subscriptionSales
+	    TS --> KI : individualSales
+	    TS --> CI : groupSales
+	    TS --> CI : individualSales
+	
+	    ' External access ports
+	    applyCharges -o CCC
+	    manage -o MI
+	    customerAccess -o KI
+	    clerkAccess -o CI
+	}
+	'/
+@enduml

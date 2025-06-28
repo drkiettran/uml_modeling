@@ -1,0 +1,97 @@
+@startuml
+	title Ticket Reservation System - Class Diagram
+	skinparam defaultTextAlign center
+	
+	' Define classes with attributes and operations
+	class Customer {
+	    - name: String
+	    - phone: String
+	    {static} + add(name: String, phone: String)
+	}
+	note right of Customer::name
+		attributes
+	end note
+	note right of Customer::add
+		static operation
+	end note
+	
+	class Reservation {
+	    - date: Date
+	}
+	
+	class SubscriptionSeries {
+	    - series: Integer
+	}
+	
+	class IndividualReservation {
+	}
+	
+	class Ticket {
+	    - available: Boolean
+	    + sell(c: Customer)
+	    {abstract} + exchange()
+	}
+	note left of Ticket::sell
+		operation
+	end note
+	note left of Ticket::exchange
+		abstract operation
+	end note
+	
+	
+	class Show {
+	    - name: String
+	}
+	
+	class Performance {
+	    - date: Date
+	    - time: TimeOfDay
+	}
+	
+	' Generalization
+	SubscriptionSeries -up-|> Reservation: generalization
+	IndividualReservation -up-|> Reservation
+	' Reservation <|-- SubscriptionSeries
+	' Reservation <|-- IndividualReservation
+	
+	' Associations
+	Customer "1 owner" -- " * purchased" Reservation: association
+	'Customer "1" --> "*" Reservation : purchased
+	'Reservation --> Customer : owner
+	
+	' Ticket associations
+	SubscriptionSeries "0..1" -- "3..6" Ticket
+	note right on link 
+		constraints
+		{xor}
+	end note
+	IndividualReservation "0..1" -- "1" Ticket
+	
+	Ticket "0..1" - "1" [seat:String] Performance
+	
+	'SubscriptionSeries "0..1" --> "3..6" Ticket
+	'IndividualReservation "0..1" --> "1" Ticket
+	'Ticket "0..1" --> "1" Performance : seat
+	
+	' Show and Performance
+	Show "1 show" -- "1..* performances" Performance
+	'Show "1" --> "1..*" Performance : performances
+	'Performance --> Show : show
+	
+	' Qualifier
+	
+	'Performance --> Ticket : seat
+	
+	' Add constraint label
+	skinparam defaultTextAlign left
+	note as N1
+		- <b>owner</b> & <b>purchased</b>: rolenames
+		- <b>1</b>, <b>1..*</b>, etc.: multiplicities
+		- <b>seat:String</b>: qualifier
+	end note
+	/'
+	note on link between SubscriptionSeries and Ticket
+	  {xor}
+	end note
+	'/
+@enduml

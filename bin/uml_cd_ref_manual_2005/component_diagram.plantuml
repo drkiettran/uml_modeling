@@ -1,0 +1,27 @@
+@startuml
+	title Component Diagram
+	
+	interface applyCharges
+	interface manage
+	interface "Customer\nAccess" as ca
+	interface ClerkAccess
+	interface charge
+	
+	component "CreditCardAgency" as cca {
+		
+		portin " " as p1
+		portout " " as p2
+		portout " " as p3
+		portout "port" as p4
+	}
+	component CreditCardCharges	as ccc	
+	
+	
+	' relationships
+	applyCharges )-- p1
+	p2 -- manage
+	p3 -- ca
+	p4 -- ClerkAccess
+	
+	applyCharges -- ccc
+@enduml

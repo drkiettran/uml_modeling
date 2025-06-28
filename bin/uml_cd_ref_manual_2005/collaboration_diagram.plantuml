@@ -1,0 +1,35 @@
+@startuml
+	title Collaboration Diagram - TheatreSales
+	skinparam componentStyle rectangle
+	left to right direction
+	' Define participants with roles and types
+	component TheaterSales {
+		component "kiosk:Kiosk[*]" as kiosk
+		
+		component ":BoxOffice" as boxoffice
+		
+		component "terminal:SalesTerminal[*]" as terminal
+	} 
+	kiosk "*" -- "1" boxoffice
+	boxoffice "1" -- "*" terminal
+	/'
+	object "kiosk:Kiosk[*]" as Kiosk
+	object ":BoxOffice" as BoxOffice
+	object "terminal:SalesTerminal[*]" as Terminal
+	
+	' Enclose the collaboration in a package to simulate context
+	package "TheatreSales" {
+	    Kiosk --> BoxOffice : *
+	    BoxOffice --> Terminal : *
+	}
+	
+	' Add multiplicity notes if needed
+	note on link between Kiosk and BoxOffice
+	  * --- 1
+	end note
+	
+	note on link between BoxOffice and Terminal
+	  1 --- *
+	end note
+	'/
+@enduml
