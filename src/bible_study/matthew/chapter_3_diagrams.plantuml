@@ -1,0 +1,437 @@
+@startuml
+title Matthew 3 - Key Events and Interactions
+
+actor "Crowds" as Crowds
+actor "Pharisees & Sadducees" as Leaders
+participant "John the Baptist" as John
+participant "Jesus" as Jesus
+participant "Holy Spirit" as Spirit
+participant "Voice of God" as Father
+
+== John's Ministry ==
+John -> Crowds: Preaches "Repent, Kingdom of Heaven is at hand"
+note right: Isaiah 40:3 prophecy fulfilled
+
+Crowds -> John: Confess sins and receive baptism
+
+Leaders -> John: Come to observe baptism
+John -> Leaders: "Brood of vipers! Bear fruit of repentance!"
+
+John -> Crowds: "One mightier will baptize with Holy Spirit & fire"
+
+== Baptism of Jesus ==
+Jesus -> John: Request baptism
+John -> Jesus: "I should be baptized by you!"
+Jesus -> John: "Let it be so to fulfill all righteousness"
+John -> Jesus: Baptizes Jesus in the Jordan
+
+== Divine Revelation ==
+Jesus -> Spirit: Receives descent as a dove
+Spirit -> Jesus: Anoints
+Father -> Jesus: "This is my beloved Son, with whom I am well pleased"
+
+@enduml
+
+
+
+@startuml
+title Matthew 3 - Roles and Relationships (Class Diagram Style)
+
+' Define abstract class for roles
+abstract class "Divine Person" as Divine
+abstract class "Human Person" as Human
+
+' Divine Persons
+class "God the Father" as Father {
+  Role: Proclaims Jesus as Son
+  Nature: Divine
+}
+class "Holy Spirit" as Spirit {
+  Role: Descends as dove
+  Nature: Divine
+}
+
+' Human Persons
+class "Jesus Christ" as Jesus {
+  Role: Son of God, baptized
+  Age: ~30
+}
+class "John the Baptist" as John {
+  Role: Prophet, Baptizer
+  Age: ~30
+}
+class "Pharisees" as Pharisees {
+  Role: Religious leaders, warned by John
+}
+class "Sadducees" as Sadducees {
+  Role: Religious leaders, warned by John
+}
+class "Crowds/People" as Crowds {
+  Role: Come for baptism and repentance
+}
+
+' Inheritances
+Father --|> Divine
+Spirit --|> Divine
+Jesus --|> Divine
+Jesus --|> Human
+John --|> Human
+Pharisees --|> Human
+Sadducees --|> Human
+Crowds --|> Human
+
+' Relationships
+John --> Crowds : Baptizes\nPreaches Repentance
+John --> Pharisees : Warns\n("Brood of vipers")
+John --> Sadducees : Warns\n("Bear fruit of repentance")
+Jesus --> John : Requests Baptism
+John --> Jesus : Baptizes in Jordan
+Spirit --> Jesus : Descends\nas Dove
+Father --> Jesus : Declares "Beloved Son"
+Father --> Spirit : Sends
+Crowds --> John : Confess sins\nReceive baptism
+
+@enduml
+
+
+@startuml
+title Development of Baptism - Historical & Theological Lineage
+
+' Define key phases as classes
+class "Jewish Ritual Washings\n(Mikveh)" as Jewish {
+  Purpose: Ritual purification
+  Reference: Leviticus 14-15\nNumbers 19
+  Symbolism: Cleansing from ritual impurity
+}
+
+class "John the Baptist's Baptism" as JohnBaptism {
+  Purpose: Repentance & preparation
+  Location: Jordan River
+  Symbolism: Confession of sins
+  Scripture: Matthew 3:1-6
+}
+
+class "Baptism of Jesus" as JesusBaptism {
+  Purpose: Fulfills all righteousness
+  Event: Jesus baptized by John
+  Symbolism: Sanctifies waters
+  Scripture: Matthew 3:13-17
+}
+
+class "Christian Sacramental Baptism" as ChristianBaptism {
+  Purpose: Forgiveness of sins & new life
+  Instituted by: Jesus Christ
+  Formula: "In the name of the Father,\nSon, and Holy Spirit"
+  Scripture: Matthew 28:19
+}
+
+' Relationships showing lineage
+Jewish --> JohnBaptism : Prefigures
+JohnBaptism --> JesusBaptism : Prepares for Christ
+JesusBaptism --> ChristianBaptism : Leads to sacramental grace
+
+' Highlight effects
+note top of ChristianBaptism
+- Cleanses original & personal sin
+- Imparts Holy Spirit
+- Incorporates into the Church
+- New birth in Christ
+end note
+
+@enduml
+
+
+
+@startuml
+title Effects and Benefits of Christian Baptism (Catholic Teaching)
+'left to right direction
+
+' Main sacrament class
+class "Baptism (Sacrament)" as Baptism {
+  Matter: Water
+  Form: "I baptize you in the name of the Father, and of the Son, and of the Holy Spirit"
+  Minister: Ordinary - Bishop, Priest, Deacon\nExtraordinary - Any person with proper intent
+}
+
+' Effects of Baptism
+class "Forgiveness of Sin" as Forgiveness {
+  Includes: Original Sin\nPersonal Sins (if any)
+}
+
+class "Sanctifying Grace" as Grace {
+  Description: Divine life infused into the soul
+}
+
+class "Indwelling of the Holy Spirit" as HolySpirit {
+  Description: Soul becomes a temple of the Holy Spirit
+}
+
+class "Adoption as Child of God" as Adoption {
+  Description: Becomes member of God's family
+}
+
+class "Incorporation into the Church" as ChurchMembership {
+  Description: Enters the Body of Christ\nand gains membership in the Church
+}
+
+class "Indelible Spiritual Mark" as Character {
+  Description: Cannot be repeated\nPermanent sacramental character
+}
+
+class "Gateway to Other Sacraments" as Gateway {
+  Description: Prerequisite for receiving\nConfirmation & Eucharist
+}
+
+' Relationships
+Baptism --> Forgiveness : Cleanses
+Baptism --> Grace : Infuses
+Baptism --> HolySpirit : Bestows
+Baptism --> Adoption : Adopts into Divine Life
+Baptism --> ChurchMembership : Incorporates into Church
+Baptism --> Character : Imprints
+Baptism --> Gateway : Opens path to other sacraments
+
+@enduml
+
+
+@startuml
+title Baptism: History, Institution, and Effects (Catholic Teaching)
+
+' ===== Historical Lineage Section =====
+package "Historical Roots" {
+    class "Jewish Ritual Washings\n(Mikveh)" as Jewish {
+      Purpose: Ritual purification
+      OT Reference: Leviticus 14-15\nNumbers 19
+      Symbolism: Cleansing from ritual impurity
+    }
+
+    class "John the Baptist's Baptism" as JohnBaptism {
+      Purpose: Repentance & Preparation
+      Location: Jordan River
+      Symbolism: Confession of sins
+      Scripture: Matthew 3:1-6
+    }
+
+    class "Baptism of Jesus" as JesusBaptism {
+      Purpose: Fulfill all righteousness
+      Event: Baptized by John
+      Symbolism: Sanctifies waters
+      Scripture: Matthew 3:13-17
+    }
+}
+
+Jewish --> JohnBaptism : Prefigures
+JohnBaptism --> JesusBaptism : Prepares for Christ
+
+' ===== Christian Sacrament Section =====
+package "Christian Sacramental Baptism" {
+    class "Baptism (Sacrament)" as Baptism {
+      Matter: Water
+      Form: "I baptize you in the name of the Father,\nSon, and Holy Spirit"
+      Minister: Bishop, Priest, Deacon\n(Or anyone in emergency)
+      Scripture: Matthew 28:19
+    }
+
+    class "Forgiveness of Sin" as Forgiveness {
+      Includes: Original Sin + Personal Sins
+    }
+    class "Sanctifying Grace" as Grace {
+      Description: Divine life in the soul
+    }
+    class "Indwelling of the Holy Spirit" as HolySpirit {
+      Description: Soul becomes temple of Holy Spirit
+    }
+    class "Adoption as Child of God" as Adoption {
+      Description: Becomes member of God's family
+    }
+    class "Incorporation into the Church" as ChurchMembership {
+      Description: Enters Body of Christ
+    }
+    class "Indelible Spiritual Mark" as Character {
+      Description: Permanent sacramental character
+    }
+    class "Gateway to Other Sacraments" as Gateway {
+      Description: Required for\nConfirmation & Eucharist
+    }
+}
+
+' Lineage to Sacrament
+JesusBaptism --> Baptism : Leads to institution of sacrament
+
+' Sacramental Effects
+Baptism --> Forgiveness : Cleanses
+Baptism --> Grace : Infuses
+Baptism --> HolySpirit : Bestows
+Baptism --> Adoption : Adopts
+Baptism --> ChurchMembership : Incorporates
+Baptism --> Character : Imprints
+Baptism --> Gateway : Opens path
+
+note bottom of Baptism
+Effects:
+1. Forgives sins
+2. Infuses grace
+3. Holy Spirit indwelling
+4. Adoption as child of God
+5. Church membership
+6. Indelible mark
+7. Gateway to other sacraments
+end note
+
+@enduml
+
+
+@startuml
+title The Seven Sacraments of the Catholic Church
+
+' ==== Sacrament Categories ====
+package "Sacraments of Initiation" #LightBlue {
+    class Baptism {
+        Scripture: Matthew 28:19
+        Effect: Cleanses sin, adoption, Church membership
+    }
+    class Confirmation {
+        Scripture: Acts 8:14-17
+        Effect: Sealed with Holy Spirit, strengthens faith
+    }
+    class Eucharist {
+        Scripture: Luke 22:19-20
+        Effect: Communion with Christ, spiritual nourishment
+    }
+}
+
+package "Sacraments of Healing" #LightGreen {
+    class Penance {
+        Scripture: John 20:22-23
+        Effect: Forgives sins, reconciles with God & Church
+    }
+    class "Anointing of the Sick" as Anointing {
+        Scripture: James 5:14-15
+        Effect: Strength, healing, preparation for eternity
+    }
+}
+
+package "Sacraments of Service / Vocation" #LightYellow {
+    class Matrimony {
+        Scripture: Matthew 19:6
+        Effect: Union of spouses, sign of Christ & Church
+    }
+    class "Holy Orders" as HolyOrders {
+        Scripture: Luke 22:19; 2 Tim 1:6
+        Effect: Grace to teach, sanctify, and govern
+    }
+}
+
+' ==== Relationships to Christ ====
+class "Christ" as Christ {
+  Role: Institutor of the Sacraments
+  Purpose: Channels of grace
+}
+
+' Arrows from Christ to each sacrament
+Christ --> Baptism
+Christ --> Confirmation
+Christ --> Eucharist
+Christ --> Penance
+Christ --> Anointing
+Christ --> Matrimony
+Christ --> HolyOrders
+
+note bottom of Christ
+All sacraments are:
+- Instituted by Christ
+- Visible signs of invisible grace
+- Channels of sanctifying grace
+end note
+
+@enduml
+
+@startuml
+title Flow of Grace Through the Seven Sacraments
+
+' ===== Central Source =====
+class "Christ" as Christ {
+    "Source of all Sacramental Grace"
+    "Institutor of the Seven Sacraments"
+}
+
+' ===== Grace Output Node =====
+class "Sanctifying Grace" as Grace {
+    "Divine life in the soul"
+    "Participation in the life of the Trinity"
+}
+
+Christ --> Grace : Channels grace through sacraments
+
+' ===== Categories =====
+package "Sacraments of Initiation" #LightBlue {
+    class Baptism {
+        Effect: Cleanses sin, new birth
+        Scripture: Matthew 28:19
+    }
+    class Confirmation {
+        Effect: Strengthens faith, seals with Holy Spirit
+        Scripture: Acts 8:14-17
+    }
+    class Eucharist {
+        Effect: Spiritual nourishment, union with Christ
+        Scripture: Luke 22:19-20
+    }
+}
+
+package "Sacraments of Healing" #LightGreen {
+    class Penance {
+        Effect: Forgiveness, reconciliation
+        Scripture: John 20:22-23
+    }
+    class "Anointing of the Sick" as Anointing {
+        Effect: Strength, healing, preparation
+        Scripture: James 5:14-15
+    }
+}
+
+package "Sacraments of Service / Vocation" #LightYellow {
+    class Matrimony {
+        Effect: Spousal union, sign of Christ & Church
+        Scripture: Matthew 19:6
+    }
+    class "Holy Orders" as HolyOrders {
+        Effect: Grace to teach, sanctify, govern
+        Scripture: Luke 22:19; 2 Tim 1:6
+    }
+}
+
+' ===== Flow of Grace Arrows =====
+Christ --> Baptism
+Christ --> Confirmation
+Christ --> Eucharist
+Christ --> Penance
+Christ --> Anointing
+Christ --> Matrimony
+Christ --> HolyOrders
+
+' Sacraments feed into sanctifying grace
+Baptism --> Grace
+Confirmation --> Grace
+Eucharist --> Grace
+Penance --> Grace
+Anointing --> Grace
+Matrimony --> Grace
+HolyOrders --> Grace
+
+' ===== Christian Life Node =====
+class "Christian Life in Grace" as ChristianLife {
+    "Live in holiness"
+    "Serve in love and mission"
+    "Journey to eternal life"
+}
+
+Grace --> ChristianLife : Empowers
+
+note bottom of ChristianLife
+Grace from the sacraments sustains the
+entire journey of Christian life from
+birth in Christ to eternal glory.
+end note
+
+@enduml

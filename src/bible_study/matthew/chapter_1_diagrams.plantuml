@@ -1,0 +1,893 @@
+@startuml
+title Genealogy of Jesus Christ - Historical Timeline with Key Biblical Events (Matthew 1)
+
+skinparam class {
+    BackgroundColor<<OT>> #CCFFCC
+    BackgroundColor<<Gap>> #FFCC99
+    BackgroundColor<<Unknown>> #DDDDDD
+    BorderColor Black
+}
+
+left to right direction
+
+' ============================
+' TIMELINE BANDS
+' ============================
+note as N1
+Patriarchs & Tribal Leaders
+(~2000–1000 B.C.)
+Key Events:
+- Call of Abraham (~2000 B.C.)
+- Isaac & Jacob
+- 12 Tribes
+- Exodus (~1250 B.C.)
+- Conquest of Canaan (~1200 B.C.)
+end note
+
+note as N2
+Kingdom of Judah
+(~1000–586 B.C.)
+Key Events:
+- United Monarchy (David & Solomon)
+- 1st Temple (~960 B.C.)
+- Kingdom Divides (~930 B.C.)
+- Assyrian Threat (~722 B.C.)
+- Babylonian Exile (586 B.C.)
+end note
+
+note as N3
+Exile & Post-Exile
+(586–5 B.C.)
+Key Events:
+- Babylonian Captivity
+- Return & 2nd Temple (~516 B.C.)
+- Persian, Greek, Roman periods
+- Messianic expectation
+end note
+
+note as N4
+Birth of Jesus
+(~5–1 B.C.)
+Key Event:
+- Incarnation of the Messiah
+end note
+
+' ============================
+' PATRIARCHS (Genesis → Ruth)
+' ============================
+package "Patriarchs" {
+    class Abraham <<OT>>
+    class Isaac <<OT>>
+    class Jacob <<OT>>
+    class Judah <<OT>>
+    class Perez <<OT>>
+    class Hezron <<OT>>
+    class Ram <<OT>>
+    class Amminadab <<OT>>
+    class Nahshon <<OT>>
+    class Salmon <<OT>>
+    class Boaz <<OT>>
+    class Obed <<OT>>
+    class Jesse <<OT>>
+    class David <<OT>>
+}
+
+Abraham --> Isaac
+Isaac --> Jacob
+Jacob --> Judah
+Judah --> Perez
+Perez --> Hezron
+Hezron --> Ram
+Ram --> Amminadab
+Amminadab --> Nahshon
+Nahshon --> Salmon
+Salmon --> Boaz
+Boaz --> Obed
+Obed --> Jesse
+Jesse --> David
+
+N1 .. Abraham
+
+' ============================
+' KINGDOM (1-2 Samuel, 1-2 Kings)
+' ============================
+package "Kingdom of Judah" {
+    class Solomon <<OT>>
+    class Rehoboam <<OT>>
+    class Abijah <<OT>>
+    class Asa <<OT>>
+    class Jehoshaphat <<OT>>
+    class Joram <<OT>>
+    
+    ' Gaps - omitted kings
+    class Ahaziah <<Gap>>
+    class Joash <<Gap>>
+    class Amaziah <<Gap>>
+    
+    class Uzziah <<OT>>
+    class Jotham <<OT>>
+    class Ahaz <<OT>>
+    class Hezekiah <<OT>>
+    class Manasseh <<OT>>
+    class Amon <<OT>>
+    class Josiah <<OT>>
+    class Jechoniah <<OT>>
+}
+
+David --> Solomon
+Solomon --> Rehoboam
+Rehoboam --> Abijah
+Abijah --> Asa
+Asa --> Jehoshaphat
+Jehoshaphat --> Joram
+
+' Gap lineage for omitted kings
+Joram --> Ahaziah
+Ahaziah --> Joash
+Joash --> Amaziah
+Amaziah --> Uzziah
+
+Uzziah --> Jotham
+Jotham --> Ahaz
+Ahaz --> Hezekiah
+Hezekiah --> Manasseh
+Manasseh --> Amon
+Amon --> Josiah
+Josiah --> Jechoniah
+
+N2 .. Solomon
+
+' ============================
+' POST-EXILE (Ezra → Matthew)
+' ============================
+package "Exile & Post-Exile" {
+    class Shealtiel <<OT>>
+    class Zerubbabel <<OT>>
+    class Abiud <<Unknown>>
+    class Eliakim <<Unknown>>
+    class Azor <<Unknown>>
+    class Zadok <<Unknown>>
+    class Achim <<Unknown>>
+    class Eliud <<Unknown>>
+    class Eleazar <<Unknown>>
+    class Matthan <<Unknown>>
+    class Jacob_father <<Unknown>>
+    class Joseph <<OT>>
+    class Jesus <<OT>>
+}
+
+Jechoniah --> Shealtiel
+Shealtiel --> Zerubbabel
+Zerubbabel --> Abiud
+Abiud --> Eliakim
+Eliakim --> Azor
+Azor --> Zadok
+Zadok --> Achim
+Achim --> Eliud
+Eliud --> Eleazar
+Eleazar --> Matthan
+Matthan --> Jacob_father
+Jacob_father --> Joseph
+Joseph --> Jesus
+
+N3 .. Shealtiel
+N4 .. Jesus
+
+@enduml
+
+
+
+
+@startuml
+title Genealogy of Jesus Christ - Historical Timeline (Matthew 1)
+
+skinparam class {
+    BackgroundColor<<OT>> #CCFFCC
+    BackgroundColor<<Gap>> #FFCC99
+    BackgroundColor<<Unknown>> #DDDDDD
+    BorderColor Black
+}
+
+left to right direction
+
+' ============================
+' TIMELINE BANDS AS NOTES
+' ============================
+note as N1
+Patriarchs & Tribal Leaders
+(2000–1000 B.C.)
+From Abraham to David
+end note
+
+note as N2
+Kingdom of Judah
+(1000–586 B.C.)
+From David to Babylonian Exile
+end note
+
+note as N3
+Exile & Post-Exile
+(586–5 B.C.)
+From Jechoniah to Joseph
+end note
+
+note as N4
+Birth of Jesus
+(~5–1 B.C.)
+Fulfillment of the Promise
+end note
+
+' ============================
+' PATRIARCHS (Genesis → Ruth)
+' ============================
+package "Patriarchs (Genesis → Ruth)" {
+    class Abraham <<OT>>
+    class Isaac <<OT>>
+    class Jacob <<OT>>
+    class Judah <<OT>>
+    class Perez <<OT>>
+    class Hezron <<OT>>
+    class Ram <<OT>>
+    class Amminadab <<OT>>
+    class Nahshon <<OT>>
+    class Salmon <<OT>>
+    class Boaz <<OT>>
+    class Obed <<OT>>
+    class Jesse <<OT>>
+    class David <<OT>>
+}
+
+Abraham --> Isaac
+Isaac --> Jacob
+Jacob --> Judah
+Judah --> Perez
+Perez --> Hezron
+Hezron --> Ram
+Ram --> Amminadab
+Amminadab --> Nahshon
+Nahshon --> Salmon
+Salmon --> Boaz
+Boaz --> Obed
+Obed --> Jesse
+Jesse --> David
+
+N1 .. Abraham
+
+' ============================
+' KINGDOM (1-2 Samuel, 1-2 Kings)
+' ============================
+package "Kingdom of Judah (1000–586 B.C.)" {
+    class Solomon <<OT>>
+    class Rehoboam <<OT>>
+    class Abijah <<OT>>
+    class Asa <<OT>>
+    class Jehoshaphat <<OT>>
+    class Joram <<OT>>
+    
+    ' Gaps - omitted kings
+    class Ahaziah <<Gap>>
+    class Joash <<Gap>>
+    class Amaziah <<Gap>>
+    
+    class Uzziah <<OT>>
+    class Jotham <<OT>>
+    class Ahaz <<OT>>
+    class Hezekiah <<OT>>
+    class Manasseh <<OT>>
+    class Amon <<OT>>
+    class Josiah <<OT>>
+    class Jechoniah <<OT>>
+}
+
+David --> Solomon
+Solomon --> Rehoboam
+Rehoboam --> Abijah
+Abijah --> Asa
+Asa --> Jehoshaphat
+Jehoshaphat --> Joram
+
+' Gap lineage for omitted kings
+Joram --> Ahaziah
+Ahaziah --> Joash
+Joash --> Amaziah
+Amaziah --> Uzziah
+
+Uzziah --> Jotham
+Jotham --> Ahaz
+Ahaz --> Hezekiah
+Hezekiah --> Manasseh
+Manasseh --> Amon
+Amon --> Josiah
+Josiah --> Jechoniah
+
+N2 .. Solomon
+
+' ============================
+' POST-EXILE (Ezra → Matthew)
+' ============================
+package "Exile & Post-Exile (586–5 B.C.)" {
+    class Shealtiel <<OT>>
+    class Zerubbabel <<OT>>
+    class Abiud <<Unknown>>
+    class Eliakim <<Unknown>>
+    class Azor <<Unknown>>
+    class Zadok <<Unknown>>
+    class Achim <<Unknown>>
+    class Eliud <<Unknown>>
+    class Eleazar <<Unknown>>
+    class Matthan <<Unknown>>
+    class Jacob_father <<Unknown>>
+    class Joseph <<OT>>
+    class Jesus <<OT>>
+}
+
+Jechoniah --> Shealtiel
+Shealtiel --> Zerubbabel
+Zerubbabel --> Abiud
+Abiud --> Eliakim
+Eliakim --> Azor
+Azor --> Zadok
+Zadok --> Achim
+Achim --> Eliud
+Eliud --> Eleazar
+Eleazar --> Matthan
+Matthan --> Jacob_father
+Jacob_father --> Joseph
+Joseph --> Jesus
+
+N3 .. Shealtiel
+N4 .. Jesus
+
+@enduml
+
+
+
+@startuml
+title Genealogy of Jesus Christ - Horizontal Timeline (Matthew 1)
+
+skinparam class {
+    BackgroundColor<<OT>> #CCFFCC
+    BackgroundColor<<Gap>> #FFCC99
+    BackgroundColor<<Unknown>> #DDDDDD
+    BorderColor Black
+}
+
+left to right direction
+
+' --- PATRIARCHS ---
+package "Patriarchs (Genesis → Ruth)" {
+    class Abraham <<OT>>
+    class Isaac <<OT>>
+    class Jacob <<OT>>
+    class Judah <<OT>>
+    class Perez <<OT>>
+    class Hezron <<OT>>
+    class Ram <<OT>>
+    class Amminadab <<OT>>
+    class Nahshon <<OT>>
+    class Salmon <<OT>>
+    class Boaz <<OT>>
+    class Obed <<OT>>
+    class Jesse <<OT>>
+    class David <<OT>>
+}
+
+Abraham --> Isaac
+Isaac --> Jacob
+Jacob --> Judah
+Judah --> Perez
+Perez --> Hezron
+Hezron --> Ram
+Ram --> Amminadab
+Amminadab --> Nahshon
+Nahshon --> Salmon
+Salmon --> Boaz
+Boaz --> Obed
+Obed --> Jesse
+Jesse --> David
+
+' --- MONARCHY ---
+package "Kingdom of Judah (1-2 Samuel, 1-2 Kings)" {
+    class Solomon <<OT>>
+    class Rehoboam <<OT>>
+    class Abijah <<OT>>
+    class Asa <<OT>>
+    class Jehoshaphat <<OT>>
+    class Joram <<OT>>
+    
+    ' Gaps (omitted kings)
+    class Ahaziah <<Gap>>
+    class Joash <<Gap>>
+    class Amaziah <<Gap>>
+    
+    class Uzziah <<OT>>
+    class Jotham <<OT>>
+    class Ahaz <<OT>>
+    class Hezekiah <<OT>>
+    class Manasseh <<OT>>
+    class Amon <<OT>>
+    class Josiah <<OT>>
+    class Jechoniah <<OT>>
+}
+
+David --> Solomon
+Solomon --> Rehoboam
+Rehoboam --> Abijah
+Abijah --> Asa
+Asa --> Jehoshaphat
+Jehoshaphat --> Joram
+
+' Gap lineage in OT
+Joram --> Ahaziah
+Ahaziah --> Joash
+Joash --> Amaziah
+Amaziah --> Uzziah
+
+Uzziah --> Jotham
+Jotham --> Ahaz
+Ahaz --> Hezekiah
+Hezekiah --> Manasseh
+Manasseh --> Amon
+Amon --> Josiah
+Josiah --> Jechoniah
+
+' --- POST-EXILIC ---
+package "Exile & Post-Exile (Ezra → Matthew)" {
+    class Shealtiel <<OT>>
+    class Zerubbabel <<OT>>
+    class Abiud <<Unknown>>
+    class Eliakim <<Unknown>>
+    class Azor <<Unknown>>
+    class Zadok <<Unknown>>
+    class Achim <<Unknown>>
+    class Eliud <<Unknown>>
+    class Eleazar <<Unknown>>
+    class Matthan <<Unknown>>
+    class Jacob_father <<Unknown>>
+    class Joseph <<OT>>
+    class Jesus <<OT>>
+}
+
+Jechoniah --> Shealtiel
+Shealtiel --> Zerubbabel
+Zerubbabel --> Abiud
+Abiud --> Eliakim
+Eliakim --> Azor
+Azor --> Zadok
+Zadok --> Achim
+Achim --> Eliud
+Eliud --> Eleazar
+Eleazar --> Matthan
+Matthan --> Jacob_father
+Jacob_father --> Joseph
+Joseph --> Jesus
+
+@enduml
+
+
+
+@startuml
+title Genealogy of Jesus Christ (Matthew 1) with OT Links and Gaps
+
+skinparam class {
+    BackgroundColor<<OT>> #CCFFCC
+    BackgroundColor<<Gap>> #FFCC99
+    BackgroundColor<<Unknown>> #DDDDDD
+}
+
+top to bottom direction
+
+' --- Abraham to David (OT confirmed) ---
+class Abraham <<OT>>
+class Isaac <<OT>>
+class Jacob <<OT>>
+class Judah <<OT>>
+class Perez <<OT>>
+class Hezron <<OT>>
+class Ram <<OT>>
+class Amminadab <<OT>>
+class Nahshon <<OT>>
+class Salmon <<OT>>
+class Boaz <<OT>>
+class Obed <<OT>>
+class Jesse <<OT>>
+class David <<OT>>
+
+Abraham --> Isaac
+Isaac --> Jacob
+Jacob --> Judah
+Judah --> Perez
+Perez --> Hezron
+Hezron --> Ram
+Ram --> Amminadab
+Amminadab --> Nahshon
+Nahshon --> Salmon
+Salmon --> Boaz
+Boaz --> Obed
+Obed --> Jesse
+Jesse --> David
+
+' --- David to the Babylonian Exile ---
+class Solomon <<OT>>
+class Rehoboam <<OT>>
+class Abijah <<OT>>
+class Asa <<OT>>
+class Jehoshaphat <<OT>>
+class Joram <<OT>>
+
+' Omitted kings (gaps)
+class Ahaziah <<Gap>>
+class Joash <<Gap>>
+class Amaziah <<Gap>>
+
+class Uzziah <<OT>>
+class Jotham <<OT>>
+class Ahaz <<OT>>
+class Hezekiah <<OT>>
+class Manasseh <<OT>>
+class Amon <<OT>>
+class Josiah <<OT>>
+class Jechoniah <<OT>>
+
+David --> Solomon
+Solomon --> Rehoboam
+Rehoboam --> Abijah
+Abijah --> Asa
+Asa --> Jehoshaphat
+Jehoshaphat --> Joram
+
+' Omitted kings (gap lineage)
+Joram --> Ahaziah
+Ahaziah --> Joash
+Joash --> Amaziah
+Amaziah --> Uzziah
+
+Uzziah --> Jotham
+Jotham --> Ahaz
+Ahaz --> Hezekiah
+Hezekiah --> Manasseh
+Manasseh --> Amon
+Amon --> Josiah
+Josiah --> Jechoniah
+
+' --- Post-Exilic Line (Unknown in OT) ---
+class Shealtiel <<OT>>
+class Zerubbabel <<OT>>
+class Abiud <<Unknown>>
+class Eliakim <<Unknown>>
+class Azor <<Unknown>>
+class Zadok <<Unknown>>
+class Achim <<Unknown>>
+class Eliud <<Unknown>>
+class Eleazar <<Unknown>>
+class Matthan <<Unknown>>
+class Jacob_father <<Unknown>>
+class Joseph <<OT>>
+class Jesus <<OT>>
+
+Jechoniah --> Shealtiel
+Shealtiel --> Zerubbabel
+Zerubbabel --> Abiud
+Abiud --> Eliakim
+Eliakim --> Azor
+Azor --> Zadok
+Zadok --> Achim
+Achim --> Eliud
+Eliud --> Eleazar
+Eleazar --> Matthan
+Matthan --> Jacob_father
+Jacob_father --> Joseph
+Joseph --> Jesus
+
+@enduml
+
+
+
+@startuml
+title Genealogy of Jesus Christ with Siblings - Matthew 1 (RSV-CE)
+
+' Optional: Orient the tree top-down
+' top to bottom direction
+left to right direction
+
+' Generation 1
+class Abraham
+class Isaac
+Abraham --> Isaac
+
+' Generation 2
+class Jacob
+Isaac --> Jacob
+
+' Generation 3 - Jacob's children
+class Judah
+class Levi
+class Simeon
+class Reuben
+class Dan
+class Naphtali
+class Gad
+class Asher
+class Issachar
+class Zebulun
+class Joseph_son
+class Benjamin
+Jacob --> Judah
+Jacob --> Levi
+Jacob --> Simeon
+Jacob --> Reuben
+Jacob --> Dan
+Jacob --> Naphtali
+Jacob --> Gad
+Jacob --> Asher
+Jacob --> Issachar
+Jacob --> Zebulun
+Jacob --> Joseph_son
+Jacob --> Benjamin
+
+' Judah's lineage
+class Perez
+class Zerah
+Judah --> Perez : by Tamar
+Judah --> Zerah : by Tamar
+
+' Continue linear descent
+class Hezron
+class Ram
+class Amminadab
+class Nahshon
+class Salmon
+class Boaz
+class Obed
+class Jesse
+Judah --> Perez
+Perez --> Hezron
+Hezron --> Ram
+Ram --> Amminadab
+Amminadab --> Nahshon
+Nahshon --> Salmon
+Salmon --> Boaz : by Rahab
+Boaz --> Obed : by Ruth
+Obed --> Jesse
+
+' Jesse’s sons (1 Samuel 16 references more sons, but only David is named here)
+class David
+Jesse --> David
+
+' David's lineage
+class Solomon
+David --> Solomon : by wife of Uriah
+
+' Kings of Judah
+class Rehoboam
+class Abijah
+class Asa
+class Jehoshaphat
+class Joram
+class Uzziah
+class Jotham
+class Ahaz
+class Hezekiah
+class Manasseh
+class Amos
+class Josiah
+
+Solomon --> Rehoboam
+Rehoboam --> Abijah
+Abijah --> Asa
+Asa --> Jehoshaphat
+Jehoshaphat --> Joram
+Joram --> Uzziah
+Uzziah --> Jotham
+Jotham --> Ahaz
+Ahaz --> Hezekiah
+Hezekiah --> Manasseh
+Manasseh --> Amos
+Amos --> Josiah
+
+' Josiah's sons
+class Jechoniah
+class Jehoiakim
+class Shallum
+Josiah --> Jechoniah
+Josiah --> Jehoiakim
+Josiah --> Shallum
+
+' After exile
+class Shealtiel
+class Zerubbabel
+class Abiud
+class Eliakim
+class Azor
+class Zadok
+class Achim
+class Eliud
+class Eleazar
+class Matthan
+class Jacob_father
+class Joseph
+class Jesus
+
+Jechoniah --> Shealtiel
+Shealtiel --> Zerubbabel
+Zerubbabel --> Abiud
+Abiud --> Eliakim
+Eliakim --> Azor
+Azor --> Zadok
+Zadok --> Achim
+Achim --> Eliud
+Eliud --> Eleazar
+Eleazar --> Matthan
+Matthan --> Jacob_father
+Jacob_father --> Joseph
+Joseph --> Jesus : legal father
+
+@enduml
+
+
+
+
+@startuml
+title Family Tree of Jacob (Israel) - Sons and Mothers
+
+top to bottom direction
+
+' Jacob and his wives/concubines
+class Jacob
+class Leah
+class Rachel
+class Zilpah <<Concubine>>
+class Bilhah <<Concubine>>
+
+Jacob --> Leah : wife
+Jacob --> Rachel : wife
+Jacob --> Zilpah : concubine
+Jacob --> Bilhah : concubine
+
+' Sons of Leah
+class Reuben
+class Simeon
+class Levi
+class Judah
+class Issachar
+class Zebulun
+
+Leah --> Reuben
+Leah --> Simeon
+Leah --> Levi
+Leah --> Judah
+Leah --> Issachar
+Leah --> Zebulun
+
+' Sons of Rachel
+class Joseph
+class Benjamin
+
+Rachel --> Joseph
+Rachel --> Benjamin
+
+' Sons of Zilpah
+class Gad
+class Asher
+
+Zilpah --> Gad
+Zilpah --> Asher
+
+' Sons of Bilhah
+class Dan
+class Naphtali
+
+Bilhah --> Dan
+Bilhah --> Naphtali
+
+' Link sons to Jacob (optional, to make structure explicit)
+Jacob --> Reuben
+Jacob --> Simeon
+Jacob --> Levi
+Jacob --> Judah
+Jacob --> Issachar
+Jacob --> Zebulun
+Jacob --> Joseph
+Jacob --> Benjamin
+Jacob --> Gad
+Jacob --> Asher
+Jacob --> Dan
+Jacob --> Naphtali
+
+@enduml
+
+
+
+
+
+
+
+
+
+@startuml
+title Genealogy of Jesus Christ - Matthew 1 (RSV-CE)
+
+class Abraham
+class Isaac
+class Jacob
+class Judah
+class Perez
+class Hezron
+class Ram
+class Amminadab
+class Nahshon
+class Salmon
+class Boaz
+class Obed
+class Jesse
+class David
+class Solomon
+class Rehoboam
+class Abijah
+class Asa
+class Jehoshaphat
+class Joram
+class Uzziah
+class Jotham
+class Ahaz
+class Hezekiah
+class Manasseh
+class Amos
+class Josiah
+class Jechoniah
+class Shealtiel
+class Zerubbabel
+class Abiud
+class Eliakim
+class Azor
+class Zadok
+class Achim
+class Eliud
+class Eleazar
+class Matthan
+class JacobFather
+class Joseph
+class Jesus
+
+Abraham --> Isaac
+Isaac --> Jacob
+Jacob --> Judah
+Judah --> Perez
+Perez --> Hezron
+Hezron --> Ram
+Ram --> Amminadab
+Amminadab --> Nahshon
+Nahshon --> Salmon
+Salmon --> Boaz : by Rahab
+Boaz --> Obed : by Ruth
+Obed --> Jesse
+Jesse --> David
+David --> Solomon : by Uriah's wife
+Solomon --> Rehoboam
+Rehoboam --> Abijah
+Abijah --> Asa
+Asa --> Jehoshaphat
+Jehoshaphat --> Joram
+Joram --> Uzziah
+Uzziah --> Jotham
+Jotham --> Ahaz
+Ahaz --> Hezekiah
+Hezekiah --> Manasseh
+Manasseh --> Amos
+Amos --> Josiah
+Josiah --> Jechoniah
+Jechoniah --> Shealtiel
+Shealtiel --> Zerubbabel
+Zerubbabel --> Abiud
+Abiud --> Eliakim
+Eliakim --> Azor
+Azor --> Zadok
+Zadok --> Achim
+Achim --> Eliud
+Eliud --> Eleazar
+Eleazar --> Matthan
+Matthan --> JacobFather
+JacobFather --> Joseph
+Joseph --> Jesus : husband of Mary
+
+@enduml

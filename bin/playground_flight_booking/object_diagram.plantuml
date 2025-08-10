@@ -1,0 +1,44 @@
+@startuml
+	title Object Diagram: Booking Scenario Snapshot
+	
+	object booking1 {
+	  bookingNumber = "ABC123"
+	  date = "2024-04-20"
+	  bookingTo = "2024-04-22"
+	  from = "SFO"
+	  to = "JFK"
+	  seatNumber = "12A"
+	}
+	
+	object customer1 {
+	  firstName = "John"
+	  lastName = "Doe"
+	}
+	
+	object bookingStatus1 {
+	  status = CONFIRMED
+	}
+	
+	object bookingClass1 {
+	  class = BUSINESS
+	}
+	
+	object bookingData1
+	
+	object flightBookingService1
+	
+	object bookingTools1
+	
+	object customerSupportAssistant1
+	
+	' relationships
+	booking1 --> customer1 : customer
+	booking1 --> bookingStatus1 : bookingStatus
+	booking1 --> bookingClass1 : bookingClass
+	customer1 --> booking1 : bookings
+	bookingData1 --> booking1 : bookings
+	flightBookingService1 --> bookingData1 : db
+	bookingTools1 --> flightBookingService1 : flightBookingService
+	customerSupportAssistant1 --> bookingTools1 : bookingTools
+
+@enduml

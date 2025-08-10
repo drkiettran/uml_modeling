@@ -1,0 +1,94 @@
+@startuml
+title Week 1 - Aquinas Study Map (ST I QQ1–5)
+
+skinparam rectangle {
+    BackgroundColor<<Q1>> LightBlue
+    BackgroundColor<<Q2>> LightGreen
+    BackgroundColor<<Q3>> LightYellow
+    BackgroundColor<<Q4>> LightPink
+    BackgroundColor<<Q5>> LightOrange
+    BackgroundColor<<Study>> Wheat
+}
+
+' --- Study Flow ---
+rectangle "Q1: Sacred Doctrine\n• Theology as science\n• Subalternated to divine knowledge\n\n**Reading:**\n- ST I Q1 (10 articles)\n- Kreeft: *Shorter Summa*, Ch. 1\n- Garrigou-Lagrange, *Reality*, Ch. 1\n\n**Objective:**\nUnderstand why theology is the highest science." <<Q1>> as Q1
+rectangle "Q2: Existence of God\n• Not self-evident to us\n• Demonstrable by Five Ways\n\n**Reading:**\n- ST I Q2 (3 articles)\n- Kreeft: *Shorter Summa*, Ch. 2\n- Feser: *Five Proofs*, Intro & Ch. 1\n\n**Objective:**\nMemorize and explain the Five Ways." <<Q2>> as Q2
+rectangle "Q3: Divine Simplicity\n• God has no parts\n• Essence = Existence\n\n**Reading:**\n- ST I Q3 (8 articles)\n- Kreeft: Ch. 3\n- Gilson: *Christian Philosophy of St. Thomas Aquinas*, Ch. 3\n\n**Objective:**\nExplain simplicity and its link to God’s perfection." <<Q3>> as Q3
+rectangle "Q4: Divine Perfection\n• God is fullness of being (actus purus)\n• Creatures share in His perfection\n\n**Reading:**\n- ST I Q4 (3 articles)\n- Kreeft: Ch. 4\n- Gilson: Ch. 4\n\n**Objective:**\nUnderstand metaphysical perfection & participation." <<Q4>> as Q4
+rectangle "Q5: Divine Goodness\n• Being and goodness are convertible\n• God is the Summum Bonum\n\n**Reading:**\n- ST I Q5 (6 articles)\n- Kreeft: Ch. 5\n- Emery OP: *The Theology of Thomas Aquinas*, Part I\n\n**Objective:**\nExplain how all created good flows from God." <<Q5>> as Q5
+
+' --- Study Flow Arrows ---
+Q1 --> Q2 : "Foundation of Natural Theology"
+Q2 --> Q3 : "Understanding Divine Essence"
+Q3 --> Q4 : "From Simplicity to Perfection"
+Q4 --> Q5 : "From Being to Goodness"
+
+' --- Study Block for Week 1 ---
+rectangle "WEEK 1 FOCUS:\n\n**Learning Goals:**\n1. Understand theology as a science\n2. Learn Aquinas’ Five Ways\n3. Grasp simplicity, perfection, and goodness\n\n**Suggested Schedule:**\n- Day 1-2: Q1\n- Day 3: Q2\n- Day 4: Q3\n- Day 5: Q4–Q5 Review\n\n**Assessment:**\n- Summarize each question in your own words\n- Diagram the Five Ways\n- Relate goodness to being" <<Study>> as Week1
+
+Week1 --> Q1
+Week1 --> Q2
+Week1 --> Q3
+Week1 --> Q4
+Week1 --> Q5
+
+@enduml
+
+
+
+@startuml
+title Aquinas - Road to God (ST I QQ1-5)
+
+skinparam rectangle {
+    BackgroundColor<<Phase>> LightGray
+    BackgroundColor<<Q>> LightYellow
+}
+
+' --- Major structure of the Summa ---
+rectangle "EXITUS\n(From God)\nST I\n• God and Creation" <<Phase>> as Exit
+rectangle "REDDITUS\n(Return to God)\nST II & III\n• Moral Life & Christ" <<Phase>> as Return
+
+Exit --> Return : "All things return to their First Cause"
+
+' --- Foundational Questions (QQ1-5) ---
+rectangle "Q1: Sacred Doctrine\n• Theology as Science\n• Subalternated to God’s knowledge" <<Q>> as Q1
+rectangle "Q2: Existence of God\n• Demonstrable via Five Ways\n• Foundation of Natural Theology" <<Q>> as Q2
+rectangle "Q3: Divine Simplicity\n• No parts or composition\n• Essence = Existence" <<Q>> as Q3
+rectangle "Q4: Divine Perfection\n• Fullness of Being (Actus Purus)\n• All creatures participate" <<Q>> as Q4
+rectangle "Q5: Divine Goodness\n• Being and Goodness convertible\n• God = Summum Bonum" <<Q>> as Q5
+
+' --- Flow of Thought ---
+Q1 --> Q2
+Q2 --> Q3
+Q3 --> Q4
+Q4 --> Q5
+
+' --- Linking to Exitus ---
+Exit -down-> Q1 : "Foundation of Theology\nST I Q1-5"
+
+@enduml
+
+
+@startuml
+title Aquinas - Summa Theologiae I QQ1-5 Overview
+
+skinparam rectangle {
+    BackgroundColor<<Q1>> LightBlue
+    BackgroundColor<<Q2>> LightGreen
+    BackgroundColor<<Q3>> LightYellow
+    BackgroundColor<<Q4>> LightPink
+    BackgroundColor<<Q5>> LightOrange
+}
+
+rectangle "Q1: Sacred Doctrine\n(Theology as a Science)\n• Needed for salvation\n• Subalternated science\n• Unified, speculative yet practical\n(Kreeft: 'Queen of sciences')" <<Q1>> as Q1
+rectangle "Q2: Existence of God\n• Not self-evident to us\n• Demonstrable by effects\n• The Five Ways:\n   1. Motion → Unmoved Mover\n   2. Cause → First Cause\n   3. Contingency → Necessary Being\n   4. Degrees → Absolute Perfection\n   5. Governance → Designer" <<Q2>> as Q2
+rectangle "Q3: Divine Simplicity\n• God is not composite\n• Essence = Existence\n• Basis for immutability\n(Kreeft: 'God has no pieces')" <<Q3>> as Q3
+rectangle "Q4: Divine Perfection\n• God is fullness of being\n• Creatures share in His perfection\n• Rooted in actus purus\n(Gilson: metaphysical summit)" <<Q4>> as Q4
+rectangle "Q5: Divine Goodness\n• Being = Goodness (convertible)\n• God = Summum Bonum\n• All creatures good by participation\n(Kreeft: 'Ultimate Desirable')" <<Q5>> as Q5
+
+Q1 --> Q2 : "Foundation for natural theology"
+Q2 --> Q3 : "Understanding God's essence"
+Q3 --> Q4 : "From simplicity to fullness of being"
+Q4 --> Q5 : "From being to goodness"
+
+@enduml

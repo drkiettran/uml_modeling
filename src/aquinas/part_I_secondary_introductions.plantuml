@@ -1,0 +1,216 @@
+@startuml
+skinparam shadowing false
+skinparam linetype ortho
+skinparam dpi 150
+skinparam defaultTextAlignment center
+
+title "Study Aquinas: 20-Week Foundational Roadmap"
+
+' Timeline: Each Phase as a block, Weeks labeled
+
+' Define Phases
+rectangle "Phase 1:\nSecondary Introductions\n(Weeks 1–4)\nMethod • Philosophy • Theology" as Phase1 #lightblue
+rectangle "Phase 2:\nDevotional & Accessible Texts\n(Weeks 5–6)\nPrayer • Scripture" as Phase2 #lightgreen
+rectangle "Phase 3:\nPhilosophical Foundations\n(Weeks 7–9)\nMetaphysics • Aristotle" as Phase3 #lightyellow
+rectangle "Phase 4:\nStudy the Summa Theologiae\n(Weeks 10–16)\nGod • Virtue • Happiness" as Phase4 #lightpink
+rectangle "Phase 5:\nSystematic Apologetics & Advanced Reading\n(Weeks 17–20)\nSCG • Full Summa" as Phase5 #FFD580
+
+' Layout phases as a timeline
+Phase1 -[hidden]-> Phase2
+Phase2 -[hidden]-> Phase3
+Phase3 -[hidden]-> Phase4
+Phase4 -[hidden]-> Phase5
+
+' Weeks under Phase 1
+Phase1 -down-> W1 : Week 1:\nKreeft – *A Shorter Summa*\nIntro + First 5 Questions
+Phase1 -down-> W2 : Week 2:\nKreeft – God’s Existence (Five Ways)
+Phase1 -down-> W3 : Week 3:\nFeser – *Aquinas*\nMetaphysics Ch.1–3
+Phase1 -down-> W4 : Week 4:\nEmery – *Theology of Aquinas*\nIntro + Ch.1–2
+
+' Weeks under Phase 2
+Phase2 -down-> W5 : Week 5:\n*Hymns for Corpus Christi*\nDevotional Meditation
+Phase2 -down-> W6 : Week 6:\n*Catena Aurea* (Matthew 1–5)\nScriptural Orientation
+
+' Weeks under Phase 3
+Phase3 -down-> W7 : Week 7:\n*De Ente et Essentia* (Part 1–3)\nEssence & Existence
+Phase3 -down-> W8 : Week 8:\n*De Ente* (Finish) + Notes\nMetaphysical Insight
+Phase3 -down-> W9 : Week 9:\nAristotle Selections +\nAquinas’ Commentaries
+
+' Weeks under Phase 4
+Phase4 -down-> W10 : Weeks 10–11:\n*Summa* Prima Pars Q.2–11\nExistence & Attributes of God
+Phase4 -down-> W12 : Weeks 12–13:\n*Prima Secundae* Q.1–5\nHuman Purpose & Happiness
+Phase4 -down-> W14 : Weeks 14–15:\n*Prima Secundae* Q.55–70\nVirtues & Moral Life
+Phase4 -down-> W16 : Week 16:\n*Secunda Secundae*\nFaith, Hope, Charity
+
+' Weeks under Phase 5
+Phase5 -down-> W17 : Weeks 17–18:\n*Summa Contra Gentiles* Book I\nPhilosophical Defense
+Phase5 -down-> W19 : Weeks 19–20:\n*Full Summa* (Christ, Grace, Sacraments)\nIntegrated Vision
+
+@enduml
+
+
+
+
+@startuml
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype ortho
+skinparam dpi 150
+
+title "Study Aquinas: Foundational Roadmap"
+
+' ========================
+' Part I: Secondary Introductions
+' ========================
+package "Part I: Secondary Introductions" {
+    class "A Shorter Summa\n(Peter Kreeft)" as Kreeft {
+        *Simplified Summa Theologiae
+        *Learn Aquinas' method
+        *Key topics: God, virtues, happiness
+    }
+
+    class "Aquinas\n(Edward Feser)" as Feser {
+        *Philosophical roadmap
+        *Metaphysics & natural law
+        *Classical theism
+    }
+
+    class "The Theology of\nThomas Aquinas\n(Gilles Emery, OP)" as Emery {
+        *Systematic theological overview
+        *Doctrine of God, Trinity, grace
+        *Integration of reason and revelation
+    }
+
+    class "Orientation Results" as Orientation {
+        **Acquire 3 Foundations**
+        --
+        1. Scholastic reasoning method
+        2. Philosophical framework
+        3. Unified theological vision
+    }
+
+    Kreeft --> Orientation
+    Feser --> Orientation
+    Emery --> Orientation
+}
+
+' ========================
+' Part II: Devotional & Accessible Texts
+' ========================
+package "Part II: Devotional & Accessible" {
+    class "Hymns for Corpus Christi\n(Adoro Te Devote, Pange Lingua)" as Hymns {
+        *Spiritual poetry
+        *Eucharistic theology in devotion
+    }
+
+    class "Catena Aurea\n(Gospel Commentaries)" as Catena {
+        *Patristic insights on Gospels
+        *Bridge from Scripture to Theology
+    }
+}
+
+Orientation --> Hymns
+Orientation --> Catena
+
+' ========================
+' Part III: Philosophical Foundations
+' ========================
+package "Part III: Philosophical Foundations" {
+    class "De Ente et Essentia" as DeEnte {
+        *Essence & existence
+        *Metaphysical core of Aquinas
+    }
+
+    class "Aristotle\n+ Aquinas' Commentaries" as Aristotle {
+        *Background in classical thought
+        *Understanding of causes, form, act/potency
+    }
+}
+
+Catena --> DeEnte
+Hymns --> Aristotle
+
+' ========================
+' Part IV: Study the Summa Theologiae
+' ========================
+package "Part IV: Summa Study Path" {
+    class "Prima Secundae\n(Human purpose & happiness)" as PrimaSecundae
+    class "Prima Pars\n(God's existence & attributes)" as PrimaPars
+    class "Secunda Secundae\n(Virtues & Christian life)" as SecundaSecundae
+}
+
+DeEnte --> PrimaPars
+Aristotle --> PrimaPars
+PrimaPars --> PrimaSecundae
+PrimaSecundae --> SecundaSecundae
+
+' ========================
+' Part V: Systematic Apologetics
+' ========================
+package "Part V: Systematic Apologetics & Advanced Theology" {
+    class "Summa Contra Gentiles" as SCG {
+        *Philosophical defense of faith
+        *Dialogue with non-Christians
+    }
+
+    class "Full Summa Theologiae" as ST {
+        *Comprehensive synthesis
+        *Advanced moral & sacramental theology
+    }
+}
+
+SecundaSecundae --> SCG
+SecundaSecundae --> ST
+
+@enduml
+
+
+@startuml
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype ortho
+skinparam dpi 150
+
+title "Study Aquinas: Part I – Secondary Introductions"
+
+package "Secondary Introductions" {
+    class "A Shorter Summa\n(Peter Kreeft)" as Kreeft {
+        *Simplified Summa Theologiae
+        *Learn Aquinas' method
+        *Key topics: God, virtues, happiness
+    }
+
+    class "Aquinas\n(Edward Feser)" as Feser {
+        *Philosophical roadmap
+        *Metaphysics: act/potency, essence/existence
+        *Natural law and classical theism
+    }
+
+    class "The Theology of\nThomas Aquinas\n(Gilles Emery, OP)" as Emery {
+        *Systematic theological overview
+        *Doctrine of God, Trinity, grace
+        *Integration of reason and revelation
+    }
+}
+
+package "Orientation Focus" {
+    class "Grasp Aquinas'\nReasoning Method" as Method
+    class "Understand\nPhilosophical Foundations" as Philosophy
+    class "See Unified\nTheological Vision" as Theology
+}
+
+' Connections
+Kreeft --> Method
+Feser --> Philosophy
+Emery --> Theology
+
+' Flow to next stage
+package "Foundation for Deeper Study" {
+    class "Prepared to read\nSumma Theologiae\n& Summa Contra Gentiles" as Summa
+}
+
+Method --> Summa
+Philosophy --> Summa
+Theology --> Summa
+
+@enduml

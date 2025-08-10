@@ -1,0 +1,404 @@
+@startuml
+title Matthew 5–7 – Sermon Flow and Audience Context
+
+package "Sermon on the Mount (Ch 5–7)" #lightyellow {
+  class "Beatitudes & Salt/Light (5:1–16)"
+  class "Fulfillment of the Law (5:17–48)"
+  class "Prayer, Fasting, Trust in God (6:1–34)"
+  class "Judgment & True Discipleship (7:1–27)"
+}
+
+' Audience context
+class "Disciples (Primary)" as Disciples #lightgreen
+class "Crowds (Secondary)" as Crowds #lightblue
+class "Scribes & Pharisees" as Pharisees #pink
+class "Gentiles" as Gentiles #orange
+class "Hypocrites" as Hypocrites #pink
+class "False Prophets" as FalseProphets #red
+
+' Flow arrows
+"Beatitudes & Salt/Light (5:1–16)" --> "Fulfillment of the Law (5:17–48)" 
+"Fulfillment of the Law (5:17–48)" --> "Prayer, Fasting, Trust in God (6:1–34)"
+"Prayer, Fasting, Trust in God (6:1–34)" --> "Judgment & True Discipleship (7:1–27)"
+
+' Audience influence
+Disciples --> "Beatitudes & Salt/Light (5:1–16)"
+Crowds --> "Beatitudes & Salt/Light (5:1–16)"
+
+"Fulfillment of the Law (5:17–48)" ..> Pharisees : "Contrast"
+"Prayer, Fasting, Trust in God (6:1–34)" ..> Hypocrites : "Contrast"
+"Prayer, Fasting, Trust in God (6:1–34)" ..> Gentiles : "Contrast"
+"Judgment & True Discipleship (7:1–27)" ..> FalseProphets : "Warning"
+
+@enduml
+
+
+
+@startuml
+title Matthew 5–7 – Audience of Jesus' Teaching
+
+class "Jesus" as Jesus #lightyellow
+
+' Primary audience
+class "Disciples\n(Primary Audience)" as Disciples #lightgreen
+class "Crowds/Multitudes\n(Secondary Audience)" as Crowds #lightblue
+
+' Indirect / Referenced groups
+class "Scribes & Pharisees\n(Legalistic Righteousness)" as Pharisees #pink
+class "Hypocrites\n(Showy Piety)" as Hypocrites #pink
+class "Gentiles\n(Pagans / Worldly Concerns)" as Gentiles #orange
+class "False Prophets & False Disciples\n(7:15-23)" as FalseProphets #red
+
+' Relationships
+Jesus --> Disciples : "Direct Teaching"
+Jesus --> Crowds : "Observed Teaching"
+
+' Warnings / Contrasts
+Jesus ..> Pharisees : "Your righteousness\n> theirs (5:20)"
+Jesus ..> Hypocrites : "Do not imitate\n(6:2,5,16)"
+Jesus ..> Gentiles : "Do not pray or worry\nlike them (6:7,32)"
+Jesus ..> FalseProphets : "Beware (7:15-23)"
+
+Crowds --> Jesus : "Astonished at teaching (7:28-29)"
+
+@enduml
+
+
+@startuml
+title Matthew 1–7: Genealogy and Early Ministry Journey of Jesus
+
+' === GENEALOGY OF JESUS (Ch 1) ===
+package "Genealogy (Matthew 1)" #lightyellow {
+  class "Abraham" as Abraham
+  class "Isaac" as Isaac
+  class "Jacob" as Jacob
+  class "Judah" as Judah
+  class "David" as David
+  class "Solomon" as Solomon
+  class "Joseph" as Joseph
+  class "Jesus" as Jesus
+
+  Abraham --> Isaac
+  Isaac --> Jacob
+  Jacob --> Judah
+  Judah --> David
+  David --> Solomon
+  Solomon --> Joseph
+  Joseph --> Jesus
+
+  note right of Jesus
+    **Birth of Jesus**
+    - Conceived by the Holy Spirit
+    - Mary betrothed to Joseph
+    - Born in Bethlehem
+  end note
+}
+
+' === EARLY LIFE & GEOGRAPHIC MOVEMENT (Ch 2–4) ===
+package "Early Life & Journey (Matthew 2–4)" #lightpink {
+  class "Bethlehem: Visit of the Magi (Ch 2)"
+  class "Egypt: Flight to Egypt (Ch 2)"
+  class "Nazareth: Return & Hidden Life (Ch 2)"
+  class "Jordan River: John the Baptist (Ch 3)"
+  class "Judean Desert: Temptation (Ch 4)"
+  class "Galilee: Start of Public Ministry (Ch 4)"
+
+  "Bethlehem: Visit of the Magi (Ch 2)" --> "Egypt: Flight to Egypt (Ch 2)"
+  "Egypt: Flight to Egypt (Ch 2)" --> "Nazareth: Return & Hidden Life (Ch 2)"
+  "Nazareth: Return & Hidden Life (Ch 2)" --> "Jordan River: John the Baptist (Ch 3)"
+  "Jordan River: John the Baptist (Ch 3)" --> "Judean Desert: Temptation (Ch 4)"
+  "Judean Desert: Temptation (Ch 4)" --> "Galilee: Start of Public Ministry (Ch 4)"
+}
+
+' === SERMON ON THE MOUNT (Ch 5–7) ===
+package "Sermon on the Mount (Matthew 5–7)" #lightgreen {
+  class "Beatitudes & Moral Teaching (Ch 5)"
+  class "Piety & Trust in God (Ch 6)"
+  class "Judgment, Prayer & Wisdom (Ch 7)"
+
+  "Beatitudes & Moral Teaching (Ch 5)" --> "Piety & Trust in God (Ch 6)"
+  "Piety & Trust in God (Ch 6)" --> "Judgment, Prayer & Wisdom (Ch 7)"
+}
+
+' === FLOW OF LIFE & MINISTRY ===
+Jesus --> "Bethlehem: Visit of the Magi (Ch 2)"
+"Galilee: Start of Public Ministry (Ch 4)" --> "Sermon on the Mount (Matthew 5–7)" : Early Teaching
+
+' === TIMELINE ANNOTATIONS ===
+note bottom of "Bethlehem: Visit of the Magi (Ch 2)"
+  **Location:** Bethlehem
+  **Event:** Birth & Magi visit
+end note
+
+note bottom of "Egypt: Flight to Egypt (Ch 2)"
+  **Location:** Egypt
+  **Event:** Escape from Herod
+end note
+
+note bottom of "Nazareth: Return & Hidden Life (Ch 2)"
+  **Location:** Nazareth (Galilee)
+  **Event:** Childhood & growth
+end note
+
+note bottom of "Jordan River: John the Baptist (Ch 3)"
+  **Location:** Jordan River
+  **Event:** Baptism of Jesus
+end note
+
+note bottom of "Judean Desert: Temptation (Ch 4)"
+  **Location:** Judean Desert
+  **Event:** 40-day fast & Temptation
+end note
+
+note bottom of "Galilee: Start of Public Ministry (Ch 4)"
+  **Location:** Capernaum, Galilee
+  **Event:** Calls disciples, preaches Kingdom
+end note
+
+@enduml
+
+
+
+
+
+@startuml
+title Matthew 1–7: Genealogy and Early Ministry of Jesus
+
+' === GENEALOGY OF JESUS (Ch 1) ===
+package "Genealogy (Matthew 1)" #lightyellow {
+  class "Abraham" as Abraham
+  class "Isaac" as Isaac
+  class "Jacob" as Jacob
+  class "Judah" as Judah
+  class "David" as David
+  class "Solomon" as Solomon
+  class "Joseph" as Joseph
+  class "Jesus" as Jesus
+
+  Abraham --> Isaac
+  Isaac --> Jacob
+  Jacob --> Judah
+  Judah --> David
+  David --> Solomon
+  Solomon --> Joseph
+  Joseph --> Jesus
+
+  note right of Jesus
+    **Birth of Jesus**
+    - Conceived by the Holy Spirit
+    - Mary betrothed to Joseph
+  end note
+}
+
+' === EARLY LIFE EVENTS (Ch 2–4) ===
+package "Early Life & Preparation (Matthew 2–4)" #lightpink {
+  class "Visit of the Magi (Ch 2)"
+  class "Flight to Egypt (Ch 2)"
+  class "Return to Nazareth (Ch 2)"
+  class "John the Baptist Prepares the Way (Ch 3)"
+  class "Baptism of Jesus (Ch 3)"
+  class "Temptation in the Desert (Ch 4)"
+  class "Start of Public Ministry in Galilee (Ch 4)"
+
+  "Visit of the Magi (Ch 2)" --> "Flight to Egypt (Ch 2)" 
+  "Flight to Egypt (Ch 2)" --> "Return to Nazareth (Ch 2)"
+  "Return to Nazareth (Ch 2)" --> "John the Baptist Prepares the Way (Ch 3)" 
+  "John the Baptist Prepares the Way (Ch 3)" --> "Baptism of Jesus (Ch 3)" 
+  "Baptism of Jesus (Ch 3)" --> "Temptation in the Desert (Ch 4)"
+  "Temptation in the Desert (Ch 4)" --> "Start of Public Ministry in Galilee (Ch 4)"
+}
+
+' === SERMON ON THE MOUNT (Ch 5–7) ===
+package "Sermon on the Mount (Matthew 5–7)" #lightgreen {
+  class "Beatitudes & Moral Teachings (Ch 5)"
+  class "Piety & Trust in God (Ch 6)"
+  class "Judgment, Prayer & Wisdom (Ch 7)"
+
+  "Beatitudes & Moral Teachings (Ch 5)" --> "Piety & Trust in God (Ch 6)"
+  "Piety & Trust in God (Ch 6)" --> "Judgment, Prayer & Wisdom (Ch 7)"
+}
+
+' === FLOW OF LIFE & MINISTRY ===
+Jesus --> "Visit of the Magi (Ch 2)"
+"Start of Public Ministry in Galilee (Ch 4)" --> "Sermon on the Mount (Matthew 5–7)" : Early Teaching
+
+@enduml
+
+
+
+
+
+@startuml
+title Sermon on the Mount (Matthew 5–7, RSV-CE) with Life Applications
+
+' === CHAPTER 5: BEATITUDES & LAW ===
+package "Chapter 5: Beatitudes & Law (5:1-48)" #lightyellow {
+  class "The Beatitudes (5:1-12)\nBlessed are the poor, meek, merciful"
+  class "Salt & Light (5:13-16)"
+  class "Jesus fulfills the Law (5:17-20)"
+  class "Antitheses (5:21-48)\nAnger • Lust • Divorce • Oaths • Love enemies"
+
+  note right of "The Beatitudes (5:1-12)\nBlessed are the poor, meek, merciful" 
+  **Principle:** Inner holiness leads to true happiness\n
+  **Application:** Practice humility, mercy, and peacemaking daily
+  end note
+
+  note right of "Salt & Light (5:13-16)"
+  **Principle:** Christians are called to influence the world\n
+  **Application:** Be a visible witness through good works
+  end note
+
+  note right of "Antitheses (5:21-48)\nAnger • Lust • Divorce • Oaths • Love enemies"
+  **Principle:** True righteousness comes from the heart\n
+  **Application:** Forgive, purify thoughts, love even enemies
+  end note
+}
+
+' === CHAPTER 6: PIETY & TRUST ===
+package "Chapter 6: Piety & Trust in God (6:1-34)" #lightgreen {
+  class "Almsgiving in secret (6:1-4)"
+  class "Prayer in secret + Lord's Prayer (6:5-15)"
+  class "Fasting in secret (6:16-18)"
+  class "Treasure in heaven (6:19-21)"
+  class "Do not be anxious (6:25-34)"
+
+  note right of "Almsgiving in secret (6:1-4)"
+  **Principle:** Give to please God, not people\n
+  **Application:** Help the poor quietly and sincerely
+  end note
+
+  note right of "Prayer in secret + Lord's Prayer (6:5-15)"
+  **Principle:** Relationship with God is personal and sincere\n
+  **Application:** Pray daily in private; forgive others
+  end note
+
+  note right of "Do not be anxious (6:25-34)"
+  **Principle:** Trust in God's providence over worldly worry\n
+  **Application:** Live one day at a time, rely on God's care
+  end note
+}
+
+' === CHAPTER 7: JUDGMENT, PRAYER, & WISDOM ===
+package "Chapter 7: Judgment, Prayer, & Wisdom (7:1-29)" #lightpink {
+  class "Do not judge (7:1-5)\nSpeck & Log"
+  class "Ask, Seek, Knock (7:7-11)"
+  class "Golden Rule (7:12)"
+  class "Narrow Gate (7:13-14)"
+  class "False Prophets & Fruits (7:15-20)"
+  class "Wise vs Foolish Builders (7:24-27)"
+
+  note right of "Do not judge (7:1-5)\nSpeck & Log"
+  **Principle:** Humility and self-examination before correcting others\n
+  **Application:** Reflect on your own faults before criticizing
+  end note
+
+  note right of "Ask, Seek, Knock (7:7-11)"
+  **Principle:** God answers sincere and persistent prayer\n
+  **Application:** Approach God with trust and persistence
+  end note
+
+  note right of "Wise vs Foolish Builders (7:24-27)"
+  **Principle:** True discipleship = hearing and living the Word\n
+  **Application:** Build life choices on Christ's teachings
+  end note
+}
+
+' === FLOW OF THE SERMON ===
+"Chapter 5: Beatitudes & Law (5:1-48)" --> "Chapter 6: Piety & Trust in God (6:1-34)" : Moral Foundation → Spiritual Practice
+"Chapter 6: Piety & Trust in God (6:1-34)" --> "Chapter 7: Judgment, Prayer, & Wisdom (7:1-29)" : Inner Piety → Outer Wisdom & Action
+
+@enduml
+
+
+
+
+@startuml
+title Sermon on the Mount (Matthew 5–7, RSV-CE)
+
+package "Chapter 5: Beatitudes & Law (5:1-48)" #lightyellow {
+  class "The Beatitudes (5:1-12)\nBlessed are the poor, meek, merciful"
+  class "Salt and Light (5:13-16)"
+  class "Jesus fulfills the Law (5:17-20)"
+  class "Antitheses (5:21-48)\n• Anger & Reconciliation\n• Adultery & Lust\n• Divorce\n• Oaths\n• Love your enemies"
+}
+
+package "Chapter 6: Piety & Trust in God (6:1-34)" #lightgreen {
+  class "Almsgiving in secret (6:1-4)"
+  class "Prayer in secret (6:5-15)\n+ Lord's Prayer"
+  class "Fasting in secret (6:16-18)"
+  class "Treasure in heaven (6:19-21)"
+  class "Eye as lamp of the body (6:22-23)"
+  class "Serve God, not Mammon (6:24)"
+  class "Do not be anxious (6:25-34)"
+}
+
+package "Chapter 7: Judgment, Prayer, & Wisdom (7:1-29)" #lightpink {
+  class "Do not judge others (7:1-5)\nSpeck & Log"
+  class "Do not cast pearls before swine (7:6)"
+  class "Ask, Seek, Knock (7:7-11)"
+  class "Golden Rule (7:12)"
+  class "Enter by the Narrow Gate (7:13-14)"
+  class "Beware of False Prophets (7:15-20)\nKnow by fruits"
+  class "Not everyone 'Lord, Lord' (7:21-23)\nDo Father's will"
+  class "Wise vs. Foolish Builders (7:24-27)\nHouse on rock vs. sand"
+  class "Crowds astonished (7:28-29)\nJesus taught with authority"
+}
+
+' Relationships to show sermon flow
+"Chapter 5: Beatitudes & Law (5:1-48)" --> "Chapter 6: Piety & Trust in God (6:1-34)" : Moral Foundation → Spiritual Practice
+"Chapter 6: Piety & Trust in God (6:1-34)" --> "Chapter 7: Judgment, Prayer, & Wisdom (7:1-29)" : Spiritual Practice → Discernment & Application
+
+@enduml
+
+
+
+@startuml
+title Matthew 7 - Key Teachings (RSV-CE)
+'left to right direction
+
+package "Judging Others (7:1-5)" #lightyellow {
+  class "Do not judge\n(7:1)" 
+  class "Measure you give = measure you get\n(7:2)"
+  class "Speck vs. Log in the eye\n(7:3-5)"
+}
+
+package "Profaning the Holy (7:6)" #lightpink {
+  class "Do not give dogs what is holy\nor cast pearls before swine"
+}
+
+package "Prayer & God's Goodness (7:7-11)" #lightgreen {
+  class "Ask, Seek, Knock\n(7:7-8)"
+  class "Father gives good gifts\n(7:9-11)"
+}
+
+package "Golden Rule (7:12)" #lightblue {
+  class "Do to others as you wish done to you\nLaw & Prophets summary"
+}
+
+package "The Narrow Gate (7:13-14)" #FFD580 {
+  class "Wide gate → destruction\nMany enter"
+  class "Narrow gate → life\nFew find it"
+}
+
+package "Discernment of Fruits (7:15-20)" #lightyellow {
+  class "Beware false prophets\nSheep outside, wolves inside"
+  class "Good tree → good fruit\nBad tree → bad fruit"
+}
+
+package "True Disciples (7:21-23)" #lightpink {
+  class "Not everyone 'Lord, Lord' enters"
+  class "Do the Father's will"
+  class "I never knew you\nDepart, evildoers"
+}
+
+package "Wise & Foolish Builders (7:24-27)" #lightgreen {
+  class "Wise: House on rock\nHears & does word"
+  class "Foolish: House on sand\nHears & ignores word"
+}
+
+package "Jesus' Authority (7:28-29)" #lightblue {
+  class "Crowds astonished"
+  class "He taught with authority,\nnot as scribes"
+}
+
+@enduml

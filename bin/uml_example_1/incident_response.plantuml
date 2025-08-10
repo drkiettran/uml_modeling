@@ -1,0 +1,394 @@
+@startuml CISA_UseCase_Diagram
+'!theme plain
+title CISA Incident Response System - Use Case Diagram
+
+' Actors
+actor "CISA Customer\n📝 Item 1: Requests assistance" as Customer
+actor "Tier 1 Analyst\n📝 Item 2: Reviews tickets\n📝 Item 3: Assigns to CCM" as T1
+actor "Cyber Case Manager\n📝 Item 4: Scoping calls\n📝 Item 5: Plans collection\n📝 Item 6: Assigns to T2" as CCM
+actor "Tier 2 Analyst\n📝 Item 7: Forensic analysis\n& data collection" as T2
+actor "Production Staff\n📝 Item 8: Report generation\n& workflow management" as Prod
+actor "Help Desk Personnel\n📝 Item 1: Manual ticket creation" as Help
+
+' Use Cases
+package "CISA Incident Response System" {
+    usecase "Request Incident Response\n📝 Item 1: Customer requests IR assistance" as UC1
+    usecase "Review and Triage Ticket\n📝 Item 2: T1 reviews & follows up" as UC2
+    usecase "Manage Cyber Case\n📝 Item 4: CCM scoping & validation" as UC3
+    usecase "Conduct Forensic Analysis\n📝 Item 7: T2 forensic analysis" as UC4
+    usecase "Generate Report\n📝 Item 8: Production develops product" as UC5
+    usecase "Deploy Collection Tools\n📝 Item 5: Additional data collection" as UC6
+    usecase "Analyze Data\n📝 Item 7: Databricks & AWS analysis" as UC7
+    usecase "Coordinate Release\n📝 Item 8: LLM collateral & staging" as UC8
+}
+
+' Relationships
+Customer --> UC1
+Help --> UC1
+T1 --> UC2
+CCM --> UC3
+CCM --> UC6
+T2 --> UC4
+T2 --> UC7
+Prod --> UC5
+Prod --> UC8
+
+@enduml
+
+@startuml CISA_Activity_Diagram
+!theme plain
+title CISA Incident Response Process - Activity Diagram
+
+start
+note right: 📝 Item 1: Customer Requests IR Assistance
+
+if (Request Method?) then (Web Intake)
+  :Auto-create ServiceNow Ticket\n📝 Item 1: Automatic creation;
+else (Phone/Other)
+  :Help Desk Creates Ticket Manually\n📝 Item 1: Manual creation;
+endif
+
+:Tier 1 Analyst Reviews Ticket\n📝 Item 2: T1 reviews in ServiceNow;
+:Follow Up with Customer for Critical Info\n📝 Item 2: Collect critical information;
+:Update Ticket with Additional Info\n📝 Item 2: Additional info captured;
+:Assign Ticket to Cyber Case Manager\n📝 Item 3: T1 assigns to CCM;
+
+:CCM Reviews Ticket\n📝 Item 4: CCM reviews if needed;
+:Schedule & Conduct Scoping Call\n📝 Item 4: Understand IR nature;
+:Validate Data Access & Legal Agreements\n📝 Item 4: Legal agreements for non-federal;
+
+if (Ongoing Active Intrusion?) then (Yes)
+  :Plan Additional Data Collection\n📝 Item 5: Deploy additional collection;
+else (No)
+endif
+
+:Assign to Tier 2 Analyst\n📝 Item 6: CCM assigns to T2/IR lead;
+
+partition "📝 Item 7: Forensic Analysis Process" {
+  :Tier 2 Analyst Reviews Ticket\n📝 Item 7: T2 reviews ticket info;
+  :Deploy Network Sensors & EDR Agents\n📝 Item 7: Network TAP/SPAN & EDR deployment;
+  :Collect Cloud, Network, Host Data\n📝 Item 7: Analyze customer data;
+  :Upload Data to CISA Ops Environment\n📝 Item 7: Data to warm storage;
+  :Run Triage Analytics in Databricks\n📝 Item 7: Canned analytics & auto-labeling;
+  :Conduct Forensic Analysis in AWS Workspace\n📝 Item 7: Databricks & AWS analytic workspace;
+  :Capture Critical Info in ServiceNow\n📝 Item 7: Standardized terminology;
+  :Auto-populate Report Template\n📝 Item 7: Critical info populates template;
+  :Catalog Analysis Artifacts\n📝 Item 7: Archive in Analytic Knowledge Base;
+}
+
+partition "📝 Item 8: Production Workflow" {
+  :Hand Off to Production Staff\n📝 Item 7: T2 hands off to Production;
+  :Production Staff Reviews Ticket\n📝 Item 8: Staff begins reviewing;
+  :Create Automated Template\n📝 Item 8: ServiceNow workflow automation;
+  :Coordinate with Internal Partners\n📝 Item 8: Notifications & collaboration;
+  :Generate Collateral with LLM\n📝 Item 8: LLM & templates for collateral;
+  :Finalize Product & Stage for Release\n📝 Item 8: Staff finalizes & stages;
+  :Close Production & Ticket Workflows\n📝 Item 8: Close workflows & ticket;
+}
+
+stop
+
+@enduml
+
+@startuml CISA_Component_Diagram
+'!theme plain
+title CISA Incident Response System - Component Architecture
+
+package "📝 Item 1: Front-End Systems" {
+  [Web Intake Portal\n📝 Item 1: Auto-create tickets] as WebIntake
+  [Help Desk System\n📝 Item 1: Manual ticket creation] as HelpDesk
+}
+
+package "📝 Items 2,3,6,7,8: Core Management Platform" {
+  [ServiceNow Platform\n📝 Items 1,2,3,7,8: Central orchestration] as ServiceNow
+  [Automated Workflows\n📝 Item 8: Workflow automation] as Workflows
+  [Report Templates\n📝 Item 7,8: Auto-populate templates] as Templates
+  [Notification System\n📝 Item 8: Partner coordination] as Notifications
+}
+
+package "📝 Item 7: Data Collection Infrastructure" {
+  [Network Sensors\n📝 Item 7: Network TAP/SPAN] as NetworkSensors
+  [EDR Agents\n📝 Item 7: All capable devices] as EDRAgents  
+  [Forensic Images\n📝 Item 7: Triage images for endpoints\nwithout EDR capability] as ForensicImages
+  [Data Normalization\n📝 Item 7: Normalized data to SIEM] as DataNormalization
+}
+
+package "📝 Item 7: Analytics & Processing Environment" {
+  [CISA Ops Environment\n📝 Item 7: Customer data upload] as CISA_Ops
+  [Warm Storage\n📝 Item 7: Data storage location] as WarmStorage
+  [Databricks Analytics Platform\n📝 Item 7: Triage analytics] as Databricks
+  [Canned Analytics\n📝 Item 7: Set of canned analytics\n(Note: Author questions effectiveness)] as CannedAnalytics
+  [Automatic Data Labeling\n📝 Item 7: For supervised learning models] as AutoLabeling
+}
+
+package "📝 Item 7: Analysis Workspace" {
+  [AWS Analytic Workspace\n📝 Item 7: Forensic analysis completion] as AWS_Analytics
+  [Notebook Interface\n📝 Item 7: Databricks notebook interface] as NotebookInterface
+  [Forensic Analysis Tools\n📝 Item 7: Preloaded analytic tools] as ForensicTools
+  [Shared Analysis Environment\n📝 Item 7: Concurrent analysis by\nseveral T2 analysts] as SharedEnvironment
+}
+
+package "📝 Item 7: Knowledge Management" {
+  [Analytic Knowledge Base\n📝 Item 7: Archive analysis artifacts] as AnalyticKB
+  [ServiceNow Front End\n📝 Item 7: Knowledge base interface] as ServiceNowFE
+  [AWS S3 Backend\n📝 Item 7: Backend storage] as S3Backend
+}
+
+package "📝 Item 8: Production & Release" {
+  [LLM Engine\n📝 Item 8: LLM for collateral creation] as LLMEngine
+  [Collateral Generation\n📝 Item 8: Social media, etc.] as CollateralGen
+  [Product Staging\n📝 Item 8: Stages for release] as ProductStaging
+  [Partner Coordination\n📝 Item 8: Internal/external partners] as PartnerCoord
+}
+
+package "📝 Item 4,7: Security & Access Control" {
+  [Access Control\n📝 Item 7: Required permissions] as AccessControl
+  [PCII Data Protection\n📝 Item 7: Critical Infrastructure\ndata segregation & access control] as PCIIProtection
+  [Legal Agreement Management\n📝 Item 4: Non-federal entity\nlegal agreements] as LegalAgreements
+}
+
+' Connections
+WebIntake --> ServiceNow
+HelpDesk --> ServiceNow
+ServiceNow --> Workflows
+ServiceNow --> Templates
+ServiceNow --> Notifications
+
+NetworkSensors --> DataNormalization
+EDRAgents --> DataNormalization
+ForensicImages --> DataNormalization
+DataNormalization --> WarmStorage
+
+WarmStorage --> Databricks
+Databricks --> CannedAnalytics
+Databricks --> AutoLabeling
+Databricks --> AWS_Analytics
+
+AWS_Analytics --> NotebookInterface
+AWS_Analytics --> ForensicTools
+AWS_Analytics --> SharedEnvironment
+
+AWS_Analytics --> AnalyticKB
+AnalyticKB --> ServiceNowFE
+ServiceNowFE --> S3Backend
+
+ServiceNow --> LLMEngine
+LLMEngine --> CollateralGen
+ServiceNow --> ProductStaging
+ServiceNow --> PartnerCoord
+
+AccessControl --> CISA_Ops
+PCIIProtection --> WarmStorage
+LegalAgreements --> AccessControl
+
+@enduml
+
+@startuml CISA_Sequence_Diagram
+'!theme plain
+title CISA Incident Response Process - Sequence Diagram
+
+participant "CISA Customer\n📝 Item 1,4: Requests IR &\nparticipates in scoping" as C
+participant "ServiceNow\n📝 Items 1,2,3,7,8:\nCentral platform" as SN
+participant "Tier 1 Analyst\n📝 Items 2,3:\nReviews & assigns" as T1
+participant "Cyber Case Manager\n📝 Items 4,5,6: Scoping,\nvalidation, assignment" as CCM
+participant "Tier 2 Analyst\n📝 Item 7:\nForensic analysis" as T2
+participant "Databricks\n📝 Item 7:\nTriage analytics" as DB
+participant "AWS Analytics\n📝 Item 7: Forensic\nanalysis workspace" as AWS
+participant "Production Staff\n📝 Item 8:\nReport production" as PS
+
+note over C,SN: 📝 Item 1: Customer requests IR assistance
+C ->> SN: Submit IR Request (web intake or help desk)
+
+alt Web Intake (Item 1)
+  SN ->> SN: Auto-create ServiceNow ticket
+else Manual Intake (Item 1)
+  note over SN: Help desk creates ticket manually
+end
+
+note over SN,T1: 📝 Item 2: T1 reviews ticket & follows up
+SN ->> T1: Notify of new ticket
+T1 ->> C: Follow up for critical information
+C ->> T1: Provide additional details
+T1 ->> SN: Update ticket with additional information
+
+note over T1,CCM: 📝 Item 3: T1 assigns to CCM
+T1 ->> CCM: Assign ticket to Cyber Case Manager
+
+note over CCM,C: 📝 Item 4: CCM scoping & validation
+CCM ->> C: Schedule scoping call with customer
+C ->> CCM: Participate in scoping call
+CCM ->> CCM: Understand nature of IR request
+CCM ->> CCM: Validate data access availability
+CCM ->> CCM: Ensure legal agreements (non-federal entities)
+
+note over CCM: 📝 Item 5: Evaluate for ongoing intrusion
+alt Ongoing Active Intrusion (Item 5)
+  CCM ->> CCM: Evaluate and plan additional data collection
+  CCM ->> C: Plan deployment in customer environment
+end
+
+note over CCM,T2: 📝 Item 6: CCM assigns to T2/IR lead
+CCM ->> T2: Assign ticket to IR engagement lead/Tier 2
+
+note over T2,AWS: 📝 Item 7: Complex forensic analysis process
+T2 ->> SN: Review ticket information
+T2 ->> C: Request required permissions for cloud environments
+T2 ->> C: Deploy network sensors (TAP/SPAN)
+T2 ->> C: Deploy EDR agents to all capable devices
+T2 ->> C: Create forensic images for non-EDR endpoints
+
+T2 ->> DB: Upload customer data to CISA Ops warm storage
+DB ->> DB: Run canned set of triage analytics
+DB ->> DB: Automatically label data for ML models
+DB ->> T2: Return triage analytics results
+
+T2 ->> AWS: Use Databricks and AWS analytic workspace
+AWS ->> AWS: Provide notebook interface access
+AWS ->> AWS: Load forensic analysis tools
+AWS ->> AWS: Enable shared environment for concurrent analysis
+AWS ->> T2: Return forensic analysis results
+
+T2 ->> SN: Capture critical info (standardized terminology)
+SN ->> SN: Auto-populate report template
+T2 ->> SN: Catalog analysis artifacts in Knowledge Base
+
+note over T2,PS: 📝 Item 7→8: Handoff to Production
+T2 ->> PS: Hand off ticket to Production staff
+
+note over PS,SN: 📝 Item 8: Production workflow
+PS ->> SN: Receive notification via ServiceNow
+PS ->> SN: Begin reviewing and developing product
+PS ->> SN: Kick off automated template creation workflow
+PS ->> SN: Incorporate data from ticket into template
+PS ->> SN: Send notifications to internal collaboration partners
+PS ->> SN: Coordinate with external partners (if applicable)
+PS ->> SN: Create collateral using LLM and templates
+PS ->> SN: Finalize product and stage for release
+PS ->> SN: Close Production workflow
+PS ->> SN: Close ticket workflow
+
+note over C,PS: Process Complete - All Items 1-8 Executed
+
+@enduml
+
+@startuml CISA_Class_Diagram
+'!theme plain
+title CISA Incident Response System - Class Diagram (SysML V2 Structure)
+
+abstract class "System Actor" {
+}
+
+class "CISA Customer" {
+  +name: String
+  +entityType: String
+  +hasLegalAgreements: Boolean
+  --
+  📝 Item 1: Requests IR assistance
+  📝 Item 4: Participates in scoping calls
+}
+
+class "Tier 1 Analyst" {
+  +analystId: String
+  --
+  +reviewTicket()
+  +followUpWithCustomer()
+  +updateTicketInformation()
+  +assignToCaseManager()
+  --
+  📝 Item 2: Reviews tickets, follows up
+  📝 Item 3: Assigns to CCM
+}
+
+class "Cyber Case Manager" {
+  +managerId: String
+  --
+  +reviewTicket()
+  +scheduleScopingCall()
+  +validateDataAccess()
+  +ensureLegalAgreements()
+  +planDataCollection()
+  +assignToTier2()
+  --
+  📝 Item 4: Scoping, validation
+  📝 Item 5: Plans collection
+  📝 Item 6: Assigns to T2
+}
+
+class "Tier 2 Analyst" {
+  +analystId: String
+  +specializations: String[]
+  --
+  +conductForensicAnalysis()
+  +deployCollectionTools()
+  +analyzeData()
+  +captureCriticalInformation()
+  +catalogArtifacts()
+  --
+  📝 Item 7: Forensic analysis
+  & data collection
+}
+
+class "Production Staff" {
+  +staffId: String
+  --
+  +reviewAnalysisResults()
+  +generateReport()
+  +coordinateWithPartners()
+  +createCollateral()
+  +stageForRelease()
+  --
+  📝 Item 8: Report generation
+  & workflow management
+}
+
+class "ServiceNow Platform" {
+  +ticketId: String
+  +status: String
+  +priority: String
+  --
+  +createTicket()
+  +updateTicket()
+  +assignTicket()
+  +autoPopulateTemplate()
+  +closeWorkflow()
+  --
+  📝 Items 1,2,3,7,8: Central orchestration
+}
+
+class "Databricks Analytics Platform" {
+  +dataVolume: Real
+  +analyticsResults: String
+  --
+  +ingestData()
+  +runTriageAnalytics()
+  +labelDataForML()
+  +generateAnalyticsResults()
+  --
+  📝 Item 7: Triage analytics
+}
+
+class "AWS Analytic Workspace" {
+  +workspaceId: String
+  +concurrentUsers: Integer  
+  --
+  +provideAnalysisEnvironment()
+  +runForensicTools()
+  +enableCollaborativeAnalysis()
+  --
+  📝 Item 7: Forensic analysis workspace
+}
+
+"System Actor" <|-- "CISA Customer"
+"System Actor" <|-- "Tier 1 Analyst"
+"System Actor" <|-- "Cyber Case Manager"
+"System Actor" <|-- "Tier 2 Analyst"
+"System Actor" <|-- "Production Staff"
+
+"CISA Customer" --> "ServiceNow Platform" : submits requests
+"Tier 1 Analyst" --> "ServiceNow Platform" : manages tickets
+"Cyber Case Manager" --> "ServiceNow Platform" : scoping & validation
+"Tier 2 Analyst" --> "Databricks Analytics Platform" : uploads data
+"Tier 2 Analyst" --> "AWS Analytic Workspace" : conducts analysis
+"Production Staff" --> "ServiceNow Platform" : generates reports
+
+@enduml

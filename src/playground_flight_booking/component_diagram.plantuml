@@ -1,0 +1,52 @@
+@startuml
+	title Component Diagram - Spring AI Flight Booking Playground
+	
+	skinparam componentStyle rectangle
+	
+	package "Application Layer" {
+	  [Application] <<component>>
+	  [FlightBookingView] <<component>>
+	  [SeatSelector] <<component>>
+	}
+	
+	package "Booking Services" {
+	  [FlightBookingService] <<component>>
+	  [BookingTools] <<component>>
+	  [CustomerSupportAssistant] <<component>>
+	}
+	
+	package "Data Layer" {
+	  [BookingData] <<component>>
+	  [Booking] <<component>>
+	  [Customer] <<component>>
+	  [BookingDetails] <<component>>
+	}
+	
+	package "Enums" {
+	  [BookingStatus] <<enumeration>>
+	  [BookingClass] <<enumeration>>
+	}
+	
+	' Dependencies
+	[Application] --> [FlightBookingService]
+	[Application] --> [BookingData]
+	[FlightBookingView] --> [FlightBookingService]
+	[FlightBookingView] --> [CustomerSupportAssistant]
+	[FlightBookingService] --> [BookingData]
+	[FlightBookingService] --> [BookingDetails]
+	[BookingTools] --> [FlightBookingService]
+	[CustomerSupportAssistant] --> [BookingTools]
+	[CustomerSupportAssistant] --> [ChatClient] <<external>>
+	[FlightBookingView] --> [SeatSelector]
+	[SeatSelector] ..|> [Composite<VerticalLayout>] <<ui framework>>
+	[FlightBookingView] ..|> [SplitLayout] <<ui framework>>
+	
+	' Data relationships
+	[Booking] --> [Customer]
+	[Booking] --> [BookingStatus]
+	[Booking] --> [BookingClass]
+	[Customer] --> [Booking]
+	[BookingData] --> [Customer]
+	[BookingData] --> [Booking]
+
+@enduml

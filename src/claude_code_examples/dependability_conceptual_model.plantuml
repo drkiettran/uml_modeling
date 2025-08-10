@@ -1,0 +1,198 @@
+/'
+I asked Claude Code to improve the plantuml script below and it generated
+this.
+'/
+
+@startuml
+!theme aws-orange
+title Figure 24: SoS Dependability Conceptual Model
+
+' Styling configuration
+skinparam classAttributeIconSize 0
+skinparam componentStyle rectangle
+skinparam backgroundColor #FAFAFA
+skinparam class {
+    BackgroundColor #6db9fc /' #E8F4FD '/
+    BorderColor #2E86AB
+    ArrowColor #2E86AB
+    FontSize 11
+}
+skinparam component {
+    BackgroundColor #F0F8FF
+    BorderColor #4682B4
+    FontSize 12
+    FontStyle bold
+}
+skinparam stereotype {
+    CBackgroundColor #FFE4B5
+    CBorderColor #CD853F
+}
+
+' Main Profile Component
+component SoSDependability <<Profile>> {
+    
+    ' Core Concepts
+    abstract class technique <<Stereotype>> {
+        + name : String [1]
+        + description : String [0..1]
+        + maturity_level : String [1]
+    }
+    
+    abstract class dependability_guarantee <<Stereotype>> {
+        + guarantee_id : String [1]
+        + confidence_level : Real [1]
+        + validity_period : Duration [0..1]
+    }
+    
+    abstract class measure <<Stereotype>> {
+        + target_value : String [1]
+        + unit : String [1]
+        + measurement_method : String [1]
+        + tolerance : Real [0..1]
+    }
+
+    ' Fault Management Techniques
+    class fault_forecast <<Stereotype>> {
+        + prediction_horizon : Duration [1]
+        + accuracy_threshold : Real [1]
+    }
+    
+    class fault_tolerance <<Stereotype>> {
+        + recovery_time : Duration [1]
+        + redundancy_level : Integer [1]
+    }
+    
+    class fault_removal <<Stereotype>> {
+        + detection_coverage : Real [1]
+        + removal_effectiveness : Real [1]
+    }
+    
+    class fault_prevention <<Stereotype>> {
+        + prevention_coverage : Real [1]
+        + cost_effectiveness : Real [1]
+    }
+
+    ' Containment Regions
+    class fault_containment_region <<Stereotype>> {
+        + region_id : String [1]
+        + isolation_level : String [1]
+        + boundary_definition : String [1]
+    }
+    
+    class error_containment_region <<Stereotype>> {
+        + region_id : String [1]
+        + error_types : String [1..*]
+        + containment_strategy : String [1]
+    }
+    
+    class error_containment <<Stereotype>> {
+        + containment_mechanism : String [1]
+        + effectiveness_rate : Real [1]
+    }
+
+    ' Dependability Measures
+    class robustness <<Stereotype>> {
+        + stress_threshold : Real [1]
+        + degradation_rate : Real [1]
+    }
+    
+    class integrity <<Stereotype>> {
+        + data_consistency : Boolean [1]
+        + corruption_tolerance : Real [1]
+    }
+    
+    class safety <<Stereotype>> {
+        + safety_integrity_level : String [1]
+        + hazard_mitigation : String [1..*]
+    }
+    
+    class maintainability <<Stereotype>> {
+        + mean_time_to_repair : Duration [1]
+        + maintenance_complexity : String [1]
+    }
+    
+    class availability <<Stereotype>> {
+        + uptime_percentage : Real [1]
+        + downtime_tolerance : Duration [1]
+    }
+    
+    class reliability <<Stereotype>> {
+        + mean_time_between_failures : Duration [1]
+        + failure_rate : Real [1]
+    }
+}
+
+' System Elements
+abstract class CS <<Stereotype>> {
+    + system_id : String [1]
+    + criticality_level : String [1]
+}
+
+abstract class SOS <<Stereotype>> {
+    + sos_id : String [1]
+    + constituent_systems : String [1..*]
+    + emergent_behavior : String [0..*]
+}
+
+' External Profile
+component Blocks <<Profile>> <<EPackage>> {
+    abstract class Block <<Stereotype>> {
+        + block_id : String [1]
+        + block_type : String [1]
+    }
+}
+
+' Primary Relationships
+CS ||--o{ dependability_guarantee : "may require"
+SOS ||--o{ dependability_guarantee : "may require"
+dependability_guarantee ||--o{ technique : "implements via"
+dependability_guarantee ||--o{ measure : "measured through"
+dependability_guarantee --|> Block : "<<specializes>>"
+
+' Technique Specializations
+fault_forecast --|> technique : "<<specializes>>"
+fault_tolerance --|> technique : "<<specializes>>"
+fault_removal --|> technique : "<<specializes>>"
+fault_prevention --|> technique : "<<specializes>>"
+technique --|> Block : "<<specializes>>"
+
+' Measure Specializations
+robustness --|> measure : "<<specializes>>"
+integrity --|> measure : "<<specializes>>"
+safety --|> measure : "<<specializes>>"
+maintainability --|> measure : "<<specializes>>"
+availability --|> measure : "<<specializes>>"
+reliability --|> measure : "<<specializes>>"
+
+' Containment Relationships
+fault_containment_region ||--o{ error_containment_region : "encompasses"
+error_containment_region ||--o{ error_containment : "applies"
+
+' Additional semantic relationships
+fault_tolerance ..> fault_containment_region : "<<uses>>"
+fault_removal ..> error_containment : "<<implements>>"
+safety ..> fault_prevention : "<<depends on>>"
+availability ..> fault_tolerance : "<<enhanced by>>"
+reliability ..> fault_forecast : "<<informed by>>"
+
+' Layout hints
+fault_forecast -[hidden]-> fault_tolerance
+fault_tolerance -[hidden]-> fault_removal
+fault_removal -[hidden]-> fault_prevention
+
+robustness -[hidden]-> integrity
+integrity -[hidden]-> safety
+safety -[hidden]-> maintainability
+maintainability -[hidden]-> availability
+availability -[hidden]-> reliability
+
+' Notes for clarity
+note top of SoSDependability : Profile for System-of-Systems\nDependability Modeling
+note right of dependability_guarantee : Central concept linking\nsystems to techniques and measures
+note bottom of fault_containment_region : Defines boundaries for\nfault propagation control
+
+hide <<Stereotype>> circle
+hide <<Profile>> circle
+hide <<EPackage>> circle
+
+@enduml

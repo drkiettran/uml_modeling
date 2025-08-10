@@ -1,0 +1,391 @@
+@startuml
+!theme plain
+left to right direction
+
+title Matthew 1–5: Life of Jesus & Spiritual Progression
+
+' === Phase 1: Genealogy ===
+package "Genealogy (Matthew 1)" #LightBlue {
+  class "Abraham"
+  class "David"
+  class "Joseph & Mary"
+  class "Jesus"
+
+  "Abraham" --> "David" : Lineage
+  "David" --> "Joseph & Mary"
+  "Joseph & Mary" --> "Jesus"
+}
+
+' === Phase 2: Early Life ===
+package "Early Life (Matthew 2)" #LightPink {
+  class "Visit of the Magi"
+  class "Flight to Egypt"
+  class "Return to Nazareth"
+
+  "Visit of the Magi" --> "Flight to Egypt"
+  "Flight to Egypt" --> "Return to Nazareth"
+}
+
+' === Phase 3: Preparation for Ministry ===
+package "Preparation (Matthew 3-4)" #LightYellow {
+  class "John the Baptist\nPreaches"
+  class "Baptism of Jesus"
+  class "Temptation in the Desert (40 days)"
+
+  "John the Baptist\nPreaches" --> "Baptism of Jesus"
+  "Baptism of Jesus" --> "Temptation in the Desert (40 days)"
+}
+
+' === Phase 4: Early Ministry ===
+package "Early Ministry & Sermon (Matthew 4-5)" #LightGreen {
+  class "Calls First Disciples"
+  class "Teaches in Galilee"
+  class "Sermon on the Mount"
+
+  "Calls First Disciples" --> "Teaches in Galilee"
+  "Teaches in Galilee" --> "Sermon on the Mount"
+
+  ' === Beatitudes as a nested spiritual flow ===
+  package "Beatitudes (Matthew 5:3-12)" #Thistle {
+    class "Poor in Spirit\n(v 3)"
+    class "Mourn for Sin & Suffering\n(v 4)"
+    class "Meek & Humble\n(v 5)"
+    class "Hunger & Thirst for Righteousness\n(v 6)"
+    class "Show Mercy\n(v 7)"
+    class "Pure in Heart\n(v 8)"
+    class "Peacemaker\n(v 9)"
+    class "Persecuted for Righteousness\n(v 10-12)"
+
+    "Poor in Spirit\n(v 3)" --> "Mourn for Sin & Suffering\n(v 4)" 
+    "Mourn for Sin & Suffering\n(v 4)" --> "Meek & Humble\n(v 5)" 
+    "Meek & Humble\n(v 5)" --> "Hunger & Thirst for Righteousness\n(v 6)" 
+    "Hunger & Thirst for Righteousness\n(v 6)" --> "Show Mercy\n(v 7)"
+    "Show Mercy\n(v 7)" --> "Pure in Heart\n(v 8)"
+    "Pure in Heart\n(v 8)" --> "Peacemaker\n(v 9)"
+    "Peacemaker\n(v 9)" --> "Persecuted for Righteousness\n(v 10-12)"
+  }
+
+  "Sermon on the Mount" --> "Poor in Spirit\n(v 3)" 
+}
+
+' === Overall Flow Across Phases ===
+"Jesus" --> "Visit of the Magi"
+"Return to Nazareth" --> "John the Baptist\nPreaches"
+"Temptation in the Desert (40 days)" --> "Calls First Disciples"
+
+@enduml
+
+
+
+@startuml
+!theme plain
+left to right direction
+
+title Matthew 1–5: Chronological Timeline
+
+' === Phase 1: Genealogy ===
+package "Genealogy (Matthew 1)" #LightBlue {
+  class "Abraham"
+  class "David"
+  class "Joseph & Mary"
+  class "Jesus"
+
+  "Abraham" --> "David" : Lineage
+  "David" --> "Joseph & Mary"
+  "Joseph & Mary" --> "Jesus"
+}
+
+' === Phase 2: Early Life ===
+package "Early Life (Matthew 2)" #LightPink {
+  class "Visit of the Magi"
+  class "Flight to Egypt"
+  class "Return to Nazareth"
+
+  "Visit of the Magi" --> "Flight to Egypt"
+  "Flight to Egypt" --> "Return to Nazareth"
+}
+
+' === Phase 3: Preparation for Ministry ===
+package "Preparation (Matthew 3-4)" #LightYellow {
+  class "John the Baptist\nPreaches"
+  class "Baptism of Jesus"
+  class "Temptation in the Desert (40 days)"
+
+  "John the Baptist\nPreaches" --> "Baptism of Jesus"
+  "Baptism of Jesus" --> "Temptation in the Desert (40 days)"
+}
+
+' === Phase 4: Early Ministry ===
+package "Early Ministry & Sermon (Matthew 4-5)" #LightGreen {
+  class "Calls First Disciples"
+  class "Teaches in Galilee"
+  class "Sermon on the Mount"
+
+  "Calls First Disciples" --> "Teaches in Galilee"
+  "Teaches in Galilee" --> "Sermon on the Mount"
+}
+
+' === Overall Flow Across Phases ===
+"Jesus" --> "Visit of the Magi"
+"Return to Nazareth" --> "John the Baptist\nPreaches"
+"Temptation in the Desert (40 days)" --> "Calls First Disciples"
+
+@enduml
+
+
+
+
+@startuml
+'!theme blueprint
+
+title Matthew 1-5: Genealogy & Early Ministry of Jesus
+
+' === Genealogy (Matthew 1) ===
+package "Genealogy of Jesus (Matt 1)" {
+  class "Abraham" as A
+  class "Isaac" as B
+  class "Jacob" as C
+  class "Judah" as D
+  class "David" as E
+  class "Solomon" as F
+  class "Joseph" as J
+  class "Jesus" as JC
+
+  A --> B
+  B --> C
+  C --> D
+  D --> E
+  E --> F
+  F ..> J : Descendants
+  J --> JC : "Legal Father"
+}
+
+note left of A
+  Matthew 1:1-17
+  3 sets of 14 generations
+  Abraham → David → Exile → Jesus
+end note
+
+' === Early Life Events (Matthew 2) ===
+package "Early Life & Nativity (Matt 2)" {
+  class "Birth in Bethlehem"
+  class "Visit of the Magi"
+  class "Flight to Egypt"
+  class "Return to Nazareth"
+
+  "Birth in Bethlehem" --> "Visit of the Magi" : Star of the East
+  "Visit of the Magi" --> "Flight to Egypt" : Herod seeks to kill Jesus
+  "Flight to Egypt" --> "Return to Nazareth" : After Herod's death
+}
+
+note right of "Birth in Bethlehem"
+  Fulfillment of prophecy:
+  * Micah 5:2 - Born in Bethlehem
+end note
+
+' === Baptism & Temptation (Matthew 3-4) ===
+package "Preparation for Ministry" {
+  class "John the Baptist" as JB
+  class "Baptism of Jesus" as BAP
+  class "Temptation in Wilderness" as TEMP
+  class "Galilean Ministry Begins" as GAL
+
+  JB --> BAP : Baptizes Jesus at Jordan
+  BAP --> TEMP : Spirit leads into wilderness
+  TEMP --> GAL : After resisting Satan
+}
+
+note right of TEMP
+  Matthew 4:1-11
+  * 40 days in wilderness
+  * Tempted 3 times
+end note
+
+' === Sermon on the Mount (Matthew 5) ===
+package "First Major Teaching" {
+  class "Sermon on the Mount" as SOTM
+  class "Beatitudes"
+  class "Law Fulfilled"
+  class "Love of Enemies"
+
+  SOTM --> "Beatitudes"
+  SOTM --> "Law Fulfilled"
+  SOTM --> "Love of Enemies"
+}
+
+' === Flow of Ministry Journey ===
+"Return to Nazareth" --> JB : "Jesus grows up in Galilee"
+GAL --> SOTM : "Crowds follow Jesus\nTeaching & Healing"
+
+@enduml
+
+@startuml
+'!theme blueprint
+
+title Matthew 5 - Spiritual Progression Flow
+
+' === Stage 1: Inner Disposition (Beatitudes) ===
+start
+:Recognize spiritual poverty (v 3)\n"Poor in Spirit";
+:Experience godly sorrow (v 4)\n"Mourn for sin & suffering";
+:Grow in meekness & humility (v 5);
+:Develop hunger & thirst for righteousness (v 6);
+:Show mercy to others (v 7);
+:Seek purity of heart (v 8);
+:Become a peacemaker (v 9);
+:Accept persecution for righteousness (v 10-12);
+
+' === Stage 2: Discipleship Identity ===
+if (Live the Beatitudes?) then (Yes)
+  :You are the Salt of the Earth (v 13);
+  :You are the Light of the World (v 14-16)\nGood works glorify the Father;
+else (No)
+  :Faith without transformation\nis ineffective witness;
+endif
+
+' === Stage 3: Law Fulfilled in the Heart ===
+:Jesus fulfills the Law (v 17-20)\nCall to greater righteousness;
+:Deepen the Commandments:
+- Anger = Murder of Heart
+- Lust = Adultery of Heart
+- Honor Marriage
+- Speak Truth (No Oaths)
+- Non-retaliation (Turn the Other Cheek);
+
+' === Stage 4: Culmination in Perfect Love ===
+:Love Your Enemies (v 43-47);
+:Pray for Persecutors;
+:Be Perfect as Your Heavenly Father is Perfect (v 48);
+
+stop
+@enduml
+
+
+@startuml
+'!theme blueprint
+
+title Matthew 5 - Sermon on the Mount Overview
+
+package "Matthew 5" {
+
+  class "Beatitudes" as C1 {
+    vv 3-12
+    * Blessed are the poor in spirit
+    * Blessed are those who mourn
+    * Blessed are the meek
+    * Blessed are those who hunger & thirst for righteousness
+    * Blessed are the merciful
+    * Blessed are the pure in heart
+    * Blessed are the peacemakers
+    * Blessed are persecuted for righteousness
+    * Blessed are reviled for Christ
+  }
+
+  class "Salt & Light" as C2 {
+    vv 13-16
+    * Salt of the earth
+    * Light of the world
+    * Good works glorify the Father
+  }
+
+  class "Fulfillment of the Law" as C3 {
+    vv 17-20
+    * Not abolish but fulfill the Law
+    * Not one iota will pass
+    * Righteousness > Scribes & Pharisees
+  }
+
+  class "Deepening Commandments" as C4 {
+    vv 21-42
+    * Anger = murder of heart
+    * Lust = adultery of heart
+    * Divorce warning
+    * Oaths: Let Yes be Yes
+    * No retaliation; turn the other cheek
+  }
+
+  class "Love Your Enemies" as C5 {
+    vv 43-48
+    * Love enemies
+    * Pray for persecutors
+    * Be perfect as the Father is perfect
+  }
+
+  ' Relationships to show logical flow
+  C1 --> C2 : Disciples' identity
+  C2 --> C3 : Witness requires true righteousness
+  C3 --> C4 : Jesus deepens moral law
+  C4 --> C5 : Culminates in perfect love
+}
+
+note right of C5
+  Key Theme:
+  Kingdom living = interior transformation
+  leading to perfect love
+end note
+
+@enduml
+
+
+
+
+@startuml
+'!theme blueprint
+
+left to right direction
+
+title Beatitudes (Matthew 5:3–12)
+
+class "Poor in Spirit" as B1 {
+  Reward: Kingdom of Heaven
+}
+
+class "Those who Mourn" as B2 {
+  Reward: Comforted
+}
+
+class "The Meek" as B3 {
+  Reward: Inherit the Earth
+}
+
+class "Hunger & Thirst for Righteousness" as B4 {
+  Reward: Satisfied
+}
+
+class "The Merciful" as B5 {
+  Reward: Obtain Mercy
+}
+
+class "Pure in Heart" as B6 {
+  Reward: See God
+}
+
+class "Peacemakers" as B7 {
+  Reward: Called Sons of God
+}
+
+class "Persecuted for Righteousness" as B8 {
+  Reward: Kingdom of Heaven
+}
+
+class "Reviled for Christ" as B9 {
+  Reward: Great Reward in Heaven
+}
+
+B1 --> "Kingdom of Heaven"
+B2 --> "Comforted"
+B3 --> "Inherit the Earth"
+B4 --> "Satisfied"
+B5 --> "Obtain Mercy"
+B6 --> "See God"
+B7 --> "Called Sons of God"
+B8 --> "Kingdom of Heaven"
+B9 --> "Great Reward in Heaven"
+
+note right of B9
+  Matthew 5:12
+  "Rejoice and be glad,
+  for your reward is great in heaven"
+end note
+
+@enduml

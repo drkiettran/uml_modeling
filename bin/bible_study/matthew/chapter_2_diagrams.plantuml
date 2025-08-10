@@ -1,0 +1,424 @@
+@startuml
+title Timeline of the Holy Family in Matthew 2
+
+start
+:Jesus is born in **Bethlehem** (vv.1);
+:Wise Men (Magi) arrive from the East
+and worship the child (vv.1-12);
+
+:Angel warns Magi in dream
+:Magi return home by another route;
+
+
+:Angel warns Joseph in a dream
+to flee to Egypt (v.13);
+:Holy Family departs **by night** for **Egypt** (v.14);
+
+:Fulfillment of prophecy:
+"Out of Egypt I called my son" (v.15);
+
+:Herod orders the **Massacre of the Innocents** (vv.16-18);
+
+:After Herod's death,
+Angel tells Joseph to return (vv.19-20);
+
+
+:Joseph is afraid to settle in Judea;
+:Angel warns him in another dream;
+:Holy Family goes to **Galilee**;
+
+
+:They settle in **Nazareth** (v.23);
+:Prophecy fulfilled: "He shall be called a Nazarene";
+
+stop
+@enduml
+
+@startuml
+title Individuals in Matthew Chapter 2 (RSV-CE)
+
+' --- Main Holy Family ---
+class Jesus {
+  Age: newborn ~ 2 yrs
+  Role: Messiah
+  Born: Bethlehem
+}
+
+class Mary {
+  Age: ~15-17 yrs
+  Role: Mother of Jesus
+  From: Nazareth
+}
+
+class Joseph {
+  Age: ~30-40 yrs
+  Role: Foster father of Jesus
+  Occupation: Carpenter
+}
+
+Mary -- Jesus
+Joseph -- Jesus
+Mary -- Joseph : Spouse
+
+note right of Jesus
+  Worshiped by Magi
+  Target of Herod's decree
+end note
+
+' --- Political Figures ---
+class "Herod the Great" as Herod {
+  Age: ~70 yrs
+  Role: King of Judea
+  Reign: 37-4 BC
+  Action: Massacre of Innocents
+}
+
+class Archelaus {
+  Age: ~18-20 yrs
+  Role: Ethnarch of Judea
+  Notorious for cruelty
+}
+
+Herod -- Archelaus : Father-Son
+
+' --- Magi ---
+class Magi {
+  Age: Adult scholars
+  Role: Wise men from the East
+  Gifts: Gold, Frankincense, Myrrh
+}
+
+Magi ..> Jesus : Worship & Gifts
+
+' --- Victims and Other Figures ---
+class "Holy Innocents" as Innocents {
+  Age: 0-2 yrs
+  Role: Victims of massacre
+}
+
+Herod ..> Innocents : Orders killing
+
+class "Angels of the Lord" as Angels {
+  Age: Eternal
+  Role: Messengers in dreams
+}
+
+Angels ..> Joseph : Warn in dreams
+Angels ..> Magi : Warn not to return to Herod
+
+@enduml
+
+
+
+@startuml
+title Timeline and Movement of the Holy Family in Matthew 2 (RSV-CE)
+
+start
+:Birth of Jesus in **Bethlehem**;
+note right
+  Individuals present:
+  - Jesus (newborn)
+  - Mary & Joseph
+end note
+
+:Visit of the **Magi**;
+note right
+  Magi offer gifts: 
+  Gold, Frankincense, Myrrh
+end note
+
+if (Angel warns Magi in dream?) then (Yes)
+  :Magi return home by another route;
+endif
+
+:Angel warns **Joseph** to flee;
+:Holy Family travels to **Egypt** by night;
+note right
+  Active individuals:
+  - Jesus (~0-2 yrs)
+  - Mary & Joseph
+  - Angel guiding in dream
+end note
+
+:Fulfillment of prophecy
+"Out of Egypt I called my son";
+
+:Herod orders the **Massacre of the Innocents**;
+note right
+  - Herod the Great (~70 yrs)
+  - Holy Innocents (0-2 yrs)
+  - Archelaus (young adult, not ruling yet)
+end note
+
+:After Herod's death,
+Angel instructs **Joseph** to return;
+
+if (Joseph hears Archelaus rules Judea?) then (Yes)
+  :Joseph fears Judea;
+  :Angel warns to go to **Galilee**;
+endif
+
+:Holy Family settles in **Nazareth**;
+note right
+  Prophecy fulfilled: 
+  "He shall be called a Nazarene"
+end note
+
+stop
+@enduml
+
+
+
+@startuml
+title Geographical Movement in Matthew 2 (RSV-CE)
+
+skinparam linetype ortho
+
+' Locations as Nodes
+class "Bethlehem\n(Birthplace of Jesus)" as Bethlehem  <<location>>
+class "Egypt\n(Refuge from Herod)" as Egypt  <<location>>
+class "Nazareth in Galilee\n(Final Settlement)" as Nazareth  <<location>>
+
+' Characters as smaller nodes for clarity
+class Jesus
+class Mary
+class Joseph
+class "Magi" as Magi
+class "Herod the Great" as Herod
+class "Archelaus" as Archelaus
+class "Holy Innocents" as Innocents
+class "Angels" as Angels
+
+' Main Movements
+Bethlehem --> Egypt : Flight into Egypt\n(Matt 2:13-15)
+Egypt --> Nazareth : Return after Herod's death\n(Matt 2:19-23)
+
+' Events at Bethlehem
+Bethlehem -[hidden]-> Bethlehem
+Bethlehem ..> Magi : Magi visit\nGifts: Gold, Frankincense, Myrrh
+Bethlehem ..> Herod : Herod learns of Messiah
+Herod --> Innocents : Massacre of the Innocents\n(Matt 2:16)
+
+' Divine Guidance
+Angels --> Joseph : Warns in dreams\n(Flee / Return / Avoid Judea)
+Angels --> Magi : Warn not to return to Herod
+
+' Archelaus context
+Nazareth ..> Archelaus : Joseph avoids Judea\nSettles in Galilee
+
+note top of Bethlehem
+  Key Events:
+  1. Jesus born
+  2. Magi worship
+  3. Herod's plan
+end note
+
+note top of Egypt
+  Key Events:
+  1. Holy Family flees
+  2. Fulfillment of Hosea 11:1
+end note
+
+note top of Nazareth
+  Key Events:
+  1. Holy Family settles
+  2. "He shall be called a Nazarene"
+end note
+
+@enduml
+
+@startuml
+title Combined Genealogy & Early Life Journey of Jesus (Matthew 1-2)
+
+skinparam linetype ortho
+
+' === Genealogy (Simplified from Matthew 1) ===
+class "Abraham" as Abraham
+class "Isaac" as Isaac
+class "Jacob" as Jacob
+class "Judah" as Judah
+class "David" as David
+class "Solomon" as Solomon
+class "Joseph\n(Husband of Mary)" as Joseph
+class "Mary" as Mary
+class "Jesus" as Jesus
+
+' Placeholder classes for skipped generations
+class "Tribal Lineage" as Tribal
+class "Royal Lineage" as Royal
+
+Abraham --> Isaac
+Isaac --> Jacob
+Jacob --> Judah
+Judah --> Tribal : "Tribal lineage..."
+Tribal --> David
+David --> Solomon
+Solomon --> Royal : "Royal line..."
+Royal --> Joseph
+Joseph --> Jesus
+Mary --> Jesus : Mother
+
+note right of Jesus
+  Messiah, King of the Jews
+  Born in Bethlehem (Matt 2:1)
+  Fulfillment of prophecies
+end note
+
+' === Key Individuals from Matthew 2 ===
+class "Magi\n(Wise Men)" as Magi
+class "Herod the Great" as Herod
+class "Archelaus" as Archelaus
+class "Holy Innocents\n(0-2 yrs)" as Innocents
+class "Angels of the Lord" as Angels
+
+Herod --> Archelaus : Father-Son
+Herod --> Innocents : Massacre of Innocents
+
+Magi ..> Jesus : Worship\nGifts: Gold, Frankincense, Myrrh
+Angels --> Joseph : Warnings in dreams
+Angels --> Magi : Warn not to return to Herod
+
+' === Geographical Movements ===
+class "Bethlehem\nBirthplace" as Bethlehem <<location>>
+class "Egypt\nRefuge" as Egypt <<location>>
+class "Nazareth in Galilee\nSettlement" as Nazareth <<location>>
+
+Bethlehem --> Egypt : Flight into Egypt
+Egypt --> Nazareth : Return after Herod's death
+
+' === Events & Characters per Location ===
+Bethlehem ..> Jesus
+Bethlehem ..> Magi
+Bethlehem ..> Herod
+
+Egypt ..> Jesus
+Egypt ..> Mary
+Egypt ..> Joseph
+Egypt ..> Angels
+
+Nazareth ..> Jesus
+Nazareth ..> Mary
+Nazareth ..> Joseph
+Nazareth ..> Archelaus : Joseph avoids Judea
+
+note top of Bethlehem
+  - Birth of Jesus
+  - Visit of Magi
+  - Herod plots & Massacre
+end note
+
+note top of Egypt
+  - Holy Family flees
+  - "Out of Egypt I called my son"
+end note
+
+note top of Nazareth
+  - Holy Family settles
+  - "He shall be called a Nazarene"
+end note
+
+@enduml
+
+
+
+
+@startuml
+title Color-Coded Genealogy & Journey of Jesus (Matthew 1-2)
+
+skinparam linetype ortho
+skinparam classBackgroundColor White
+
+' === Color Legend ===
+' Holy Family: LightGreen
+' Genealogy: LightBlue
+' Magi: Gold
+' Political Figures: Red
+' Victims: Pink
+' Angels: LightYellow
+
+' === Genealogy (Simplified from Matthew 1) ===
+class "Abraham" as Abraham #LightBlue
+class "Isaac" as Isaac #LightBlue
+class "Jacob" as Jacob #LightBlue
+class "Judah" as Judah #LightBlue
+class "David" as David #LightBlue
+class "Solomon" as Solomon #LightBlue
+class "Joseph\n(Husband of Mary)" as Joseph #LightGreen
+class "Mary" as Mary #LightGreen
+class "Jesus" as Jesus #Green
+
+' Placeholder classes for skipped generations
+class "Tribal Lineage" as Tribal #LightBlue
+class "Royal Lineage" as Royal #LightBlue
+
+Abraham --> Isaac
+Isaac --> Jacob
+Jacob --> Judah
+Judah --> Tribal : "Tribal lineage..."
+Tribal --> David
+David --> Solomon
+Solomon --> Royal : "Royal line..."
+Royal --> Joseph
+Joseph --> Jesus
+Mary --> Jesus : Mother
+
+note right of Jesus
+  Messiah, King of the Jews
+  Born in Bethlehem (Matt 2:1)
+  Fulfillment of prophecies
+end note
+
+' === Key Individuals from Matthew 2 ===
+class "Magi\n(Wise Men)" as Magi #Gold
+class "Herod the Great" as Herod #Red
+class "Archelaus" as Archelaus #Red
+class "Holy Innocents\n(0-2 yrs)" as Innocents #Pink
+class "Angels of the Lord" as Angels #LightYellow
+
+Herod --> Archelaus : Father-Son
+Herod --> Innocents : Massacre of Innocents
+
+Magi ..> Jesus : Worship\nGifts: Gold, Frankincense, Myrrh
+Angels --> Joseph : Warnings in dreams
+Angels --> Magi : Warn not to return to Herod
+
+' === Geographical Movements ===
+class "Bethlehem\nBirthplace" as Bethlehem
+class "Egypt\nRefuge" as Egypt
+class "Nazareth in Galilee\nSettlement" as Nazareth
+
+Bethlehem --> Egypt : Flight into Egypt
+Egypt --> Nazareth : Return after Herod's death
+
+' === Events & Characters per Location ===
+Bethlehem ..> Jesus
+Bethlehem ..> Magi
+Bethlehem ..> Herod
+
+Egypt ..> Jesus
+Egypt ..> Mary
+Egypt ..> Joseph
+Egypt ..> Angels
+
+Nazareth ..> Jesus
+Nazareth ..> Mary
+Nazareth ..> Joseph
+Nazareth ..> Archelaus : Joseph avoids Judea
+
+note top of Bethlehem
+  - Birth of Jesus
+  - Visit of Magi
+  - Herod plots & Massacre
+end note
+
+note top of Egypt
+  - Holy Family flees
+  - "Out of Egypt I called my son"
+end note
+
+note top of Nazareth
+  - Holy Family settles
+  - "He shall be called a Nazarene"
+end note
+
+@enduml

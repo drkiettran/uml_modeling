@@ -1,0 +1,154 @@
+@startuml
+!define RECTANGLE class
+
+title User Registration and Email Verification Process
+
+start
+
+:User visits registration page;
+
+:User fills out registration form;
+note right: Name, email, password required
+
+if (Form validation passes?) then (yes)
+  :Create user account in database;
+  :Generate verification token;
+  
+  fork
+    :Send verification email;
+  fork again
+    :Log registration event;
+  fork again
+    :Update user statistics;
+  end fork
+  
+  :Display success message;
+  :Redirect to login page;
+  
+  repeat
+    :User checks email;
+    :User clicks verification link;
+    
+    if (Token valid?) then (yes)
+      :Mark account as verified;
+      :Send welcome email;
+      :Redirect to dashboard;
+      stop
+    else (no)
+      :Display error message;
+    endif
+    
+    :Wait for user action;
+  repeat while (User wants to retry?) is (yes)
+  
+else (no)
+  :Display validation errors;
+  :Keep user on registration page;
+endif
+
+if (User abandons process?) then (yes)
+  :Clean up temporary data;
+  stop
+endif
+
+stop
+
+@enduml
+
+' Alternative simple example
+@startuml Simple_Process
+title Simple Business Process
+
+start
+:Receive Order;
+:Validate Order;
+if (Order Valid?) then (yes)
+  :Process Payment;
+  if (Payment Successful?) then (yes)
+    :Ship Product;
+    :Send Confirmation;
+  else (no)
+    :Send Payment Error;
+  endif
+else (no)
+  :Send Validation Error;
+endif
+stop
+@enduml
+
+
+' Example with swimlanes
+@startuml Swimlane_Example
+title Order Processing with Swimlanes
+
+|Customer|
+start
+:Place Order;
+
+|System|
+:Validate Order;
+:Calculate Total;
+
+|Payment Service|
+:Process Payment;
+
+|Inventory|
+:Check Stock;
+:Reserve Items;
+
+|Shipping|
+:Prepare Package;
+:Ship Order;
+
+|Customer|
+:Receive Order;
+stop
+
+@enduml
+
+' Example with partitions and styling
+@startuml Styled_Activity
+!theme aws-orange
+
+title API Request Processing
+
+partition "Input Validation" {
+  start
+  :Receive API Request;
+  :Parse Request Headers;
+  :Validate Authentication;
+  
+  if (Auth Valid?) then (yes)
+    :Extract Request Parameters;
+  else (no)
+    :Return 401 Unauthorized;
+    end
+  endif
+}
+
+partition "Business Logic" {
+  :Process Business Rules;
+  :Query Database;
+  
+  switch (Data Found?)
+  case (yes)
+    :Format Response Data;
+  case (no)
+    :Return 404 Not Found;
+    end
+  case (error)
+    :Log Error;
+    :Return 500 Internal Error;
+    end
+  endswitch
+}
+
+partition "Response" {
+  :Build Response;
+  :Set Response Headers;
+  :Return JSON Response;
+}
+
+stop
+
+@enduml

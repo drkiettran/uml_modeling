@@ -86,7 +86,8 @@
 	title Class Diagram: Cybersecurity Incident Response for APP Nodes
 	
 	' Application Team Member
-	class ApplicationTeamMember {
+	class ApplicationTea
+	mMember {
 	  +notifyIRT()
 	  +notifyAPPTeam()
 	  +inviteTeamToMS()

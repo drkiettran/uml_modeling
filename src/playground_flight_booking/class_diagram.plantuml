@@ -1,0 +1,175 @@
+@startuml
+	class Application [[java:ai.spring.demo.ai.playground.Application]] {
+		+{static} main(args: String[]): void
+		~ingestTermOfServiceToVectorStore(vectorStore: VectorStore, termsOfServiceDocs: Resource): CommandLineRunner
+		+chatMemory(): ChatMemory
+		~noActuatorServerObservations(): ObservationPredicate
+	}
+	interface AppShellConfigurator {
+	}
+	AppShellConfigurator <|.. Application
+	class Booking [[java:ai.spring.demo.ai.playground.data.Booking]] {
+		-bookingNumber: String
+		-date: LocalDate
+		-bookingTo: LocalDate
+		-from: String
+		-to: String
+		-seatNumber: String
+		+Booking(bookingNumber: String, date: LocalDate, customer: Customer, bookingStatus: BookingStatus, from: String, to: String, seatNumber: String, bookingClass: BookingClass)
+		+getBookingNumber(): String
+		+setBookingNumber(bookingNumber: String): void
+		+getDate(): LocalDate
+		+setDate(date: LocalDate): void
+		+getBookingTo(): LocalDate
+		+setBookingTo(bookingTo: LocalDate): void
+		+setCustomer(customer: Customer): void
+		+setBookingStatus(bookingStatus: BookingStatus): void
+		+getFrom(): String
+		+setFrom(from: String): void
+		+getTo(): String
+		+setTo(to: String): void
+		+setBookingClass(bookingClass: BookingClass): void
+		+getSeatNumber(): String
+		+setSeatNumber(seatNumber: String): void
+	}
+	class Customer {
+	}
+	Booking --> "1" Customer : customer
+	class BookingStatus {
+	}
+	Booking --> "1" BookingStatus : bookingStatus
+	class BookingClass {
+	}
+	Booking --> "1" BookingClass : bookingClass
+	class Customer {
+	}
+	Booking --> "1" Customer : getCustomer()
+	class BookingStatus {
+	}
+	Booking --> "1" BookingStatus : getBookingStatus()
+	class BookingClass {
+	}
+	Booking --> "1" BookingClass : getBookingClass()
+	class BookingData [[java:ai.spring.demo.ai.playground.data.BookingData]] {
+		+setCustomers(customers: List<Customer>): void
+		+setBookings(bookings: List<Booking>): void
+	}
+	class Customer {
+	}
+	BookingData --> "*" Customer : customers
+	class Booking {
+	}
+	BookingData --> "*" Booking : bookings
+	class Customer {
+	}
+	BookingData --> "*" Customer : getCustomers()
+	class Booking {
+	}
+	BookingData --> "*" Booking : getBookings()
+	class BookingDetails [[java:ai.spring.demo.ai.playground.data.BookingDetails]] {
+	}
+	class Record {
+	}
+	Record <|-- BookingDetails
+	enum BookingStatus [[java:ai.spring.demo.ai.playground.data.BookingStatus]] {
+		CONFIRMED
+		COMPLETED
+		CANCELLED
+	}
+	class Customer [[java:ai.spring.demo.ai.playground.data.Customer]] {
+		-firstName: String
+		-lastName: String
+		+Customer()
+		+Customer(firstName: String, lastName: String)
+		+getFirstName(): String
+		+setFirstName(firstName: String): void
+		+getLastName(): String
+		+setLastName(lastName: String): void
+		+setBookings(bookings: List<Booking>): void
+	}
+	class Booking {
+	}
+	Customer --> "*" Booking : bookings
+	class Booking {
+	}
+	Customer --> "*" Booking : getBookings()
+	enum BookingClass [[java:ai.spring.demo.ai.playground.data.BookingClass]] {
+		ECONOMY
+		PREMIUM_ECONOMY
+		BUSINESS
+	}
+	class BookingTools [[java:ai.spring.demo.ai.playground.services.BookingTools]] {
+		-{static} logger: Logger
+		+BookingTools(flightBookingService: FlightBookingService)
+		+getBookingDetails(bookingNumber: String, firstName: String, lastName: String): BookingDetails
+		+changeBooking(bookingNumber: String, firstName: String, lastName: String, newDate: String, from: String, to: String): void
+		+cancelBooking(bookingNumber: String, firstName: String, lastName: String): void
+	}
+	class FlightBookingService {
+	}
+	BookingTools --> "1" FlightBookingService : flightBookingService
+	class FlightBookingService [[java:ai.spring.demo.ai.playground.services.FlightBookingService]] {
+		+FlightBookingService()
+		-initDemoData(): void
+		-findBooking(bookingNumber: String, firstName: String, lastName: String): Booking
+		+getBookingDetails(bookingNumber: String, firstName: String, lastName: String): BookingDetails
+		+changeBooking(bookingNumber: String, firstName: String, lastName: String, newDate: String, from: String, to: String): void
+		+cancelBooking(bookingNumber: String, firstName: String, lastName: String): void
+		-toBookingDetails(booking: Booking): BookingDetails
+		+changeSeat(bookingNumber: String, firstName: String, lastName: String, seatNumber: String): void
+	}
+	class BookingData {
+	}
+	FlightBookingService --> "1" BookingData : db
+	class BookingDetails {
+	}
+	FlightBookingService --> "*" BookingDetails : getBookings()
+	class CustomerSupportAssistant [[java:ai.spring.demo.ai.playground.services.CustomerSupportAssistant]] {
+		-chatClient: ChatClient
+		+CustomerSupportAssistant(chatClientBuilder: ChatClient.Builder, bookingTools: BookingTools, vectorStore: VectorStore, chatMemory: ChatMemory)
+		+chat(chatId: String, userMessage: String, additionalTools: Object[]): Flux<String>
+	}
+	class SeatSelector [[java:ai.spring.demo.ai.playground.ui.component.SeatSelector]] {
+		-{static} ROWS: int
+		-{static} SEATS_PER_ROW: int
+		-{static} SEAT_LETTERS: char[]
+		-selectedSeat: String
+		-seatGrid: VerticalLayout
+		+SeatSelector()
+		+SeatSelector(selectedSeat: String)
+		-initializeUI(): void
+		-renderSeats(): void
+		-createSeatButton(seatId: String, seatLetter: char, isSelected: boolean): Button
+		-handleSeatClick(seatId: String): void
+		+getSelectedSeat(): String
+		+setSelectedSeat(selectedSeat: String): void
+		+addSeatSelectedListener(listener: ComponentEventListener<SeatSelectedEvent>): Registration
+	}
+	class "Composite<VerticalLayout>" as Composite_VerticalLayout_ {
+	}
+	Composite_VerticalLayout_ <|-- SeatSelector
+	class FlightBookingView [[java:ai.spring.demo.ai.playground.ui.view.FlightBookingView]] {
+		-chatId: String
+		-ui: UI
+		+FlightBookingView(flightBookingService: FlightBookingService, assistant: CustomerSupportAssistant)
+		-createChatLayout(): Component
+		-createGrid(): Component
+		-handleMessageInput(userMessage: String, messageList: MessageList): void
+		+changeSeatNumber(bookingNumber: String, firstName: String, lastName: String): String
+		-updateBookings(): void
+		#onAttach(attachEvent: AttachEvent): void
+		#onDetach(detachEvent: DetachEvent): void
+	}
+	class FlightBookingService {
+	}
+	FlightBookingView --> "1" FlightBookingService : flightBookingService
+	class CustomerSupportAssistant {
+	}
+	FlightBookingView --> "1" CustomerSupportAssistant : assistant
+	class BookingDetails {
+	}
+	FlightBookingView --> "Grid<BookingDetails>" BookingDetails : grid
+	class SplitLayout {
+	}
+	SplitLayout <|-- FlightBookingView
+@enduml

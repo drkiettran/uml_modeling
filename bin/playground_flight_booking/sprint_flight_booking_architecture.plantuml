@@ -1,0 +1,68 @@
+@startuml
+	title Spring AI Flight Booking Architecture
+	
+	!define RECTANGLE class
+	skinparam rectangle {
+	  BackgroundColor #d5f5e3
+	  BorderColor black
+	}
+	skinparam package {
+	  BackgroundColor #d6eaf8
+	  BorderColor black
+	}
+	skinparam componentStyle rectangle
+	
+	' UI
+	rectangle "Vaadin UI" as UI
+	
+	' Generative AI
+	rectangle "Generative AI" as GenAI
+	
+	' Booking DB
+	database "Booking DB" as BDB
+	
+	' Terms of Service
+	rectangle "Terms of Service" as TOS
+	
+	' Vector Store
+	database "Vector Store" as VStore
+	
+	' Spring AI box
+	rectangle "Spring AI" as SpringAI {
+	  rectangle "System Prompt" as SystemPrompt
+	  rectangle "ConversationMemory" as ConversationMemory
+	  rectangle "RAG" as RAG
+	  rectangle "Function Calling" as FunctionCalling
+	
+	  package "Chat Model API" as ChatModelAPI{
+	  }
+	  package "Vector Store API" as VectoreStoreAPI{
+	  }
+	}
+	
+	' Flight Booking Service
+	rectangle "Flight Booking Service" as Booking {
+	  rectangle "getBookingDetails(number, first, last)" as getBooking
+	  rectangle "changeBooking(number, first, last, date, from, to)" as changeBooking
+	  rectangle "cancelBooking(number, first, last)" as cancelBooking
+	}
+	
+	' Doc Ingestion
+	rectangle "Doc Ingestion" as DocIngest {
+	  rectangle "Document Reader" as DocReader
+	  rectangle "Document Transformer" as DocTransformer
+	  rectangle "Document Writer" as DocWriter
+	}
+	
+	' Relationships
+	UI --> SpringAI
+	SpringAI --> GenAI
+	SpringAI --> VStore
+	DocIngest --> VStore
+	DocWriter --> DocTransformer
+	DocTransformer --> DocReader
+	SpringAI --> Booking : Service APIs
+	Booking --> BDB
+	Booking --> TOS
+
+@enduml

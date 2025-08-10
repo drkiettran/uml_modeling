@@ -1,0 +1,43 @@
+@startuml
+	title Activity Diagram: Flight Booking Interaction
+	
+	start
+	
+	:User starts booking process;
+	
+	if (Existing Booking?) then (yes)
+	  :Enter booking number, first/last name;
+	  :FlightBookingService.getBookingDetails;
+	  :Display booking details in UI;
+	  if (Change booking?) then (yes)
+	    :Collect new date, from, to;
+	    :FlightBookingService.changeBooking;
+	    :Update booking details;
+	  else (no)
+	  endif
+	  if (Cancel booking?) then (yes)
+	    :FlightBookingService.cancelBooking;
+	    :Confirm cancellation to user;
+	  else (no)
+	  endif
+	else (no)
+	  :Create new booking flow (not shown);
+	endif
+	
+	:Ask about seat selection;
+	if (Change seat?) then (yes)
+	  :SeatSelector.renderSeats;
+	  :User selects seat;
+	  :FlightBookingService.changeSeat;
+	  :Confirm seat update;
+	else (no)
+	endif
+	
+	:Engage customer support?;
+	if (yes)
+	  :CustomerSupportAssistant.chat;
+	  :Answer customer queries;
+	endif
+	
+	stop
+@enduml

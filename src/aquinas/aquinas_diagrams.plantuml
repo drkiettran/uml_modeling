@@ -1,0 +1,195 @@
+@startuml
+title Recommended Study Plan for Understanding Thomas Aquinas
+
+skinparam state {
+  BackgroundColor<<Intro>> LightBlue
+  BackgroundColor<<Devotional>> LightYellow
+  BackgroundColor<<Philosophy>> LightGreen
+  BackgroundColor<<Theology>> LightPink
+  BorderColor Black
+  FontColor Black
+}
+
+state "Secondary Introductions" as SI <<Intro>>
+[*] --> SI
+note right
+  1. *A Shorter Summa* (Peter Kreeft)
+  2. *Aquinas* (Edward Feser)
+  3. *The Theology of Thomas Aquinas* (Gilles Emery)
+  Purpose: Orientation and key concepts
+end note
+
+'"Secondary Introductions" --> "Devotional & Accessible Texts" <<Devotional>>
+state "Devotional & Accessible Texts" as DAT <<Devotional>>
+SI --> DAT
+note right
+  1. Hymns for Corpus Christi
+     (Adoro Te Devote, Pange Lingua)
+  2. *Catena Aurea* (Gospel selections)
+  Purpose: Encounter Aquinas spiritually & pastorally
+end note
+
+' "Devotional & Accessible Texts" --> "Philosophical Foundations" <<Philosophy>>
+state "Philosophical Foundations" as PF <<Philosophy>>
+DAT --> PF
+note right
+  1. *De Ente et Essentia*
+  2. Selected Aristotle readings +
+     Aquinas' commentaries
+  Purpose: Grasp metaphysics and reason in theology
+end note
+
+' "Philosophical Foundations" --> "Study Selected Summa Theologiae" <<Theology>>
+state "Study Selected Summa Theologiae" as SSST <<Theology>>
+PF --> SSST
+note right
+  1. Prima Secundae (virtue, happiness)
+  2. Prima Pars (existence & attributes of God)
+  3. Secunda Secundae (moral and spiritual life)
+  Purpose: Core theological structure
+end note
+
+' "Study Selected Summa Theologiae" --> "Apologetics & Full Synthesis" <<Theology>>
+state "Apologetics & Full Synthesis" as AFS <<Theology>>
+SSST --> AFS
+note right
+  1. *Summa Contra Gentiles* (apologetics)
+  2. Full *Summa Theologiae* (systematic theology)
+  Purpose: Complete mastery of Aquinas
+end note
+
+' "Apologetics & Full Synthesis" --> [*]
+AFS --> [*]
+
+@enduml
+
+
+
+@startuml
+title Thomas Aquinas - Major Works Timeline (State Diagram Version)
+
+' === Legend ===
+' Green: Systematic Theology
+' Blue: Philosophical Works
+' Orange: Biblical Commentaries
+' Pink: Devotional Works
+
+skinparam state {
+  BackgroundColor<<Theology>> LightGreen
+  BackgroundColor<<Philosophy>> LightBlue
+  BackgroundColor<<Biblical>> LightYellow
+  BackgroundColor<<Devotional>> Pink
+  BorderColor Black
+}
+
+' [*] --> "De Ente et Essentia\n(1252-1256)" <<Philosophy>>
+[*] --> DEE
+
+state "De Ente et Essentia\n(1252-1256)" as DEE <<Philosophy>>
+note right
+  Theme: Metaphysics - Essence vs Existence
+  Type: Philosophical treatise
+end note
+
+
+' "De Ente et Essentia\n(1252-1256)" --> "Scriptum super Sententiis\n(1254-1259)" <<Theology>>
+state "De Ente et Essentia\n(1252-1256)" as DEE <<Philosophy>>
+state "Scriptum super Sententiis\n(1254-1259)" as SSS <<Theology>>
+
+DEE --> SSS
+note right
+  Early theological synthesis
+  Commentary on Peter Lombard
+end note
+
+' "Scriptum super Sententiis\n(1254-1259)" --> "Quaestiones Disputatae: De Veritate\n(1256-1259)" <<Philosophy>>
+
+state "Quaestiones Disputatae: De Veritate\n(1256-1259)" as QD <<Philosophy>>
+SSS --> QD
+
+note right
+  Theme: Nature of Truth
+  First major disputation
+end note
+
+' "Quaestiones Disputatae: De Veritate\n(1256-1259)" --> "Summa Contra Gentiles\n(1259-1265)" <<Theology>>
+state "Summa Contra Gentiles\n(1259-1265)" as SCG <<Theology>>
+QD --> SCG
+
+note right
+  Theme: Apologetics for Non-Christians
+  Books: God, Creation, Providence, Salvation
+end note
+
+'"Summa Contra Gentiles\n(1259-1265)" --> "Catena Aurea\n(1260-1265)" <<Biblical>>
+state "Catena Aurea\n(1260-1265)" as CA <<Biblical>>
+SCG --> CA
+note right
+  Theme: Gospel Commentary (Patristic Chain)
+end note
+
+'"Catena Aurea\n(1260-1265)" --> "Commentary on Job\n(1261-1265)" <<Biblical>>
+state "Commentary on Job\n(1261-1265)" as CJ <<Biblical>>
+CA --> CJ
+note right
+  Theme: Suffering and Divine Providence
+end note
+
+' "Commentary on Job\n(1261-1265)" --> "Hymns for Corpus Christi\n(1264)" <<Devotional>>
+state "Hymns for Corpus Christi\n(1264)" as HCC <<Devotional>>
+CJ --> HCC 
+note right
+  Theme: Eucharistic Devotion
+  Includes: Pange Lingua, Tantum Ergo
+end note
+
+' "Hymns for Corpus Christi\n(1264)" --> "Summa Theologiae\n(1265-1274)" <<Theology>>
+state "Summa Theologiae\n(1265-1274)" as ST <<Theology>>
+HCC --> ST
+note right
+  Theme: Systematic Theology
+  Parts: God, Morality, Christ, Sacraments
+  Status: Unfinished at death
+end note
+
+'"Summa Theologiae\n(1265-1274)" --> "De Regno (On Kingship)\n(1265-1267)" <<Philosophy>>
+state "De Regno (On Kingship)\n(1265-1267)" as DR <<Philosophy>>
+ST --> DR
+note right
+  Theme: Political Philosophy
+  Role of ruler and common good
+end note
+
+'"De Regno (On Kingship)\n(1265-1267)" --> "Quaestiones Disputatae: De Malo\n(1269-1272)" <<Theology>>
+state "Quaestiones Disputatae: De Malo\n(1269-1272)" as QDDM <<Theology>>
+DR --> QDDM
+note right
+  Theme: Nature of evil and sin
+end note
+
+' "Quaestiones Disputatae: De Malo\n(1269-1272)" --> "Aristotle Commentaries\n(1269-1272)" <<Philosophy>>
+state "Aristotle Commentaries\n(1269-1272)" as AC <<Philosophy>>
+QDDM --> AC
+note right
+  Works: Metaphysics, Ethics, Physics, De Anima
+  Theme: Integration of Aristotle
+end note
+
+' "Aristotle Commentaries\n(1269-1272)" --> "Pauline Epistles Commentaries\n(1270-1273)" <<Biblical>>
+state "Pauline Epistles Commentaries\n(1270-1273)" as PE <<Biblical>>
+AC -> PE
+note right
+  Theme: Grace, Faith, and Christian Life
+end note
+
+' "Pauline Epistles Commentaries\n(1270-1273)" --> "Compendium Theologiae\n(1273-1274)" <<Theology>>
+state "Compendium Theologiae\n(1273-1274)" as CT <<Theology>>
+PE --> CT
+note right
+  Theme: Concise summary of theology
+  Status: Unfinished
+end note
+
+CT --> [*]
+
+@enduml

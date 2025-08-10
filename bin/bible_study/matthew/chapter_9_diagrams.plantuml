@@ -1,0 +1,505 @@
+@startuml
+title Unified Contextual Diagram – Matthew 1–9
+'left to right direction 
+
+' === GENEALOGY AND BIRTH ===
+package "Genealogy & Birth (Ch 1–2)" #lightyellow {
+  class "Abraham"
+  class "David"
+  class "Joseph (husband of Mary)"
+  class "Mary"
+  class "Jesus"
+  class "Magi"
+  class "Herod the Great"
+  class "Angel"
+
+  "Abraham" --> "David"
+  "David" --> "Joseph (husband of Mary)"
+  "Joseph (husband of Mary)" --> "Jesus"
+  
+  "Mary" --> "Jesus"
+  "Magi" --> "Jesus" : worship
+  "Herod the Great" --> "Magi" : interrogates
+  "Angel" --> "Joseph (husband of Mary)" : dreams
+}
+
+' === PREPARATION FOR MINISTRY ===
+package "Preparation (Ch 3–4)" #lightblue {
+  class "John the Baptist"
+  class "Baptism of Jesus"
+  class "Temptation in the Desert"
+  class "Peter, Andrew, James, John (Disciples)"
+  class "Galilee" #white
+
+  "John the Baptist" --> "Baptism of Jesus"
+  "Baptism of Jesus" --> "Jesus"
+  "Jesus" --> "Temptation in the Desert"
+  "Jesus" --> "Peter, Andrew, James, John (Disciples)" : calls
+  "Jesus" --> "Galilee" : begins ministry
+}
+
+' === SERMON ON THE MOUNT ===
+package "Teachings (Ch 5–7)" #lightgreen {
+  class "Beatitudes"
+  class "Law & Prophets"
+  class "Prayer & Fasting"
+  class "Golden Rule"
+  class "Wise Builders"
+  class "Audience: Disciples & Crowds"
+
+  "Jesus" --> "Beatitudes"
+  "Jesus" --> "Law & Prophets"
+  "Jesus" --> "Prayer & Fasting"
+  "Jesus" --> "Golden Rule"
+  "Jesus" --> "Wise Builders"
+  "Jesus" --> "Audience: Disciples & Crowds"
+}
+
+' === MIRACLES AND HEALINGS ===
+package "Miracles (Ch 8–9)" #lightpink {
+  class "Leper"
+  class "Centurion"
+  class "Peter’s Mother-in-law"
+  class "Storm"
+  class "Gadarene Demoniacs"
+  class "Paralytic Man"
+  class "Matthew (Tax Collector)"
+  class "Hemorrhaging Woman"
+  class "Jairus (Ruler)"
+  class "Jairus’ Daughter"
+  class "Two Blind Men"
+  class "Mute Demoniac"
+  class "Crowds"
+
+  "Jesus" --> "Leper" : heals (Capernaum)
+  "Jesus" --> "Centurion" : heals servant (Capernaum)
+  "Jesus" --> "Peter’s Mother-in-law" : heals (Peter’s House)
+  "Jesus" --> "Storm" : calms sea (Sea of Galilee)
+  "Jesus" --> "Gadarene Demoniacs" : casts demons (Gadara)
+  "Jesus" --> "Paralytic Man" : forgives/heals (Capernaum)
+  "Jesus" --> "Matthew (Tax Collector)" : calls (Capernaum)
+  "Jesus" --> "Hemorrhaging Woman" : heals (on road)
+  "Jesus" --> "Jairus (Ruler)" : responds to faith
+  "Jesus" --> "Jairus’ Daughter" : raises from dead (Jairus’ house)
+  "Jesus" --> "Two Blind Men" : heals (private house)
+  "Jesus" --> "Mute Demoniac" : exorcises demon (public area)
+  "Jesus" --> "Crowds" : amazes
+}
+
+' === LOCATIONS ===
+package "Locations" #lightgray {
+  class "Bethlehem"
+  class "Egypt"
+  class "Nazareth"
+  class "Capernaum"
+  class "Sea of Galilee"
+  class "Gadara"
+  class "Various Towns & Villages"
+
+  "Jesus" --> "Bethlehem" : born
+  "Jesus" --> "Egypt" : refuge
+  "Jesus" --> "Nazareth" : raised
+  "Jesus" --> "Capernaum" : teaches, heals
+  "Jesus" --> "Sea of Galilee" : calms storm
+  "Jesus" --> "Gadara" : exorcism
+  "Jesus" --> "Various Towns & Villages" : preaching tour
+}
+
+' === GROUPS & RESPONSES ===
+package "Groups & Teaching Audiences" #thistle {
+  class "Pharisees"
+  class "Scribes"
+  class "John’s Disciples"
+  class "Sinners & Tax Collectors"
+  class "Crowds (General)"
+  class "Sheep Without Shepherd"
+  class "Laborers for Harvest"
+
+  "Pharisees" --> "Jesus" : accuse of blasphemy/demonic power
+  "Scribes" --> "Jesus" : question authority
+  "John’s Disciples" --> "Jesus" : ask about fasting
+  "Jesus" --> "Sinners & Tax Collectors" : dines with
+  "Jesus" --> "Crowds (General)" : teaches, heals
+  "Jesus" --> "Sheep Without Shepherd" : has compassion
+  "Jesus" --> "Laborers for Harvest" : symbolic disciples
+}
+
+@enduml
+
+
+
+
+@startuml
+title Matthew 9 – Events, Individuals, and Locations
+
+package "Capernaum" #lightblue {
+  class "Jesus"
+  class "Paralytic Man"
+  class "Scribes"
+  class "Crowds"
+  class "Matthew"
+  class "Pharisees"
+  class "Matthew’s House"
+
+  "Jesus" --> "Paralytic Man" : heals
+  "Scribes" --> "Jesus" : accuse of blasphemy
+  "Jesus" --> "Matthew" : calls to follow
+  "Jesus" --> "Matthew’s House" : dines with sinners
+  "Pharisees" --> "Jesus" : question table fellowship
+  "Crowds" --> "Jesus" : glorify God
+}
+
+package "Along the Way (near Capernaum)" #lightyellow {
+  class "Hemorrhaging Woman"
+  "Hemorrhaging Woman" --> "Jesus" : touches garment
+}
+
+package "Ruler’s House" #lightgreen {
+  class "Synagogue Ruler (Jairus)"
+  class "Ruler’s Daughter"
+
+  "Synagogue Ruler (Jairus)" --> "Jesus" : pleads for healing
+  "Jesus" --> "Ruler’s Daughter" : raises from dead
+}
+
+package "Another House (in town)" #lightpink {
+  class "Two Blind Men"
+  "Two Blind Men" --> "Jesus" : call Him "Son of David"
+  "Jesus" --> "Two Blind Men" : heals privately
+}
+
+package "Public Area (Market or Roadside)" #FFD580 {
+  class "Mute Demoniac"
+  class "Pharisees 2"
+  class "Crowds 2"
+
+  "Jesus" --> "Mute Demoniac" : casts out demon
+  "Pharisees 2" --> "Jesus" : accuse of demonic power
+  "Crowds 2" --> "Jesus" : marvel
+}
+
+package "Galilean Towns & Villages" #thistle {
+  class "Teaching Tour"
+  class "Sheep Without Shepherd"
+  class "Laborers for the Harvest"
+
+  "Jesus" --> "Teaching Tour" : teaches & heals
+  "Jesus" --> "Sheep Without Shepherd" : has compassion
+  "Jesus" --> "Laborers for the Harvest" : calls disciples
+}
+
+@enduml
+
+
+
+
+@startuml
+title Unified Genealogy + Ministry + Individuals of Jesus (Matthew 1–9)
+
+' === GENEALOGY & BIRTH ===
+package "Genealogy & Birth (Ch 1–2)" #lightyellow {
+  class "Abraham"
+  class "David"
+  class "Joseph (husband of Mary)"
+  class "Mary"
+  class "Jesus"
+
+  "Abraham" --> "David"
+  "David" --> "Joseph (husband of Mary)"
+  "Joseph (husband of Mary)" --> "Jesus"
+  "Mary" --> "Jesus"
+
+  class "Magi"
+  class "Herod the Great"
+  class "Angel (Joseph's Dream)"
+
+  "Magi" --> "Jesus" : worship
+  "Herod the Great" --> "Magi" : inquiry
+  "Angel (Joseph's Dream)" --> "Joseph (husband of Mary)" : warnings
+}
+
+' === PREPARATION ===
+package "Preparation for Ministry (Ch 3–4)" #lightblue {
+  class "John the Baptist"
+  class "Baptism of Jesus"
+  class "Temptation in the Desert"
+  class "Disciples: Peter, Andrew, James, John"
+
+  "John the Baptist" --> "Baptism of Jesus"
+  "Baptism of Jesus" --> "Jesus"
+  "Jesus" --> "Temptation in the Desert"
+  "Jesus" --> "Disciples: Peter, Andrew, James, John" : calls
+}
+
+' === SERMON ON THE MOUNT ===
+package "Teachings: Sermon on the Mount (Ch 5–7)" #lightgreen {
+  class "Beatitudes"
+  class "Prayer & Fasting"
+  class "Golden Rule"
+  class "Wise vs Foolish Builders"
+
+  "Jesus" --> "Beatitudes"
+  "Jesus" --> "Prayer & Fasting"
+  "Jesus" --> "Golden Rule"
+  "Jesus" --> "Wise vs Foolish Builders"
+}
+
+' === MIRACLES & HEALINGS ===
+package "Miracles & Authority (Ch 8–9)" #lightpink {
+  class "Leper"
+  class "Centurion"
+  class "Peter’s Mother-in-law"
+  class "Storm at Sea"
+  class "Gadarene Demoniacs"
+  class "Paralytic Man"
+  class "Hemorrhaging Woman"
+  class "Ruler’s Daughter"
+  class "Two Blind Men"
+  class "Mute Demoniac"
+  class "Matthew the Tax Collector"
+
+  "Jesus" --> "Leper" : heals
+  "Jesus" --> "Centurion" : heals servant
+  "Jesus" --> "Peter’s Mother-in-law" : heals fever
+  "Jesus" --> "Storm at Sea" : calms
+  "Jesus" --> "Gadarene Demoniacs" : casts out demons
+  "Jesus" --> "Paralytic Man" : forgives & heals
+  "Jesus" --> "Hemorrhaging Woman" : heals
+  "Jesus" --> "Ruler’s Daughter" : raises from dead
+  "Jesus" --> "Two Blind Men" : restores sight
+  "Jesus" --> "Mute Demoniac" : casts out demon
+  "Jesus" --> "Matthew the Tax Collector" : calls
+}
+
+' === INTERACTIONS & RESPONSES ===
+package "Groups and Individuals" #thistle {
+  class "Pharisees"
+  class "Scribes"
+  class "John’s Disciples"
+  class "Crowds"
+  class "Sheep without Shepherd"
+  class "Laborers for the Harvest"
+
+  "Pharisees" --> "Jesus" : accuse (blasphemy)
+  "Scribes" --> "Jesus" : criticize
+  "John’s Disciples" --> "Jesus" : question fasting
+  "Crowds" --> "Jesus" : amazed
+  "Jesus" --> "Sheep without Shepherd" : has compassion
+  "Jesus" --> "Laborers for the Harvest" : sends workers
+}
+
+@enduml
+
+
+
+
+
+@startuml
+title Key Individuals in Matthew 9 – Relationships with Jesus
+
+package "Jesus' Ministry (Matthew 9)" {
+
+  class "Jesus" {
+    +Forgives sins
+    +Heals diseases
+    +Raises the dead
+    +Calls disciples
+    +Teaches with authority
+    +Has compassion
+  }
+
+  class "Paralytic Man" {
+    +Healed by Jesus
+    +Sins forgiven
+  }
+
+  class "Matthew (Tax Collector)" {
+    +Called to follow Jesus
+    +Becomes Apostle
+  }
+
+  class "Pharisees" {
+    -Oppose Jesus
+    -Accuse Him of blasphemy
+    -Accuse Him of demonic power
+  }
+
+  class "Scribes" {
+    -Silent critics
+    -Accuse Jesus inwardly
+  }
+
+  class "John’s Disciples" {
+    +Question fasting
+  }
+
+  class "Synagogue Ruler (Jairus)" {
+    +Seeks healing for daughter
+    +Shows faith in Jesus
+  }
+
+  class "Ruler's Daughter" {
+    +Raised from the dead
+  }
+
+  class "Hemorrhaging Woman" {
+    +Healed by touching Jesus' garment
+    +Demonstrates faith
+  }
+
+  class "Two Blind Men" {
+    +Call Jesus "Son of David"
+    +Healed according to faith
+  }
+
+  class "Mute Demoniac" {
+    +Demon cast out
+    +Speaks again
+  }
+
+  class "Crowds" {
+    +Witness miracles
+    +Marvel at Jesus
+  }
+
+  class "Laborers (Symbolic)" {
+    +Future disciples
+    +Harvest workers
+  }
+
+  "Jesus" --> "Paralytic Man" : forgives & heals
+  "Jesus" --> "Matthew (Tax Collector)" : calls to follow
+  "Jesus" --> "Pharisees" : rebukes
+  "Jesus" --> "Scribes" : knows thoughts
+  "Jesus" --> "John’s Disciples" : teaches new covenant
+  "Jesus" --> "Synagogue Ruler (Jairus)" : responds to faith
+  "Jesus" --> "Ruler's Daughter" : raises from death
+  "Jesus" --> "Hemorrhaging Woman" : heals her faith
+  "Jesus" --> "Two Blind Men" : heals eyes
+  "Jesus" --> "Mute Demoniac" : casts out demon
+  "Jesus" --> "Crowds" : has compassion
+  "Jesus" --> "Laborers (Symbolic)" : calls to mission
+
+  "Pharisees" --> "Jesus" : accuse
+  "Scribes" --> "Jesus" : doubt internally
+  "Crowds" --> "Jesus" : amazed & glorify God
+}
+
+@enduml
+
+
+
+
+@startuml
+title Jesus' Early Life and Ministry (Matthew 1–9)
+
+package "Genealogy & Birth (Ch 1–2)" {
+  class "Genealogy of Jesus (Ch 1)"
+  class "Birth of Jesus (Ch 1)"
+  class "Visit of the Magi (Ch 2)"
+  class "Flight to Egypt (Ch 2)"
+  class "Return to Nazareth (Ch 2)"
+}
+
+package "Preparation for Ministry (Ch 3–4)" {
+  class "John the Baptist Prepares the Way (Ch 3)"
+  class "Baptism of Jesus (Ch 3)"
+  class "Temptation in the Desert (Ch 4)"
+  class "Call of First Disciples (Ch 4)"
+}
+
+package "Teachings: Sermon on the Mount (Ch 5–7)" {
+  class "Beatitudes (Ch 5)"
+  class "Law & Prophets Fulfilled (Ch 5)"
+  class "Prayer & Fasting (Ch 6)"
+  class "Judging Others, Golden Rule (Ch 7)"
+  class "Wise and Foolish Builders (Ch 7)"
+}
+
+package "Early Miracles & Signs (Ch 8–9)" {
+  class "Healing of Leper (8:1–4)"
+  class "Healing of Centurion's Servant (8:5–13)"
+  class "Healing of Peter's Mother-in-law (8:14–15)"
+  class "Stilling the Storm (8:23–27)"
+  class "Healing of Demoniacs (8:28–34)"
+  class "Healing of Paralytic (9:1–8)"
+  class "Call of Matthew (9:9–13)"
+  class "Raising Ruler’s Daughter (9:18–26)"
+  class "Healing Hemorrhaging Woman (9:20–22)"
+  class "Healing Two Blind Men (9:27–31)"
+  class "Healing Mute Demoniac (9:32–34)"
+  class "Teaching & Preaching Tours (9:35–38)"
+}
+
+"Genealogy of Jesus (Ch 1)" --> "Birth of Jesus (Ch 1)"
+"Birth of Jesus (Ch 1)" --> "Visit of the Magi (Ch 2)" 
+"Visit of the Magi (Ch 2)" --> "Flight to Egypt (Ch 2)"
+"Flight to Egypt (Ch 2)" --> "Return to Nazareth (Ch 2)"
+
+'"Return to Nazareth (Ch 2)" --> "John the Baptist Prepares the Way (Ch 3)" --> "Baptism of Jesus (Ch 3)" --> "Temptation in the Desert (Ch 4)" --> "Call of First Disciples (Ch 4)"
+"Return to Nazareth (Ch 2)" --> "John the Baptist Prepares the Way (Ch 3)"
+"John the Baptist Prepares the Way (Ch 3)" --> "Baptism of Jesus (Ch 3)"
+"Baptism of Jesus (Ch 3)" --> "Temptation in the Desert (Ch 4)"
+"Temptation in the Desert (Ch 4)" --> "Call of First Disciples (Ch 4)"
+
+"Call of First Disciples (Ch 4)" --> "Beatitudes (Ch 5)"
+"Beatitudes (Ch 5)" --> "Law & Prophets Fulfilled (Ch 5)"
+"Law & Prophets Fulfilled (Ch 5)" --> "Prayer & Fasting (Ch 6)"
+"Prayer & Fasting (Ch 6)" --> "Judging Others, Golden Rule (Ch 7)"
+"Judging Others, Golden Rule (Ch 7)" --> "Wise and Foolish Builders (Ch 7)"
+
+"Wise and Foolish Builders (Ch 7)" --> "Healing of Leper (8:1–4)"
+"Healing of Leper (8:1–4)" --> "Healing of Centurion's Servant (8:5–13)"
+"Healing of Centurion's Servant (8:5–13)" --> "Healing of Peter's Mother-in-law (8:14–15)"
+"Healing of Peter's Mother-in-law (8:14–15)" --> "Stilling the Storm (8:23–27)"
+"Stilling the Storm (8:23–27)" --> "Healing of Demoniacs (8:28–34)"
+
+"Healing of Demoniacs (8:28–34)" --> "Healing of Paralytic (9:1–8)"
+"Healing of Paralytic (9:1–8)" --> "Call of Matthew (9:9–13)"
+"Call of Matthew (9:9–13)" --> "Raising Ruler’s Daughter (9:18–26)"
+
+"Raising Ruler’s Daughter (9:18–26)" --> "Healing Hemorrhaging Woman (9:20–22)"
+"Healing Hemorrhaging Woman (9:20–22)" --> "Healing Two Blind Men (9:27–31)"
+"Healing Two Blind Men (9:27–31)" --> "Healing Mute Demoniac (9:32–34)"
+"Healing Mute Demoniac (9:32–34)" --> "Teaching & Preaching Tours (9:35–38)"
+
+@enduml
+
+
+
+@startuml
+package "Matthew Chapter 9" {
+  class "Jesus" {
+    +Forgives sins
+    +Heals body and soul
+    +Teaches with authority
+    +Shows mercy
+  }
+
+  package "Miracles" {
+    class "Healing of Paralytic"
+    class "Raising of Ruler's Daughter"
+    class "Healing of Hemorrhaging Woman"
+    class "Healing of Two Blind Men"
+    class "Healing of Mute Demoniac"
+  }
+
+  package "Teachings" {
+    class "Call of Matthew"
+    class "Mercy not Sacrifice"
+    class "Bridegroom Teaching"
+    class "Harvest is Plentiful"
+  }
+
+  "Jesus" --> "Healing of Paralytic"
+  "Jesus" --> "Raising of Ruler's Daughter"
+  "Jesus" --> "Healing of Hemorrhaging Woman"
+  "Jesus" --> "Healing of Two Blind Men"
+  "Jesus" --> "Healing of Mute Demoniac"
+
+  "Jesus" --> "Call of Matthew"
+  "Jesus" --> "Mercy not Sacrifice"
+  "Jesus" --> "Bridegroom Teaching"
+  "Jesus" --> "Harvest is Plentiful"
+}
+@enduml

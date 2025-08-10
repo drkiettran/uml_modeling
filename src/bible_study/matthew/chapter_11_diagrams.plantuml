@@ -1,0 +1,612 @@
+@startuml
+title Matthew 1–11: Full Contextual Ministry Overview
+
+skinparam packageStyle rectangle
+skinparam linetype ortho
+
+' --- Legend ---
+class "Legend:\n🟦 Location\n🟩 Miracle\n🟧 Teaching\n🟨 People Interaction\n👥 Audience" as LEGEND #white
+
+' --- Genealogy ---
+package "Genealogy (Matthew 1)" #lightgray {
+  class "Abraham"
+  class "David"
+  class "Joseph (husband of Mary)"
+  class "Mary (Mother of Jesus)"
+  class "Jesus Christ"
+  
+  Abraham --> David
+  David --> "Joseph (husband of Mary)"
+  "Joseph (husband of Mary)" --> "Mary (Mother of Jesus)"
+  "Mary (Mother of Jesus)" --> "Jesus Christ"
+}
+
+' --- Key Individuals ---
+package "Key Individuals" #lightyellow {
+  class "John the Baptist"
+  class "Peter"
+  class "James son of Zebedee"
+  class "John son of Zebedee"
+  class "Matthew (Apostle)"
+  class "Twelve Apostles"
+}
+
+' --- Teaching Audiences ---
+package "Teaching Audiences" #lightpink {
+  class "Crowds 👥"
+  class "Disciples 👥"
+  class "Jewish Towns 👥"
+  class "Opponents 👥"
+}
+
+' --- Locations ---
+package "Key Locations" #lightblue {
+  class "Bethlehem 🟦"
+  class "Nazareth 🟦"
+  class "Egypt 🟦"
+  class "Jordan River 🟦"
+  class "Wilderness 🟦"
+  class "Capernaum 🟦"
+  class "Sea of Galilee 🟦"
+  class "Gadara 🟦"
+  class "Chorazin 🟦"
+  class "Bethsaida 🟦"
+  class "Tyre & Sidon 🟦"
+  class "Sodom 🟦"
+}
+
+' --- Events ---
+package "Miracles 🟩" #lightgreen {
+  class "Healing Leper"
+  class "Centurion's Servant"
+  class "Peter's Mother-in-law"
+  class "Calming Storm"
+  class "Gadarene Demoniacs"
+  class "Paralytic Healed"
+  class "Jairus's Daughter Raised"
+  class "Blind Men See"
+  class "Mute Demoniac Healed"
+  class "Miracles as Proof (Matthew 11)"
+}
+
+package "Teachings 🟧" #lightpink {
+  class "Sermon on the Mount"
+  class "Mission Instructions"
+  class "John's Question in Prison"
+  class "Praise of John"
+  class "Critique of Generation"
+  class "Woes to Chorazin & Bethsaida"
+  class "Thanksgiving to Father"
+  class "Great Invitation"
+}
+
+package "People Interactions 🟨" #lightyellow {
+  class "Visit of Magi"
+  class "Flight to Egypt"
+  class "Baptism of Jesus"
+  class "Temptation in the Wilderness"
+  class "Calling of Disciples"
+}
+
+' --- Relationships ---
+"Jesus Christ" --> "John the Baptist"
+"Jesus Christ" --> "Twelve Apostles"
+'"Twelve Apostles" --> {"Peter", "James son of Zebedee", "John son of Zebedee", "Matthew (Apostle)"}
+"Twelve Apostles" --> "Peter"
+"Twelve Apostles" --> "James son of Zebedee"
+"Twelve Apostles" --> "John son of Zebedee"
+"Twelve Apostles" -->  "Matthew (Apostle)"
+
+"Jesus Christ" --> "Crowds 👥"
+"Jesus Christ" --> "Disciples 👥"
+"Jesus Christ" --> "Jewish Towns 👥"
+"Jesus Christ" --> "Opponents 👥"
+
+' Location links
+"Jesus Christ" --> "Bethlehem 🟦"
+"Jesus Christ" --> "Nazareth 🟦"
+"Jesus Christ" --> "Egypt 🟦"
+"Jesus Christ" --> "Jordan River 🟦"
+"Jesus Christ" --> "Wilderness 🟦"
+"Jesus Christ" --> "Capernaum 🟦"
+"Jesus Christ" --> "Sea of Galilee 🟦"
+"Jesus Christ" --> "Gadara 🟦"
+"Jesus Christ" --> "Chorazin 🟦"
+"Jesus Christ" --> "Bethsaida 🟦"
+"Jesus Christ" --> "Tyre & Sidon 🟦"
+"Jesus Christ" --> "Sodom 🟦"
+
+' Event to location mapping
+"Bethlehem 🟦" --> "Visit of Magi"
+"Egypt 🟦" --> "Flight to Egypt"
+"Jordan River 🟦" --> "Baptism of Jesus"
+"Wilderness 🟦" --> "Temptation in the Wilderness"
+"Capernaum 🟦" --> "Sermon on the Mount"
+"Capernaum 🟦" --> "Healing Leper"
+"Capernaum 🟦" --> "Centurion's Servant"
+"Capernaum 🟦" --> "Peter's Mother-in-law"
+"Sea of Galilee 🟦" --> "Calming Storm"
+"Gadara 🟦" --> "Gadarene Demoniacs"
+"Capernaum 🟦" --> "Paralytic Healed"
+"Capernaum 🟦" --> "Jairus's Daughter Raised"
+"Capernaum 🟦" --> "Blind Men See"
+"Capernaum 🟦" --> "Mute Demoniac Healed"
+"Chorazin 🟦" --> "Woes to Chorazin & Bethsaida"
+"Bethsaida 🟦" --> "Woes to Chorazin & Bethsaida"
+"Tyre & Sidon 🟦" --> "Woes to Chorazin & Bethsaida"
+"Sodom 🟦" --> "Woes to Chorazin & Bethsaida"
+
+' Teaching sequence
+"Sermon on the Mount" --> "Crowds 👥"
+"Mission Instructions" --> "Disciples 👥"
+"John's Question in Prison" --> "John the Baptist"
+"Praise of John" --> "Crowds 👥"
+"Critique of Generation" --> "Crowds 👥"
+"Woes to Chorazin & Bethsaida" --> "Jewish Towns 👥"
+"Thanksgiving to Father" --> "Crowds 👥"
+"Great Invitation" --> "Crowds 👥"
+
+@enduml
+
+
+
+
+@startuml
+title Matthew 1–11 Ministry Journey (Historical Map Overlay)
+
+' Background map — replace with actual historical map image file path
+skinparam backgroundColor transparent
+skinparam nodesep 50
+skinparam ranksep 50
+
+!define MAP "https://upload.wikimedia.org/wikipedia/commons/0/07/First-century_palestine_map.png"
+
+' class "" as MAPBG [
+'   <img:MAP>
+' ]
+
+' Locations with approximate positions over map
+class "Bethlehem 🟦\n(Birth, Magi)" as Bethlehem #lightblue
+class "Egypt 🟦\n(Flight)" as Egypt #lightblue
+class "Nazareth 🟦\n(Return)" as Nazareth #lightblue
+class "Jordan River 🟦\n(Baptism)" as Jordan #lightblue
+class "Wilderness 🟦\n(Temptation)" as Wilderness #lightblue
+class "Capernaum 🟦\n(Base of Ministry)" as Capernaum #lightblue
+class "Sea of Galilee 🟦\n(Calming Storm)" as SeaGalilee #lightblue
+class "Gadara 🟦\n(Demoniacs)" as Gadara #lightblue
+class "Chorazin 🟦\n(Woe)" as Chorazin #lightblue
+class "Bethsaida 🟦\n(Woe)" as Bethsaida #lightblue
+class "Tyre & Sidon 🟦\n(Referenced)" as TyreSidon #lightblue
+class "Sodom 🟦\n(Referenced)" as Sodom #lightblue
+
+' Events connected to locations
+Bethlehem --> Egypt : Flight
+Egypt --> Nazareth : Return
+Nazareth --> Jordan : Travels south
+Jordan --> Wilderness : Temptation
+Wilderness --> Capernaum : Ministry begins
+Capernaum --> SeaGalilee : Travels by boat
+SeaGalilee --> Gadara : Miracle
+Capernaum --> Chorazin
+Capernaum --> Bethsaida
+Bethsaida --> TyreSidon : Teaching reference
+Chorazin --> Sodom : Teaching reference
+
+@enduml
+
+
+
+
+
+@startuml
+title Matthew 1–11: Ministry Journey (Geographical + Chronological)
+
+skinparam linetype ortho
+skinparam packageStyle rectangle
+
+' Legend (simple rectangle)
+class "Legend:\n[Loc] Location\n[Mir] Miracle\n[Tch] Teaching\n[Int] People Interaction" as LEGEND #White
+
+' --- Judea Region (South) ---
+package "Judea & Bethlehem" #LightGray {
+  class "Bethlehem" as beth <<Location>>
+  class "Birth of Jesus" as birth <<Interaction>>
+  class "Visit of Magi" as magi <<Interaction>>
+  class "Flight to Egypt" as flight <<Interaction>>
+}
+
+package "Nazareth (Galilee)" #LightGray {
+  class "Return to Nazareth" as naz <<Location>>
+}
+
+' --- Jordan River area ---
+package "Jordan River Region" #LightBlue {
+  class "John the Baptist's Ministry" as jbm <<Interaction>>
+  class "Baptism of Jesus" as bapt <<Interaction>>
+  class "Temptation in the Wilderness" as tempt <<Interaction>>
+}
+
+' --- Galilee ---
+package "Galilee Ministry" #LightGreen {
+  class "Capernaum" as cap <<Location>>
+  class "Sermon on the Mount" as som <<Teaching>>
+  class "Healing Leper" as leper <<Miracle>>
+  class "Centurion's Servant" as cent <<Miracle>>
+  class "Peter's Mother-in-law" as mil <<Miracle>>
+  class "Paralytic Healed" as para <<Miracle>>
+  class "Blind Men See" as blind <<Miracle>>
+  class "Mute Demoniac Healed" as mute <<Miracle>>
+}
+
+' --- Sea of Galilee / Decapolis ---
+package "Sea of Galilee & Decapolis" #LightGreen {
+  class "Calming Storm" as storm <<Miracle>>
+  class "Gadarene Demoniacs" as gad <<Miracle>>
+}
+
+' --- Raising the Dead (Galilee) ---
+package "Raising the Dead" #LightGreen {
+  class "Jairus's Daughter Raised" as jairus <<Miracle>>
+}
+
+' --- Mission Phase ---
+package "Mission of the Twelve" #LightPink {
+  class "Sending of the Twelve" as send12 <<Teaching>>
+  class "Teach Only Israel" as teachisr <<Teaching>>
+  class "Avoid Gentiles/Samaritans" as avoidgs <<Teaching>>
+}
+
+' --- Matthew 11 Events ---
+package "Matthew 11 Key Events" #LightYellow {
+  class "John's Question in Prison" as jq <<Interaction>>
+  class "Miracles as Proof" as proof <<Miracle>>
+  class "Praise of John" as praisejohn <<Teaching>>
+  class "Critique of Generation" as critique <<Teaching>>
+  class "Woes to Chorazin & Bethsaida" as woes <<Teaching>>
+  class "Chorazin" as chorazin <<Location>>
+  class "Bethsaida" as bethsaida <<Location>>
+  class "Tyre & Sidon" as tyresi <<Location>>
+  class "Sodom" as sodom <<Location>>
+  class "Thanksgiving to Father" as thanks <<Teaching>>
+  class "Great Invitation" as invite <<Teaching>>
+}
+
+' --- Travel Arrows (Chronological Flow) ---
+beth --> birth
+birth --> magi
+magi --> flight
+flight --> naz
+naz --> jbm
+jbm --> bapt
+bapt --> tempt
+tempt --> cap
+
+cap --> som
+som --> leper
+leper --> cent
+cent --> mil
+mil --> storm
+storm --> gad
+gad --> para
+para --> jairus
+jairus --> blind
+blind --> mute
+
+mute --> send12
+send12 --> teachisr
+teachisr --> avoidgs
+
+avoidgs --> jq
+jq --> proof
+proof --> praisejohn
+praisejohn --> critique
+critique --> woes
+woes --> chorazin
+woes --> bethsaida
+woes --> tyresi
+woes --> sodom
+chorazin --> thanks
+thanks --> invite
+
+@enduml
+
+
+
+
+@startuml
+title Gospel of Matthew 1–11: Chronological Ministry Journey
+
+skinparam packageStyle rectangle
+skinparam class {
+  BackgroundColor<<Location>> #D6EAF8
+  BackgroundColor<<Miracle>>  #D5F5E3
+  BackgroundColor<<Teaching>> #FADBD8
+  BackgroundColor<<People>>   #FCF3CF
+  BorderColor #555555
+}
+
+' Legend (uses stereotypes instead of emojis)
+package "Legend" #white {
+  class "Location" <<Location>>
+  class "Miracle" <<Miracle>>
+  class "Teaching" <<Teaching>>
+  class "People Interaction" <<People>>
+}
+
+' 1. Birth & Early Life
+package "Birth & Early Life" #lightgray {
+  class "Bethlehem" <<Location>>
+  class "Birth of Jesus" <<People>>
+  class "Visit of Magi" <<People>>
+  class "Flight to Egypt" <<People>>
+  class "Return to Nazareth" <<Location>>
+}
+
+' 2. Preparation for Ministry
+package "Preparation for Ministry" #lightblue {
+  class "John the Baptist's Ministry" <<People>>
+  class "Baptism of Jesus" <<People>>
+  class "Temptation in the Wilderness" <<People>>
+  class "Capernaum" <<Location>>
+}
+
+' 3. Early Teachings & Miracles
+package "Early Galilean Ministry" #lightgreen {
+  class "Sermon on the Mount" <<Teaching>>
+  class "Healing Leper" <<Miracle>>
+  class "Centurion's Servant" <<Miracle>>
+  class "Peter's Mother-in-law" <<Miracle>>
+  class "Calming Storm" <<Miracle>>
+  class "Gadarene Demoniacs" <<Miracle>>
+  class "Paralytic Healed" <<Miracle>>
+  class "Jairus's Daughter Raised" <<Miracle>>
+  class "Blind Men See" <<Miracle>>
+  class "Mute Demoniac Healed" <<Miracle>>
+}
+
+' 4. Mission of the Twelve
+package "Mission Instructions" #lightpink {
+  class "Sending of the Twelve" <<Teaching>>
+  class "Teach Only Israel" <<Teaching>>
+  class "Avoid Gentiles/Samaritans" <<Teaching>>
+}
+
+' 5. Matthew 11 Events
+package "Matthew 11 Ministry" #lightyellow {
+  class "John's Question in Prison" <<People>>
+  class "Miracles as Proof" <<Miracle>>
+  class "Praise of John" <<Teaching>>
+  class "Critique of Generation" <<Teaching>>
+  class "Woes to Chorazin & Bethsaida" <<Teaching>>
+  class "Thanksgiving to Father" <<Teaching>>
+  class "Great Invitation" <<Teaching>>
+  class "Chorazin" <<Location>>
+  class "Bethsaida" <<Location>>
+  class "Tyre & Sidon" <<Location>>
+  class "Sodom" <<Location>>
+}
+
+' Connections: Timeline Flow
+"Bethlehem" --> "Birth of Jesus"
+"Birth of Jesus" --> "Visit of Magi"
+"Visit of Magi" --> "Flight to Egypt"
+"Flight to Egypt" --> "Return to Nazareth"
+"Return to Nazareth" --> "John the Baptist's Ministry"
+"John the Baptist's Ministry" --> "Baptism of Jesus"
+"Baptism of Jesus" --> "Temptation in the Wilderness"
+"Temptation in the Wilderness" --> "Capernaum"
+"Capernaum" --> "Sermon on the Mount"
+"Sermon on the Mount" --> "Healing Leper"
+"Healing Leper" --> "Centurion's Servant"
+"Centurion's Servant" --> "Peter's Mother-in-law"
+"Peter's Mother-in-law" --> "Calming Storm"
+"Calming Storm" --> "Gadarene Demoniacs"
+"Gadarene Demoniacs" --> "Paralytic Healed"
+"Paralytic Healed" --> "Jairus's Daughter Raised"
+"Jairus's Daughter Raised" --> "Blind Men See"
+"Blind Men See" --> "Mute Demoniac Healed"
+"Mute Demoniac Healed" --> "Sending of the Twelve"
+"Sending of the Twelve" --> "Teach Only Israel"
+"Teach Only Israel" --> "Avoid Gentiles/Samaritans"
+"Avoid Gentiles/Samaritans" --> "John's Question in Prison"
+"John's Question in Prison" --> "Miracles as Proof"
+"Miracles as Proof" --> "Praise of John"
+"Praise of John" --> "Critique of Generation"
+"Critique of Generation" --> "Woes to Chorazin & Bethsaida"
+"Woes to Chorazin & Bethsaida" --> "Chorazin"
+"Woes to Chorazin & Bethsaida" --> "Bethsaida"
+"Woes to Chorazin & Bethsaida" --> "Tyre & Sidon"
+"Woes to Chorazin & Bethsaida" --> "Sodom"
+"Chorazin" --> "Thanksgiving to Father"
+"Thanksgiving to Father" --> "Great Invitation"
+
+@enduml
+
+
+
+
+@startuml
+title Gospel of Matthew 1–11: Genealogy, People, Locations, Miracles, Teachings
+
+package "Genealogy (Matthew 1)" #lightgray {
+  class "Abraham" as A
+  class "David" as D
+  class "Joseph (husband of Mary)" as J
+  class "Mary (Mother of Jesus)" as M
+  class "Jesus Christ" as JC
+  
+  A --> D
+  D --> J
+  J --> M
+  M --> JC
+}
+
+package "Key Individuals" #lightyellow {
+  class "John the Baptist" as JB
+  class "Peter" as P
+  class "James son of Zebedee" as JZ
+  class "John son of Zebedee" as JnZ
+  class "Matthew" as MT
+  class "Twelve Apostles" as TA
+}
+
+package "Key Locations" #lightblue {
+  class "Bethlehem"
+  class "Nazareth"
+  class "Capernaum"
+  class "Chorazin"
+  class "Bethsaida"
+  class "Tyre & Sidon"
+  class "Sodom"
+}
+
+package "Miracles" #lightgreen {
+  class "Healing Miracles" as HM
+  HM : Leper healed
+  HM : Centurion's servant
+  HM : Peter's mother-in-law
+  HM : Paralytic
+  HM : Blind receive sight
+  HM : Deaf hear
+  HM : Lame walk
+  HM : Lepers cleansed
+
+  class "Nature Miracles" as NM
+  NM : Calming storm
+
+  class "Exorcisms" as EX
+  EX : Gadarene demoniacs
+  EX : Mute demoniac
+
+  class "Raising Dead" as RD
+  RD : Jairus's daughter
+  RD : Dead raised (Matthew 11 evidence)
+}
+
+package "Teachings" #lightpink {
+  class "Sermon on the Mount" as SM
+  SM : Beatitudes
+  SM : Lord's Prayer
+  SM : Moral Teachings
+
+  class "Mission Instructions" as MI
+  MI : Preach to Israel
+  MI : Heal sick
+  MI : Avoid Gentile towns
+
+  class "John's Question in Prison" as JQ
+  JQ : Are you the one?
+  JQ : Miracles as proof
+
+  class "Praise of John" as PJ
+  PJ : More than prophet
+  PJ : Elijah to come
+
+  class "Critique of Generation" as CG
+  CG : Rejected John & Jesus
+
+  class "Woes to Cities" as WC
+  WC : Chorazin, Bethsaida, Capernaum condemned
+
+  class "Thanksgiving to Father" as TF
+  TF : Truth to humble
+
+  class "Great Invitation" as GI
+  GI : Rest for weary
+}
+
+' Relationships
+JC --> JB
+JC --> TA
+'TA --> {P, JZ, JnZ, MT}
+TA --> P
+TA --> JZ
+TA --> JnZ
+TA --> MT
+
+JC --> Bethlehem
+JC --> Nazareth
+JC --> Capernaum
+JC --> Chorazin
+JC --> Bethsaida
+JC --> "Tyre & Sidon"
+JC --> Sodom
+
+JC --> HM
+JC --> NM
+JC --> EX
+JC --> RD
+
+JC --> SM
+JC --> MI
+JC --> JQ
+JQ --> PJ
+PJ --> CG
+CG --> WC
+WC --> TF
+TF --> GI
+
+@enduml
+
+
+
+
+@startuml
+title Jesus' Early Ministry - Matthew 1–11 (Miracles & Teachings)
+
+package "Messiah's Identity" #lightblue {
+  class "John's Question from Prison" as JQ
+  JQ : Confirms Messiah through miracles
+  JQ : Blind see, lame walk, lepers cleansed, deaf hear, dead raised
+}
+
+package "Teachings & Warnings" #lightyellow {
+  class "Praise of John the Baptist" as PJB
+  PJB : Greatest born of women
+  PJB : John as Elijah (Mal 4:5)
+  
+  class "Critique of This Generation" as CG
+  CG : Rejects both John & Jesus
+  
+  class "Woes to Unrepentant Cities" as WUC
+  WUC : Chorazin, Bethsaida, Capernaum condemned
+  
+  class "Thanksgiving to the Father" as TF
+  TF : Truth revealed to the humble
+  
+  class "The Great Invitation" as GI
+  GI : Come to me, all who labor
+  GI : My yoke is easy, my burden light
+}
+
+package "Earlier Miracles (Ch. 8–9)" #lightgreen {
+  class "Healings" as HE
+  HE : Leper, Centurion's Servant, Peter's Mother-in-law, Paralytic
+  
+  class "Nature Miracles" as NM
+  NM : Calming Storm
+  
+  class "Exorcisms" as EX
+  EX : Gadarene Demoniacs, Mute Demoniac
+  
+  class "Raising the Dead" as RD
+  RD : Jairus's Daughter
+}
+
+package "Teachings (Ch. 5–7)" #lightpink {
+  class "Sermon on the Mount" as SM
+  SM : Beatitudes, Lord's Prayer, Moral Teachings
+}
+
+JQ --> PJB
+PJB --> CG
+CG --> WUC
+WUC --> TF
+TF --> GI
+
+SM --> HE
+SM --> NM
+SM --> EX
+SM --> RD
+
+@enduml

@@ -1,0 +1,678 @@
+@startuml
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam classAttributeIconSize 0
+
+package "Gospel of Matthew: Chapters 1–10" {
+
+  '--- Genealogy and Early Life ---
+  package "Ch.1–2: Genealogy & Birth" {
+    class "Abraham"
+    class "David"
+    class "Solomon"
+    class "Hezekiah"
+    class "Jeconiah"
+    class "Joseph"
+    class "Mary"
+    class "Jesus"
+    class "Magi"
+    class "Herod"
+    class "Angel"
+
+    "Abraham" --> "David"
+    "David" --> "Solomon"
+    "Solomon" --> "Hezekiah"
+    "Hezekiah" --> "Jeconiah"
+    "Jeconiah" --> "Joseph"
+    "Joseph" --> "Jesus"
+    "Mary" --> "Jesus"
+    "Magi" --> "Herod"
+    "Angel" --> "Joseph" : Birth warning
+  }
+
+  '--- Preparation & Baptism ---
+  package "Ch.3–4: Preparation" {
+    class "John the Baptist"
+    class "Baptism of Jesus"
+    class "Temptation in Desert"
+    "John the Baptist" --> "Jesus" : Baptizes
+    "Jesus" --> "Temptation in Desert"
+  }
+
+  '--- Sermon on the Mount ---
+  package "Ch.5–7: Teachings" {
+    class "Beatitudes"
+    class "Lord's Prayer"
+    class "Teachings on Law"
+    class "Golden Rule"
+    class "Wise/Foolish Builders"
+    class "Teaching Audience" {
+      + Disciples
+      + Crowds
+    }
+
+    "Jesus" --> "Beatitudes"
+    "Jesus" --> "Lord's Prayer"
+    "Jesus" --> "Teachings on Law"
+    "Jesus" --> "Golden Rule"
+    "Jesus" --> "Wise/Foolish Builders"
+    "Jesus" --> "Teaching Audience"
+  }
+
+  '--- Miracles and Callings ---
+  package "Ch.8–9: Miracles & Healings" {
+    class "Healing the Leper"
+    class "Centurion's Servant"
+    class "Peter’s Mother-in-law"
+    class "Calming the Storm"
+    class "Gerasene Demoniacs"
+    class "Paralytic"
+    class "Jairus' Daughter"
+    class "Bleeding Woman"
+    class "Blind Men"
+    class "Mute Demoniac"
+    class "Matthew (Tax Collector)"
+
+    "Jesus" --> "Healing the Leper"
+    "Jesus" --> "Centurion's Servant"
+    "Jesus" --> "Peter’s Mother-in-law"
+    "Jesus" --> "Calming the Storm"
+    "Jesus" --> "Gerasene Demoniacs"
+    "Jesus" --> "Paralytic"
+    "Jesus" --> "Bleeding Woman"
+    "Jesus" --> "Jairus' Daughter"
+    "Jesus" --> "Blind Men"
+    "Jesus" --> "Mute Demoniac"
+    "Jesus" --> "Matthew (Tax Collector)" : "Calls to follow"
+  }
+
+  '--- Apostolic Mission ---
+  package "Ch.10: Apostolic Mission" {
+    class "Twelve Apostles" {
+      + Simon (Peter)
+      + Andrew
+      + James (Zebedee)
+      + John
+      + Philip
+      + Bartholomew
+      + Thomas
+      + Matthew
+      + James (Alphaeus)
+      + Thaddaeus
+      + Simon (Zealot)
+      + Judas Iscariot
+    }
+
+    class "Mission Instructions"
+    class "Warnings of Persecution"
+    class "Encouragements"
+    class "Rewards"
+    class "Teaching Audience (Ch.10)" {
+      + House of Israel
+      + Hosts of Disciples
+      + Persecutors
+    }
+
+    "Jesus" --> "Twelve Apostles"
+    "Jesus" --> "Mission Instructions"
+    "Jesus" --> "Warnings of Persecution"
+    "Jesus" --> "Encouragements"
+    "Jesus" --> "Rewards"
+    "Jesus" --> "Teaching Audience (Ch.10)"
+  }
+
+  '--- Locations throughout Chapters 1–10 ---
+  package "Key Locations" {
+    class "Bethlehem" 
+    class "Nazareth"
+    class "Egypt"
+    class "Galilee"
+    class "Capernaum"
+    class "Jordan River"
+    class "Mount (Sermon)"
+    class "Sea of Galilee"
+    class "Gerasenes"
+    class "Towns of Israel"
+    class "Gentile Regions"
+    class "Samaritan Towns"
+    class "Sodom and Gomorrah"
+
+    "Jesus" --> "Bethlehem"
+    "Jesus" --> "Nazareth"
+    "Jesus" --> "Egypt"
+    "Jesus" --> "Capernaum"
+    "Jesus" --> "Jordan River"
+    "Jesus" --> "Galilee"
+    "Jesus" --> "Mount (Sermon)"
+    "Jesus" --> "Sea of Galilee"
+    "Jesus" --> "Gerasenes"
+    "Twelve Apostles" --> "Towns of Israel" : Sent
+    "Twelve Apostles" -[#red,dashed]-> "Gentile Regions" : Avoid
+    "Twelve Apostles" -[#red,dashed]-> "Samaritan Towns" : Avoid
+    "Jesus" --> "Sodom and Gomorrah" : Judgment reference
+  }
+}
+@enduml
+
+
+
+
+@startuml
+title Matthew 10 - Mission Geography
+
+package "Matthew 10 - Mission Geography" {
+  class "Twelve Apostles"
+  class "Towns & Villages of Israel"
+  class "Gentile Regions"
+  class "Samaritan Towns"
+  class "Sodom and Gomorrah"
+  class "Cities of Israel"
+
+  "Twelve Apostles" --> "Towns & Villages of Israel" : Sent to preach/heal
+  "Twelve Apostles" -[#red,dashed]-> "Gentile Regions" : Avoid
+  "Twelve Apostles" -[#red,dashed]-> "Samaritan Towns" : Avoid
+  "Jesus" --> "Sodom and Gomorrah" : Compares for judgment
+  "Twelve Apostles" --> "Cities of Israel" : Flee if persecuted
+}
+@enduml
+
+
+
+@startuml
+skinparam packageStyle rectangle
+skinparam linetype ortho
+
+package "Gospel of Matthew: Chapters 1–10" {
+
+  '--- Genealogy & Birth Narrative ---
+  package "Ch.1–2: Genealogy & Early Life" {
+    class "Jesus"
+    class "Joseph"
+    class "Mary"
+    class "Abraham"
+    class "David"
+    class "Solomon"
+    class "Hezekiah"
+    class "Jeconiah"
+    class "Magi"
+    class "Herod"
+    class "Angel"
+
+    "Abraham" --> "David"
+    "David" --> "Solomon"
+    "Solomon" --> "Hezekiah"
+    "Hezekiah" --> "Jeconiah"
+    "Jeconiah" --> "Joseph"
+    "Joseph" --> "Jesus"
+    "Mary" --> "Jesus"
+    "Angel" --> "Joseph" : "Announces birth"
+    "Magi" --> "Herod" : "Ask for king"
+    "Herod" --> "Magi" : "Tricks them"
+  }
+
+  '--- Preparation for Ministry ---
+  package "Ch.3–4: Preparation" {
+    class "John the Baptist"
+    class "Baptism of Jesus"
+    class "Temptation in Desert"
+    "John the Baptist" --> "Jesus" : "Baptizes"
+    "Jesus" --> "Baptism of Jesus"
+    "Jesus" --> "Temptation in Desert"
+  }
+
+  '--- Sermon on the Mount ---
+  package "Ch.5–7: Sermon on the Mount" {
+    class "Beatitudes"
+    class "Teachings on Law"
+    class "Lord's Prayer"
+    class "Golden Rule"
+    class "Wise vs Foolish Builder"
+
+    "Jesus" --> "Beatitudes"
+    "Jesus" --> "Teachings on Law"
+    "Jesus" --> "Lord's Prayer"
+    "Jesus" --> "Golden Rule"
+    "Jesus" --> "Wise vs Foolish Builder"
+  }
+
+  '--- Miracles and Early Ministry ---
+  package "Ch.8–9: Miracles & Healings" {
+    class "Healing the Leper"
+    class "Centurion's Servant"
+    class "Peter’s Mother-in-law"
+    class "Calming the Storm"
+    class "Gerasene Demoniacs"
+    class "Paralytic"
+    class "Raising Jairus' Daughter"
+    class "Bleeding Woman"
+    class "Blind Men"
+    class "Mute Demoniac"
+    class "Matthew (Tax Collector)"
+
+    "Jesus" --> "Healing the Leper"
+    "Jesus" --> "Centurion's Servant"
+    "Jesus" --> "Peter’s Mother-in-law"
+    "Jesus" --> "Calming the Storm"
+    "Jesus" --> "Gerasene Demoniacs"
+    "Jesus" --> "Paralytic"
+    "Jesus" --> "Bleeding Woman"
+    "Jesus" --> "Raising Jairus' Daughter"
+    "Jesus" --> "Blind Men"
+    "Jesus" --> "Mute Demoniac"
+    "Jesus" --> "Matthew (Tax Collector)" : "Calls him"
+  }
+
+  '--- Apostolic Mission ---
+  package "Ch.10: Mission of the Twelve" {
+    class "Twelve Apostles" {
+      + Simon (Peter)
+      + Andrew
+      + James (Zebedee)
+      + John
+      + Philip
+      + Bartholomew
+      + Thomas
+      + Matthew
+      + James (Alphaeus)
+      + Thaddaeus
+      + Simon (Zealot)
+      + Judas Iscariot
+    }
+
+    class "Mission Instructions"
+    class "Warnings"
+    class "Encouragement"
+    class "Rewards"
+
+    "Jesus" --> "Twelve Apostles"
+    "Jesus" --> "Mission Instructions"
+    "Jesus" --> "Warnings"
+    "Jesus" --> "Encouragement"
+    "Jesus" --> "Rewards"
+  }
+
+  '--- Other Key Relationships ---
+  "Jesus" --> "Joseph"
+  "Jesus" --> "Mary"
+  "Jesus" --> "John the Baptist"
+  "Jesus" --> "Matthew (Tax Collector)"
+  "Jesus" --> "Crowds" : "Teaches & heals"
+  "Jesus" --> "Disciples" : "Trains them"
+}
+@enduml
+
+
+
+
+@startuml
+skinparam linetype ortho
+
+class "Jesus" {
+  Role: Rabbi, Messiah
+}
+
+class "Simon Peter"
+class "Andrew"
+class "James (Zebedee)"
+class "John"
+class "Philip"
+class "Bartholomew"
+class "Thomas"
+class "Matthew"
+class "James (Alphaeus)"
+class "Thaddaeus"
+class "Simon the Zealot"
+class "Judas Iscariot"
+
+"Jesus" --> "Simon Peter" : Calls & Sends
+"Jesus" --> "Andrew" : Calls & Sends
+"Jesus" --> "James (Zebedee)" : Calls & Sends
+"Jesus" --> "John" : Calls & Sends
+"Jesus" --> "Philip" : Calls & Sends
+"Jesus" --> "Bartholomew" : Calls & Sends
+"Jesus" --> "Thomas" : Calls & Sends
+"Jesus" --> "Matthew" : Calls & Sends
+"Jesus" --> "James (Alphaeus)" : Calls & Sends
+"Jesus" --> "Thaddaeus" : Calls & Sends
+"Jesus" --> "Simon the Zealot" : Calls & Sends
+"Jesus" --> "Judas Iscariot" : Appoints
+
+"Judas Iscariot" --> "Jesus" : Betrays
+@enduml
+
+@startuml
+skinparam classAttributeIconSize 0
+
+package "The Twelve Apostles (Matthew 10)" {
+
+class "Simon Peter" {
+  Origin: Bethsaida
+  Symbol: Keys or upside-down cross
+  Mission Field: Rome
+  Martyrdom: Crucified upside down
+}
+
+class "Andrew" {
+  Origin: Bethsaida
+  Symbol: X-shaped cross
+  Mission Field: Greece, Scythia
+  Martyrdom: Crucified
+}
+
+class "James (Zebedee)" {
+  Origin: Galilee
+  Symbol: Scallop shell or sword
+  Mission Field: Jerusalem
+  Martyrdom: Beheaded (Acts 12:2)
+}
+
+class "John" {
+  Origin: Galilee
+  Symbol: Eagle or chalice
+  Mission Field: Ephesus (Asia Minor)
+  Martyrdom: Natural death
+}
+
+class "Philip" {
+  Origin: Bethsaida
+  Symbol: Cross-topped staff
+  Mission Field: Phrygia (Asia Minor)
+  Martyrdom: Crucified
+}
+
+class "Bartholomew" {
+  Origin: Cana
+  Symbol: Flaying knife
+  Mission Field: Armenia, India
+  Martyrdom: Flayed alive
+}
+
+class "Thomas" {
+  Origin: Galilee
+  Symbol: Spear or builder’s square
+  Mission Field: India
+  Martyrdom: Speared to death
+}
+
+class "Matthew" {
+  Origin: Capernaum
+  Symbol: Money bag or angel
+  Mission Field: Ethiopia, Persia
+  Martyrdom: Stabbed or burned
+}
+
+class "James (Alphaeus)" {
+  Origin: Unknown
+  Symbol: Club or fuller’s bat
+  Mission Field: Egypt
+  Martyrdom: Clubbed to death
+}
+
+class "Thaddaeus" {
+  Origin: Unknown
+  Symbol: Ship or club
+  Mission Field: Syria, Mesopotamia
+  Martyrdom: Clubbed to death
+}
+
+class "Simon the Zealot" {
+  Origin: Cana
+  Symbol: Fish on Bible or saw
+  Mission Field: Persia
+  Martyrdom: Sawn in half
+}
+
+class "Judas Iscariot" {
+  Origin: Kerioth (Judea)
+  Symbol: Money purse or rope
+  Mission Field: None
+  Martyrdom: Suicide
+}
+}
+@enduml
+
+
+
+@startuml
+skinparam packageStyle rectangle
+
+package "Jesus’ Life & Ministry (Matthew 1–10)" {
+
+  package "1–2: Genealogy & Birth" {
+    class "Jesus"
+    class "Mary"
+    class "Joseph"
+    class "Magi"
+    class "Herod"
+    "Magi" --> "Herod"
+    "Mary" --> "Jesus"
+    "Joseph" --> "Jesus"
+  }
+
+  package "3–4: Preparation" {
+    class "John the Baptist"
+    class "Baptism of Jesus"
+    class "Temptation in Wilderness"
+    "John the Baptist" --> "Baptism of Jesus"
+    "Jesus" --> "Temptation in Wilderness"
+  }
+
+  package "5–7: Teachings - Sermon on the Mount" {
+    class "Beatitudes"
+    class "Lord’s Prayer"
+    class "Teachings on Law"
+    class "Golden Rule"
+    class "Wise/Foolish Builders"
+    "Jesus" --> "Beatitudes"
+    "Jesus" --> "Lord’s Prayer"
+    "Jesus" --> "Golden Rule"
+  }
+
+  package "8–9: Early Miracles" {
+    class "Healing the Leper"
+    class "Centurion’s Servant"
+    class "Peter’s Mother-in-law"
+    class "Calming the Storm"
+    class "Gerasene Demoniacs"
+    class "Paralytic (Forgiveness)"
+    class "Raising Jairus’ Daughter"
+    class "Blind & Mute Healed"
+    "Jesus" --> "Healing the Leper"
+    "Jesus" --> "Centurion’s Servant"
+    "Jesus" --> "Peter’s Mother-in-law"
+    "Jesus" --> "Calming the Storm"
+    "Jesus" --> "Gerasene Demoniacs"
+    "Jesus" --> "Paralytic (Forgiveness)"
+    "Jesus" --> "Raising Jairus’ Daughter"
+    "Jesus" --> "Blind & Mute Healed"
+  }
+
+  package "10: Apostolic Mission" {
+    class "The Twelve Apostles" {
+      + Simon (Peter)
+      + Andrew
+      + James (Zebedee)
+      + John
+      + Philip
+      + Bartholomew
+      + Thomas
+      + Matthew
+      + James (Alphaeus)
+      + Thaddaeus
+      + Simon (Zealot)
+      + Judas Iscariot
+    }
+    class "Mission Instructions"
+    class "Warnings of Persecution"
+    class "Encouragement & Rewards"
+    "Jesus" --> "The Twelve Apostles"
+    "Jesus" --> "Mission Instructions"
+    "Jesus" --> "Warnings of Persecution"
+    "Jesus" --> "Encouragement & Rewards"
+  }
+}
+@enduml
+
+
+
+
+@startuml
+package "Gospel of Matthew (Chapters 1–10)" {
+
+  package "Genealogy & Birth (Ch 1–2)" {
+    class "Jesus"
+    class "Joseph"
+    class "Mary"
+    class "Magi"
+    class "Herod"
+    class "Angel"
+    class "Genealogy" {
+      + Abraham → David → Jesus
+    }
+
+    "Jesus" --> "Joseph"
+    "Jesus" --> "Mary"
+    "Magi" --> "Herod"
+    "Angel" --> "Joseph"
+    "Jesus" --> "Genealogy"
+  }
+
+  package "Preparation (Ch 3–4)" {
+    class "John the Baptist"
+    class "Baptism of Jesus"
+    class "Temptation in Desert"
+    "John the Baptist" --> "Jesus" : Baptizes
+    "Jesus" --> "Temptation in Desert"
+  }
+
+  package "Teachings: Sermon on the Mount (Ch 5–7)" {
+    class "Beatitudes"
+    class "Lord's Prayer"
+    class "Golden Rule"
+    class "Narrow Gate"
+    class "Wise Builder"
+
+    "Jesus" --> "Beatitudes"
+    "Jesus" --> "Lord's Prayer"
+    "Jesus" --> "Golden Rule"
+    "Jesus" --> "Narrow Gate"
+    "Jesus" --> "Wise Builder"
+  }
+
+  package "Miracles & Healings (Ch 8–9)" {
+    class "Healing the Leper"
+    class "Centurion's Servant"
+    class "Peter’s Mother-in-law"
+    class "Demoniacs"
+    class "Paralytic"
+    class "Jairus' Daughter"
+    class "Blind Men"
+    class "Mute Demoniac"
+
+    "Jesus" --> "Healing the Leper"
+    "Jesus" --> "Centurion's Servant"
+    "Jesus" --> "Peter’s Mother-in-law"
+    "Jesus" --> "Demoniacs"
+    "Jesus" --> "Paralytic"
+    "Jesus" --> "Jairus' Daughter"
+    "Jesus" --> "Blind Men"
+    "Jesus" --> "Mute Demoniac"
+  }
+
+  package "Mission of the Twelve (Ch 10)" {
+    class "Twelve Apostles" {
+      + Peter, Andrew, James, John
+      + Philip, Bartholomew, Thomas
+      + Matthew, James (Alphaeus), Thaddaeus
+      + Simon (Zealot), Judas Iscariot
+    }
+
+    class "Instructions"
+    class "Warnings"
+    class "Encouragements"
+    class "Rewards"
+
+    "Jesus" --> "Twelve Apostles"
+    "Jesus" --> "Instructions"
+    "Jesus" --> "Warnings"
+    "Jesus" --> "Encouragements"
+    "Jesus" --> "Rewards"
+  }
+
+  ' Locations
+  class "Bethlehem"
+  class "Nazareth"
+  class "Egypt"
+  class "Capernaum"
+  class "Galilee"
+  class "Jordan River"
+  class "Mount (Sermon)"
+
+  "Jesus" --> "Bethlehem"
+  "Jesus" --> "Nazareth"
+  "Jesus" --> "Egypt"
+  "Jesus" --> "Capernaum"
+  "Jesus" --> "Galilee"
+  "John the Baptist" --> "Jordan River"
+  "Jesus" --> "Mount (Sermon)"
+}
+@enduml
+
+
+
+
+@startuml
+package "Apostolic Mission (Matthew 10)" {
+  class "Jesus" {
+    - Authority
+    + Sends Apostles
+  }
+
+  class "Twelve Apostles" {
+    - Simon Peter
+    - Andrew
+    - James (Zebedee)
+    - John
+    - Philip
+    - Bartholomew
+    - Thomas
+    - Matthew
+    - James (Alphaeus)
+    - Thaddaeus
+    - Simon the Zealot
+    - Judas Iscariot
+  }
+
+  class "Mission Instructions" {
+    + Preach: "Kingdom of Heaven is at hand"
+    + Heal: Sick, Raise dead, Cleanse lepers, Cast out demons
+    + Travel: No money, No extra clothing
+    + Rely: Hospitality of the worthy
+  }
+
+  class "Warnings & Encouragement" {
+    + Sheep among wolves
+    + Persecution: Councils, Synagogues, Governors
+    + Encouragement: Holy Spirit speaks through you
+  }
+
+  class "Discipleship Cost" {
+    + Division: Family vs. Christ
+    + Cross-bearing
+    + Losing life to find it
+  }
+
+  class "Reward" {
+    + Receiving Apostles = Receiving Christ
+    + Prophet's reward
+    + Righteous man’s reward
+    + Cold water to disciple = reward
+  }
+
+  "Jesus" --> "Twelve Apostles" : Commissions
+  "Jesus" --> "Mission Instructions" : Gives
+  "Jesus" --> "Warnings & Encouragement"
+  "Jesus" --> "Discipleship Cost"
+  "Jesus" --> "Reward"
+}
+@enduml

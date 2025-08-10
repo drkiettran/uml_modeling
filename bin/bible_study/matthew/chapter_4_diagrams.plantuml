@@ -1,0 +1,445 @@
+@startuml
+title Matthew 1-4: Horizontal Timeline of Early Life & Ministry of Jesus
+
+skinparam linetype ortho
+skinparam classBackgroundColor White
+left to right direction
+
+' === Timeline Locations ===
+class "1. Bethlehem\nBirth of Jesus\n~4–6 BC" as Bethlehem #White
+class "2. Egypt\nFlight from Herod\n~4–5 BC" as Egypt #White
+class "3. Nazareth\nReturn after Herod dies\n~4 BC" as Nazareth #White
+class "4. Jordan River\nBaptism by John\n~AD 26–30" as JordanRiver #White
+class "5. Wilderness\nTemptation 40 days\n~AD 26–30" as Wilderness #White
+class "6. Capernaum / Galilee\nStart of Ministry\n~AD 26–30" as Capernaum #White
+
+' === Flow of Timeline ===
+Bethlehem --> Egypt
+Egypt --> Nazareth
+Nazareth --> JordanRiver
+JordanRiver --> Wilderness
+Wilderness --> Capernaum
+
+' === Holy Family & Spiritual Figures ===
+class "Jesus" as Jesus #LightGreen
+class "Mary" as Mary #LightGreen
+class "Joseph" as Joseph #LightGreen
+class "Holy Spirit" as HolySpirit #LightYellow
+class "Angels" as Angels #LightYellow
+
+' === Other Key Characters ===
+class "Magi" as Magi #Khaki
+class "Herod" as Herod #LightCoral
+class "John the Baptist" as JohnB #LightBlue
+class "Satan" as Satan #LightCoral
+class "Simon Peter" as Peter #Gold
+class "Andrew" as Andrew #Gold
+class "James" as James #Gold
+class "John (Zebedee)" as JohnZ #Gold
+class "Crowds" as Crowds #Thistle
+
+' === Stage 1: Bethlehem ===
+Magi --> Bethlehem : "Visit & Gifts"
+Herod --> Bethlehem : "Massacre of Infants"
+Angels --> Joseph : "Warn to flee"
+Jesus --> Bethlehem
+Mary --> Bethlehem
+Joseph --> Bethlehem
+
+' === Stage 2: Egypt ===
+Angels --> Joseph : "Stay until Herod dies"
+
+' === Stage 3: Nazareth ===
+Angels --> Joseph : "Return to Israel"
+
+' === Stage 4: Jordan River ===
+JohnB --> JordanRiver : "Baptizes Jesus"
+Jesus --> JordanRiver
+HolySpirit --> Jesus : "Descends like a Dove"
+
+' === Stage 5: Wilderness ===
+HolySpirit --> Jesus : "Leads into wilderness"
+Satan --> Jesus : "Tempts 3 times"
+Angels --> Jesus : "Minister after temptation"
+
+' === Stage 6: Capernaum / Galilee ===
+Jesus --> Capernaum : "Moves to start ministry"
+Jesus --> Peter : "Calls"
+Jesus --> Andrew : "Calls"
+Jesus --> James : "Calls"
+Jesus --> JohnZ : "Calls"
+Jesus --> Crowds : "Teaches & Heals"
+Crowds --> Capernaum
+Crowds --> Galilee
+
+@enduml
+
+
+@startuml
+title Matthew 1-4: Annotated Historical Timeline of Jesus' Early Life & Ministry
+
+skinparam linetype ortho
+skinparam classBackgroundColor White
+
+' === Locations as numbered timeline nodes ===
+class "1. Bethlehem\n(Birth of Jesus ~4–6 BC)" as Bethlehem #White
+class "2. Egypt\n(Flight from Herod ~4–5 BC)" as Egypt #White
+class "3. Nazareth\n(Return after Herod dies ~4 BC)" as Nazareth #White
+class "4. Jordan River\n(Baptism by John ~AD 26–30)" as JordanRiver #White
+class "5. Wilderness\n(Temptation ~AD 26–30)" as Wilderness #White
+class "6. Capernaum / Galilee\n(Start of Public Ministry ~AD 26–30)" as Capernaum #White
+
+' === Holy Family ===
+class "Jesus" as Jesus #LightGreen
+class "Mary" as Mary #LightGreen
+class "Joseph" as Joseph #LightGreen
+
+' === Spiritual Figures ===
+class "Holy Spirit" as HolySpirit #LightYellow
+class "Angels" as Angels #LightYellow
+
+' === Other Characters ===
+class "Magi" as Magi #Khaki
+class "Herod" as Herod #LightCoral
+class "John the Baptist" as JohnB #LightBlue
+class "Satan" as Satan #LightCoral
+class "Simon Peter" as Peter #Gold
+class "Andrew" as Andrew #Gold
+class "James" as James #Gold
+class "John (Zebedee)" as JohnZ #Gold
+class "Crowds" as Crowds #Thistle
+
+' === Chronological Journey Flow ===
+Bethlehem --> Egypt : "Flight to Egypt"
+Egypt --> Nazareth : "Return after Herod dies"
+Nazareth --> JordanRiver : "Baptism (~30 yrs old)"
+JordanRiver --> Wilderness : "Fasting & 3 Temptations"
+Wilderness --> Capernaum : "Calls Disciples & Begins Ministry"
+
+' === Events Per Stage ===
+Magi --> Bethlehem : "Visit & Offer Gifts"
+Herod --> Bethlehem : "Massacre of Infants"
+Angels --> Joseph : "Warns to Flee & Return"
+
+Jesus --> JordanRiver : "Baptized"
+JohnB --> Jesus : "Baptizes in Jordan"
+
+HolySpirit --> Jesus : "Descends as Dove & Leads to Wilderness"
+Satan --> Jesus : "3 Temptations"
+Angels --> Jesus : "Minister After Temptation"
+
+Jesus --> Peter : "Calls to Follow"
+Jesus --> Andrew : "Calls to Follow"
+Jesus --> James : "Calls to Follow"
+Jesus --> JohnZ : "Calls to Follow"
+
+Jesus --> Crowds : "Teaches & Heals"
+Crowds --> Capernaum
+Crowds --> Galilee
+
+@enduml
+
+
+
+@startuml
+title Matthew 1-4: Geographical Journey & Key Events
+
+skinparam linetype ortho
+skinparam classBackgroundColor White
+
+' === Locations as timeline nodes ===
+class "Bethlehem" as Bethlehem #White
+class "Egypt" as Egypt #White
+class "Nazareth" as Nazareth #White
+class "Jordan River" as JordanRiver #White
+class "Wilderness" as Wilderness #White
+class "Galilee" as Galilee #White
+class "Capernaum\n(Zebulun & Naphtali)" as Capernaum #White
+
+' === Holy Figures ===
+class "Jesus" as Jesus #LightGreen
+class "Mary" as Mary #LightGreen
+class "Joseph" as Joseph #LightGreen
+class "Holy Spirit" as HolySpirit #LightYellow
+class "Angels" as Angels #LightYellow
+
+' === Other Characters ===
+class "Magi" as Magi #Khaki
+class "Herod" as Herod #LightCoral
+class "John the Baptist" as JohnB #LightBlue
+class "Satan" as Satan #LightCoral
+class "Simon Peter" as Peter #Gold
+class "Andrew" as Andrew #Gold
+class "James" as James #Gold
+class "John (Zebedee)" as JohnZ #Gold
+class "Crowds" as Crowds #Thistle
+
+' === Journey / Timeline Flow ===
+Bethlehem --> Egypt : "Flight to Egypt (Angel warns Joseph)"
+Egypt --> Nazareth : "Return after Herod dies"
+Nazareth --> JordanRiver : "Baptism by John"
+JordanRiver --> Wilderness : "40 days fasting & temptation"
+Wilderness --> Capernaum : "Begins public ministry"
+Capernaum --> Galilee : "Teaching & Healing"
+
+' === Events per Location ===
+Magi --> Bethlehem : "Visit & Offer Gifts"
+Herod --> Bethlehem : "Massacre of Infants"
+Angels --> Joseph : "Warn & Guide"
+
+Jesus --> JordanRiver : "Baptism"
+JohnB --> Jesus : "Baptizes"
+
+HolySpirit --> Jesus : "Descends as Dove & Leads to Wilderness"
+Satan --> Jesus : "3 Temptations"
+Angels --> Jesus : "Minister After Temptation"
+
+Jesus --> Peter : "Calls to Follow"
+Jesus --> Andrew : "Calls to Follow"
+Jesus --> James : "Calls to Follow"
+Jesus --> JohnZ : "Calls to Follow"
+Jesus --> Crowds : "Teaches & Heals"
+
+Crowds --> Galilee
+Crowds --> Capernaum
+
+@enduml
+
+
+@startuml
+title Matthew 1-4: Genealogy, Early Life & Start of Ministry of Jesus
+
+skinparam linetype ortho
+skinparam classBackgroundColor White
+
+' === Color Legend ===
+' Holy Family: Light Green
+' Angels / Holy Spirit: Light Yellow
+' Opponents (Satan, Herod): Light Coral
+' Prophets / Forerunners: Light Blue
+' Disciples / Apostles: Gold
+' Magi: Khaki
+' Victims: Pink
+' Crowds: Thistle
+' Geographic Locations: White
+
+' === Genealogy ===
+class "Abraham" as Abraham #LightBlue
+class "Isaac" as Isaac #LightBlue
+class "Jacob" as Jacob #LightBlue
+class "Judah" as Judah #LightBlue
+class "David" as David #LightBlue
+class "Solomon" as Solomon #LightBlue
+class "Joseph\n(Husband of Mary)" as Joseph #LightGreen
+class "Mary" as Mary #LightGreen
+class "Jesus" as Jesus #LightGreen
+
+' Placeholder classes for skipped generations
+class "Tribal Lineage" as Tribal #LightBlue
+class "Royal Lineage" as Royal #LightBlue
+
+Abraham --> Isaac
+Isaac --> Jacob
+Jacob --> Judah
+Judah --> Tribal : "Tribal lineage..."
+Tribal --> David
+David --> Solomon
+Solomon --> Royal : "Royal line..."
+Royal --> Joseph
+Joseph --> Jesus
+Mary --> Jesus
+
+' === Early Life (Matthew 2) ===
+class "Herod" as Herod #LightCoral
+class "Magi (Wise Men)" as Magi #Khaki
+class "Infants of Bethlehem" as Infants #Pink
+class "Angels" as Angels #LightYellow
+
+Herod --> Infants : "Orders massacre"
+Magi --> Jesus : "Worship & Offer gifts"
+Angels --> Joseph : "Warn to flee & return"
+
+' === Baptism & Ministry Preparation (Matthew 3) ===
+class "John the Baptist" as JohnB #LightBlue
+class "Holy Spirit" as HolySpirit #LightYellow
+
+JohnB --> Jesus : "Baptizes"
+HolySpirit --> Jesus : "Descends like a dove"
+
+' === Temptation & Ministry Start (Matthew 4) ===
+class "Satan\n(Devil / Tempter)" as Satan #LightCoral
+class "Simon Peter" as Peter #Gold
+class "Andrew" as Andrew #Gold
+class "James\n(son of Zebedee)" as James #Gold
+class "John\n(son of Zebedee)" as JohnZ #Gold
+class "Crowds" as Crowds #Thistle
+
+class "Wilderness" as Wilderness #White
+class "Galilee" as Galilee #White
+class "Nazareth" as Nazareth #White
+class "Capernaum" as Capernaum #White
+class "Zebulun" as Zebulun #White
+class "Naphtali" as Naphtali #White
+class "Judea" as Judea #White
+class "Decapolis" as Decapolis #White
+class "Beyond the Jordan" as Jordan #White
+
+HolySpirit --> Jesus : "Leads into wilderness"
+Jesus --> Wilderness : "Fasts 40 days"
+Satan --> Jesus : "Tempts 3 times"
+Jesus --> Satan : "Rejects / Rebukes"
+Angels --> Jesus : "Minister to"
+
+JohnB --> Jesus : "Forerunner"
+Jesus --> Galilee : "Begins ministry"
+Galilee --> Capernaum : "Jesus dwells here"
+Capernaum --> Zebulun
+Capernaum --> Naphtali
+
+Jesus --> Peter : "Calls to follow"
+Jesus --> Andrew : "Calls to follow"
+Jesus --> James : "Calls to follow"
+Jesus --> JohnZ : "Calls to follow"
+
+Peter -- Andrew : "Brothers"
+James -- JohnZ : "Brothers\nSons of Zebedee"
+
+Jesus --> Crowds : "Teaches & Heals"
+Crowds --> Galilee
+Crowds --> Decapolis
+Crowds --> Judea
+Crowds --> Jordan
+
+@enduml
+
+
+
+
+@startuml
+title Color-Coded Roles & Relationships in Matthew 4
+
+skinparam linetype ortho
+skinparam classBackgroundColor White
+
+' === Key Entities ===
+class "Jesus" as Jesus #LightGreen
+class "Holy Spirit" as HolySpirit #LightYellow
+class "Satan\n(Devil / Tempter)" as Satan #LightCoral
+class "Angels" as Angels #LightYellow
+class "John the Baptist" as JohnB #LightBlue
+
+' === Disciples ===
+class "Simon Peter" as Peter #Gold
+class "Andrew" as Andrew #Gold
+class "James\n(son of Zebedee)" as James #Gold
+class "John\n(son of Zebedee)" as JohnZ #Gold
+
+' === Crowds ===
+class "Crowds" as Crowds #Thistle
+
+' === Geographic Regions ===
+class "Wilderness" as Wilderness #White
+class "Galilee" as Galilee #White
+class "Nazareth" as Nazareth #White
+class "Capernaum" as Capernaum #White
+class "Zebulun" as Zebulun #White
+class "Naphtali" as Naphtali #White
+class "Judea" as Judea #White
+class "Decapolis" as Decapolis #White
+class "Beyond the Jordan" as Jordan #White
+
+' === Relationships ===
+HolySpirit --> Jesus : "Leads into wilderness"
+Jesus --> Wilderness : "Fasts 40 days"
+
+Satan --> Jesus : "Tempts 3 times"
+Jesus --> Satan : "Rejects / Rebukes"
+Angels --> Jesus : "Minister to"
+
+JohnB --> Jesus : "Precedes ministry\n(Arrest triggers move)"
+
+Jesus --> Galilee : "Begins ministry"
+Galilee --> Capernaum : "Jesus dwells here"
+Capernaum --> Zebulun
+Capernaum --> Naphtali
+
+Jesus --> Peter : "Calls to follow"
+Jesus --> Andrew : "Calls to follow"
+Jesus --> James : "Calls to follow"
+Jesus --> JohnZ : "Calls to follow"
+
+Peter -- Andrew : "Brothers"
+James -- JohnZ : "Brothers\nSons of Zebedee"
+
+Jesus --> Crowds : "Teaches & Heals"
+Crowds --> Galilee
+Crowds --> Decapolis
+Crowds --> Judea
+Crowds --> Jordan
+
+@enduml
+
+
+
+
+@startuml
+title Roles & Relationships in Matthew 4
+
+skinparam linetype ortho
+skinparam classBackgroundColor White
+
+' === Key Entities ===
+class "Jesus" as Jesus #LightGreen
+class "Holy Spirit" as HolySpirit #LightYellow
+class "Satan\n(Devil / Tempter)" as Satan #LightCoral
+class "Angels" as Angels #LightYellow
+class "John the Baptist" as JohnB #LightBlue
+class "Simon Peter" as Peter #Gold
+class "Andrew" as Andrew #Gold
+class "James (son of Zebedee)" as James #Gold
+class "John (son of Zebedee)" as JohnZ #Gold
+class "Crowds" as Crowds #Thistle
+
+' === Geographic Regions ===
+class "Wilderness" as Wilderness #White
+class "Galilee" as Galilee #White
+class "Nazareth" as Nazareth #White
+class "Capernaum" as Capernaum #White
+class "Zebulun" as Zebulun #White
+class "Naphtali" as Naphtali #White
+class "Judea" as Judea #White
+class "Decapolis" as Decapolis #White
+class "Beyond the Jordan" as Jordan #White
+
+' === Relationships ===
+HolySpirit --> Jesus : "Leads into wilderness"
+Jesus --> Wilderness : "Fasts 40 days"
+
+Satan --> Jesus : "Tempts 3 times"
+Jesus --> Satan : "Rejects / Rebukes"
+Angels --> Jesus : "Minister to"
+
+JohnB --> Jesus : "Precedes ministry\n(Arrest triggers move)"
+
+Jesus --> Galilee : "Begins ministry"
+Galilee --> Capernaum : "Jesus dwells here"
+Capernaum --> Zebulun
+Capernaum --> Naphtali
+
+Jesus --> Peter : "Calls to follow"
+Jesus --> Andrew : "Calls to follow"
+Jesus --> James : "Calls to follow"
+Jesus --> JohnZ : "Calls to follow"
+
+Peter -- Andrew : "Brothers"
+James -- JohnZ : "Brothers, sons of Zebedee"
+
+Jesus --> Crowds : "Teaches & Heals"
+Crowds --> Galilee
+Crowds --> Decapolis
+Crowds --> Judea
+Crowds --> Jordan
+
+@enduml
+
+

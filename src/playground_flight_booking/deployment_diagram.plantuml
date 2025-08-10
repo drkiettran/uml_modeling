@@ -1,0 +1,48 @@
+@startuml
+	title Deployment Diagram: Flight Booking Spring AI Playground
+	
+	node "User Device" {
+	  [Web Browser] --> (Vaadin UI)
+	}
+	
+	node "Kubernetes Cluster" {
+	  node "SpringAI Application Pod" {
+	    component "Application" as app
+	    component "FlightBookingService" as bookingService
+	    component "CustomerSupportAssistant" as assistant
+	    component "BookingTools"
+	    component "BookingData"
+	    component "FlightBookingView"
+	    component "SeatSelector"
+	  }
+	
+	  node "ServiceNow" as servicenow
+	  node "Databricks" as databricks
+	}
+	
+	node "Database Server" as DatabaseSErver {
+	  database "Booking DB" as db
+	}
+	
+	node "AWS Cloud" as AWSClound {
+	  node "S3 Bucket" as akb
+	}
+	
+	node "Vector DB" as VectorDB {
+	  database "Vector Store" as VectorStore
+	}
+	
+	node "Generative AI Service" as genAI
+	
+	' Deployment relationships
+	(Vaadin UI) --> app
+	app --> bookingService
+	app --> assistant
+	assistant --> genAI
+	bookingService --> db
+	app --> VectorStore
+	app --> akb
+	app --> servicenow
+	app --> databricks
+
+@enduml

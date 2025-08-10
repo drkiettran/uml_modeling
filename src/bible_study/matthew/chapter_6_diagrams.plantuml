@@ -1,0 +1,110 @@
+@startuml
+title Sermon on the Mount - Matthew 5 & 6
+
+package "Matthew 5\n(Life of Discipleship)" {
+  
+  class "Beatitudes\n(5:1-12)" as Beatitudes {
+    - Blessed are the poor in spirit
+    - Blessed are the meek...
+    - Promise of the Kingdom
+  }
+
+  class "Salt & Light\n(5:13-16)" as SaltLight {
+    - Be salt of the earth
+    - Be light to the world
+  }
+
+  class "Fulfillment of the Law\n(5:17-20)" as Law {
+    - Jesus fulfills the Law & Prophets
+    - Righteousness > Pharisees
+  }
+
+  class "Antitheses / Moral Teaching\n(5:21-48)" as Antitheses {
+    - Anger / Reconciliation
+    - Adultery / Lust
+    - Divorce
+    - Oaths
+    - Retaliation / Love enemies
+  }
+}
+
+package "Matthew 6\n(Interior Life & Trust in God)" {
+
+  class "Almsgiving\n(6:1-4)" as Almsgiving
+  class "Prayer\n(6:5-15)" as Prayer
+  class "Fasting\n(6:16-18)" as Fasting
+  class "Heavenly Treasures\n(6:19-21)" as Treasures
+  class "Sound Eye\n(6:22-23)" as Eye
+  class "Two Masters\n(6:24)" as Masters
+  class "Do Not Be Anxious\n(6:25-34)" as Anxiety
+
+  Almsgiving --> Prayer
+  Prayer --> Fasting
+  Fasting --> Treasures
+  Treasures --> Eye
+  Eye --> Masters
+  Masters --> Anxiety
+}
+
+' Flow from Matthew 5 to 6
+Beatitudes --> SaltLight
+SaltLight --> Law
+Law --> Antitheses
+Antitheses --> Almsgiving
+
+@enduml
+
+
+@startuml
+title Matthew 6 - Structure of Teachings
+
+package "Matthew 6" {
+  
+  class "Almsgiving\n(6:1-4)" as Almsgiving {
+    - Secret giving
+    - God rewards in secret
+  }
+
+  class "Prayer\n(6:5-15)" as Prayer {
+    - Avoid hypocrisy
+    - Pray in secret
+    - Lord's Prayer
+    - Forgive to be forgiven
+  }
+
+  class "Fasting\n(6:16-18)" as Fasting {
+    - Avoid gloomy face
+    - Anoint head & wash face
+    - Reward from the Father
+  }
+
+  class "Heavenly Treasures\n(6:19-21)" as Treasures {
+    - Store treasures in heaven
+    - Heart follows treasure
+  }
+
+  class "Sound Eye\n(6:22-23)" as Eye {
+    - Eye = Lamp of body
+    - Light vs darkness
+  }
+
+  class "Two Masters\n(6:24)" as Masters {
+    - Cannot serve God & mammon
+  }
+
+  class "Do Not Be Anxious\n(6:25-34)" as Anxiety {
+    - Trust in God
+    - Birds & lilies example
+    - Seek first the Kingdom
+  }
+
+  ' Connections to show flow of teaching
+  Almsgiving --> Prayer
+  Prayer --> Fasting
+  Fasting --> Treasures
+  Treasures --> Eye
+  Eye --> Masters
+  Masters --> Anxiety
+}
+
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+	title Sequence Diagram: Retrieve Booking Details
+	
+	actor User
+	
+	participant "FlightBookingView" as View
+	participant "CustomerSupportAssistant" as Assistant
+	participant "BookingTools" as Tools
+	participant "FlightBookingService" as Service
+	participant "BookingData" as Data
+	participant "Booking" as Booking
+	participant "BookingDetails" as Details
+	
+	User -> View : enter booking number / name
+	View -> Assistant : chat(chatId, userMessage)
+	Assistant -> Tools : getBookingDetails(bookingNumber, first, last)
+	Tools -> Service : getBookingDetails(bookingNumber, first, last)
+	Service -> Data : findBooking(bookingNumber, first, last)
+	Data --> Service : Booking
+	Service -> Service : toBookingDetails(Booking)
+	Service --> Tools : BookingDetails
+	Tools --> Assistant : BookingDetails
+	Assistant --> View : Booking details response
+	View --> User : show booking details on UI
+
+@enduml

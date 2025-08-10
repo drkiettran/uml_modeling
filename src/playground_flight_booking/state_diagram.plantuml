@@ -1,0 +1,34 @@
+@startuml
+	title State Diagram: Booking Lifecycle
+	
+	[*] --> Created
+	
+	state Created {
+	  [*] --> AwaitingConfirmation
+	  AwaitingConfirmation : Initialized with customer info
+	}
+	
+	Created --> Confirmed : Confirm booking
+	
+	state Confirmed {
+	  [*] --> Active
+	  Active : Flight and seat assigned
+	}
+	
+	Confirmed --> Completed : Complete booking
+	Confirmed --> Cancelled : Cancel booking
+	
+	state Completed {
+	  [*] --> Done
+	  Done : Booking has ended\nFlight completed
+	}
+	
+	state Cancelled {
+	  [*] --> Closed
+	  Closed : Booking cancelled\nRefund or closure processed
+	}
+	
+	Completed --> [*]
+	Cancelled --> [*]
+	
+@enduml

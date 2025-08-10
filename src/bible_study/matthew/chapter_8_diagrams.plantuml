@@ -1,0 +1,465 @@
+@startuml
+title Matthew 1–8 – Unified Journey with Events, Locations, Individuals, and Audiences
+
+' ========================================
+' Section 1: Genealogy & Birth (Ch 1–2)
+' ========================================
+package "Genealogy & Birth (Matthew 1–2)" #lightyellow {
+  class "Genealogy of Jesus (Ch 1)"
+  class "Birth of Jesus (Ch 1)"
+  class "Visit of the Magi (Ch 2)"
+  class "Flight to Egypt (Ch 2)"
+  class "Return to Nazareth (Ch 2)"
+
+  "Genealogy of Jesus (Ch 1)" --> "Birth of Jesus (Ch 1)" 
+  "Birth of Jesus (Ch 1)" --> "Visit of the Magi (Ch 2)"
+  "Visit of the Magi (Ch 2)" --> "Flight to Egypt (Ch 2)"
+  "Flight to Egypt (Ch 2)" --> "Return to Nazareth (Ch 2)"
+}
+
+' ========================================
+' Section 2: Preparation for Ministry (Ch 3–4)
+' ========================================
+package "Preparation for Ministry (Matthew 3–4)" #lightblue {
+  class "John the Baptist Prepares the Way (Ch 3)"
+  class "Baptism of Jesus (Ch 3)"
+  class "Temptation in the Desert (Ch 4)"
+  class "Start of Public Ministry in Galilee (Ch 4)"
+
+  "John the Baptist Prepares the Way (Ch 3)" --> "Baptism of Jesus (Ch 3)"
+  "Baptism of Jesus (Ch 3)" --> "Temptation in the Desert (Ch 4)"
+  "Temptation in the Desert (Ch 4)" --> "Start of Public Ministry in Galilee (Ch 4)"
+}
+
+' ========================================
+' Section 3: Sermon on the Mount (Ch 5–7)
+' ========================================
+package "Sermon on the Mount (Matthew 5–7)" #lightgreen {
+  class "Beatitudes & Salt/Light (5:1–16)"
+  class "Fulfillment of the Law (5:17–48)"
+  class "Prayer, Fasting, Trust in God (6:1–34)"
+  class "Judgment & True Discipleship (7:1–27)"
+
+  "Beatitudes & Salt/Light (5:1–16)" --> "Fulfillment of the Law (5:17–48)"
+  "Fulfillment of the Law (5:17–48)" --> "Prayer, Fasting, Trust in God (6:1–34)"
+  "Prayer, Fasting, Trust in God (6:1–34)" --> "Judgment & True Discipleship (7:1–27)"
+}
+
+' Audiences for Sermon
+class "Disciples\n(Primary Audience)" as Disciples5_7 #lightgreen
+class "Crowds/Multitudes\n(Secondary Audience)" as Crowds5_7 #lightblue
+class "Scribes & Pharisees\n(Legalistic Righteousness)" as Pharisees #pink
+class "Hypocrites\n(Showy Piety)" as Hypocrites #pink
+class "Gentiles\n(Worldly Focus)" as Gentiles #orange
+class "False Prophets & False Disciples\n(7:15–23)" as FalseProphets #red
+
+"Beatitudes & Salt/Light (5:1–16)" --> Disciples5_7
+"Beatitudes & Salt/Light (5:1–16)" --> Crowds5_7
+"Fulfillment of the Law (5:17–48)" ..> Pharisees
+"Prayer, Fasting, Trust in God (6:1–34)" ..> Hypocrites
+"Prayer, Fasting, Trust in God (6:1–34)" ..> Gentiles
+"Judgment & True Discipleship (7:1–27)" ..> FalseProphets
+
+' ========================================
+' Section 4: Miracles & Authority – Matthew 8
+' ========================================
+package "Miracles & Authority (Matthew 8)" #lightpink {
+  
+  ' Locations
+  class "Capernaum" as Capernaum #lightblue
+  class "Sea of Galilee" as Sea #lightblue
+  class "Country of the Gadarenes" as Gadara #lightblue
+  class "Peter's House" as PetersHouse #lightblue
+
+  ' Events
+  class "Healing the Leper (8:1–4)" as LeperEvent
+  class "Healing the Centurion's Servant (8:5–13)" as CenturionEvent
+  class "Healing Peter's Mother-in-law (8:14–17)" as MotherEvent
+  class "Calming the Storm (8:23–27)" as StormEvent
+  class "Healing the Gadarene Demoniacs (8:28–34)" as DemoniacEvent
+
+  ' Event sequence
+  LeperEvent --> CenturionEvent
+  CenturionEvent --> MotherEvent
+  MotherEvent --> StormEvent 
+  StormEvent --> DemoniacEvent
+
+  ' Location Associations
+  CenturionEvent --> Capernaum
+  MotherEvent --> PetersHouse
+  StormEvent --> Sea
+  DemoniacEvent --> Gadara
+
+  ' Individuals
+  class "Jesus" as Jesus #lightyellow
+  class "Leper" as Leper
+  class "Centurion" as Centurion
+  class "Centurion's Servant" as Servant
+  class "Peter" as Peter
+  class "Peter's Mother-in-law" as MotherInLaw
+  class "Unnamed Scribe" as Scribe
+  class "Unnamed Disciple" as Disciple
+  class "Disciples" as Disciples
+  class "Demoniacs of Gadara" as Demoniacs
+  class "Demons" as Demons
+  class "Herd of Swine" as Swine
+  class "Herdsmen" as Herdsmen
+  class "People of Gadara" as CityPeople
+
+  ' Relationships
+  Jesus --> LeperEvent
+  LeperEvent --> Leper
+
+  Jesus --> CenturionEvent
+  CenturionEvent --> Centurion
+  Centurion --> Servant
+
+  Jesus --> MotherEvent
+  MotherEvent --> Peter
+  Peter --> MotherInLaw
+
+  Jesus --> StormEvent
+  StormEvent --> Disciples
+
+  Jesus --> DemoniacEvent
+  DemoniacEvent --> Demoniacs
+  Demoniacs --> Demons
+  Demons --> Swine
+  Swine --> Herdsmen
+  Herdsmen --> CityPeople
+}
+
+@enduml
+
+
+
+@startuml
+title Matthew 1–8 – Unified Journey with Locations
+
+' ========================================
+' Section 1: Genealogy & Birth
+' ========================================
+package "Genealogy & Birth (Matthew 1–2)" #lightyellow {
+  class "Genealogy of Jesus (Ch 1)"
+  class "Birth of Jesus (Ch 1)"
+  class "Visit of the Magi (Ch 2)"
+  class "Flight to Egypt (Ch 2)"
+  class "Return to Nazareth (Ch 2)"
+
+  "Genealogy of Jesus (Ch 1)" --> "Birth of Jesus (Ch 1)" 
+  "Birth of Jesus (Ch 1)" --> "Visit of the Magi (Ch 2)" 
+  "Visit of the Magi (Ch 2)" --> "Flight to Egypt (Ch 2)"
+  "Flight to Egypt (Ch 2)" --> "Return to Nazareth (Ch 2)"
+}
+
+' ========================================
+' Section 2: Preparation for Ministry
+' ========================================
+package "Preparation for Ministry (Matthew 3–4)" #lightblue {
+  class "John the Baptist Prepares the Way (Ch 3)"
+  class "Baptism of Jesus (Ch 3)"
+  class "Temptation in the Desert (Ch 4)"
+  class "Start of Public Ministry in Galilee (Ch 4)"
+
+  "John the Baptist Prepares the Way (Ch 3)" --> "Baptism of Jesus (Ch 3)"
+  "Baptism of Jesus (Ch 3)" --> "Temptation in the Desert (Ch 4)" 
+  "Temptation in the Desert (Ch 4)" --> "Start of Public Ministry in Galilee (Ch 4)"
+}
+
+' ========================================
+' Section 3: Teachings – Sermon on the Mount
+' ========================================
+package "Teachings: Sermon on the Mount (Matthew 5–7)" #lightgreen {
+  class "Beatitudes & Teaching on the Law (Ch 5)"
+  class "Prayer, Fasting, Trust in God (Ch 6)"
+  class "Judgment & True Discipleship (Ch 7)"
+}
+
+' ========================================
+' Section 4: Miracles & Authority – Matthew 8 with Locations
+' ========================================
+package "Miracles & Authority (Matthew 8)" #lightpink {
+  
+  ' Locations
+  class "Capernaum" as Capernaum #lightblue
+  class "Sea of Galilee" as Sea #lightblue
+  class "Country of the Gadarenes" as Gadara #lightblue
+  class "Peter's House" as PetersHouse #lightblue
+
+  ' Events
+  class "Healing the Leper (8:1–4)" as LeperEvent
+  class "Healing the Centurion's Servant (8:5–13)" as CenturionEvent
+  class "Healing Peter's Mother-in-law (8:14–17)" as MotherEvent
+  class "Calming the Storm (8:23–27)" as StormEvent
+  class "Healing the Gadarene Demoniacs (8:28–34)" as DemoniacEvent
+
+  ' Event sequence
+  LeperEvent --> CenturionEvent
+  CenturionEvent --> MotherEvent
+  MotherEvent --> StormEvent
+  StormEvent --> DemoniacEvent
+
+  ' Location Associations
+  CenturionEvent --> Capernaum
+  MotherEvent --> PetersHouse
+  StormEvent --> Sea
+  DemoniacEvent --> Gadara
+
+  ' Individuals
+  class "Jesus" as Jesus #lightyellow
+  class "Leper" as Leper
+  class "Centurion" as Centurion
+  class "Centurion's Servant" as Servant
+  class "Peter" as Peter
+  class "Peter's Mother-in-law" as MotherInLaw
+  class "Unnamed Scribe" as Scribe
+  class "Unnamed Disciple" as Disciple
+  class "Disciples" as Disciples
+  class "Demoniacs of Gadara" as Demoniacs
+  class "Demons" as Demons
+  class "Herd of Swine" as Swine
+  class "Herdsmen" as Herdsmen
+  class "People of Gadara" as CityPeople
+
+  ' Relationships
+  Jesus --> LeperEvent
+  LeperEvent --> Leper
+
+  Jesus --> CenturionEvent
+  CenturionEvent --> Centurion
+  Centurion --> Servant
+
+  Jesus --> MotherEvent
+  MotherEvent --> Peter
+  Peter --> MotherInLaw
+
+  Jesus --> StormEvent
+  StormEvent --> Disciples
+
+  Jesus --> DemoniacEvent
+  DemoniacEvent --> Demoniacs
+  Demoniacs --> Demons
+  Demons --> Swine
+  Swine --> Herdsmen
+  Herdsmen --> CityPeople
+}
+
+@enduml
+
+
+
+
+
+@startuml
+title Matthew 1–8 – Genealogy, Early Ministry, and Key Individuals
+
+' ---------------------------
+' Section 1: Genealogy & Birth
+' ---------------------------
+package "Genealogy & Birth (Matthew 1–2)" #lightyellow {
+  class "Genealogy of Jesus (Ch 1)"
+  class "Birth of Jesus (Ch 1)"
+  class "Visit of the Magi (Ch 2)"
+  class "Flight to Egypt (Ch 2)"
+  class "Return to Nazareth (Ch 2)"
+
+  "Genealogy of Jesus (Ch 1)" --> "Birth of Jesus (Ch 1)" 
+  "Birth of Jesus (Ch 1)" --> "Visit of the Magi (Ch 2)" 
+  "Visit of the Magi (Ch 2)" --> "Flight to Egypt (Ch 2)" 
+  "Flight to Egypt (Ch 2)" --> "Return to Nazareth (Ch 2)"
+}
+
+' ---------------------------
+' Section 2: Preparation for Ministry
+' ---------------------------
+package "Preparation for Ministry (Matthew 3–4)" #lightblue {
+  class "John the Baptist Prepares the Way (Ch 3)"
+  class "Baptism of Jesus (Ch 3)"
+  class "Temptation in the Desert (Ch 4)"
+  class "Start of Public Ministry in Galilee (Ch 4)"
+
+  "John the Baptist Prepares the Way (Ch 3)" --> "Baptism of Jesus (Ch 3)"
+  "Baptism of Jesus (Ch 3)" --> "Temptation in the Desert (Ch 4)"
+  "Temptation in the Desert (Ch 4)" --> "Start of Public Ministry in Galilee (Ch 4)"
+}
+
+' ---------------------------
+' Section 3: Teachings – Sermon on the Mount
+' ---------------------------
+package "Teachings: Sermon on the Mount (Matthew 5–7)" #lightgreen {
+  class "Beatitudes & Teaching on the Law (Ch 5)"
+  class "Prayer, Fasting, Trust in God (Ch 6)"
+  class "Judgment & True Discipleship (Ch 7)"
+}
+
+' ---------------------------
+' Section 4: Miracles & Authority – Matthew 8
+' ---------------------------
+package "Miracles & Authority (Matthew 8)" #lightpink {
+  class "Healing the Leper (8:1–4)"
+  class "Healing the Centurion's Servant (8:5–13)"
+  class "Healing Peter's Mother-in-law (8:14–17)"
+  class "Calming the Storm (8:23–27)"
+  class "Healing the Gadarene Demoniacs (8:28–34)"
+}
+
+"Healing the Leper (8:1–4)" --> "Healing the Centurion's Servant (8:5–13)" 
+"Healing the Centurion's Servant (8:5–13)" --> "Healing Peter's Mother-in-law (8:14–17)" 
+"Healing Peter's Mother-in-law (8:14–17)" --> "Calming the Storm (8:23–27)" 
+"Calming the Storm (8:23–27)" --> "Healing the Gadarene Demoniacs (8:28–34)"
+
+' ---------------------------
+' Section 5: Key Individuals in Chapter 8
+' ---------------------------
+package "Key Individuals & Relationships (Matthew 8)" #white {
+  class "Jesus" as Jesus #lightyellow
+  class "Leper" as Leper
+  class "Centurion" as Centurion
+  class "Centurion's Servant" as Servant
+  class "Peter" as Peter
+  class "Peter's Mother-in-law" as MotherInLaw
+  class "Unnamed Scribe" as Scribe
+  class "Unnamed Disciple" as Disciple
+  class "Disciples" as Disciples
+  class "Demoniacs of Gadara" as Demoniacs
+  class "Demons" as Demons
+  class "Herd of Swine" as Swine
+  class "Herdsmen" as Herdsmen
+  class "People of Gadara" as CityPeople
+
+  ' Relationships
+  Jesus --> Leper : "Heals"
+  Jesus --> Centurion : "Commends faith"
+  Centurion --> Servant : "Cares for"
+  Jesus --> Servant : "Heals at a distance"
+  Jesus --> Peter : "Stays at house"
+  Peter --> MotherInLaw : "Family"
+  Jesus --> MotherInLaw : "Heals fever"
+  Jesus --> Scribe : "Teaches cost of discipleship"
+  Jesus --> Disciple : "Calls to follow"
+  Jesus --> Disciples : "Leads & rebukes"
+  Jesus --> Demoniacs : "Drives out demons"
+  Demoniacs --> Demons : "Possessed by"
+  Demons --> Swine : "Enter herd"
+  Swine --> Herdsmen : "Cause loss"
+  Herdsmen --> CityPeople : "Report miracle"
+  CityPeople --> Jesus : "Beg Him to leave"
+}
+
+@enduml
+
+
+
+@startuml
+title Matthew 8 – Individuals and Relationships
+
+' Central figure
+class "Jesus" as Jesus #lightyellow
+
+' Miracles and individuals
+class "Leper\n(Healed by Jesus)" as Leper
+class "Centurion\n(Roman officer, great faith)" as Centurion
+class "Centurion's Servant\n(Paralyzed, healed)" as Servant
+class "Peter (Simon)\nApostle, fisherman" as Peter
+class "Peter's Mother-in-law\n(Healed from fever)" as MotherInLaw
+class "Unnamed Scribe\n(Would-be follower)" as Scribe
+class "Unnamed Disciple\n('Let me bury my father')" as Disciple
+class "Demoniacs of Gadara\n(2 men, possessed)" as Demoniacs
+class "Demons\n(Request to enter swine)" as Demons
+class "Herd of Swine\n(Rushed into sea)" as Swine
+class "Herdsmen\n(Eyewitnesses, report to city)" as Herdsmen
+class "People of Gadara\n(Fear Jesus, ask Him to leave)" as CityPeople
+class "Disciples\n(Follow Jesus, little faith in storm)" as Disciples
+
+' Relationships
+Jesus --> Leper : "Heals"
+Jesus --> Centurion : "Commends faith"
+Centurion --> Servant : "Cares for"
+Jesus --> Servant : "Heals at a distance"
+Jesus --> Peter : "Stays at house"
+Peter --> MotherInLaw : "Family"
+Jesus --> MotherInLaw : "Heals from fever"
+Jesus --> Scribe : "Teaches cost of discipleship"
+Jesus --> Disciple : "Calls to follow"
+Jesus --> Disciples : "Leads & rebukes\n('Little faith')"
+Jesus --> Demoniacs : "Drives out demons"
+Demoniacs --> Demons : "Possessed by"
+Demons --> Swine : "Enter herd"
+Swine --> Herdsmen : "Cause loss"
+Herdsmen --> CityPeople : "Report miracle"
+CityPeople --> Jesus : "Beg Him to leave"
+
+' Groupings for visual clarity
+package "Healing Miracles" #lightgreen {
+  class Leper
+  class Centurion
+  class Servant
+  class MotherInLaw
+}
+
+package "Teaching & Discipleship" #lightblue {
+  class Scribe
+  class Disciple
+  class Disciples
+}
+
+package "Exorcism & Nature Miracle" #lightpink {
+  class Demoniacs
+  class Demons
+  class Swine
+  class Herdsmen
+  class CityPeople
+}
+
+@enduml
+
+
+
+
+@startuml
+title Jesus' Early Life and Ministry (Matthew 1–8)
+
+package "Genealogy & Birth (Matthew 1–2)" #lightyellow {
+  class "Genealogy of Jesus (Ch 1)"
+  class "Birth of Jesus (Ch 1)"
+  class "Visit of the Magi (Ch 2)"
+  class "Flight to Egypt (Ch 2)"
+  class "Return to Nazareth (Ch 2)"
+
+  "Genealogy of Jesus (Ch 1)" --> "Birth of Jesus (Ch 1)" 
+  "Birth of Jesus (Ch 1)" --> "Visit of the Magi (Ch 2)" 
+  "Visit of the Magi (Ch 2)" --> "Flight to Egypt (Ch 2)" 
+  "Flight to Egypt (Ch 2)" --> "Return to Nazareth (Ch 2)"
+}
+
+package "Preparation for Ministry (Matthew 3–4)" #lightblue {
+  class "John the Baptist Prepares the Way (Ch 3)"
+  class "Baptism of Jesus (Ch 3)"
+  class "Temptation in the Desert (Ch 4)"
+  class "Start of Public Ministry in Galilee (Ch 4)"
+
+  "John the Baptist Prepares the Way (Ch 3)" --> "Baptism of Jesus (Ch 3)"  
+  "Baptism of Jesus (Ch 3)" --> "Temptation in the Desert (Ch 4)"
+  "Temptation in the Desert (Ch 4)" --> "Start of Public Ministry in Galilee (Ch 4)"
+}
+
+package "Teachings: Sermon on the Mount (Matthew 5–7)" #lightgreen {
+  class "Beatitudes & Teaching on the Law (Ch 5)"
+  class "Prayer, Fasting, Trust in God (Ch 6)"
+  class "Judgment & True Discipleship (Ch 7)"
+}
+
+package "Miracles & Authority (Matthew 8)" #lightpink {
+  class "Healing the Leper (8:1–4)"
+  class "Healing the Centurion's Servant (8:5–13)"
+  class "Healing Peter's Mother-in-law (8:14–17)"
+  class "Calming the Storm (8:23–27)"
+  class "Healing the Gadarene Demoniacs (8:28–34)"
+
+  "Healing the Leper (8:1–4)" --> "Healing the Centurion's Servant (8:5–13)"
+  "Healing the Centurion's Servant (8:5–13)" --> "Healing Peter's Mother-in-law (8:14–17)"
+  "Healing Peter's Mother-in-law (8:14–17)" --> "Calming the Storm (8:23–27)" 
+  "Calming the Storm (8:23–27)" --> "Healing the Gadarene Demoniacs (8:28–34)"
+}
+
+@enduml

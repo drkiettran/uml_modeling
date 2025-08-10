@@ -1,0 +1,435 @@
+@startuml
+title Gospel of Matthew 1–12 – Chronological Itinerary Map
+
+skinparam backgroundColor white
+skinparam nodesep 50
+skinparam ranksep 50
+
+' Map background
+!define MAP "https://upload.wikimedia.org/wikipedia/commons/0/07/First-century_palestine_map.png"
+'rectangle "" as MAPBG [
+'  <img:MAP{scale=0.5}>
+']
+
+' Legend
+class "Legend:\n🟦 Location\n🟩 Miracle\n🟧 Teaching\n🟨 People Interaction\n# = chronological order" as LEGEND #white
+
+' Locations & events (numbered chronologically)
+class "1. Bethlehem 🟦\nGenealogy, Birth, Magi" as Bethlehem <<Location>> #lightblue
+class "2. Egypt 🟦\nFlight from Herod" as Egypt <<Location>> #lightblue
+class "3. Nazareth 🟦\nReturn & early life" as Nazareth <<Location>> #lightblue
+class "4. Jordan River 🟦\nBaptism" as Jordan <<Location>> #lightblue
+class "5. Wilderness 🟦\nTemptation" as Wilderness <<Location>> #lightblue
+class "6. Capernaum 🟦\nBase of Ministry" as Capernaum <<Location>> #lightblue
+class "7. Sea of Galilee 🟦\nStorm Calmed, Miracles" as SeaGalilee <<Location>> #lightblue
+class "8. Gadara 🟦\nDemoniacs Healed" as Gadara <<Location>> #lightblue
+class "9. Jerusalem 🟦\nSabbath disputes, Beelzebul accusation" as Jerusalem <<Location>> #lightblue
+
+' Travel paths in chronological order
+Bethlehem --> Egypt : 1→2
+Egypt --> Nazareth : 2→3
+Nazareth --> Jordan : 3→4
+Jordan --> Wilderness : 4→5
+Wilderness --> Capernaum : 5→6
+Capernaum --> SeaGalilee : 6→7
+SeaGalilee --> Gadara : 7→8
+Gadara --> Capernaum : return
+Capernaum --> Jerusalem : 8→9
+
+class "Sermon on the Mount 🟧" as sotm <<Teaching>>
+class "Healing Leper 🟩" as hl <<Miracle>>
+class "Calming the Storm 🟩" as cts <<Miracle>>
+class "Healing Demoniacs 🟩" as hd <<Miracle>>
+class "Plucking Grain on Sabbath 🟨" as pgos <<Interaction>>
+class "Man with Withered Hand 🟩" as mwwh <<Miracle>>
+class "Beelzebul Accusation 🟨" as ba <<Interaction>>
+class "Sign of Jonah 🟧" as soj <<Teaching>>
+class "True Family Teaching 🟧" as tft <<Teaching>>
+
+' Event highlights attached to locations
+Bethlehem -[hidden]-> LEGEND
+Capernaum --> sotm
+Capernaum --> hl
+SeaGalilee --> cts
+Gadara --> hd
+Jerusalem --> pgos
+Jerusalem --> mwwh
+Jerusalem --> ba
+Jerusalem --> soj
+Jerusalem --> tft
+
+@enduml
+
+
+
+@startuml
+title Gospel of Matthew 1–12 – Geographical Journey with Travel Paths
+
+skinparam backgroundColor white
+skinparam nodesep 50
+skinparam ranksep 50
+
+!define MAP "https://upload.wikimedia.org/wikipedia/commons/0/07/First-century_palestine_map.png"
+'rectangle "" as MAPBG [
+'  <img:MAP{scale=0.5}>
+']
+
+' Locations
+class "Bethlehem 🟦" as Bethlehem #lightblue
+class "Egypt 🟦" as Egypt #lightblue
+class "Nazareth 🟦" as Nazareth #lightblue
+class "Jordan River 🟦" as Jordan #lightblue
+class "Wilderness 🟦" as Wilderness #lightblue
+class "Capernaum 🟦" as Capernaum #lightblue
+class "Sea of Galilee 🟦" as SeaGalilee #lightblue
+class "Gadara 🟦" as Gadara #lightblue
+class "Jerusalem 🟦" as Jerusalem #lightblue
+
+' Travel paths
+Bethlehem --> Egypt : Flight from Herod
+Egypt --> Nazareth : Return after Herod's death
+Nazareth --> Jordan : Baptism
+Jordan --> Wilderness : Temptation
+Wilderness --> Capernaum : Base of ministry
+Capernaum --> SeaGalilee : Calming Storm, miracles
+Capernaum --> Gadara : Healing Demoniacs
+Capernaum --> Jerusalem : Sabbath disputes, teachings
+
+@enduml
+
+
+
+
+@startuml
+title Gospel of Matthew 1–12 – Chronological Timeline of Events
+
+skinparam backgroundColor white
+skinparam packageStyle rectangle
+
+' Time phases
+package "Early Life" #lightgray {
+  1. [Genealogy 🟧]
+  2. [Birth of Jesus 🟨]
+  3. [Visit of the Magi 🟨]
+  4. [Flight to Egypt 🟦]
+  5. [Return to Nazareth 🟦]
+}
+
+package "Preparation for Ministry" #lightblue {
+  6. [John the Baptist's Ministry 🟧]
+  7. [Baptism of Jesus 🟩]
+  8. [Temptation in the Wilderness 🟨]
+  9. [Settles in Capernaum 🟦]
+}
+
+package "Early Galilean Ministry" #lightgreen {
+  10. [Sermon on the Mount 🟧]
+  11. [Healing Leper 🟩]
+  12. [Healing Centurion's Servant 🟩]
+  13. [Healing Peter's Mother-in-law 🟩]
+  14. [Calming the Storm 🟩]
+  15. [Healing Gadarene Demoniacs 🟩]
+  16. [Healing Paralytic 🟩]
+  17. [Calling of Matthew 🟨]
+  18. [Raising Jairus' Daughter 🟩]
+  19. [Healing Woman with Hemorrhage 🟩]
+  20. [Healing Two Blind Men 🟩]
+  21. [Healing Mute Demoniac 🟩]
+}
+
+package "Mission & Opposition" #lightyellow {
+  22. [Commissioning of the Twelve 🟧]
+  23. [Teaching on Persecution 🟧]
+  24. [Disciples pluck grain on Sabbath 🟩]
+  25. [Pharisees accuse 🟨]
+  26. [Jesus: 'Lord of the Sabbath' 🟧]
+  27. [Man with withered hand healed 🟩]
+  28. [Pharisees plot to kill 🟨]
+  29. [Isaiah 42 Servant Prophecy 🟧]
+  30. [Blind & mute demoniac healed 🟩]
+  31. [Beelzebul accusation 🟨]
+  32. [Teaching: Kingdom divided 🟧]
+  33. [Warning: Blasphemy against the Holy Spirit 🟧]
+  34. [Tree and fruit – words reveal heart 🟧]
+  35. [Sign of Jonah – Resurrection prefigured 🟧]
+  36. [Return of unclean spirit 🟧]
+  37. [True family: those who do the Father's will 🟧]
+}
+
+' Flow arrows
+[Genealogy 🟧] --> [Birth of Jesus 🟨]
+[Birth of Jesus 🟨] --> [Visit of the Magi 🟨]
+[Visit of the Magi 🟨] --> [Flight to Egypt 🟦]
+[Flight to Egypt 🟦] --> [Return to Nazareth 🟦]
+[Return to Nazareth 🟦] --> [John the Baptist's Ministry 🟧]
+[John the Baptist's Ministry 🟧] --> [Baptism of Jesus 🟩]
+[Baptism of Jesus 🟩] --> [Temptation in the Wilderness 🟨]
+[Temptation in the Wilderness 🟨] --> [Settles in Capernaum 🟦]
+[Settles in Capernaum 🟦] --> [Sermon on the Mount 🟧]
+[Sermon on the Mount 🟧] --> [Healing Leper 🟩]
+[Healing Leper 🟩] --> [Healing Centurion's Servant 🟩]
+[Healing Centurion's Servant 🟩] --> [Healing Peter's Mother-in-law 🟩]
+[Healing Peter's Mother-in-law 🟩] --> [Calming the Storm 🟩]
+[Calming the Storm 🟩] --> [Healing Gadarene Demoniacs 🟩]
+[Healing Gadarene Demoniacs 🟩] --> [Healing Paralytic 🟩]
+[Healing Paralytic 🟩] --> [Calling of Matthew 🟨]
+[Calling of Matthew 🟨] --> [Raising Jairus' Daughter 🟩]
+[Raising Jairus' Daughter 🟩] --> [Healing Woman with Hemorrhage 🟩]
+[Healing Woman with Hemorrhage 🟩] --> [Healing Two Blind Men 🟩]
+[Healing Two Blind Men 🟩] --> [Healing Mute Demoniac 🟩]
+[Healing Mute Demoniac 🟩] --> [Commissioning of the Twelve 🟧]
+[Commissioning of the Twelve 🟧] --> [Teaching on Persecution 🟧]
+[Teaching on Persecution 🟧] --> [Disciples pluck grain on Sabbath 🟩]
+[Disciples pluck grain on Sabbath 🟩] --> [Pharisees accuse 🟨]
+[Pharisees accuse 🟨] --> [Jesus: 'Lord of the Sabbath' 🟧]
+[Jesus: 'Lord of the Sabbath' 🟧] --> [Man with withered hand healed 🟩]
+[Man with withered hand healed 🟩] --> [Pharisees plot to kill 🟨]
+[Pharisees plot to kill 🟨] --> [Isaiah 42 Servant Prophecy 🟧]
+[Isaiah 42 Servant Prophecy 🟧] --> [Blind & mute demoniac healed 🟩]
+[Blind & mute demoniac healed 🟩] --> [Beelzebul accusation 🟨]
+[Beelzebul accusation 🟨] --> [Teaching: Kingdom divided 🟧]
+[Teaching: Kingdom divided 🟧] --> [Warning: Blasphemy against the Holy Spirit 🟧]
+[Warning: Blasphemy against the Holy Spirit 🟧] --> [Tree and fruit – words reveal heart 🟧]
+[Tree and fruit – words reveal heart 🟧] --> [Sign of Jonah – Resurrection prefigured 🟧]
+[Sign of Jonah – Resurrection prefigured 🟧] --> [Return of unclean spirit 🟧]
+[Return of unclean spirit 🟧] --> [True family: those who do the Father's will 🟧]
+
+@enduml
+
+
+
+
+@startuml
+title Gospel of Matthew 1–12 – Chronological Ministry Journey (Map Overlay)
+
+skinparam backgroundColor white
+skinparam backgroundImage "https://upload.wikimedia.org/wikipedia/commons/0/07/First-century_palestine_map.png"
+skinparam nodesep 50
+skinparam ranksep 50
+skinparam packageStyle rectangle
+skinparam linetype ortho
+
+' Legend
+class "Legend:\n[Loc] Location\n[Mir] Miracle\n[Tch] Teaching\n[Int] People Interaction" as LEGEND #White
+
+' Key locations with event summaries
+class "Bethlehem [Loc]\nBirth, Visit of Magi" as Bethlehem <<Location>> #LightBlue
+class "Egypt [Loc]\nFlight from Herod" as Egypt <<Location>> #LightBlue
+class "Nazareth [Loc]\nReturn & Early life" as Nazareth <<Location>> #LightBlue
+class "Jordan River [Loc]\nBaptism" as Jordan <<Location>> #LightBlue
+class "Wilderness [Loc]\nTemptation" as Wilderness <<Location>> #LightBlue
+class "Capernaum [Loc]\nBase of Ministry" as Capernaum <<Location>> #LightBlue
+class "Sea of Galilee [Loc]\nCalming Storm, Miracles" as SeaGalilee <<Location>> #LightBlue
+class "Gadara [Loc]\nHealing Demoniacs" as Gadara <<Location>> #LightBlue
+class "Synagogues of Galilee [Loc]\nTeaching, Healings" as Synagogues <<Location>> #LightBlue
+class "Jerusalem [Loc]\nConfrontations with Pharisees" as Jerusalem <<Location>> #LightBlue
+
+' Event groupings (use aliases)
+package "Early Life" #LightGray {
+  class "Genealogy [Tch]" as ev_gene <<Teaching>>
+  class "Birth of Jesus [Int]" as ev_birth <<Interaction>>
+  class "Visit of the Magi [Int]" as ev_magi <<Interaction>>
+}
+
+package "Preparation" #LightYellow {
+  class "John the Baptist's Ministry [Tch]" as ev_jbm <<Teaching>>
+  class "Baptism of Jesus [Mir]" as ev_bapt <<Miracle>>
+  class "Temptation in the Wilderness [Int]" as ev_tempt <<Interaction>>
+}
+
+package "Galilean Ministry" #LightGreen {
+  class "Sermon on the Mount [Tch]" as ev_som <<Teaching>>
+  class "Healing Leper [Mir]" as ev_leper <<Miracle>>
+  class "Healing Centurion's Servant [Mir]" as ev_cent <<Miracle>>
+  class "Healing Peter's Mother-in-law [Mir]" as ev_mil <<Miracle>>
+  class "Calming the Storm [Mir]" as ev_storm <<Miracle>>
+  class "Healing Gadarene Demoniacs [Mir]" as ev_gad <<Miracle>>
+  class "Healing Paralytic [Mir]" as ev_para <<Miracle>>
+  class "Raising Jairus' Daughter [Mir]" as ev_jairus <<Miracle>>
+  class "Healing Woman with Hemorrhage [Mir]" as ev_hemo <<Miracle>>
+  class "Healing Two Blind Men [Mir]" as ev_blind2 <<Miracle>>
+  class "Healing Mute Demoniac [Mir]" as ev_mute <<Miracle>>
+}
+
+package "Opposition & Teachings" #LightPink {
+  class "Plucking Grain on Sabbath [Mir]" as ev_grain <<Miracle>>
+  class "Man with Withered Hand [Mir]" as ev_withered <<Miracle>>
+  class "Blind & Mute Demoniac [Mir]" as ev_bm <<Miracle>>
+  class "Beelzebul Accusation [Int]" as ev_beel <<Interaction>>
+  class "Blasphemy of Holy Spirit [Tch]" as ev_bhs <<Teaching>>
+  class "Tree & Fruit Teaching [Tch]" as ev_tree <<Teaching>>
+  class "Sign of Jonah [Tch]" as ev_jonah <<Teaching>>
+  class "Return of Unclean Spirit [Tch]" as ev_unclean <<Teaching>>
+  class "True Family Teaching [Tch]" as ev_truefam <<Teaching>>
+}
+
+' Connections between locations and events
+Bethlehem --> ev_birth
+Bethlehem --> ev_magi
+Egypt --> Nazareth
+Jordan --> ev_bapt
+Wilderness --> ev_tempt
+Capernaum --> ev_som
+Capernaum --> ev_leper
+SeaGalilee --> ev_storm
+Gadara --> ev_gad
+Synagogues --> ev_withered
+Jerusalem --> ev_beel
+Jerusalem --> ev_truefam
+
+@enduml
+
+
+
+
+
+@startuml
+title Gospel of Matthew 1–12 – Genealogy, Ministry, People, Locations, Miracles, Teachings
+
+skinparam packageStyle rectangle
+skinparam backgroundColor white
+
+' LEGEND
+rectangle "Legend:\n🟦 Location\n🟩 Miracle\n🟧 Teaching\n🟨 People Interaction" as LEGEND #white
+
+' 1. Genealogy & Birth (Mt 1–2)
+package "Genealogy & Birth" #lightgray {
+  [Genealogy of Jesus 🟧]
+  [Bethlehem 🟦]
+  [Birth of Jesus 🟨]
+  [Visit of the Magi 🟨]
+  [Flight to Egypt 🟦]
+  [Return to Nazareth 🟦]
+}
+
+' 2. Preparation for Ministry (Mt 3–4)
+package "Preparation for Ministry" #lightblue {
+  [John the Baptist's Ministry 🟧]
+  [Baptism of Jesus 🟩]
+  [Temptation in the Wilderness 🟨]
+  [Capernaum 🟦]
+}
+
+' 3. Early Galilean Ministry (Mt 5–9)
+package "Early Ministry" #lightgreen {
+  [Sermon on the Mount 🟧]
+  [Healing Leper 🟩]
+  [Healing Centurion's Servant 🟩]
+  [Healing Peter's Mother-in-law 🟩]
+  [Calming the Storm 🟩]
+  [Healing the Gadarene Demoniacs 🟩]
+  [Healing Paralytic 🟩]
+  [Calling of Matthew 🟨]
+  [Raising Jairus' Daughter 🟩]
+  [Healing Woman with Hemorrhage 🟩]
+  [Healing Two Blind Men 🟩]
+  [Healing Mute Demoniac 🟩]
+}
+
+' 4. Apostolic Mission & Opposition (Mt 10–12)
+package "Mission & Opposition" #lightyellow {
+  [Commissioning of the Twelve 🟧]
+  [Teaching on Persecution 🟧]
+  [Disciples pluck grain on Sabbath 🟩]
+  [Pharisees accuse 🟨]
+  [Jesus: 'Lord of the Sabbath' 🟧]
+  [Man with withered hand healed 🟩]
+  [Pharisees plot to kill 🟨]
+  [Isaiah 42 Servant Prophecy 🟧]
+  [Blind & mute demoniac healed 🟩]
+  [Beelzebul accusation 🟨]
+  [Teaching: Kingdom divided 🟧]
+  [Warning: Blasphemy against the Holy Spirit 🟧]
+  [Tree and fruit – words reveal heart 🟧]
+  [Sign of Jonah – Resurrection prefigured 🟧]
+  [Return of unclean spirit 🟧]
+  [True family: those who do the Father's will 🟧]
+}
+
+' Connections
+[Genealogy of Jesus 🟧] --> [Birth of Jesus 🟨]
+[Birth of Jesus 🟨] --> [Visit of the Magi 🟨]
+[Visit of the Magi 🟨] --> [Flight to Egypt 🟦]
+[Flight to Egypt 🟦] --> [Return to Nazareth 🟦]
+[John the Baptist's Ministry 🟧] --> [Baptism of Jesus 🟩]
+[Baptism of Jesus 🟩] --> [Temptation in the Wilderness 🟨]
+[Temptation in the Wilderness 🟨] --> [Capernaum 🟦]
+[Capernaum 🟦] --> [Sermon on the Mount 🟧]
+[Sermon on the Mount 🟧] --> [Healing Leper 🟩]
+[Healing Leper 🟩] --> [Healing Centurion's Servant 🟩]
+[Healing Centurion's Servant 🟩] --> [Healing Peter's Mother-in-law 🟩]
+[Healing Peter's Mother-in-law 🟩] --> [Calming the Storm 🟩]
+[Calming the Storm 🟩] --> [Healing the Gadarene Demoniacs 🟩]
+[Healing Paralytic 🟩] --> [Calling of Matthew 🟨]
+[Calling of Matthew 🟨] --> [Raising Jairus' Daughter 🟩]
+[Raising Jairus' Daughter 🟩] --> [Healing Woman with Hemorrhage 🟩]
+[Healing Woman with Hemorrhage 🟩] --> [Healing Two Blind Men 🟩]
+[Healing Two Blind Men 🟩] --> [Healing Mute Demoniac 🟩]
+[Commissioning of the Twelve 🟧] --> [Teaching on Persecution 🟧]
+[Teaching on Persecution 🟧] --> [Disciples pluck grain on Sabbath 🟩]
+[Disciples pluck grain on Sabbath 🟩] --> [Pharisees accuse 🟨]
+[Pharisees accuse 🟨] --> [Jesus: 'Lord of the Sabbath' 🟧]
+[Jesus: 'Lord of the Sabbath' 🟧] --> [Man with withered hand healed 🟩]
+[Man with withered hand healed 🟩] --> [Pharisees plot to kill 🟨]
+[Pharisees plot to kill 🟨] --> [Isaiah 42 Servant Prophecy 🟧]
+[Isaiah 42 Servant Prophecy 🟧] --> [Blind & mute demoniac healed 🟩]
+[Blind & mute demoniac healed 🟩] --> [Beelzebul accusation 🟨]
+[Beelzebul accusation 🟨] --> [Teaching: Kingdom divided 🟧]
+[Teaching: Kingdom divided 🟧] --> [Warning: Blasphemy against the Holy Spirit 🟧]
+[Warning: Blasphemy against the Holy Spirit 🟧] --> [Tree and fruit – words reveal heart 🟧]
+[Tree and fruit – words reveal heart 🟧] --> [Sign of Jonah – Resurrection prefigured 🟧]
+[Sign of Jonah – Resurrection prefigured 🟧] --> [Return of unclean spirit 🟧]
+[Return of unclean spirit 🟧] --> [True family: those who do the Father's will 🟧]
+
+@enduml
+
+
+
+@startuml
+title Matthew 12 – Miracles, Teachings, and Audiences
+
+skinparam packageStyle rectangle
+
+package "Sabbath Controversies" #lightblue {
+  [Disciples pluck grain 🟩]
+  [Pharisees accuse 🟨]
+  [Jesus: 'Lord of the Sabbath' 🟧]
+}
+
+package "Synagogue Healing" #lightblue {
+  [Man with withered hand healed 🟩]
+  [Pharisees plot to kill 🟨]
+}
+
+package "Fulfillment of Prophecy" #lightyellow {
+  [Isaiah 42: Servant prophecy 🟧]
+}
+
+package "Miracle & Debate" #lightgreen {
+  [Blind & mute demoniac healed 🟩]
+  [Pharisees: Beelzebul accusation 🟨]
+  [Teaching: Kingdom divided 🟧]
+  [Warning: Blasphemy against the Holy Spirit 🟧]
+}
+
+package "Teachings" #lightyellow {
+  [Tree and fruit – words reveal heart 🟧]
+  [Every careless word judged 🟧]
+  [Sign of Jonah – Resurrection prefigured 🟧]
+  [Queen of the South, men of Nineveh condemn unbelief 🟧]
+  [Return of the unclean spirit 🟧]
+}
+
+package "True Family" #lightpink {
+  [Mother & brothers seek Jesus 🟨]
+  [True kin: those who do the Father’s will 🟧]
+}
+
+' Connections
+[Disciples pluck grain 🟩] --> [Jesus: 'Lord of the Sabbath' 🟧]
+[Man with withered hand healed 🟩] --> [Pharisees plot to kill 🟨]
+[Blind & mute demoniac healed 🟩] --> [Pharisees: Beelzebul accusation 🟨]
+[Pharisees: Beelzebul accusation 🟨] --> [Warning: Blasphemy against the Holy Spirit 🟧]
+[Mother & brothers seek Jesus 🟨] --> [True kin: those who do the Father’s will 🟧]
+
+@enduml

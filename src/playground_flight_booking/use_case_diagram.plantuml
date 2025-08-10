@@ -1,0 +1,34 @@
+@startuml
+	title Flight Booking System - Use Cases
+	
+	skinparam actorStyle awesome
+	'left to right direction
+	
+	actor "Customer" as Customer
+	actor "Customer Support Assistant" as Assistant
+	actor "Admin" as Admin
+	
+	rectangle "Flight Booking System" {
+	  
+	  usecase "Book Flight" as UC1
+	  usecase "Change Booking" as UC2
+	  usecase "Cancel Booking" as UC3
+	  usecase "Choose Seat" as UC4
+	  usecase "Chat with Support Assistant" as UC5
+	  usecase "Manage Bookings" as UC6
+	
+	}
+	
+	Customer --> UC1
+	Customer --> UC2
+	Customer --> UC3
+	Customer --> UC4
+	Customer --> UC5
+	
+	Assistant --> UC5
+	
+	Admin --> UC6
+	UC6 --> UC2 : <<includes>>
+	UC6 --> UC3 : <<includes>>
+
+@enduml
