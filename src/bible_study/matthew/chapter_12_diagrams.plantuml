@@ -1,4 +1,416 @@
 @startuml
+title Gospel of Matthew 1–12 – Events, People, Historical References, and Locations
+
+skinparam packageStyle rectangle
+skinparam backgroundColor white
+
+' --- Locations ---
+package "Locations" #lightblue {
+  [Bethlehem 🟦]
+  [Egypt 🟦]
+  [Nazareth 🟦]
+  [Jordan River 🟦]
+  [Wilderness 🟦]
+  [Capernaum 🟦]
+  [Sea of Galilee 🟦]
+  [Gadara 🟦]
+  [Jerusalem 🟦]
+  [Synagogues of Galilee 🟦]
+}
+
+' --- People ---
+package "Contemporaries of Jesus" #lightpink {
+  [Jesus Christ]
+  [Pharisees]
+  [Priests in the Temple]
+  [Jesus' Mother]
+  [Jesus' Brothers/Relatives]
+}
+
+package "Historical References" #lightgreen {
+  [David]
+  [Jonah]
+  [Queen of the South]
+  [Solomon]
+  [Men of Nineveh]
+}
+
+package "Symbolic Titles" #lightyellow {
+  [Son of Man]
+  [Beelzebul]
+}
+
+' --- Events ---
+package "Events (Matthew 1–12)" #lightgray {
+  [Genealogy 🟧]
+  [Birth of Jesus 🟨]
+  [Visit of Magi 🟨]
+  [Flight to Egypt 🟦]
+  [Return to Nazareth 🟦]
+  [John the Baptist's Ministry 🟧]
+  [Baptism of Jesus 🟩]
+  [Temptation in the Wilderness 🟨]
+  [Sermon on the Mount 🟧]
+  [Healing Leper 🟩]
+  [Healing Centurion's Servant 🟩]
+  [Healing Peter's Mother-in-law 🟩]
+  [Calming the Storm 🟩]
+  [Healing Gadarene Demoniacs 🟩]
+  [Healing Paralytic 🟩]
+  [Calling of Matthew 🟨]
+  [Raising Jairus' Daughter 🟩]
+  [Healing Woman with Hemorrhage 🟩]
+  [Healing Two Blind Men 🟩]
+  [Healing Mute Demoniac 🟩]
+  [Commissioning of the Twelve 🟧]
+  [Teaching on Persecution 🟧]
+  [Plucking grain on Sabbath 🟩]
+  [Pharisees accuse 🟨]
+  [Jesus: 'Lord of the Sabbath' 🟧]
+  [Man with withered hand healed 🟩]
+  [Pharisees plot to kill 🟨]
+  [Isaiah 42 Servant Prophecy 🟧]
+  [Blind & mute demoniac healed 🟩]
+  [Beelzebul accusation 🟨]
+  [Teaching: Kingdom divided 🟧]
+  [Warning: Blasphemy against the Holy Spirit 🟧]
+  [Tree & fruit – words reveal heart 🟧]
+  [Sign of Jonah 🟧]
+  [Queen of the South & Nineveh condemn unbelief 🟧]
+  [Return of unclean spirit 🟧]
+  [True family: do the Father's will 🟧]
+}
+
+' --- People to Events ---
+[Jesus Christ] --> [Plucking grain on Sabbath 🟩]
+[Jesus Christ] --> [Man with withered hand healed 🟩]
+[Jesus Christ] --> [Blind & mute demoniac healed 🟩]
+[Jesus Christ] --> [Teaching: Kingdom divided 🟧]
+[Jesus Christ] --> [Sign of Jonah 🟧]
+[Jesus Christ] --> [True family: do the Father's will 🟧]
+[Jesus Christ] --> [David]
+[Jesus Christ] --> [Jonah]
+[Jesus Christ] --> [Queen of the South]
+[Jesus Christ] --> [Solomon]
+[Jesus Christ] --> [Men of Nineveh]
+[Jesus Christ] --> [Son of Man]
+
+[Pharisees] --> [Pharisees accuse 🟨]
+[Pharisees] --> [Beelzebul accusation 🟨]
+[Pharisees] --> [Beelzebul]
+
+[Queen of the South] --> [Solomon]
+[Men of Nineveh] --> [Jonah]
+
+' --- Locations to Events ---
+[Bethlehem 🟦] --> [Birth of Jesus 🟨]
+[Bethlehem 🟦] --> [Visit of Magi 🟨]
+[Egypt 🟦] --> [Flight to Egypt 🟦]
+[Nazareth 🟦] --> [Return to Nazareth 🟦]
+[Jordan River 🟦] --> [Baptism of Jesus 🟩]
+[Wilderness 🟦] --> [Temptation in the Wilderness 🟨]
+[Capernaum 🟦] --> [Sermon on the Mount 🟧]
+[Capernaum 🟦] --> [Healing Leper 🟩]
+[Sea of Galilee 🟦] --> [Calming the Storm 🟩]
+[Gadara 🟦] --> [Healing Gadarene Demoniacs 🟩]
+[Synagogues of Galilee 🟦] --> [Man with withered hand healed 🟩]
+[Jerusalem 🟦] --> [Beelzebul accusation 🟨]
+[Jerusalem 🟦] --> [Sign of Jonah 🟧]
+[Jerusalem 🟦] --> [True family: do the Father's will 🟧]
+
+' --- Narrative Flow ---
+[Genealogy 🟧] --> [Birth of Jesus 🟨]
+[Birth of Jesus 🟨] --> [Visit of Magi 🟨]
+[Visit of Magi 🟨] --> [Flight to Egypt 🟦]
+[Flight to Egypt 🟦] --> [Return to Nazareth 🟦]
+
+[John the Baptist's Ministry 🟧] --> [Baptism of Jesus 🟩]
+[Baptism of Jesus 🟩] --> [Temptation in the Wilderness 🟨]
+[Temptation in the Wilderness 🟨] --> [Sermon on the Mount 🟧]
+
+[Sermon on the Mount 🟧] --> [Healing Leper 🟩]
+[Healing Leper 🟩] --> [Healing Centurion's Servant 🟩]
+[Healing Centurion's Servant 🟩] --> [Healing Peter's Mother-in-law 🟩]
+[Healing Peter's Mother-in-law 🟩] --> [Calming the Storm 🟩]
+[Calming the Storm 🟩] --> [Healing Gadarene Demoniacs 🟩]
+
+[Healing Paralytic 🟩] --> [Calling of Matthew 🟨]
+[Calling of Matthew 🟨] --> [Raising Jairus' Daughter 🟩]
+[Raising Jairus' Daughter 🟩] --> [Healing Woman with Hemorrhage 🟩]
+[Healing Woman with Hemorrhage 🟩] --> [Healing Two Blind Men 🟩]
+[Healing Two Blind Men 🟩] --> [Healing Mute Demoniac 🟩]
+
+[Commissioning of the Twelve 🟧] --> [Teaching on Persecution 🟧]
+[Teaching on Persecution 🟧] --> [Plucking grain on Sabbath 🟩]
+[Plucking grain on Sabbath 🟩] --> [Pharisees accuse 🟨]
+[Pharisees accuse 🟨] --> [Jesus: 'Lord of the Sabbath' 🟧]
+[Jesus: 'Lord of the Sabbath' 🟧] --> [Man with withered hand healed 🟩]
+[Man with withered hand healed 🟩] --> [Pharisees plot to kill 🟨]
+[Pharisees plot to kill 🟨] --> [Isaiah 42 Servant Prophecy 🟧]
+[Isaiah 42 Servant Prophecy 🟧] --> [Blind & mute demoniac healed 🟩]
+[Blind & mute demoniac healed 🟩] --> [Beelzebul accusation 🟨]
+[Beelzebul accusation 🟨] --> [Teaching: Kingdom divided 🟧]
+[Teaching: Kingdom divided 🟧] --> [Warning: Blasphemy against the Holy Spirit 🟧]
+[Warning: Blasphemy against the Holy Spirit 🟧] --> [Tree & fruit – words reveal heart 🟧]
+[Tree & fruit – words reveal heart 🟧] --> [Sign of Jonah 🟧]
+[Sign of Jonah 🟧] --> [Queen of the South & Nineveh condemn unbelief 🟧]
+[Queen of the South & Nineveh condemn unbelief 🟧] --> [Return of unclean spirit 🟧]
+[Return of unclean spirit 🟧] --> [True family: do the Father's will 🟧]
+
+@enduml
+
+
+
+
+@startuml
+title Gospel of Matthew 1–12 – Unified Events, People, Historical References, and Titles
+
+skinparam packageStyle rectangle
+skinparam backgroundColor white
+
+' --- Early Life ---
+package "Genealogy & Birth (Mt 1–2)" #lightgray {
+  [Genealogy 🟧]
+  [Birth of Jesus 🟨]
+  [Visit of Magi 🟨]
+  [Flight to Egypt 🟦]
+  [Return to Nazareth 🟦]
+}
+
+' --- Preparation ---
+package "Preparation for Ministry (Mt 3–4)" #lightblue {
+  [John the Baptist's Ministry 🟧]
+  [Baptism of Jesus 🟩]
+  [Temptation in the Wilderness 🟨]
+  [Capernaum – Base of Ministry 🟦]
+}
+
+' --- Early Ministry ---
+package "Early Galilean Ministry (Mt 5–9)" #lightgreen {
+  [Sermon on the Mount 🟧]
+  [Healing Leper 🟩]
+  [Healing Centurion's Servant 🟩]
+  [Healing Peter's Mother-in-law 🟩]
+  [Calming the Storm 🟩]
+  [Healing Gadarene Demoniacs 🟩]
+  [Healing Paralytic 🟩]
+  [Calling of Matthew 🟨]
+  [Raising Jairus' Daughter 🟩]
+  [Healing Woman with Hemorrhage 🟩]
+  [Healing Two Blind Men 🟩]
+  [Healing Mute Demoniac 🟩]
+}
+
+' --- Mission & Opposition ---
+package "Mission & Opposition (Mt 10–12)" #lightyellow {
+  [Commissioning of the Twelve 🟧]
+  [Teaching on Persecution 🟧]
+  [Plucking grain on Sabbath 🟩]
+  [Pharisees accuse 🟨]
+  [Jesus: 'Lord of the Sabbath' 🟧]
+  [Man with withered hand healed 🟩]
+  [Pharisees plot to kill 🟨]
+  [Isaiah 42 Servant Prophecy 🟧]
+  [Blind & mute demoniac healed 🟩]
+  [Beelzebul accusation 🟨]
+  [Teaching: Kingdom divided 🟧]
+  [Warning: Blasphemy against the Holy Spirit 🟧]
+  [Tree & fruit – words reveal heart 🟧]
+  [Sign of Jonah 🟧]
+  [Queen of the South & Nineveh condemn unbelief 🟧]
+  [Return of unclean spirit 🟧]
+  [True family: do the Father's will 🟧]
+}
+
+' --- Individuals Present in Matthew 12 ---
+package "Contemporaries of Jesus" #lightblue {
+  [Jesus Christ]
+  [Pharisees]
+  [Priests in the Temple]
+  [Jesus' Mother]
+  [Jesus' Brothers/Relatives]
+}
+
+' --- Historical References ---
+package "Historical References" #lightgreen {
+  [David]
+  [Jonah]
+  [Queen of the South]
+  [Solomon]
+  [Men of Nineveh]
+}
+
+' --- Symbolic Titles ---
+package "Symbolic / Spiritual Titles" #lightyellow {
+  [Son of Man]
+  [Beelzebul]
+}
+
+' --- Connections between Events and People ---
+[Jesus Christ] --> [Plucking grain on Sabbath 🟩]
+[Jesus Christ] --> [Man with withered hand healed 🟩]
+[Jesus Christ] --> [Blind & mute demoniac healed 🟩]
+[Jesus Christ] --> [Teaching: Kingdom divided 🟧]
+[Jesus Christ] --> [Sign of Jonah 🟧]
+[Jesus Christ] --> [True family: do the Father's will 🟧]
+
+[Jesus Christ] --> [David]
+[Jesus Christ] --> [Jonah]
+[Jesus Christ] --> [Queen of the South]
+[Jesus Christ] --> [Solomon]
+[Jesus Christ] --> [Men of Nineveh]
+[Jesus Christ] --> [Son of Man]
+
+[Pharisees] --> [Pharisees accuse 🟨]
+[Pharisees] --> [Beelzebul accusation 🟨]
+[Pharisees] --> [Beelzebul]
+
+[Queen of the South] --> [Solomon]
+[Men of Nineveh] --> [Jonah]
+
+' --- Narrative Flow ---
+[Genealogy 🟧] --> [Birth of Jesus 🟨]
+[Birth of Jesus 🟨] --> [Visit of Magi 🟨]
+[Visit of Magi 🟨] --> [Flight to Egypt 🟦]
+[Flight to Egypt 🟦] --> [Return to Nazareth 🟦]
+
+[John the Baptist's Ministry 🟧] --> [Baptism of Jesus 🟩]
+[Baptism of Jesus 🟩] --> [Temptation in the Wilderness 🟨]
+[Temptation in the Wilderness 🟨] --> [Capernaum – Base of Ministry 🟦]
+
+[Capernaum – Base of Ministry 🟦] --> [Sermon on the Mount 🟧]
+[Sermon on the Mount 🟧] --> [Healing Leper 🟩]
+[Healing Leper 🟩] --> [Healing Centurion's Servant 🟩]
+[Healing Centurion's Servant 🟩] --> [Healing Peter's Mother-in-law 🟩]
+[Healing Peter's Mother-in-law 🟩] --> [Calming the Storm 🟩]
+[Calming the Storm 🟩] --> [Healing Gadarene Demoniacs 🟩]
+
+[Healing Paralytic 🟩] --> [Calling of Matthew 🟨]
+[Calling of Matthew 🟨] --> [Raising Jairus' Daughter 🟩]
+[Raising Jairus' Daughter 🟩] --> [Healing Woman with Hemorrhage 🟩]
+[Healing Woman with Hemorrhage 🟩] --> [Healing Two Blind Men 🟩]
+[Healing Two Blind Men 🟩] --> [Healing Mute Demoniac 🟩]
+
+[Commissioning of the Twelve 🟧] --> [Teaching on Persecution 🟧]
+[Teaching on Persecution 🟧] --> [Plucking grain on Sabbath 🟩]
+[Plucking grain on Sabbath 🟩] --> [Pharisees accuse 🟨]
+[Pharisees accuse 🟨] --> [Jesus: 'Lord of the Sabbath' 🟧]
+[Jesus: 'Lord of the Sabbath' 🟧] --> [Man with withered hand healed 🟩]
+[Man with withered hand healed 🟩] --> [Pharisees plot to kill 🟨]
+[Pharisees plot to kill 🟨] --> [Isaiah 42 Servant Prophecy 🟧]
+[Isaiah 42 Servant Prophecy 🟧] --> [Blind & mute demoniac healed 🟩]
+[Blind & mute demoniac healed 🟩] --> [Beelzebul accusation 🟨]
+[Beelzebul accusation 🟨] --> [Teaching: Kingdom divided 🟧]
+[Teaching: Kingdom divided 🟧] --> [Warning: Blasphemy against the Holy Spirit 🟧]
+[Warning: Blasphemy against the Holy Spirit 🟧] --> [Tree & fruit – words reveal heart 🟧]
+[Tree & fruit – words reveal heart 🟧] --> [Sign of Jonah 🟧]
+[Sign of Jonah 🟧] --> [Queen of the South & Nineveh condemn unbelief 🟧]
+[Queen of the South & Nineveh condemn unbelief 🟧] --> [Return of unclean spirit 🟧]
+[Return of unclean spirit 🟧] --> [True family: do the Father's will 🟧]
+
+@enduml
+
+
+
+@startuml
+title Individuals in Matthew 12 – Historical, Contemporary, and Symbolic Connections
+
+skinparam packageStyle rectangle
+skinparam backgroundColor white
+
+' --- Packages ---
+package "Contemporaries of Jesus" #lightblue {
+  [Jesus Christ]
+  [Pharisees]
+  [Priests in the Temple]
+  [Jesus' Mother]
+  [Jesus' Brothers/Relatives]
+}
+
+package "Historical References (OT Figures)" #lightgreen {
+  [David]
+  [Jonah]
+  [Queen of the South]
+  [Solomon]
+  [Men of Nineveh]
+}
+
+package "Symbolic / Spiritual Titles" #lightyellow {
+  [Son of Man]
+  [Beelzebul]
+}
+
+' --- Relationships ---
+[Jesus Christ] --> [Pharisees] : Confront over\nSabbath, healing, exorcisms
+[Jesus Christ] --> [Priests in the Temple] : Uses as Sabbath example
+[Jesus Christ] --> [Jesus' Mother] : Redefines true family
+[Jesus Christ] --> [Jesus' Brothers/Relatives] : Redefines true family
+
+[Jesus Christ] --> [David] : Example of eating\nbread of Presence
+[Jesus Christ] --> [Jonah] : Sign of His burial\nand resurrection
+[Jesus Christ] --> [Queen of the South] : Example of Gentile\nrecognition of wisdom
+[Jesus Christ] --> [Solomon] : Declares Himself greater
+[Jesus Christ] --> [Men of Nineveh] : Example of repentance
+
+[Jesus Christ] --> [Son of Man] : Messianic title\nclaims authority
+[Pharisees] --> [Beelzebul] : Accuse Jesus of\ndemonic power
+
+' --- Cross connections ---
+[Queen of the South] --> [Solomon] : Visited for wisdom
+[Men of Nineveh] --> [Jonah] : Repented at preaching
+
+@enduml
+
+
+
+@startuml
+title Early Miracles & Teachings of Jesus – Matthew 1–12
+
+skinparam packageStyle rectangle
+
+package "Sabbath Controversies" #lightblue {
+  [Plucking grain on Sabbath 🟩]
+  [Pharisees accuse 🟨]
+  [Jesus: 'Lord of the Sabbath' 🟧]
+  [Man with withered hand healed 🟩]
+}
+
+package "Prophecy Fulfillment" #lightyellow {
+  [Isaiah 42 Servant Prophecy 🟧]
+}
+
+package "Healing & Debate" #lightgreen {
+  [Blind & mute demoniac healed 🟩]
+  [Beelzebul accusation 🟨]
+  [Teaching: Kingdom divided 🟧]
+  [Warning: Blasphemy against the Holy Spirit 🟧]
+  [Tree & fruit – words reveal heart 🟧]
+}
+
+package "Signs & Warnings" #lightpink {
+  [Sign of Jonah 🟧]
+  [Queen of the South & Nineveh condemn unbelief 🟧]
+  [Return of unclean spirit 🟧]
+}
+
+package "True Kinship" #lightgray {
+  [Mother & brothers seek Jesus 🟨]
+  [True family: do the Father's will 🟧]
+}
+
+' Flow connections
+[Plucking grain on Sabbath 🟩] --> [Jesus: 'Lord of the Sabbath' 🟧]
+[Man with withered hand healed 🟩] --> [Pharisees accuse 🟨]
+[Blind & mute demoniac healed 🟩] --> [Beelzebul accusation 🟨]
+[Beelzebul accusation 🟨] --> [Warning: Blasphemy against the Holy Spirit 🟧]
+[Sign of Jonah 🟧] --> [Return of unclean spirit 🟧]
+[Mother & brothers seek Jesus 🟨] --> [True family: do the Father's will 🟧]
+
+@enduml
+
+
+
+@startuml
 title Gospel of Matthew 1–12 – Chronological Itinerary Map
 
 skinparam backgroundColor white

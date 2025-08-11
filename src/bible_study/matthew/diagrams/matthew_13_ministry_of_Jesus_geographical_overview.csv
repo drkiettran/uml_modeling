@@ -1,0 +1,15 @@
+Step,event,loc,type,ref,Latitude,Longitude
+1,Birth of Jesus,Bethlehem,Birth,Matt 2,31.7054,35.2024
+2,Visit of Magi,Bethlehem,Visit,Matt 2,31.7054,35.2024
+3,Return to Nazareth,Nazareth,Move,Matt 2,32.6996,35.3035
+4,John the Baptist preaches,Jordan River,Teaching,Matt 3,32.388,35.573
+5,Baptism of Jesus,Jordan River,Event,Matt 3,32.388,35.573
+6,Temptation in wilderness,Wilderness (Judea),Trial,Matt 4,31.5,35.4
+7,Call of first disciples,Sea of Galilee,Call,Matt 4,32.8333,35.5833
+8,Sermon on the Mount,Sea of Galilee,Teaching,Matt 5–7,32.8333,35.5833
+9,Miracles in Capernaum cluster,Capernaum,Miracles,Matt 8–9,32.8803,35.5733
+10,Calming the storm,Sea of Galilee,Miracle,Matt 8,32.8333,35.5833
+11,Healing Gadarene demoniacs,Decapolis (region),Miracle,Matt 8,32.5,35.8
+12,Raising Jairus’ daughter,Capernaum,Miracle,Matt 9,32.8803,35.5733
+13,Parables of the Kingdom,Sea of Galilee,Teaching/Parables,Matt 13,32.8333,35.5833
+14,Rejection at Nazareth,Nazareth Synagogue,Rejection,Matt 13:53–58,32.6996,35.3035
